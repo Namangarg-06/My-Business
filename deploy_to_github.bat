@@ -43,8 +43,22 @@ if %ERRORLEVEL% equ 0 (
     echo Live Website Link: https://namangarg-06.github.io/My-Business/
     echo ==============================================================================
 ) else (
-    color 0C
-    echo Push failed.
+    color 0E
+    echo Push to Naman-Garg-06 failed. Trying Namangarg-06...
+    git remote set-url origin https://github.com/Namangarg-06/My-Business.git
+    git push -u origin main --force
+    if !ERRORLEVEL! equ 0 (
+        color 0A
+        echo.
+        echo ==============================================================================
+        echo       SUCCESS! WEBSITE PUSHED TO Namangarg-06!
+        echo ==============================================================================
+        echo Live Link: https://namangarg-06.github.io/My-Business/
+    ) else (
+        color 0C
+        echo.
+        echo Push failed.
+    )
 )
 
 pause

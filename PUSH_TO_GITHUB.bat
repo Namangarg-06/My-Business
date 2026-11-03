@@ -29,7 +29,7 @@ git add -A
 echo [2/3] Committing changes (One-time Initial Link Welcome, 5 Realistic Sachet Sample Packaging Mockups with Interactive Flip)...
 git commit -m "One-time initial link welcome splash only, add realistic 3D packaging sample mockups for all 5 sachets & flavors" --allow-empty
 
-echo [3/3] Pushing to GitHub...
+echo [3/3] Pushing to GitHub (Namangarg-06/My-Business)...
 git push -u origin main --force
 
 if %ERRORLEVEL% equ 0 (
@@ -39,12 +39,27 @@ if %ERRORLEVEL% equ 0 (
     echo       SUCCESS! UPDATED WEBSITE PUSHED TO GITHUB!
     echo ==============================================================================
     echo.
-    echo Client Website Link:
+    echo Client Website Link (Live URL):
     echo   https://namangarg-06.github.io/My-Business/
     echo ==============================================================================
 ) else (
-    color 0C
-    echo Push failed.
+    color 0E
+    echo.
+    echo Trying alternative remote (Naman-Garg-06)...
+    git remote set-url origin https://github.com/Naman-Garg-06/My-Business.git
+    git push -u origin main --force
+    if !ERRORLEVEL! equ 0 (
+        color 0A
+        echo.
+        echo ==============================================================================
+        echo       SUCCESS! PUSHED TO Naman-Garg-06/My-Business!
+        echo ==============================================================================
+        echo Live Link: https://naman-garg-06.github.io/My-Business/
+    ) else (
+        color 0C
+        echo.
+        echo Push failed.
+    )
 )
 
 pause
