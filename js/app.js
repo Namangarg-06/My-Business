@@ -37,6 +37,24 @@ class P6SApp {
     const curtain = document.getElementById('p6sSplashCurtain');
     if (!curtain) return;
 
+    // Check if splash was already shown during this browser session
+    // User requirement: "starting pr link krte time chahiye bas welcome wala aur nahi"
+    const sessionSplashKey = 'p6s_welcome_seen';
+    const hasSeenSplash = sessionStorage.getItem(sessionSplashKey);
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const hasExplicitNewLinkParam = urlParams.has('ref') || urlParams.has('client') || urlParams.has('name') || urlParams.has('welcome');
+
+    // If already seen in this session and not a fresh inbound campaign link, remove curtain immediately!
+    if (hasSeenSplash && !hasExplicitNewLinkParam) {
+      curtain.style.display = 'none';
+      if (curtain.parentNode) curtain.parentNode.removeChild(curtain);
+      return;
+    }
+
+    // Mark as seen for the rest of this session
+    sessionStorage.setItem(sessionSplashKey, 'true');
+
     // Detect client name from storage or link referral
     let clientName = '';
     let greetingMsg = 'Indore Factory Direct Hospitality Atelier';
@@ -75,7 +93,7 @@ class P6SApp {
       }, 50);
     }
 
-    // Play Voice Welcome Announcement!
+    // Play Voice Welcome Announcement on starting entry
     this.playWelcomeVoice(clientName);
 
     // Auto dismiss after 2.2 seconds
@@ -92,8 +110,14 @@ class P6SApp {
   }
 
   triggerSwagatamScreen(clientName = '', subMessage = 'Welcome to P6S Atelier • Indore', autoDismissMs = 2800) {
-    const curtain = document.getElementById('p6sSplashCurtain');
-    if (!curtain) return;
+    let curtain = document.getElementById('p6sSplashCurtain');
+    
+    // If curtain was removed or is not in DOM (e.g. subpages), build a luxury toast celebration!
+    if (!curtain) {
+      this.playWelcomeVoice(clientName, `Swagatam ${clientName}! Your VIP client profile is now active.`);
+      this.showCelebrationToast(` स्वागतम् ${clientName}! VIP Factory Rates Active`);
+      return;
+    }
 
     const clientDisplay = document.getElementById('splashClientName');
     const leadGreeting = document.getElementById('splashLeadGreeting');
@@ -130,6 +154,45 @@ class P6SApp {
         this.dismissSplash();
       }, autoDismissMs);
     }
+  }
+
+  showCelebrationToast(msg) {
+    let toast = document.getElementById('p6sCelebrationToast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'p6sCelebrationToast';
+      toast.style.cssText = `
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%) translateY(100px);
+        background: linear-gradient(135deg, #0b3b82 0%, #071630 100%);
+        color: #ffffff;
+        border: 2px solid #e5c07b;
+        padding: 14px 26px;
+        border-radius: 30px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        z-index: 999999;
+        font-family: 'Cinzel', serif;
+        font-weight: 800;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s;
+        opacity: 0;
+      `;
+      document.body.appendChild(toast);
+    }
+    toast.innerHTML = `<i class="fas fa-crown text-gold"></i> ${msg}`;
+    setTimeout(() => {
+      toast.style.transform = 'translateX(-50%) translateY(0)';
+      toast.style.opacity = '1';
+    }, 50);
+    setTimeout(() => {
+      toast.style.transform = 'translateX(-50%) translateY(100px)';
+      toast.style.opacity = '0';
+    }, 3500);
   }
 
   playWelcomeVoice(name = '', customMessage = '') {
@@ -1503,7 +1566,7 @@ Please share the design preview & confirmation!`;
   }
 
   /* -------------------------------------------------------------
-     8. 3D FLIP SACHET DEMO
+     8. 3D FLIP SACHET DEMO & PACKET SAMPLES
   ------------------------------------------------------------- */
   initInteractiveShowcase() {
     const flipBtn = document.getElementById('flipSachetBtn');
@@ -1512,6 +1575,13 @@ Please share the design preview & confirmation!`;
       flipBtn.addEventListener('click', () => {
         sachetBox.classList.toggle('flipped');
       });
+    }
+  }
+
+  flipSamplePacket(sampleId) {
+    const el = document.getElementById(sampleId);
+    if (el) {
+      el.classList.toggle('flipped');
     }
   }
 

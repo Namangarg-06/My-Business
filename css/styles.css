@@ -1156,6 +1156,327 @@ h1, h2, h3, h4, .font-serif {
 }
 
 /* ==========================================================================
+   LUXURY SMART SACHETS™ PRODUCT SAMPLES & 3D PACKET SHOWCASE
+   ========================================================================== */
+.sachet-sample-card-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin: 30px 0 50px;
+}
+
+.sachet-sample-card {
+  background: #ffffff;
+  border: 1.5px solid rgba(197, 160, 89, 0.4);
+  border-radius: 20px;
+  padding: 32px 30px;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: grid;
+  grid-template-columns: 1.18fr 0.82fr;
+  gap: 30px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (max-width: 900px) {
+  .sachet-sample-card {
+    grid-template-columns: 1fr;
+    padding: 24px 20px;
+  }
+}
+
+.sachet-sample-card:hover {
+  border-color: var(--border-gold-solid);
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08), 0 2px 10px rgba(197, 160, 89, 0.2);
+}
+
+.sachet-sample-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.sachet-sample-top-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.sachet-num-badge {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  font-weight: 900;
+  color: #0b3b82;
+  background: #faf8f5;
+  border: 1.5px solid var(--border-gold-solid);
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(197, 160, 89, 0.2);
+}
+
+.sachet-type-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--gold-dark);
+  background: var(--gold-light);
+  border: 1px solid var(--border-gold-solid);
+  padding: 4px 12px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.sachet-client-tag {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #475569;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  padding: 3px 10px;
+  border-radius: 14px;
+}
+
+.sachet-sample-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.65rem;
+  font-weight: 900;
+  color: #0b3b82;
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+.sachet-sample-tagline {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--gold-dark);
+  margin-bottom: 14px;
+}
+
+.sachet-sample-desc {
+  font-size: 0.92rem;
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+.sachet-features-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+  font-size: 0.88rem;
+  color: #1e293b;
+}
+
+.sachet-features-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sachet-features-list li i {
+  color: #16a34a;
+  font-size: 0.88rem;
+}
+
+.sachet-specs-pill-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+
+.sachet-spec-pill {
+  background: #faf8f5;
+  border: 1px solid rgba(197, 160, 89, 0.4);
+  color: #334155;
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 8px;
+}
+
+.sachet-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Realistic 3D Physical Sachet Packet Mockup */
+.sachet-mockup-pane {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+.sample-packet-3d {
+  width: 250px;
+  height: 310px;
+  perspective: 1000px;
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+.sample-packet-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
+}
+
+.sample-packet-3d.flipped .sample-packet-inner {
+  transform: rotateY(180deg);
+}
+
+.sample-packet-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  box-shadow: 
+    0 16px 36px rgba(11, 59, 130, 0.12),
+    0 4px 14px rgba(0, 0, 0, 0.08),
+    inset 0 0 20px rgba(255, 255, 255, 0.35);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px 16px 14px;
+  overflow: hidden;
+  border: 1px solid rgba(197, 160, 89, 0.5);
+}
+
+.sample-packet-face::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.4) 48%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0.4) 52%, transparent 70%);
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Serrated / Crimped Edges */
+.crimp-edge-top, .crimp-edge-bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: repeating-linear-gradient(90deg, rgba(0,0,0,0.12) 0px, rgba(0,0,0,0.12) 2px, transparent 2px, transparent 4px),
+              linear-gradient(180deg, #d4af37 0%, #b8860b 100%);
+  z-index: 5;
+}
+
+.crimp-edge-top { top: 0; }
+.crimp-edge-bottom { bottom: 0; }
+
+.sample-packet-face.back {
+  transform: rotateY(180deg);
+}
+
+.packet-theme-white {
+  background: radial-gradient(circle at 30% 30%, #ffffff 0%, #faf8f5 65%, #f1ebe1 100%);
+  color: #0f172a;
+}
+
+.packet-theme-navy {
+  background: radial-gradient(circle at 30% 30%, #153b70 0%, #0b2b5c 55%, #061633 100%);
+  color: #ffffff;
+  border-color: #e5c07b;
+}
+
+.packet-theme-dark {
+  background: radial-gradient(circle at 30% 30%, #1e293b 0%, #0f172a 60%, #020617 100%);
+  color: #ffffff;
+  border-color: #d4af37;
+}
+
+.packet-theme-emerald {
+  background: radial-gradient(circle at 30% 30%, #15803d 0%, #166534 60%, #052e16 100%);
+  color: #ffffff;
+  border-color: #fde047;
+}
+
+.packet-theme-ruby {
+  background: radial-gradient(circle at 30% 30%, #991b1b 0%, #7f1d1d 60%, #450a0a 100%);
+  color: #ffffff;
+  border-color: #fde047;
+}
+
+.flip-hint-pill {
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: #64748b;
+  margin-top: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.flip-hint-pill:hover {
+  color: #0b3b82;
+}
+
+/* Sachet Flavors Showcase */
+.flavor-sample-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin: 24px 0 40px;
+}
+
+@media (max-width: 860px) {
+  .flavor-sample-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.flavor-sample-card {
+  background: #ffffff;
+  border: 1.5px solid rgba(197, 160, 89, 0.35);
+  border-radius: 16px;
+  padding: 24px 20px;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+  transition: all 0.25s ease;
+}
+
+.flavor-sample-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-gold-solid);
+  box-shadow: 0 12px 28px rgba(11, 59, 130, 0.08);
+}
+
+.flavor-seed-circle {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--border-gold-solid);
+  font-size: 1.8rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* ==========================================================================
    ULTRA-LUXURY CLIENT CONCIERGE LOGIN & VIP PROFILE
    ========================================================================== */
 .vip-login-modal {

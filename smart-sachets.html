@@ -15,50 +15,6 @@
 </head>
 <body>
 
-  <!-- Royal "स्वागतम्" (Swagatam) Luxury Splash Curtain with Voice Speech -->
-  <div id="p6sSplashCurtain" title="Click anywhere to enter Atelier">
-    <div class="splash-bg-glow"></div>
-    <div class="splash-crest-wrap">
-      <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="splashLvGold" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#FFF5D6" />
-            <stop offset="25%" stop-color="#E5C07B" />
-            <stop offset="55%" stop-color="#C5A059" />
-            <stop offset="85%" stop-color="#8C6D23" />
-            <stop offset="100%" stop-color="#5A4310" />
-          </linearGradient>
-          <linearGradient id="splashRoyalNavy" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#0f2b5c" />
-            <stop offset="100%" stop-color="#071630" />
-          </linearGradient>
-        </defs>
-        <path d="M60 4 C65 32 88 55 116 60 C88 65 65 88 60 116 C55 88 32 65 4 60 C32 55 55 32 60 4 Z" stroke="url(#splashLvGold)" stroke-width="2.5" fill="#faf8f5" />
-        <rect x="33" y="33" width="54" height="54" rx="7" transform="rotate(45 60 60)" fill="url(#splashRoyalNavy)" stroke="url(#splashLvGold)" stroke-width="2" />
-        <text x="60" y="65" font-family="'Cinzel', serif" font-size="22" font-weight="900" fill="url(#splashLvGold)" text-anchor="middle" letter-spacing="1.5">P6S</text>
-        <text x="60" y="74" font-family="'Plus Jakarta Sans', sans-serif" font-size="6" font-weight="800" fill="#E5C07B" text-anchor="middle" letter-spacing="2">ATELIER</text>
-      </svg>
-    </div>
-    <div class="splash-swagatam">स्वागतम्</div>
-    <div id="splashClientName" class="splash-client-display"></div>
-    <div class="splash-welcome-en">Welcome to P6S Atelier</div>
-    <div class="splash-brand-sub">Premium Packaging Solutions • Indore</div>
-    <div id="splashLeadGreeting" class="splash-lead-pill">
-      <i class="fas fa-crown text-gold"></i> Smart Sachets™ Atelier • Indore
-    </div>
-    <div class="splash-progress-track">
-      <div id="splashProgressBar" class="splash-progress-bar"></div>
-    </div>
-    <div class="splash-actions-row">
-      <button type="button" id="splashSoundBtn" class="splash-sound-btn" onclick="app.replayVoice()" title="Voice Greeting">
-        <i class="fas fa-volume-up"></i> Voice Greeting
-      </button>
-      <button type="button" class="splash-enter-btn" onclick="app.dismissSplash()">
-        Enter Atelier <i class="fas fa-arrow-right" style="margin-left: 6px;"></i>
-      </button>
-    </div>
-  </div>
-
   <!-- Off-Canvas Luxury "All Products" Side Drawer -->
   <div id="sideDrawerBackdrop" class="side-drawer-backdrop" onclick="app.closeProductsDrawer()"></div>
   <div id="allProductsSideDrawer" class="all-products-drawer">
@@ -250,146 +206,691 @@
   <section class="section" style="padding-top: 0;">
     <div class="container">
 
-      <!-- 5 Types of Smart Sachets Grid -->
-      <div class="sachets-grid">
-        <div class="sachet-card">
-          <div class="sachet-badge-num">01</div>
-          <h3 class="sachet-card-title">BASIC CUSTOM SACHET</h3>
-          <p class="sachet-card-desc"><strong>Your logo. Your identity.</strong> Clean, premium sachets with your logo and branding.</p>
-          <div class="sachet-interactive-preview"><i class="fas fa-tag"></i> Clean Brand Identity</div>
-        </div>
-
-        <div class="sachet-card">
-          <div class="sachet-badge-num">02</div>
-          <h3 class="sachet-card-title">QR RATING SACHET</h3>
-          <p class="sachet-card-desc"><strong>One scan, direct to love.</strong> Customers scan, rate &amp; review you on Google / Website / Menu.</p>
-          <div class="sachet-interactive-preview"><i class="fab fa-google"></i> Google 5-Star Reviews</div>
-        </div>
-
-        <div class="sachet-card">
-          <div class="sachet-badge-num">03</div>
-          <h3 class="sachet-card-title">EXPERIENCE SACHET</h3>
-          <p class="sachet-card-desc"><strong>Scan &amp; experience your brand.</strong> Thank you videos, founder story, offers or brand experience.</p>
-          <div class="sachet-interactive-preview"><i class="fas fa-play-circle"></i> Video &amp; Story Connect</div>
-        </div>
-
-        <div class="sachet-card">
-          <div class="sachet-badge-num">04</div>
-          <h3 class="sachet-card-title">REWARD SACHET</h3>
-          <p class="sachet-card-desc"><strong>Scan. Unlock. Get rewarded.</strong> Exclusive offers, loyalty points, discounts &amp; surprise rewards.</p>
-          <div class="sachet-interactive-preview"><i class="fas fa-gift"></i> Loyalty &amp; Rewards Engine</div>
-        </div>
-
-        <div class="sachet-card">
-          <div class="sachet-badge-num">05</div>
-          <h3 class="sachet-card-title">CAMPAIGN SACHET</h3>
-          <p class="sachet-card-desc"><strong>For offers, festivals &amp; launches.</strong> Seasonal offers, special campaigns &amp; festive greetings.</p>
-          <div class="sachet-interactive-preview"><i class="fas fa-bullhorn"></i> Festival Marketing</div>
-        </div>
+      <!-- 5 Types of Smart Sachets with Real Visual Packaging Samples -->
+      <div style="text-align: center; margin-bottom: 35px;">
+        <span class="hero-pill" style="margin-bottom: 10px;"><i class="fas fa-crown text-gold"></i> HOSPITALITY PACKAGING ATELIER</span>
+        <h2 style="font-family: 'Cinzel', serif; font-size: 2.3rem; font-weight: 900; color: #0b3b82; margin-bottom: 10px;">
+          5 Types of Smart Sachets™ &amp; Real Samples
+        </h2>
+        <p style="color: #64748b; font-size: 1.02rem; max-width: 760px; margin: 0 auto;">
+          Every sachet is a high-impact branding asset. Click <strong>"Flip Sample"</strong> on any packet below to examine both the front luxury restaurant branding and back dynamic QR / FSSAI statutory layout.
+        </p>
       </div>
 
-      <!-- 3D Sachet Showcase -->
-      <div class="sachet-visual-showcase" style="margin-bottom: 50px;">
-        <div>
-          <span class="hero-pill" style="margin-bottom: 12px;">Real Client Sample</span>
-          <h3 style="font-size: 1.8rem; font-weight: 800; color: #0b3b82; margin-bottom: 14px;">
-            Dual-Sided Custom Packaging Mockup
-          </h3>
-          <p style="color: #475569; font-size: 0.95rem; margin-bottom: 20px; line-height: 1.6;">
-            Front displays your luxury restaurant logo, veg mark, and tagline. Back features dynamic QR code, FSSAI manufacturing license, packaging dates, and social connect links.
-          </p>
-          <div style="background: #ffffff; border: 1.5px solid var(--border-gold-solid); border-radius: 14px; padding: 18px; margin-bottom: 22px; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
-            <div style="margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
-              <i class="fas fa-check-circle text-gold"></i>
-              <span style="font-size: 0.9rem; color: #1e293b;">Featured in <strong>Mudoven Cafe</strong>, <strong>Chef Bhupi's Kitchen</strong>, &amp; <strong>La Indri</strong></span>
+      <div class="sachet-sample-card-grid">
+
+        <!-- 01 BASIC CUSTOM SACHET -->
+        <div class="sachet-sample-card">
+          <div class="sachet-sample-info">
+            <div class="sachet-sample-top-row">
+              <div class="sachet-num-badge">01</div>
+              <span class="sachet-type-badge"><i class="fas fa-certificate text-gold"></i> Clean Brand Identity</span>
+              <span class="sachet-client-tag"><i class="fas fa-utensils"></i> Sample: Mudoven Cafe</span>
             </div>
-            <!-- Standard Official FSSAI Statutory Display -->
-            <div class="fssai-standard-box" style="width: 100%; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
-              <div style="display: flex; align-items: center; gap: 10px;">
-                <div class="veg-symbol-wrap" title="100% Vegetarian Product">
-                  <div class="veg-symbol-dot"></div>
-                </div>
-                <div>
-                  <div class="fssai-logo-tag">fssai<span>®</span></div>
-                  <div class="fssai-lic-text">Central / State Lic. No. <strong>12723001000884</strong></div>
-                </div>
-              </div>
-              <div style="text-align: right; font-size: 0.76rem; color: #64748b;">
-                Mfg. Lic. No: <strong style="color: #0b3b82;">22826135000451</strong><br>
-                100% Food-Grade Virgin Poly Packaging
-              </div>
+            <h3 class="sachet-sample-title">BASIC CUSTOM SACHET</h3>
+            <div class="sachet-sample-tagline">"Your Logo. Your Identity. Pure Post-Meal Elegance."</div>
+            <p class="sachet-sample-desc">
+              Clean, minimalist, and ultra-luxurious sachets customized with your restaurant's high-resolution logo, signature typography, and aesthetic color scheme. Replaces generic unbranded market packets with your bespoke dining identity.
+            </p>
+            <ul class="sachet-features-list">
+              <li><i class="fas fa-check-circle"></i> <span>Custom multi-color printing with sharp vector logo reproduction</span></li>
+              <li><i class="fas fa-check-circle"></i> <span>100% Food-Grade Virgin Poly &amp; sealed thermal crimp edges</span></li>
+              <li><i class="fas fa-check-circle"></i> <span>Statutory FSSAI manufacturing details &amp; green veg mark pre-printed</span></li>
+              <li><i class="fas fa-check-circle"></i> <span>Available in Poster Paper (Classic) or Metallized Foil (Luxury Sheen)</span></li>
+            </ul>
+            <div class="sachet-specs-pill-bar">
+              <span class="sachet-spec-pill"><i class="fas fa-ruler-combined text-gold"></i> 60 x 50 MM</span>
+              <span class="sachet-spec-pill"><i class="fas fa-box text-gold"></i> MOQ: 4,000 Units</span>
+              <span class="sachet-spec-pill"><i class="fas fa-shield-alt text-gold"></i> FSSAI Certified</span>
+              <span class="sachet-spec-pill"><i class="fas fa-truck text-gold"></i> Indore Factory Dispatch</span>
+            </div>
+            <div class="sachet-actions-row">
+              <button type="button" class="btn btn-outline-gold" onclick="app.flipSamplePacket('samplePacket1')">
+                <i class="fas fa-sync-alt"></i> Flip Sample (Front / Back)
+              </button>
+              <button type="button" class="btn btn-primary" onclick="app.openOrderBuilder('mouth-freshener', 'mf-mixture')">
+                <i class="fas fa-cart-plus"></i> Order Basic Sachet
+              </button>
             </div>
           </div>
-          <div style="display: flex; gap: 12px;">
-            <button id="flipSachetBtn" class="btn btn-outline-gold">
-              <i class="fas fa-sync-alt"></i> Flip Sachet (Front / Back)
-            </button>
-            <button class="btn btn-primary" onclick="app.openOrderBuilder('mouth-freshener')">
-              <i class="fas fa-cart-plus"></i> Configure Sachet Order
-            </button>
+
+          <div class="sachet-mockup-pane">
+            <div id="samplePacket1" class="sample-packet-3d" onclick="app.flipSamplePacket('samplePacket1')" title="Click to Flip Packet">
+              <div class="sample-packet-inner">
+                <!-- FRONT -->
+                <div class="sample-packet-face packet-theme-white">
+                  <div class="crimp-edge-top"></div>
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px;">
+                    <div style="display: flex; align-items: center; gap: 4px;">
+                      <div class="veg-symbol-wrap" style="width: 13px; height: 13px; border-width: 1.5px;">
+                        <div class="veg-symbol-dot" style="width: 5px; height: 5px;"></div>
+                      </div>
+                      <span style="font-size: 0.62rem; font-weight: 800; color: #16a34a;">100% VEG</span>
+                    </div>
+                    <span style="font-size: 0.62rem; color: #8c6d23; font-weight: 800; letter-spacing: 0.05em;">ESTD. 2021</span>
+                  </div>
+                  <div style="padding: 14px 0 10px;">
+                    <div style="width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid #c5a059; background: #faf8f5; margin: 0 auto 6px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(197,160,89,0.25);">
+                      <i class="fas fa-coffee" style="color: #8c6d23; font-size: 1rem;"></i>
+                    </div>
+                    <div style="font-family: 'Cinzel', serif; font-size: 1.15rem; font-weight: 900; color: #0b3b82; letter-spacing: 0.05em;">MUDOVEN CAFE</div>
+                    <div style="font-size: 0.68rem; color: #64748b; font-style: italic; margin-bottom: 8px;">Artisanal Kitchen &amp; Bakehouse</div>
+                    <div style="display: inline-block; background: #fef9ed; border: 1px solid #c5a059; color: #8c6d23; font-size: 0.7rem; font-weight: 800; padding: 3px 10px; border-radius: 12px;">
+                      Royal Saunf Mixture
+                    </div>
+                  </div>
+                  <div style="border-top: 1px solid #e2e8f0; padding-top: 6px; margin-bottom: 8px; font-size: 0.62rem; color: #64748b; display: flex; justify-content: space-between;">
+                    <span>GOOD FOOD • GREAT VIBES</span>
+                    <span>NET WT: 2.5g</span>
+                  </div>
+                  <div class="crimp-edge-bottom"></div>
+                </div>
+
+                <!-- BACK -->
+                <div class="sample-packet-face back packet-theme-white">
+                  <div class="crimp-edge-top"></div>
+                  <div style="display: flex; justify-content: space-between; font-size: 0.62rem; color: #0b3b82; font-weight: 800; margin-top: 6px;">
+                    <span>THANK YOU FOR DINING</span>
+                    <span>PKD: NOV 2026</span>
+                  </div>
+                  <div style="padding: 8px 0; font-size: 0.7rem; color: #475569; line-height: 1.4;">
+                    <div style="font-family: 'Cinzel', serif; font-weight: 800; color: #0b3b82; font-size: 0.85rem; margin-bottom: 2px;">MUDOVEN CAFE</div>
+                    <div>Indore, Madhya Pradesh</div>
+                    <div style="font-size: 0.65rem; color: #8c6d23; margin-top: 4px;">"We hope your visit was delightful!"</div>
+                  </div>
+                  <div class="sachet-regulatory-container" style="margin-bottom: 8px;">
+                    <div class="sachet-fssai-badge-row">
+                      <div style="display: flex; align-items: center; gap: 4px;">
+                        <span style="font-weight: 900; color: #0b3b82; font-size: 0.72rem;">fssai<sup style="font-size: 0.5rem; color:#16a34a;">®</sup></span>
+                        <span style="font-weight: 800; color: #0f172a; font-size: 0.62rem;">Lic. 12723001000884</span>
+                      </div>
+                      <span style="font-size: 0.58rem; color: #64748b;">Mfg: 22826135000451</span>
+                    </div>
+                    <div style="font-size: 0.58rem; color: #64748b; text-align: center;">
+                      Packed by P6S Atelier Indore • Helpline: +91 8462063330
+                    </div>
+                  </div>
+                  <div class="crimp-edge-bottom"></div>
+                </div>
+              </div>
+            </div>
+            <div class="flip-hint-pill" onclick="app.flipSamplePacket('samplePacket1')">
+              <i class="fas fa-hand-pointer text-gold"></i> Tap Packet or Flip Button to see Back Face
+            </div>
           </div>
         </div>
 
-        <div class="sachet-demo-mockup">
-          <div id="demoSachetBox" class="sachet-flipper">
-            <!-- Front -->
-            <div class="sachet-face front">
-              <div class="mockup-brand-crest">
-                <div style="display: flex; align-items: center; gap: 6px;">
-                  <div class="veg-symbol-wrap" style="width: 14px; height: 14px; border-width: 1.5px;">
-                    <div class="veg-symbol-dot" style="width: 6px; height: 6px;"></div>
-                  </div>
-                  <span style="font-size: 0.68rem; font-weight: 800; color: #16a34a;">100% VEG</span>
-                </div>
-                <span style="font-size: 0.7rem; color: #64748b; letter-spacing: 0.05em; text-transform: uppercase;">FRESH MOUTH • BETTER MOOD</span>
-              </div>
-              <div style="text-align: center; padding: 18px 0;">
-                <div style="font-size: 0.78rem; text-transform: uppercase; color: #64748b; letter-spacing: 0.1em; margin-bottom: 6px;">Thank You For Visiting</div>
-                <div style="font-family: 'Cinzel', serif; font-size: 1.5rem; font-weight: 900; color: #0b3b82; margin-bottom: 4px;">YOUR RESTAURANT</div>
-                <div style="font-size: 0.88rem; color: #475569; font-style: italic; margin-bottom: 12px;">— Logo &amp; Identity Here —</div>
-                <div style="display: inline-block; background: #e0f2fe; color: #0369a1; border-radius: 20px; padding: 4px 14px; font-size: 0.78rem; font-weight: 700;">Premium Saunf Mixture</div>
-              </div>
-              <div style="border-top: 1px solid #f1f5f9; padding-top: 10px; display: flex; justify-content: space-between; font-size: 0.72rem; color: #64748b;">
-                <span>GOOD FOOD • GREAT VIBES</span><span>STORE IN DRY PLACE</span>
-              </div>
+        <!-- 02 QR RATING SACHET -->
+        <div class="sachet-sample-card">
+          <div class="sachet-sample-info">
+            <div class="sachet-sample-top-row">
+              <div class="sachet-num-badge">02</div>
+              <span class="sachet-type-badge" style="background: #eff6ff; color: #1d4ed8; border-color: #93c5fd;"><i class="fab fa-google" style="color: #ea4335;"></i> Google 5-Star Reviews Booster</span>
+              <span class="sachet-client-tag"><i class="fas fa-utensils"></i> Sample: Chef Bhupi's Kitchen</span>
             </div>
-
-            <!-- Back -->
-            <div class="sachet-face back">
-              <div class="mockup-brand-crest">
-                <span style="font-size: 0.72rem; font-weight: 800; color: #0b3b82;"><i class="fab fa-google" style="color: #ea4335;"></i> SCAN &amp; RATE US</span>
-                <span style="font-size: 0.7rem; color: #64748b; font-weight: 700;">PKD: NOV 2026</span>
-              </div>
-              <div style="text-align: center; padding: 6px 0;">
-                <div style="width: 88px; height: 88px; background: #f8fafc; border: 2px solid #0b3b82; border-radius: 8px; margin: 0 auto 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.06);">
-                  <i class="fas fa-qrcode" style="font-size: 2.8rem; color: #0b3b82;"></i>
-                  <span style="font-size: 0.6rem; font-weight: 800; color: #0b3b82; margin-top: 2px;">SCAN TO CONNECT</span>
-                </div>
-                <div style="font-size: 0.76rem; font-weight: 800; color: #0f172a;">Loved the Food? Tell Google ⭐⭐⭐⭐⭐</div>
-                <div style="font-size: 0.68rem; color: #64748b;">Follow our vibe on Instagram @yourcafe</div>
-              </div>
-              <!-- Official Statutory Regulatory Footer (Standard FSSAI Indian Law Compliant) -->
-              <div class="sachet-regulatory-container">
-                <div class="sachet-fssai-badge-row">
-                  <div style="display: flex; align-items: center; gap: 5px;">
-                    <div class="veg-symbol-wrap" style="width: 13px; height: 13px; border-width: 1.5px;">
-                      <div class="veg-symbol-dot" style="width: 5px; height: 5px;"></div>
-                    </div>
-                    <span style="font-weight: 900; color: #0b3b82; font-size: 0.75rem;">fssai<sup style="font-size: 0.55rem; color:#16a34a;">®</sup></span>
-                    <span style="font-weight: 800; color: #0f172a; font-size: 0.66rem;">Lic. No. 12723001000884</span>
-                  </div>
-                  <span style="font-size: 0.62rem; color: #64748b;">Batch: P6S-NOV26</span>
-                </div>
-                <div style="display: flex; justify-content: space-between; font-size: 0.62rem; color: #475569;">
-                  <span>Mfg Lic: <strong>22826135000451</strong></span>
-                  <span>Net Wt: <strong>2.5g approx.</strong></span>
-                </div>
-                <div style="font-size: 0.6rem; color: #64748b; margin-top: 2px; text-align: center;">
-                  Packed by: <strong>Premium Packaging Solutions (P6S)</strong>, Indore (M.P.) • Helpline: <strong>+91 8462063330</strong>
-                </div>
-              </div>
+            <h3 class="sachet-sample-title">QR RATING SACHET</h3>
+            <div class="sachet-sample-tagline">"One Scan, Direct to Love. Convert Happy Diners Into 5-Star Reviews."</div>
+            <p class="sachet-sample-desc">
+              85% of restaurant customers decide where to eat based on Google Reviews. This smart sachet features a dynamic, high-contrast QR code printed on the back. When customers enjoy their after-meal saunf, they scan and land straight on your Google 5-star review page in under 4 seconds!
+            </p>
+            <ul class="sachet-features-list">
+              <li><i class="fas fa-check-circle"></i> <span>Direct 1-click Google review link (no searching, zero typing needed)</span></li>
+              <li><i class="fas fa-check-circle"></i> <span>High-contrast scannable QR code verified for all iPhone &amp; Android cameras</span></li>
+              <li><i class="fas fa-check-circle"></i> <span>Proven to generate 150+ genuine Google 5-star reviews every month</span></li>
+              <li><i class="fas fa-check-circle"></i> <span>Optional link to your dynamic WhatsApp Menu or Website</span></li>
+            </ul>
+            <div class="sachet-specs-pill-bar">
+              <span class="sachet-spec-pill"><i class="fab fa-google text-gold"></i> Direct Google Link</span>
+              <span class="sachet-spec-pill"><i class="fas fa-qrcode text-gold"></i> High-Res Vector QR</span>
+              <span class="sachet-spec-pill"><i class="fas fa-box text-gold"></i> MOQ: 4,000 Units</span>
+              <span class="sachet-spec-pill"><i class="fas fa-shield-alt text-gold"></i> FSSAI Certified</span>
+            </div>
+            <div class="sachet-actions-row">
+              <button type="button" class="btn btn-outline-gold" onclick="app.flipSamplePacket('samplePacket2')">
+                <i class="fas fa-sync-alt"></i> Flip Sample (Front / Back)
+              </button>
+              <button type="button" class="btn btn-primary" onclick="app.openOrderBuilder('mouth-freshener', 'mf-madrasi-white')">
+                <i class="fas fa-cart-plus"></i> Order QR Rating Sachet
+              </button>
             </div>
           </div>
+
+          <div class="sachet-mockup-pane">
+            <div id="samplePacket2" class="sample-packet-3d" onclick="app.flipSamplePacket('samplePacket2')" title="Click to Flip Packet">
+              <div class="sample-packet-inner">
+                <!-- FRONT -->
+                <div class="sample-packet-face packet-theme-navy">
+                  <div class="crimp-edge-top"></div>
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px;">
+                    <div style="display: flex; align-items: center; gap: 4px;">
+                      <div class="veg-symbol-wrap" style="width: 13px; height: 13px; border-color: #4ade80;">
+                        <div class="veg-symbol-dot" style="width: 5px; height: 5px; background: #4ade80;"></div>
+                      </div>
+                      <span style="font-size: 0.62rem; font-weight: 800; color: #4ade80;">100% VEG</span>
+                    </div>
+                    <span style="font-size: 0.62rem; color: #fde047; font-weight: 800;">⭐⭐⭐⭐⭐</span>
+                  </div>
+                  <div style="padding: 12px 0 8px;">
+                    <div style="font-size: 0.68rem; letter-spacing: 0.12em; color: #cbd5e1; text-transform: uppercase;">ROYAL FINE DINING</div>
+                    <div style="font-family: 'Cinzel', serif; font-size: 1.15rem; font-weight: 900; color: #fbf0b9; margin: 2px 0;">CHEF BHUPI'S</div>
+                    <div style="font-size: 0.72rem; color: #93c5fd; font-weight: 700; margin-bottom: 6px;">KITCHEN &amp; BANQUET</div>
+                    <div style="background: rgba(255,255,255,0.1); border: 1px solid rgba(229,192,123,0.4); border-radius: 20px; padding: 4px 12px; font-size: 0.68rem; color: #fef08a; display: inline-block;">
+                      Loved Our Food? Scan Back!
+                    </div>
+                  </div>
+                  <div style="border-top: 1px solid rgba(255,255,255,0.15); padding-top: 6px; margin-bottom: 8px; font-size: 0.62rem; color: #94a3b8; display: flex; justify-content: space-between;">
+                    <span>MADRASI WHITE SAUNF</span>
+                    <span>NET WT: 2.5g</span>
+                  </div>
+                  <div class="crimp-edge-bottom"></div>
+                </div>
+
+                <!-- BACK (QR Code side) -->
+                <div class="sample-packet-face back packet-theme-navy">
+                  <div class="crimp-edge-top"></div>
+                  <div style="display: flex; justify-content: space-between; font-size: 0.65rem; color: #fde047; font-weight: 800; margin-top: 4px;">
+                    <span><i class="fab fa-google" style="color: #f87171;"></i> RATE US ON GOOGLE</span>
+                    <span style="color: #cbd5e1;">PKD: NOV 2026</span>
+                  </div>
+                  <!-- Vector QR Code with Google Icon -->
+                  <div style="background: #ffffff; border-radius: 8px; padding: 6px; width: 88px; height: 88px; margin: 4px auto; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.25);">
+                    <svg viewBox="0 0 100 100" style="width: 76px; height: 76px;">
+                      <!-- Real High-Detail SVG QR Pattern -->
+                      <rect x="0" y="0" width="28" height="28" fill="#0b3b82" rx="3" />
+                      <rect x="5" y="5" width="18" height="18" fill="#ffffff" rx="2" />
+                      <rect x="9" y="9" width="10" height="10" fill="#0b3b82" />
+                      
+                      <rect x="72" y="0" width="28" height="28" fill="#0b3b82" rx="3" />
+                      <rect x="77" y="5" width="18" height="18" fill="#ffffff" rx="2" />
+                      <rect x="81" y="9" width="10" height="10" fill="#0b3b82" />
+                      
+                      <rect x="0" y="72" width="28" height="28" fill="#0b3b82" rx="3" />
+                      <rect x="5" y="77" width="18" height="18" fill="#ffffff" rx="2" />
+                      <rect x="9" y="81" width="10" height="10" fill="#0b3b82" />
+                      
+                      <!-- Data Matrix Dots -->
+                      <rect x="34" y="6" width="6" height="6" fill="#0b3b82" />
+                      <rect x="46" y="6" width="6" height="6" fill="#0b3b82" />
+                      <rect x="58" y="6" width="6" height="6" fill="#0b3b82" />
+                      <rect x="34" y="18" width="6" height="6" fill="#0b3b82" />
+                      <rect x="46" y="24" width="6" height="6" fill="#0b3b82" />
+                      <rect x="12" y="36" width="6" height="6" fill="#0b3b82" />
+                      <rect x="24" y="42" width="6" height="6" fill="#0b3b82" />
+                      <rect x="66" y="38" width="6" height="6" fill="#0b3b82" />
+                      <rect x="78" y="44" width="6" height="6" fill="#0b3b82" />
+                      <rect x="34" y="72" width="6" height="6" fill="#0b3b82" />
+                      <rect x="46" y="82" width="6" height="6" fill="#0b3b82" />
+                      <rect x="58" y="76" width="6" height="6" fill="#0b3b82" />
+                      <rect x="70" y="84" width="6" height="6" fill="#0b3b82" />
+                      <!-- Center Google G Pin -->
+                      <circle cx="50" cy="50" r="13" fill="#ffffff" stroke="#ea4335" stroke-width="2" />
+                      <text x="50" y="55" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="900" fill="#ea4335" text-anchor="middle">G</text>
+                    </svg>
+                  </div>
+                  <div style="font-size: 0.65rem; font-weight: 800; color: #fbf0b9;">Scan with Camera → Tap 5 Stars ⭐</div>
+                  <div class="sachet-regulatory-container" style="border-top-color: rgba(255,255,255,0.2); margin-bottom: 8px;">
+                    <div class="sachet-fssai-badge-row">
+                      <span style="font-weight: 900; color: #fbf0b9; font-size: 0.72rem;">fssai Lic. 12723001000884</span>
+                      <span style="font-size: 0.58rem; color: #cbd5e1;">Mfg: 22826135000451</span>
+                    </div>
+                    <div style="font-size: 0.56rem; color: #94a3b8; text-align: center;">
+                      Packed by P6S Indore • Founders: Naman &amp; Ansh (+91 8462063330)
+                    </div>
+                  </div>
+                  <div class="crimp-edge-bottom"></div>
+                </div>
+              </div>
+            </div>
+            <div class="flip-hint-pill" onclick="app.flipSamplePacket('samplePacket2')">
+              <i class="fas fa-hand-pointer text-gold"></i> Tap Packet to inspect Google Review QR Face
+            </div>
+          </div>
+        </div>
+
+        <!-- 03 EXPERIENCE SACHET -->
+        <div class="sachet-sample-card">
+          <div class="sachet-sample-info">
+            <div class="sachet-sample-top-row">
+              <div class="sachet-num-badge">03</div>
+              <span class="sachet-type-badge" style="background: #fdf2f8; color: #9d174d; border-color: #fbcfe8;"><i class="fas fa-play-circle" style="color: #db2777;"></i> Video &amp; Story Connect</span>
+              <span class="sachet-client-tag"><i class="fas fa-cocktail"></i> Sample: La Indri Lounge</span>
+            </div>
+            <h3 class="sachet-sample-title">EXPERIENCE SACHET</h3>
+            <div class="sachet-sample-tagline">"Scan &amp; Experience Your Brand. Videos, Storytelling &amp; Social Buzz."</div>
+            <p class="sachet-sample-desc">
+              Transform post-meal mints into a luxury digital brand theater. Diners scan to watch the Head Chef's signature preparation video, hear the founder's passion story, discover the secret cocktail menu, or check out tonight's live DJ/music lineup on Instagram.
+            </p>
+            <ul class="sachet-features-list">
+              <li><i class="fas fa-check-circle"></i> <span>Direct video player launch or Instagram profile follower booster</span></li>
+              <li><i class="fas fa-check-circle"></i> <span>Deepens emotional customer connection before they walk out the door</span></li>
+              <li><i class="fas fa-check-circle"></i> <span>Velvet matte dark obsidian aesthetic with mirror gold foil accents</span></li>
+              <li><i class="fas fa-check-circle"></i> <span>Dynamic redirect link (change video or offer anytime without reprinting)</span></li>
+            </ul>
+            <div class="sachet-specs-pill-bar">
+              <span class="sachet-spec-pill"><i class="fab fa-instagram text-gold"></i> Instagram Follow</span>
+              <span class="sachet-spec-pill"><i class="fas fa-video text-gold"></i> Video Experience</span>
+              <span class="sachet-spec-pill"><i class="fas fa-box text-gold"></i> MOQ: 4,000 Units</span>
+              <span class="sachet-spec-pill"><i class="fas fa-shield-alt text-gold"></i> FSSAI Certified</span>
+            </div>
+            <div class="sachet-actions-row">
+              <button type="button" class="btn btn-outline-gold" onclick="app.flipSamplePacket('samplePacket3')">
+                <i class="fas fa-sync-alt"></i> Flip Sample (Front / Back)
+              </button>
+              <button type="button" class="btn btn-primary" onclick="app.openOrderBuilder('mouth-freshener', 'mf-mixture')">
+                <i class="fas fa-cart-plus"></i> Order Experience Sachet
+              </button>
+            </div>
+          </div>
+
+          <div class="sachet-mockup-pane">
+            <div id="samplePacket3" class="sample-packet-3d" onclick="app.flipSamplePacket('samplePacket3')" title="Click to Flip Packet">
+              <div class="sample-packet-inner">
+                <!-- FRONT -->
+                <div class="sample-packet-face packet-theme-dark">
+                  <div class="crimp-edge-top"></div>
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px;">
+                    <div style="display: flex; align-items: center; gap: 4px;">
+                      <div class="veg-symbol-wrap" style="width: 13px; height: 13px; border-color: #22c55e;">
+                        <div class="veg-symbol-dot" style="width: 5px; height: 5px; background: #22c55e;"></div>
+                      </div>
+                      <span style="font-size: 0.62rem; font-weight: 800; color: #22c55e;">100% VEG</span>
+                    </div>
+                    <span style="font-size: 0.62rem; color: #e5c07b; font-weight: 800; letter-spacing: 0.1em;">ROOFTOP LOUNGE</span>
+                  </div>
+                  <div style="padding: 12px 0 8px;">
+                    <div style="width: 38px; height: 38px; border-radius: 8px; border: 1.5px solid #d4af37; background: #0f172a; margin: 0 auto 6px; display: flex; align-items: center; justify-content: center;">
+                      <i class="fas fa-gem" style="color: #e5c07b; font-size: 1.1rem;"></i>
+                    </div>
+                    <div style="font-family: 'Cinzel', serif; font-size: 1.25rem; font-weight: 900; color: #fbf0b9; letter-spacing: 0.1em;">LA INDRI</div>
+                    <div style="font-size: 0.68rem; color: #94a3b8; font-style: italic; margin-bottom: 6px;">Lounge, Bar &amp; Culinary Stage</div>
+                    <div style="background: rgba(229,192,123,0.15); border: 1px solid #c5a059; border-radius: 20px; padding: 3px 12px; font-size: 0.68rem; color: #fef08a; display: inline-block;">
+                      <i class="fas fa-play" style="font-size: 0.6rem;"></i> Scan Back for Live Music
+                    </div>
+                  </div>
+                  <div style="border-top: 1px solid rgba(255,255,255,0.15); padding-top: 6px; margin-bottom: 8px; font-size: 0.62rem; color: #94a3b8; display: flex; justify-content: space-between;">
+                    <span>SIGNATURE REFRESHER</span>
+                    <span>NET WT: 2.5g</span>
+                  </div>
+                  <div class="crimp-edge-bottom"></div>
+                </div>
+
+                <!-- BACK -->
+                <div class="sample-packet-face back packet-theme-dark">
+                  <div class="crimp-edge-top"></div>
+                  <div style="display: flex; justify-content: space-between; font-size: 0.65rem; color: #e5c07b; font-weight: 800; margin-top: 4px;">
+                    <span><i class="fab fa-instagram" style="color: #f43f5e;"></i> @LAINDRI.INDORE</span>
+                    <span style="color: #94a3b8;">INDORE (M.P.)</span>
+                  </div>
+                  <!-- Video QR Code with Play Icon -->
+                  <div style="background: #ffffff; border-radius: 8px; padding: 6px; width: 88px; height: 88px; margin: 4px auto; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+                    <svg viewBox="0 0 100 100" style="width: 76px; height: 76px;">
+                      <rect x="0" y="0" width="28" height="28" fill="#0f172a" rx="3" />
+                      <rect x="5" y="5" width="18" height="18" fill="#ffffff" rx="2" />
+                      <rect x="9" y="9" width="10" height="10" fill="#0f172a" />
+                      
+                      <rect x="72" y="0" width="28" height="28" fill="#0f172a" rx="3" />
+                      <rect x="77" y="5" width="18" height="18" fill="#ffffff" rx="2" />
+                      <rect x="81" y="9" width="10" height="10" fill="#0f172a" />
+                      
+                      <rect x="0" y="72" width="28" height="28" fill="#0f172a" rx="3" />
+                      <rect x="5" y="77" width="18" height="18" fill="#ffffff" rx="2" />
+                      <rect x="9" y="81" width="10" height="10" fill="#0f172a" />
+                      
+                      <rect x="34" y="8" width="6" height="6" fill="#0f172a" />
+                      <rect x="46" y="8" width="6" height="6" fill="#0f172a" />
+                      <rect x="58" y="14" width="6" height="6" fill="#0f172a" />
+                      <rect x="12" y="42" width="6" height="6" fill="#0f172a" />
+                      <rect x="22" y="38" width="6" height="6" fill="#0f172a" />
+                      <rect x="68" y="42" width="6" height="6" fill="#0f172a" />
+                      <rect x="80" y="36" width="6" height="6" fill="#0f172a" />
+                      <rect x="36" y="74" width="6" height="6" fill="#0f172a" />
+                      <rect x="48" y="82" width="6" height="6" fill="#0f172a" />
+                      <rect x="64" y="78" width="6" height="6" fill="#0f172a" />
+                      <!-- Center Play Icon -->
+                      <circle cx="50" cy="50" r="13" fill="#0f172a" stroke="#d4af37" stroke-width="2" />
+                      <polygon points="46,43 58,50 46,57" fill="#fde047" />
+                    </svg>
+                  </div>
+                  <div style="font-size: 0.65rem; font-weight: 800; color: #fbf0b9;">Scan for Chef's Story &amp; Live Band</div>
+                  <div class="sachet-regulatory-container" style="border-top-color: rgba(255,255,255,0.2); margin-bottom: 8px;">
+                    <div class="sachet-fssai-badge-row">
+                      <span style="font-weight: 900; color: #fbf0b9; font-size: 0.72rem;">fssai Lic. 12723001000884</span>
+                      <span style="font-size: 0.58rem; color: #cbd5e1;">Mfg: 22826135000451</span>
+                    </div>
+                    <div style="font-size: 0.56rem; color: #94a3b8; text-align: center;">
+                      Packed by P6S Indore • Founders: Naman &amp; Ansh (+91 8462063330)
+                    </div>
+                  </div>
+                  <div class="crimp-edge-bottom"></div>
+                </div>
+              </div>
+            </div>
+            <div class="flip-hint-pill" onclick="app.flipSamplePacket('samplePacket3')">
+              <i class="fas fa-hand-pointer text-gold"></i> Tap Packet to inspect Video &amp; Instagram QR Face
+            </div>
+          </div>
+        </div>
+
+        <!-- 04 REWARD SACHET -->
+        <div class="sachet-sample-card">
+          <div class="sachet-sample-info">
+            <div class="sachet-sample-top-row">
+              <div class="sachet-num-badge">04</div>
+              <span class="sachet-type-badge" style="background: #f0fdf4; color: #166534; border-color: #bbf7d0;"><i class="fas fa-gift" style="color: #16a34a;"></i> Customer Retention &amp; Loyalty Engine</span>
+              <span class="sachet-client-tag"><i class="fas fa-crown"></i> Sample: The Grand Bistro</span>
+            </div>
+            <h3 class="sachet-sample-title">REWARD SACHET</h3>
+            <div class="sachet-sample-tagline">"Scan. Unlock. Get Rewarded. Guarantee Repeat Dining Visits."</div>
+            <p class="sachet-sample-desc">
+              Turn one-time walk-in diners into loyal weekly regulars. Diners scan the surprise reward QR code on their sachet to instantly reveal an exclusive discount voucher (e.g. ₹150 OFF, Free Dessert, or 15% VIP points) redeemable on their next dining visit within 30 days!
+            </p>
+            <ul class="sachet-features-list">
+              <li><i class="fas fa-check-circle"></i> <span>Automated customer contact capture (build your own WhatsApp diner database)</span></li>
+              <li><i class="fas fa-check-circle"></i> <span>Time-limited vouchers that drive 3.5x higher repeat dining frequency</span></li>
+              <li><i class="fas fa-check-circle"></i> <span>Zero physical scratch cards or coupon paper printing waste</span></li>
+              <li><i class="fas fa-check-circle"></i> <span>Royal Emerald Green metallic foil with gold luxury embossing</span></li>
+            </ul>
+            <div class="sachet-specs-pill-bar">
+              <span class="sachet-spec-pill"><i class="fas fa-gift text-gold"></i> Coupon Engine</span>
+              <span class="sachet-spec-pill"><i class="fas fa-redo text-gold"></i> Repeat Diners</span>
+              <span class="sachet-spec-pill"><i class="fas fa-box text-gold"></i> MOQ: 4,000 Units</span>
+              <span class="sachet-spec-pill"><i class="fas fa-shield-alt text-gold"></i> FSSAI Certified</span>
+            </div>
+            <div class="sachet-actions-row">
+              <button type="button" class="btn btn-outline-gold" onclick="app.flipSamplePacket('samplePacket4')">
+                <i class="fas fa-sync-alt"></i> Flip Sample (Front / Back)
+              </button>
+              <button type="button" class="btn btn-primary" onclick="app.openOrderBuilder('mouth-freshener', 'mf-madrasi-green')">
+                <i class="fas fa-cart-plus"></i> Order Reward Sachet
+              </button>
+            </div>
+          </div>
+
+          <div class="sachet-mockup-pane">
+            <div id="samplePacket4" class="sample-packet-3d" onclick="app.flipSamplePacket('samplePacket4')" title="Click to Flip Packet">
+              <div class="sample-packet-inner">
+                <!-- FRONT -->
+                <div class="sample-packet-face packet-theme-emerald">
+                  <div class="crimp-edge-top"></div>
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px;">
+                    <div style="display: flex; align-items: center; gap: 4px;">
+                      <div class="veg-symbol-wrap" style="width: 13px; height: 13px; border-color: #fde047;">
+                        <div class="veg-symbol-dot" style="width: 5px; height: 5px; background: #fde047;"></div>
+                      </div>
+                      <span style="font-size: 0.62rem; font-weight: 800; color: #fde047;">100% VEG</span>
+                    </div>
+                    <span style="font-size: 0.62rem; color: #fef08a; font-weight: 800;"><i class="fas fa-gift"></i> VIP PRIVILEGE</span>
+                  </div>
+                  <div style="padding: 12px 0 8px;">
+                    <div style="font-size: 0.68rem; letter-spacing: 0.12em; color: #bbf7d0; text-transform: uppercase;">HERITAGE DINING</div>
+                    <div style="font-family: 'Cinzel', serif; font-size: 1.2rem; font-weight: 900; color: #ffffff; margin: 2px 0;">THE GRAND BISTRO</div>
+                    <div style="font-size: 0.72rem; color: #fde047; font-weight: 800; margin-bottom: 6px;">Unlock Up to 20% OFF</div>
+                    <div style="background: rgba(255,255,255,0.15); border: 1px solid #fde047; border-radius: 20px; padding: 4px 12px; font-size: 0.68rem; color: #ffffff; display: inline-block;">
+                      🎁 Scan Back For Next Meal Offer
+                    </div>
+                  </div>
+                  <div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 6px; margin-bottom: 8px; font-size: 0.62rem; color: #bbf7d0; display: flex; justify-content: space-between;">
+                    <span>MADRASI GREEN SAUNF</span>
+                    <span>NET WT: 2.5g</span>
+                  </div>
+                  <div class="crimp-edge-bottom"></div>
+                </div>
+
+                <!-- BACK -->
+                <div class="sample-packet-face back packet-theme-emerald">
+                  <div class="crimp-edge-top"></div>
+                  <div style="display: flex; justify-content: space-between; font-size: 0.65rem; color: #fde047; font-weight: 800; margin-top: 4px;">
+                    <span><i class="fas fa-ticket-alt"></i> REWARD CODE: VIP-2026</span>
+                    <span style="color: #bbf7d0;">VALID: 30 DAYS</span>
+                  </div>
+                  <!-- Dynamic Coupon QR -->
+                  <div style="background: #ffffff; border-radius: 8px; padding: 6px; width: 88px; height: 88px; margin: 4px auto; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.25);">
+                    <svg viewBox="0 0 100 100" style="width: 76px; height: 76px;">
+                      <rect x="0" y="0" width="28" height="28" fill="#166534" rx="3" />
+                      <rect x="5" y="5" width="18" height="18" fill="#ffffff" rx="2" />
+                      <rect x="9" y="9" width="10" height="10" fill="#166534" />
+                      
+                      <rect x="72" y="0" width="28" height="28" fill="#166534" rx="3" />
+                      <rect x="77" y="5" width="18" height="18" fill="#ffffff" rx="2" />
+                      <rect x="81" y="9" width="10" height="10" fill="#166534" />
+                      
+                      <rect x="0" y="72" width="28" height="28" fill="#166534" rx="3" />
+                      <rect x="5" y="77" width="18" height="18" fill="#ffffff" rx="2" />
+                      <rect x="9" y="81" width="10" height="10" fill="#166534" />
+                      
+                      <rect x="34" y="6" width="6" height="6" fill="#166534" />
+                      <rect x="46" y="10" width="6" height="6" fill="#166534" />
+                      <rect x="56" y="8" width="6" height="6" fill="#166534" />
+                      <rect x="14" y="40" width="6" height="6" fill="#166534" />
+                      <rect x="22" y="46" width="6" height="6" fill="#166534" />
+                      <rect x="68" y="38" width="6" height="6" fill="#166534" />
+                      <rect x="80" y="44" width="6" height="6" fill="#166534" />
+                      <rect x="36" y="76" width="6" height="6" fill="#166534" />
+                      <rect x="48" y="80" width="6" height="6" fill="#166534" />
+                      <rect x="62" y="74" width="6" height="6" fill="#166534" />
+                      <!-- Center Gift Box Pin -->
+                      <circle cx="50" cy="50" r="13" fill="#166534" stroke="#fde047" stroke-width="2" />
+                      <path d="M44 46 H56 V55 H44 Z M43 43 H57 V46 H43 Z M50 43 V55" fill="none" stroke="#fde047" stroke-width="1.8" />
+                    </svg>
+                  </div>
+                  <div style="font-size: 0.65rem; font-weight: 800; color: #fde047;">Scan to Unlock Instant Table Voucher</div>
+                  <div class="sachet-regulatory-container" style="border-top-color: rgba(255,255,255,0.2); margin-bottom: 8px;">
+                    <div class="sachet-fssai-badge-row">
+                      <span style="font-weight: 900; color: #fbf0b9; font-size: 0.72rem;">fssai Lic. 12723001000884</span>
+                      <span style="font-size: 0.58rem; color: #cbd5e1;">Mfg: 22826135000451</span>
+                    </div>
+                    <div style="font-size: 0.56rem; color: #bbf7d0; text-align: center;">
+                      Packed by P6S Indore • Founders: Naman &amp; Ansh (+91 8462063330)
+                    </div>
+                  </div>
+                  <div class="crimp-edge-bottom"></div>
+                </div>
+              </div>
+            </div>
+            <div class="flip-hint-pill" onclick="app.flipSamplePacket('samplePacket4')">
+              <i class="fas fa-hand-pointer text-gold"></i> Tap Packet to inspect Dynamic Loyalty QR Face
+            </div>
+          </div>
+        </div>
+
+        <!-- 05 CAMPAIGN SACHET -->
+        <div class="sachet-sample-card">
+          <div class="sachet-sample-info">
+            <div class="sachet-sample-top-row">
+              <div class="sachet-num-badge">05</div>
+              <span class="sachet-type-badge" style="background: #fef2f2; color: #991b1b; border-color: #fecaca;"><i class="fas fa-bullhorn" style="color: #ef4444;"></i> Festivals, Banquets &amp; Launches</span>
+              <span class="sachet-client-tag"><i class="fas fa-calendar-alt"></i> Sample: Festive Season Edition</span>
+            </div>
+            <h3 class="sachet-sample-title">CAMPAIGN SACHET</h3>
+            <div class="sachet-sample-tagline">"Celebrate Festivals &amp; Special Events. Customized Seasonal Greetings."</div>
+            <p class="sachet-sample-desc">
+              Designed for seasonal marketing, festive campaigns (Diwali, New Year, Holi, Eid), new branch openings, and luxury wedding return favors. Features regal Indian ornamental mandala artwork, warm wishes from the host, and dynamic links for banquet bookings or festive menu launches.
+            </p>
+            <ul class="sachet-features-list">
+              <li><i class="fas fa-check-circle"></i> <span>Customized festive greetings (e.g. शुभ दीपावली / Happy New Year / Wedding Blessings)</span></li>
+              <li><i class="fas fa-check-circle"></i> <span>Imperial Ruby Red &amp; Polished Gold foil finish with traditional mandala border</span></li>
+              <li><i class="fas fa-check-circle"></i> <span>Direct link for banquet bookings, catering inquiries, or festival passes</span></li>
+              <li><i class="fas fa-check-circle"></i> <span>Special short-run campaign batches dispatched within 3-4 days in Indore</span></li>
+            </ul>
+            <div class="sachet-specs-pill-bar">
+              <span class="sachet-spec-pill"><i class="fas fa-holly-berry text-gold"></i> Festive Mandala</span>
+              <span class="sachet-spec-pill"><i class="fas fa-glass-cheers text-gold"></i> Wedding &amp; Banquets</span>
+              <span class="sachet-spec-pill"><i class="fas fa-box text-gold"></i> MOQ: 4,000 Units</span>
+              <span class="sachet-spec-pill"><i class="fas fa-shield-alt text-gold"></i> FSSAI Certified</span>
+            </div>
+            <div class="sachet-actions-row">
+              <button type="button" class="btn btn-outline-gold" onclick="app.flipSamplePacket('samplePacket5')">
+                <i class="fas fa-sync-alt"></i> Flip Sample (Front / Back)
+              </button>
+              <button type="button" class="btn btn-primary" onclick="app.openOrderBuilder('mouth-freshener', 'mf-mixture')">
+                <i class="fas fa-cart-plus"></i> Order Campaign Sachet
+              </button>
+            </div>
+          </div>
+
+          <div class="sachet-mockup-pane">
+            <div id="samplePacket5" class="sample-packet-3d" onclick="app.flipSamplePacket('samplePacket5')" title="Click to Flip Packet">
+              <div class="sample-packet-inner">
+                <!-- FRONT -->
+                <div class="sample-packet-face packet-theme-ruby">
+                  <div class="crimp-edge-top"></div>
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px;">
+                    <div style="display: flex; align-items: center; gap: 4px;">
+                      <div class="veg-symbol-wrap" style="width: 13px; height: 13px; border-color: #fde047;">
+                        <div class="veg-symbol-dot" style="width: 5px; height: 5px; background: #fde047;"></div>
+                      </div>
+                      <span style="font-size: 0.62rem; font-weight: 800; color: #fde047;">100% VEG</span>
+                    </div>
+                    <span style="font-size: 0.62rem; color: #fef08a; font-weight: 800;">✨ FESTIVE SPECIAL</span>
+                  </div>
+                  <div style="padding: 10px 0 6px;">
+                    <!-- Mandala Icon -->
+                    <div style="width: 42px; height: 42px; border-radius: 50%; border: 1.5px solid #fde047; margin: 0 auto 4px; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.2);">
+                      <i class="fas fa-dharmachakra" style="color: #fde047; font-size: 1.4rem;"></i>
+                    </div>
+                    <div style="font-family: 'Cinzel', serif; font-size: 1.05rem; font-weight: 900; color: #fbf0b9; margin-bottom: 2px;">शुभ दीपावली &amp; NEW YEAR</div>
+                    <div style="font-size: 0.72rem; color: #ffffff; font-weight: 700;">ROYAL HERITAGE ATELIER</div>
+                    <div style="font-size: 0.65rem; color: #fecaca; font-style: italic; margin-top: 2px;">Warm wishes &amp; hearty gratitude</div>
+                  </div>
+                  <div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 6px; margin-bottom: 8px; font-size: 0.62rem; color: #fecaca; display: flex; justify-content: space-between;">
+                    <span>ROYAL SWEET DELIGHT</span>
+                    <span>NET WT: 2.5g</span>
+                  </div>
+                  <div class="crimp-edge-bottom"></div>
+                </div>
+
+                <!-- BACK -->
+                <div class="sample-packet-face back packet-theme-ruby">
+                  <div class="crimp-edge-top"></div>
+                  <div style="display: flex; justify-content: space-between; font-size: 0.65rem; color: #fde047; font-weight: 800; margin-top: 4px;">
+                    <span><i class="fas fa-glass-cheers"></i> BANQUET &amp; PARTY BOOKING</span>
+                    <span style="color: #fecaca;">PKD: NOV 2026</span>
+                  </div>
+                  <!-- Festival Booking QR -->
+                  <div style="background: #ffffff; border-radius: 8px; padding: 6px; width: 88px; height: 88px; margin: 4px auto; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.25);">
+                    <svg viewBox="0 0 100 100" style="width: 76px; height: 76px;">
+                      <rect x="0" y="0" width="28" height="28" fill="#991b1b" rx="3" />
+                      <rect x="5" y="5" width="18" height="18" fill="#ffffff" rx="2" />
+                      <rect x="9" y="9" width="10" height="10" fill="#991b1b" />
+                      
+                      <rect x="72" y="0" width="28" height="28" fill="#991b1b" rx="3" />
+                      <rect x="77" y="5" width="18" height="18" fill="#ffffff" rx="2" />
+                      <rect x="81" y="9" width="10" height="10" fill="#991b1b" />
+                      
+                      <rect x="0" y="72" width="28" height="28" fill="#991b1b" rx="3" />
+                      <rect x="5" y="77" width="18" height="18" fill="#ffffff" rx="2" />
+                      <rect x="9" y="81" width="10" height="10" fill="#991b1b" />
+                      
+                      <rect x="34" y="8" width="6" height="6" fill="#991b1b" />
+                      <rect x="46" y="6" width="6" height="6" fill="#991b1b" />
+                      <rect x="58" y="10" width="6" height="6" fill="#991b1b" />
+                      <rect x="12" y="38" width="6" height="6" fill="#991b1b" />
+                      <rect x="22" y="44" width="6" height="6" fill="#991b1b" />
+                      <rect x="68" y="40" width="6" height="6" fill="#991b1b" />
+                      <rect x="80" y="36" width="6" height="6" fill="#991b1b" />
+                      <rect x="36" y="76" width="6" height="6" fill="#991b1b" />
+                      <rect x="48" y="82" width="6" height="6" fill="#991b1b" />
+                      <rect x="60" y="74" width="6" height="6" fill="#991b1b" />
+                      <!-- Center Festive Lamp Pin -->
+                      <circle cx="50" cy="50" r="13" fill="#991b1b" stroke="#fde047" stroke-width="2" />
+                      <path d="M44 52 C44 56 56 56 56 52 Z M50 42 C51 45 53 48 50 50 C47 48 49 45 50 42 Z" fill="#fde047" />
+                    </svg>
+                  </div>
+                  <div style="font-size: 0.65rem; font-weight: 800; color: #fde047;">Scan for Festive Menu &amp; Banquet Booking</div>
+                  <div class="sachet-regulatory-container" style="border-top-color: rgba(255,255,255,0.2); margin-bottom: 8px;">
+                    <div class="sachet-fssai-badge-row">
+                      <span style="font-weight: 900; color: #fbf0b9; font-size: 0.72rem;">fssai Lic. 12723001000884</span>
+                      <span style="font-size: 0.58rem; color: #cbd5e1;">Mfg: 22826135000451</span>
+                    </div>
+                    <div style="font-size: 0.56rem; color: #fecaca; text-align: center;">
+                      Packed by P6S Indore • Helpline: +91 8462063330
+                    </div>
+                  </div>
+                  <div class="crimp-edge-bottom"></div>
+                </div>
+              </div>
+            </div>
+            <div class="flip-hint-pill" onclick="app.flipSamplePacket('samplePacket5')">
+              <i class="fas fa-hand-pointer text-gold"></i> Tap Packet to inspect Festive Campaign Face
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 3 Mouth Freshener Filling Flavors Showcase with Realistic Ingredients -->
+      <div style="margin: 50px 0 25px; text-align: center;">
+        <span class="hero-pill"><i class="fas fa-leaf text-gold"></i> 100% PURE INGREDIENTS</span>
+        <h3 style="font-family: 'Cinzel', serif; font-size: 2rem; font-weight: 900; color: #0b3b82; margin: 8px 0;">
+          3 Signature Sachet Flavors &amp; Ingredients
+        </h3>
+        <p style="color: #64748b; font-size: 0.95rem; max-width: 680px; margin: 0 auto;">
+          Choose the perfect flavor filling for your custom branded sachets. Pure spices, roasted seeds, and hygienic food-grade packaging.
+        </p>
+      </div>
+
+      <div class="flavor-sample-grid">
+        <!-- 1. Saunf Mixture -->
+        <div class="flavor-sample-card">
+          <div class="flavor-seed-circle" style="background: #fef9ed; border-color: #854d0e; color: #854d0e;">
+            <i class="fas fa-seedling"></i>
+          </div>
+          <span style="background: #fef9ed; border: 1px solid #c5a059; color: #854d0e; font-size: 0.72rem; font-weight: 800; padding: 2px 10px; border-radius: 12px; text-transform: uppercase;">
+            Most Popular
+          </span>
+          <h4 style="font-size: 1.25rem; font-weight: 800; color: #0b3b82; margin: 10px 0 6px;">Mouth Freshener Mixture</h4>
+          <p style="font-size: 0.85rem; color: #64748b; line-height: 1.5; margin-bottom: 14px;">
+            Traditional Lucknowi fennel seeds, golden roasted dhana dal, white sesame seeds, and crystalline sugar balls. Authentic crunch and balanced sweetness.
+          </p>
+          <div style="background: #faf8f5; border: 1px solid #e2e8f0; border-radius: 10px; padding: 8px 12px; margin-bottom: 14px;">
+            <div style="font-size: 0.75rem; color: #64748b; text-transform: uppercase;">Wholesale Factory Rate</div>
+            <strong style="font-size: 1.2rem; color: #991b1b; font-family: 'Cinzel', serif;">Rs. 0.75 – 0.90</strong> <span style="font-size: 0.75rem; color: #64748b;">/ pc</span>
+          </div>
+          <button class="btn btn-primary" onclick="app.openOrderBuilder('mouth-freshener', 'mf-mixture')" style="width: 100%; padding: 8px; font-size: 0.85rem;">
+            <i class="fas fa-calculator"></i> Order Mixture
+          </button>
+        </div>
+
+        <!-- 2. Madrasi White -->
+        <div class="flavor-sample-card">
+          <div class="flavor-seed-circle" style="background: #f8fafc; border-color: #475569; color: #0b3b82;">
+            <i class="fas fa-snowflake"></i>
+          </div>
+          <span style="background: #eff6ff; border: 1px solid #93c5fd; color: #1d4ed8; font-size: 0.72rem; font-weight: 800; padding: 2px 10px; border-radius: 12px; text-transform: uppercase;">
+            Intense Mint Refreshment
+          </span>
+          <h4 style="font-size: 1.25rem; font-weight: 800; color: #0b3b82; margin: 10px 0 6px;">Madrasi White Saunf</h4>
+          <p style="font-size: 0.85rem; color: #64748b; line-height: 1.5; margin-bottom: 14px;">
+            Crisp crystalline sugar-glazed white fennel with cooling menthol crystals. Delivers an instant icy freshness preferred by cafes, clubs, and modern lounges.
+          </p>
+          <div style="background: #faf8f5; border: 1px solid #e2e8f0; border-radius: 10px; padding: 8px 12px; margin-bottom: 14px;">
+            <div style="font-size: 0.75rem; color: #64748b; text-transform: uppercase;">Wholesale Factory Rate</div>
+            <strong style="font-size: 1.2rem; color: #991b1b; font-family: 'Cinzel', serif;">Rs. 0.85 – 1.00</strong> <span style="font-size: 0.75rem; color: #64748b;">/ pc</span>
+          </div>
+          <button class="btn btn-primary" onclick="app.openOrderBuilder('mouth-freshener', 'mf-madrasi-white')" style="width: 100%; padding: 8px; font-size: 0.85rem;">
+            <i class="fas fa-calculator"></i> Order Madrasi White
+          </button>
+        </div>
+
+        <!-- 3. Madrasi Green -->
+        <div class="flavor-sample-card">
+          <div class="flavor-seed-circle" style="background: #f0fdf4; border-color: #15803d; color: #15803d;">
+            <i class="fas fa-leaf"></i>
+          </div>
+          <span style="background: #f0fdf4; border: 1px solid #86efac; color: #166534; font-size: 0.72rem; font-weight: 800; padding: 2px 10px; border-radius: 12px; text-transform: uppercase;">
+            Sweet Royal Classic
+          </span>
+          <h4 style="font-size: 1.25rem; font-weight: 800; color: #0b3b82; margin: 10px 0 6px;">Madrasi Green Saunf</h4>
+          <p style="font-size: 0.85rem; color: #64748b; line-height: 1.5; margin-bottom: 14px;">
+            Tender green fennel seeds lightly coated in pure sugar syrup and natural silver aroma. A regal Indian royal after-meal classic favored by fine-dining restaurants.
+          </p>
+          <div style="background: #faf8f5; border: 1px solid #e2e8f0; border-radius: 10px; padding: 8px 12px; margin-bottom: 14px;">
+            <div style="font-size: 0.75rem; color: #64748b; text-transform: uppercase;">Wholesale Factory Rate</div>
+            <strong style="font-size: 1.2rem; color: #991b1b; font-family: 'Cinzel', serif;">Rs. 0.85 – 1.00</strong> <span style="font-size: 0.75rem; color: #64748b;">/ pc</span>
+          </div>
+          <button class="btn btn-primary" onclick="app.openOrderBuilder('mouth-freshener', 'mf-madrasi-green')" style="width: 100%; padding: 8px; font-size: 0.85rem;">
+            <i class="fas fa-calculator"></i> Order Madrasi Green
+          </button>
         </div>
       </div>
 

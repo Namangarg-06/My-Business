@@ -15,50 +15,6 @@
 </head>
 <body>
 
-  <!-- Royal "स्वागतम्" (Swagatam) Luxury Splash Curtain with Voice Speech -->
-  <div id="p6sSplashCurtain" title="Click anywhere to enter Atelier">
-    <div class="splash-bg-glow"></div>
-    <div class="splash-crest-wrap">
-      <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="splashLvGold" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#FFF5D6" />
-            <stop offset="25%" stop-color="#E5C07B" />
-            <stop offset="55%" stop-color="#C5A059" />
-            <stop offset="85%" stop-color="#8C6D23" />
-            <stop offset="100%" stop-color="#5A4310" />
-          </linearGradient>
-          <linearGradient id="splashRoyalNavy" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#0f2b5c" />
-            <stop offset="100%" stop-color="#071630" />
-          </linearGradient>
-        </defs>
-        <path d="M60 4 C65 32 88 55 116 60 C88 65 65 88 60 116 C55 88 32 65 4 60 C32 55 55 32 60 4 Z" stroke="url(#splashLvGold)" stroke-width="2.5" fill="#faf8f5" />
-        <rect x="33" y="33" width="54" height="54" rx="7" transform="rotate(45 60 60)" fill="url(#splashRoyalNavy)" stroke="url(#splashLvGold)" stroke-width="2" />
-        <text x="60" y="65" font-family="'Cinzel', serif" font-size="22" font-weight="900" fill="url(#splashLvGold)" text-anchor="middle" letter-spacing="1.5">P6S</text>
-        <text x="60" y="74" font-family="'Plus Jakarta Sans', sans-serif" font-size="6" font-weight="800" fill="#E5C07B" text-anchor="middle" letter-spacing="2">ATELIER</text>
-      </svg>
-    </div>
-    <div class="splash-swagatam">स्वागतम्</div>
-    <div id="splashClientName" class="splash-client-display"></div>
-    <div class="splash-welcome-en">Welcome to P6S Atelier</div>
-    <div class="splash-brand-sub">Premium Packaging Solutions • Indore</div>
-    <div id="splashLeadGreeting" class="splash-lead-pill">
-      <i class="fas fa-crown text-gold"></i> QR Stands &amp; Digital Tech Atelier • Indore
-    </div>
-    <div class="splash-progress-track">
-      <div id="splashProgressBar" class="splash-progress-bar"></div>
-    </div>
-    <div class="splash-actions-row">
-      <button type="button" id="splashSoundBtn" class="splash-sound-btn" onclick="app.replayVoice()" title="Voice Greeting">
-        <i class="fas fa-volume-up"></i> Voice Greeting
-      </button>
-      <button type="button" class="splash-enter-btn" onclick="app.dismissSplash()">
-        Enter Atelier <i class="fas fa-arrow-right" style="margin-left: 6px;"></i>
-      </button>
-    </div>
-  </div>
-
   <!-- Off-Canvas Luxury "All Products" Side Drawer -->
   <div id="sideDrawerBackdrop" class="side-drawer-backdrop" onclick="app.closeProductsDrawer()"></div>
   <div id="allProductsSideDrawer" class="all-products-drawer">
