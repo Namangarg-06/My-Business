@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Price Calculator | Premium Packaging Solutions (P6S)</title>
+  <meta name="description" content="Calculate instant wholesale packaging costs for smart sachets, butter paper, paper cups, tissues and QR stands in Indore.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .calc-card-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 32px;
+      margin-top: 30px;
+    }
+    @media (max-width: 900px) {
+      .calc-card-grid { grid-template-columns: 1fr; }
+    }
+    .calc-box {
+      background: #ffffff;
+      border: 1px solid var(--border-gold-solid);
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    }
+    .calc-summary-pill {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      background: #faf8f5;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+    }
+    .quick-qty-btn {
+      padding: 6px 14px;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #334155;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .quick-qty-btn:hover, .quick-qty-btn.active {
+      background: #0b3b82;
+      color: #ffffff;
+      border-color: #0b3b82;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Notification & Contact Bar -->
+  <div id="sourceTrackingBanner" class="source-banner">
+    <div class="source-banner-content">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span id="sourceBannerPill" class="source-tag-pill"><i class="fas fa-calculator"></i> LIVE ESTIMATOR</span>
+        <span id="sourceBannerText">Factory-Direct Pricing Calculator • Transparent Rate Matrix</span>
+      </div>
+      <div class="source-phone-links">
+        <span><i class="fas fa-phone-alt"></i> Founders Hotline:</span>
+        <a href="tel:+918462063330">8462063330</a>
+        <a href="tel:+919111789220">9111789220</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-wrapper">
+        <div class="brand-lv-crest">
+          <svg class="p6s-svg-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="p6sGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#E5C07B" /><stop offset="50%" stop-color="#C5A059" /><stop offset="100%" stop-color="#8C6D23" />
+              </linearGradient>
+            </defs>
+            <path d="M50 4 C54 26 74 46 96 50 C74 54 54 74 50 96 C46 74 26 54 4 50 C26 46 46 26 50 4 Z" stroke="url(#p6sGoldGrad)" stroke-width="2" fill="#faf8f5" />
+            <rect x="25" y="25" width="50" height="50" rx="4" transform="rotate(45 50 50)" stroke="url(#p6sGoldGrad)" stroke-width="1.5" fill="#ffffff" />
+            <text x="50" y="58" font-family="'Cinzel', serif" font-size="22" font-weight="900" fill="url(#p6sGoldGrad)" text-anchor="middle" letter-spacing="1">P6S</text>
+          </svg>
+        </div>
+        <div class="brand-info">
+          <div class="brand-name">PREMIUM <span>PACKAGING</span></div>
+          <div class="brand-sub">SOLUTIONS (P6S) • INDORE</div>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="smart-sachets.html">Smart Sachets</a></li>
+        <li><a href="sachets.html">Spices &amp; Sugar</a></li>
+        <li><a href="packaging-cups.html">Cups &amp; Paper</a></li>
+        <li><a href="qr-stands.html">QR Stands</a></li>
+        <li><a href="calculator.html" class="active">Price Calculator</a></li>
+        <li><a href="invoice.html">Instant Bill</a></li>
+        <li><a href="about.html">Contact Us</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="navUserBtn" class="btn btn-outline-gold" onclick="app.openLoginModal()" style="padding: 8px 14px; font-size: 0.84rem;">
+          <i class="fas fa-sign-in-alt"></i> Client Login
+        </button>
+        <button class="btn btn-cart" onclick="app.toggleCart(true)" title="View Order List">
+          <i class="fas fa-shopping-bag text-gold"></i>
+          <span id="navCartCount" class="cart-count">0</span>
+        </button>
+        <a href="https://wa.me/918462063330?text=Hello%20P6S%2C%20I%20want%20to%20get%20a%20rate%20quote%20for%20my%20restaurant." target="_blank" class="btn btn-whatsapp" style="padding: 8px 14px; font-size: 0.84rem;">
+          <i class="fab fa-whatsapp"></i> Quick Quote
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Hero Banner -->
+  <div class="page-hero-banner">
+    <div class="container">
+      <span class="page-hero-kicker">Transparent Factory Rates</span>
+      <h1 class="page-hero-title">Live Packaging Price Calculator</h1>
+      <p class="page-hero-desc">
+        Calculate your restaurant's custom packaging investment in real time. Accurate rates matching our official brochure with zero hidden fees.
+      </p>
+      <div class="breadcrumb-wrap">
+        <a href="index.html">Home</a> <span>/</span> <span>Price Calculator</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Calculator Main Section -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+
+      <div class="calc-card-grid">
+
+        <!-- Left: Interactive Form Box -->
+        <div class="calc-box">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #e2e8f0;">
+            <div style="width: 44px; height: 44px; border-radius: 10px; background: #faf8f5; border: 1.5px solid var(--border-gold-solid); display: flex; align-items: center; justify-content: center; color: var(--gold-dark); font-size: 1.3rem;">
+              <i class="fas fa-sliders-h"></i>
+            </div>
+            <div>
+              <h3 style="color: #0b3b82; font-size: 1.35rem; font-weight: 800; margin: 0;">Configure Your Packaging</h3>
+              <p style="color: #64748b; font-size: 0.88rem; margin: 2px 0 0;">Select products, options and volume to see instant rates</p>
+            </div>
+          </div>
+
+          <!-- Product Category -->
+          <div class="form-group">
+            <label class="form-label" style="font-weight: 700; color: #0b3b82;">1. Select Product:</label>
+            <select id="calcProductSelector" class="form-control" onchange="calcPage.onProductChange()">
+              <optgroup label="Smart &amp; Mouth Freshener Sachets">
+                <option value="mouth-freshener-mixture">Mouth Freshener Mixture Sachet (MOQ 4,000)</option>
+                <option value="mouth-freshener-white">Mouth Freshener Madrasi White (MOQ 4,000)</option>
+                <option value="mouth-freshener-green">Mouth Freshener Madrasi Green (MOQ 4,000)</option>
+              </optgroup>
+              <optgroup label="Dining Table Condiments &amp; Spices">
+                <option value="sugar-white">White Sugar Sachet (MOQ 4,000)</option>
+                <option value="sugar-brown">Brown Sugar Sachet (MOQ 4,000)</option>
+                <option value="salt-poster">Salt Sachet - Poster Paper (MOQ 4,000)</option>
+                <option value="salt-metallized">Salt Sachet - Metallized Paper (MOQ 4,000)</option>
+                <option value="black-pepper-poster">Black Pepper - Poster Paper (MOQ 4,000)</option>
+                <option value="black-pepper-metallized">Black Pepper - Metallized Paper (MOQ 4,000)</option>
+                <option value="pizza-seasoning">Pizza Seasoning Metallized Sachet (MOQ 4,000)</option>
+                <option value="chilli-flakes">Chilli Flakes Metallized Sachet (MOQ 4,000)</option>
+              </optgroup>
+              <optgroup label="Food Wraps, Cups &amp; Tissues">
+                <option value="butter-paper">Butter Paper Sheets (Non OGR, MOQ 30 KG)</option>
+                <option value="printed-cups-200">Printed Cups 200 ML (MOQ 3,000)</option>
+                <option value="printed-cups-250">Printed Cups 250 ML (MOQ 3,000)</option>
+                <option value="printed-cups-350">Printed Cups 350 ML (MOQ 3,000)</option>
+                <option value="plain-cups-200">Plain White Cups 200 ML (MOQ 20 Cartons)</option>
+                <option value="tissue-hard-60">Hard Tissue 60 Pcs / Pack (MOQ 250 Packs)</option>
+                <option value="tissue-soft-60">Soft Tissue 60 Pcs / Pack (MOQ 250 Packs)</option>
+                <option value="chopstick">Custom Chopsticks in Sleeve (MOQ 2,000)</option>
+              </optgroup>
+              <optgroup label="QR Tech &amp; Table Displays">
+                <option value="qr-display-stand">QR Tabletop Display Stand (₹149/pc)</option>
+                <option value="acrylic-t-stand">Acrylic T-Stand (₹349/pc)</option>
+                <option value="gold-frame-stand">Gold Frame Luxury Stand (₹449/pc)</option>
+                <option value="qr-standard-plan">Standard Plan (Google + Insta) - ₹2,999</option>
+                <option value="qr-menu-plan">Premium Dynamic Menu Plan - ₹5,999/yr</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <!-- Quantity Input & Quick Volume Buttons -->
+          <div class="form-group" style="margin-top: 18px;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;">
+              <label class="form-label" style="font-weight: 700; color: #0b3b82; margin: 0;">2. Order Quantity:</label>
+              <span id="calcUnitLabel" style="font-size: 0.85rem; color: #64748b; font-weight: 600;">(in Pieces)</span>
+            </div>
+            <input type="number" id="calcQtyInputField" class="form-control" value="6000" min="1" step="1" oninput="calcPage.calculate()" style="font-size: 1.25rem; font-weight: 800; color: #0b3b82; padding: 12px 16px;">
+            
+            <!-- Quick Chips -->
+            <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px;">
+              <button type="button" class="quick-qty-btn" onclick="calcPage.setQty(4000)">4,000</button>
+              <button type="button" class="quick-qty-btn active" onclick="calcPage.setQty(6000)">6,000</button>
+              <button type="button" class="quick-qty-btn" onclick="calcPage.setQty(8000)">8,000</button>
+              <button type="button" class="quick-qty-btn" onclick="calcPage.setQty(10000)">10,000</button>
+              <button type="button" class="quick-qty-btn" onclick="calcPage.setQty(20000)">20,000</button>
+            </div>
+          </div>
+
+          <!-- Custom Plate / Dye Charges -->
+          <div class="form-group" style="margin-top: 20px;">
+            <label class="form-label" style="font-weight: 700; color: #0b3b82;">3. One-Time Dye / Cylinder Charge (Optional):</label>
+            <select id="calcDyeSelector" class="form-control" onchange="calcPage.calculate()">
+              <option value="600">Single Colour Custom Print (+₹600 one-time)</option>
+              <option value="2500">Multi-Colour Premium Print (+₹2,500 one-time)</option>
+              <option value="0">Repeat Order / No New Plate Required (₹0)</option>
+            </select>
+            <small style="color: #64748b; font-size: 0.78rem; display: block; margin-top: 4px;">
+              *Printing plates are one-time investment. All future repeat batches have ₹0 dye charges!
+            </small>
+          </div>
+
+          <!-- Add to Order & Quick Actions -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 26px;">
+            <button class="btn btn-primary" onclick="calcPage.addToCart()" style="padding: 14px 18px; font-size: 0.95rem;">
+              <i class="fas fa-shopping-bag"></i> Add to Order List
+            </button>
+            <button class="btn btn-whatsapp" onclick="calcPage.sendWhatsAppInquiry()" style="padding: 14px 18px; font-size: 0.95rem;">
+              <i class="fab fa-whatsapp"></i> WhatsApp Quote
+            </button>
+          </div>
+
+          <div style="margin-top: 14px;">
+            <a href="invoice.html" class="btn btn-outline-gold" style="display: block; text-align: center; width: 100%; padding: 12px;">
+              <i class="fas fa-file-invoice text-gold"></i> Convert Quote into Official PDF Bill
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Right: Real-Time Price Breakdown & Rate Tiers Card -->
+        <div>
+          <!-- Summary Card -->
+          <div class="calc-box" style="background: #faf8f5; border: 2px solid var(--border-gold-solid); position: sticky; top: 90px;">
+            <div style="border-bottom: 1.5px solid #e2e8f0; padding-bottom: 14px; margin-bottom: 18px; display: flex; justify-content: space-between; align-items: baseline;">
+              <div>
+                <span style="font-size: 0.75rem; font-weight: 800; color: #b8860b; text-transform: uppercase; letter-spacing: 0.08em;">ESTIMATION BREAKDOWN</span>
+                <h4 id="calcSummaryProductName" style="color: #0b3b82; font-size: 1.25rem; font-weight: 800; margin-top: 4px;">Mouth Freshener Mixture</h4>
+              </div>
+              <span id="calcSummaryTierBadge" style="background: #0b3b82; color: #fff; font-size: 0.75rem; font-weight: 800; padding: 4px 10px; border-radius: 12px;">TIER RATE</span>
+            </div>
+
+            <!-- Breakdown rows -->
+            <div class="calc-summary-pill">
+              <span style="color: #64748b; font-weight: 600;">Effective Rate:</span>
+              <strong id="calcDisplayRate" style="color: #0b3b82; font-size: 1.2rem;">₹ 0.85 <span style="font-size: 0.8rem; font-weight: 500; color: #64748b;">/ pc</span></strong>
+            </div>
+
+            <div class="calc-summary-pill">
+              <span style="color: #64748b; font-weight: 600;">Product Cost (<span id="calcDisplayQtyText">6,000 pcs</span>):</span>
+              <strong id="calcDisplayItemCost" style="color: #0f172a; font-size: 1.1rem;">₹ 5,100</strong>
+            </div>
+
+            <div class="calc-summary-pill">
+              <span style="color: #64748b; font-weight: 600;">Plate / Dye Charge:</span>
+              <strong id="calcDisplayDyeCost" style="color: #b8860b; font-size: 1.1rem;">₹ 600</strong>
+            </div>
+
+            <!-- Big Grand Total -->
+            <div style="background: #ffffff; border: 2px solid var(--gold-primary); border-radius: 12px; padding: 18px 20px; margin-top: 18px; text-align: center;">
+              <div style="font-size: 0.82rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em;">ESTIMATED TOTAL AMOUNT</div>
+              <div id="calcDisplayGrandTotal" style="font-size: 2.5rem; font-weight: 900; color: #0b3b82; line-height: 1.2; margin: 4px 0;">
+                ₹ 5,700
+              </div>
+              <div id="calcTierSavingsHint" style="font-size: 0.82rem; color: #166534; font-weight: 700; margin-top: 4px;">
+                💡 Great tier! Higher volume saves up to 15% more.
+              </div>
+            </div>
+
+            <!-- Rate Matrix Reference Table -->
+            <div style="margin-top: 24px;">
+              <h5 style="color: #0b3b82; font-size: 0.95rem; font-weight: 800; margin-bottom: 8px;">
+                <i class="fas fa-table text-gold"></i> Rate Matrix Reference
+              </h5>
+              <div id="calcRateMatrixTable" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; font-size: 0.84rem;">
+                <!-- Populated dynamically via JS -->
+              </div>
+            </div>
+
+            <!-- Factory Dispatch Note -->
+            <div style="margin-top: 18px; display: flex; align-items: center; gap: 10px; font-size: 0.82rem; color: #64748b;">
+              <i class="fas fa-truck text-gold" style="font-size: 1.1rem;"></i>
+              <span>Dispatched from <strong>Indore, MP</strong> • Safe transport across India.</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Luxury Footer -->
+  <footer class="luxury-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-brand-title">PREMIUM PACKAGING SOLUTIONS (P6S)</div>
+        <p class="footer-desc">
+          Indore's leading hospitality atelier manufacturing bespoke smart sachets, greaseproof wrapping sheets, paper cups, eco tissues, and modern QR stands.
+        </p>
+        <div class="footer-contact-info">
+          <div><i class="fas fa-map-marker-alt"></i> Manufacturing &amp; Dispatch: Indore, Madhya Pradesh</div>
+          <div><i class="fas fa-phone-alt"></i> Naman: <a href="tel:+918462063330" style="color:#0b3b82; font-weight:700;">+91 8462063330</a></div>
+          <div><i class="fas fa-phone-alt"></i> Ansh: <a href="tel:+919111789220" style="color:#0b3b82; font-weight:700;">+91 9111789220</a></div>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="footer-column-title">Departments</h4>
+        <ul class="footer-links">
+          <li><a href="smart-sachets.html">Smart Sachets™ &amp; Mouth Freshener</a></li>
+          <li><a href="sachets.html">Dining Condiments &amp; Spices</a></li>
+          <li><a href="packaging-cups.html">Paper Cups, Wraps &amp; Tissues</a></li>
+          <li><a href="qr-stands.html">QR Displays &amp; Digital Menu</a></li>
+          <li><a href="calculator.html">Live Packaging Calculator</a></li>
+          <li><a href="invoice.html">Instant PDF Billing Engine</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-column-title">Founders &amp; Support</h4>
+        <p style="color: #64748b; font-size: 0.9rem; line-height: 1.6; margin-bottom: 14px;">
+          Managed by <strong>Naman &amp; Ansh</strong>. Direct supplier to premium cafes, cloud kitchens, and luxury hotels across central India.
+        </p>
+        <a href="https://wa.me/918462063330" target="_blank" class="btn btn-whatsapp" style="display: inline-flex; width: 100%; justify-content: center; margin-bottom: 12px;">
+          <i class="fab fa-whatsapp"></i> Chat with Naman
+        </a>
+        <a href="https://wa.me/919111789220" target="_blank" class="btn btn-outline-gold" style="display: inline-flex; width: 100%; justify-content: center;">
+          <i class="fab fa-whatsapp"></i> Chat with Ansh
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-content">
+        <div>
+          &copy; 2026 Premium Packaging Solutions (P6S) • Handcrafted for Luxury Hospitality
+        </div>
+        <div>
+          <button class="footer-owner-btn" onclick="app.openOwnerPortal()" title="Founders Access">
+            <i class="fas fa-lock"></i> Founders Portal
+          </button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cart Drawer -->
+  <div id="cartDrawer" class="cart-drawer">
+    <div class="cart-header">
+      <div class="cart-title">
+        <i class="fas fa-shopping-bag text-gold"></i> Your Order List
+      </div>
+      <button class="cart-close" onclick="app.toggleCart(false)"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="cart-body" id="cartItemsList"></div>
+    <div class="cart-footer">
+      <div class="cart-total-row">
+        <span>Estimated Subtotal:</span>
+        <span id="cartSubtotalText">₹ 0</span>
+      </div>
+      <div class="cart-actions-grid">
+        <button class="btn btn-outline-gold" onclick="app.clearCart()"><i class="fas fa-trash-alt"></i> Clear</button>
+        <button class="btn btn-primary" onclick="app.generateInvoiceFromCart()"><i class="fas fa-file-invoice"></i> Generate Bill</button>
+      </div>
+      <a href="https://wa.me/918462063330?text=Hello%20P6S%2C%20here%20is%20my%20order." id="cartWhatsAppOrderBtn" target="_blank" class="btn btn-whatsapp" style="margin-top: 10px; width: 100%; text-align: center;">
+        <i class="fab fa-whatsapp"></i> Send Order to WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- Order Builder Modal -->
+  <div id="orderBuilderModal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="modal-close-btn" onclick="app.closeModal('orderBuilderModal')"><i class="fas fa-times"></i></button>
+      <div class="modal-header">
+        <h3 id="builderModalTitle">Order Product</h3>
+        <p id="builderModalSubtitle" style="color: #64748b; font-size: 0.9rem; margin-top: 4px;"></p>
+      </div>
+      <div id="builderModalBody"></div>
+    </div>
+  </div>
+
+  <!-- Invoice Preview Modal -->
+  <div id="invoicePreviewModal" class="modal-overlay">
+    <div class="modal-content modal-lg">
+      <button class="modal-close-btn" onclick="app.closeModal('invoicePreviewModal')"><i class="fas fa-times"></i></button>
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--border-gold-solid); padding-bottom: 14px; margin-bottom: 16px;">
+        <h3 style="color: #0b3b82; font-size: 1.4rem; font-weight: 800; margin: 0;">Official Hospitality Invoice (P6S)</h3>
+        <div style="display: flex; gap: 8px;">
+          <button class="btn btn-outline-gold" onclick="window.invoiceEngine.downloadPDF()"><i class="fas fa-file-pdf"></i> Download PDF</button>
+          <button class="btn btn-primary" onclick="window.invoiceEngine.printInvoice()"><i class="fas fa-print"></i> Print</button>
+          <button class="btn btn-whatsapp" onclick="window.invoiceEngine.shareViaWhatsApp()"><i class="fab fa-whatsapp"></i> WhatsApp Bill</button>
+        </div>
+      </div>
+      <div id="invoiceRenderContainer"></div>
+    </div>
+  </div>
+
+  <!-- Client Login Modal -->
+  <div id="loginModal" class="modal-overlay">
+    <div class="modal-content" style="max-width: 480px;">
+      <button class="modal-close-btn" onclick="app.closeModal('loginModal')"><i class="fas fa-times"></i></button>
+      <div style="text-align: center; margin-bottom: 20px;">
+        <h3 style="color: #0b3b82; font-size: 1.4rem; font-weight: 800;">Hospitality Client Login</h3>
+        <p style="color: #64748b; font-size: 0.88rem;">Save your restaurant profile for one-click invoice generation</p>
+      </div>
+      <div class="form-group"><label class="form-label">Restaurant / Cafe Name *</label><input type="text" id="authRestName" class="form-control" placeholder="e.g. Royal Spice Bistro"></div>
+      <div class="form-group"><label class="form-label">Owner / Manager Name</label><input type="text" id="authOwnerName" class="form-control" placeholder="e.g. Rahul Sharma"></div>
+      <div class="form-group"><label class="form-label">WhatsApp Contact Number *</label><input type="tel" id="authPhone" class="form-control" placeholder="e.g. 9876543210"></div>
+      <div class="form-group"><label class="form-label">City</label><input type="text" id="authCity" class="form-control" value="Indore"></div>
+      <div class="form-group"><label class="form-label">GST Number (Optional)</label><input type="text" id="authGST" class="form-control" placeholder="23AAAAA0000A1Z5"></div>
+      <button class="btn btn-primary" onclick="app.saveUserProfile()" style="width: 100%; padding: 12px; margin-top: 10px;"><i class="fas fa-check-circle"></i> Save Profile</button>
+    </div>
+  </div>
+
+  <!-- Profile Modal -->
+  <div id="profileModal" class="modal-overlay">
+    <div class="modal-content" style="max-width: 450px;">
+      <button class="modal-close-btn" onclick="app.closeModal('profileModal')"><i class="fas fa-times"></i></button>
+      <h3 style="color: #0b3b82; font-size: 1.3rem; font-weight: 800; margin-bottom: 16px;">Restaurant Profile</h3>
+      <div style="background: #faf8f5; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 18px;">
+        <div style="margin-bottom: 8px;"><span style="color:#64748b;">Restaurant:</span> <strong id="profRestName"></strong></div>
+        <div style="margin-bottom: 8px;"><span style="color:#64748b;">Contact:</span> <strong id="profOwnerName"></strong></div>
+        <div style="margin-bottom: 8px;"><span style="color:#64748b;">Phone:</span> <strong id="profPhone" style="color:#0b3b82;"></strong></div>
+        <div><span style="color:#64748b;">City:</span> <strong id="profCity"></strong></div>
+      </div>
+      <button class="btn" onclick="app.logoutUser()" style="width: 100%; background: #fee2e2; color: #dc2626; border: 1px solid #fca5a5;">Logout / Switch Account</button>
+    </div>
+  </div>
+
+  <!-- Owner Portal Modal -->
+  <div id="ownerPortalModal" class="modal-overlay">
+    <div class="modal-content modal-lg">
+      <button class="modal-close-btn" onclick="app.closeModal('ownerPortalModal')"><i class="fas fa-times"></i></button>
+      <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid var(--border-gold-solid); padding-bottom: 14px; margin-bottom: 20px;">
+        <div>
+          <span style="background:#0b3b82; color:#fff; font-size:0.75rem; font-weight:800; padding:3px 10px; border-radius:12px;">FOUNDERS ONLY</span>
+          <h2 style="color: #0b3b82; font-size: 1.6rem; font-weight: 800; margin-top: 6px;">Naman &amp; Ansh • Operations &amp; Lead Tracker</h2>
+        </div>
+        <div style="text-align: right; font-size: 0.85rem; color: #64748b;">
+          Headquarters: <strong>Indore</strong><br>
+          Phones: <strong>8462063330 / 9111789220</strong>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 24px;">
+        <div style="background:#faf8f5; border:1px solid #e2e8f0; border-radius:12px; padding:16px; text-align:center;">
+          <div id="statTotalTaps" style="font-size: 1.8rem; font-weight: 800; color: #0b3b82;">0</div>
+          <div style="font-size:0.8rem; color:#64748b;">Total Link Taps</div>
+        </div>
+        <div style="background:#faf8f5; border:1px solid #e2e8f0; border-radius:12px; padding:16px; text-align:center;">
+          <div id="statInstaLeads" style="font-size: 1.8rem; font-weight: 800; color: #ec4899;">0</div>
+          <div style="font-size:0.8rem; color:#64748b;">Instagram Visitors</div>
+        </div>
+        <div style="background:#faf8f5; border:1px solid #e2e8f0; border-radius:12px; padding:16px; text-align:center;">
+          <div id="statWhatsLeads" style="font-size: 1.8rem; font-weight: 800; color: #25d366;">0</div>
+          <div style="font-size:0.8rem; color:#64748b;">WhatsApp Leads</div>
+        </div>
+        <div style="background:#faf8f5; border:1px solid #e2e8f0; border-radius:12px; padding:16px; text-align:center;">
+          <div id="statTotalInvoices" style="font-size: 1.8rem; font-weight: 800; color: #b8860b;">0</div>
+          <div style="font-size:0.8rem; color:#64748b;">Invoices Created</div>
+        </div>
+      </div>
+      <div style="background: #faf8f5; border: 1.5px dashed var(--border-gold-solid); border-radius: 12px; padding: 20px;">
+        <h4 style="color: #0b3b82; font-size: 1.05rem; margin-bottom: 8px;"><i class="fas fa-link text-gold"></i> Create Trackable Referral Link</h4>
+        <div style="display: grid; grid-template-columns: 1fr 1.5fr 1fr; gap: 10px;">
+          <div>
+            <label class="form-label" style="font-size: 0.78rem;">Platform:</label>
+            <select id="genPlatform" class="form-control" style="padding: 8px;">
+              <option value="instagram">Instagram</option>
+              <option value="whatsapp">WhatsApp</option>
+              <option value="qr_stand">QR Sachet Scan</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size: 0.78rem;">Insta Handle / Phone / Name:</label>
+            <input type="text" id="genClientRef" class="form-control" placeholder="e.g. @the_midnight_cafe or 9876543210" style="padding: 8px;">
+          </div>
+          <div style="align-self: flex-end;">
+            <button class="btn btn-primary" onclick="app.generateTrackedLink()" style="width: 100%; padding: 8px 12px; font-size: 0.88rem;">Generate</button>
+          </div>
+        </div>
+        <div style="display: flex; gap: 8px; margin-top: 12px;">
+          <input type="text" id="generatedLinkOutput" class="form-control" placeholder="Your trackable link will appear here..." readonly style="font-size: 0.85rem; background: #ffffff;">
+          <button class="btn btn-outline-gold" onclick="app.copyGeneratedLink()" style="padding: 8px 16px;"><i class="fas fa-copy"></i> Copy</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/invoice.js"></script>
+  <script src="js/app.js"></script>
+
+  <!-- Calculator Dedicated Script -->
+  <script>
+    const calcPage = {
+      productMatrix: {
+        'mouth-freshener-mixture': {
+          name: 'Mouth Freshener Mixture Sachet',
+          unit: 'pcs',
+          moq: 4000,
+          tiers: [
+            { range: '4,000 – 6,000', min: 4000, max: 6000, rate: 0.90 },
+            { range: '6,000 – 8,000', min: 6000, max: 8000, rate: 0.85 },
+            { range: '8,000 – 10,000', min: 8000, max: 10000, rate: 0.80 },
+            { range: '10,000+', min: 10000, max: Infinity, rate: 0.75 }
+          ]
+        },
+        'mouth-freshener-white': {
+          name: 'Mouth Freshener Madrasi White',
+          unit: 'pcs',
+          moq: 4000,
+          tiers: [
+            { range: '4,000 – 6,000', min: 4000, max: 6000, rate: 1.00 },
+            { range: '6,000 – 8,000', min: 6000, max: 8000, rate: 0.95 },
+            { range: '8,000 – 10,000', min: 8000, max: 10000, rate: 0.90 },
+            { range: '10,000+', min: 10000, max: Infinity, rate: 0.85 }
+          ]
+        },
+        'mouth-freshener-green': {
+          name: 'Mouth Freshener Madrasi Green',
+          unit: 'pcs',
+          moq: 4000,
+          tiers: [
+            { range: '4,000 – 6,000', min: 4000, max: 6000, rate: 1.00 },
+            { range: '6,000 – 8,000', min: 6000, max: 8000, rate: 0.95 },
+            { range: '8,000 – 10,000', min: 8000, max: 10000, rate: 0.90 },
+            { range: '10,000+', min: 10000, max: Infinity, rate: 0.85 }
+          ]
+        },
+        'sugar-white': {
+          name: 'White Sugar Sachet',
+          unit: 'pcs',
+          moq: 4000,
+          tiers: [
+            { range: '4,000 – 6,000', min: 4000, max: 6000, rate: 0.90 },
+            { range: '6,000 – 8,000', min: 6000, max: 8000, rate: 0.85 },
+            { range: '8,000 – 10,000', min: 8000, max: 10000, rate: 0.80 },
+            { range: '10,000+', min: 10000, max: Infinity, rate: 0.75 }
+          ]
+        },
+        'sugar-brown': {
+          name: 'Brown Demerara Sugar Sachet',
+          unit: 'pcs',
+          moq: 4000,
+          tiers: [
+            { range: '4,000 – 6,000', min: 4000, max: 6000, rate: 1.05 },
+            { range: '6,000 – 8,000', min: 6000, max: 8000, rate: 1.00 },
+            { range: '8,000+', min: 8000, max: Infinity, rate: 0.95 }
+          ]
+        },
+        'salt-poster': {
+          name: 'Salt Sachet (Poster Paper)',
+          unit: 'pcs',
+          moq: 4000,
+          tiers: [
+            { range: '4,000 – 6,000', min: 4000, max: 6000, rate: 0.55 },
+            { range: '6,000 – 8,000', min: 6000, max: 8000, rate: 0.50 },
+            { range: '8,000 – 10,000', min: 8000, max: 10000, rate: 0.45 },
+            { range: '10,000+', min: 10000, max: Infinity, rate: 0.40 }
+          ]
+        },
+        'salt-metallized': {
+          name: 'Salt Sachet (Metallized Paper)',
+          unit: 'pcs',
+          moq: 4000,
+          tiers: [
+            { range: '4,000 – 6,000', min: 4000, max: 6000, rate: 0.65 },
+            { range: '6,000 – 8,000', min: 6000, max: 8000, rate: 0.60 },
+            { range: '8,000 – 10,000', min: 8000, max: 10000, rate: 0.55 },
+            { range: '10,000+', min: 10000, max: Infinity, rate: 0.50 }
+          ]
+        },
+        'black-pepper-poster': {
+          name: 'Black Pepper (Poster Paper)',
+          unit: 'pcs',
+          moq: 4000,
+          tiers: [
+            { range: '4,000 – 6,000', min: 4000, max: 6000, rate: 0.85 },
+            { range: '6,000 – 8,000', min: 6000, max: 8000, rate: 0.80 },
+            { range: '8,000 – 10,000', min: 8000, max: 10000, rate: 0.75 },
+            { range: '10,000+', min: 10000, max: Infinity, rate: 0.70 }
+          ]
+        },
+        'black-pepper-metallized': {
+          name: 'Black Pepper (Metallized Paper)',
+          unit: 'pcs',
+          moq: 4000,
+          tiers: [
+            { range: '4,000 – 6,000', min: 4000, max: 6000, rate: 0.95 },
+            { range: '6,000 – 8,000', min: 6000, max: 8000, rate: 0.90 },
+            { range: '8,000+', min: 8000, max: Infinity, rate: 0.85 }
+          ]
+        },
+        'pizza-seasoning': {
+          name: 'Pizza Seasoning Sachet (Metallized)',
+          unit: 'pcs',
+          moq: 4000,
+          tiers: [
+            { range: '4,000 – 6,000', min: 4000, max: 6000, rate: 0.95 },
+            { range: '6,000 – 8,000', min: 6000, max: 8000, rate: 0.90 },
+            { range: '8,000 – 10,000', min: 8000, max: 10000, rate: 0.85 },
+            { range: '10,000+', min: 10000, max: Infinity, rate: 0.80 }
+          ]
+        },
+        'chilli-flakes': {
+          name: 'Chilli Flakes Sachet (Metallized)',
+          unit: 'pcs',
+          moq: 4000,
+          tiers: [
+            { range: '4,000 – 6,000', min: 4000, max: 6000, rate: 0.95 },
+            { range: '6,000 – 8,000', min: 6000, max: 8000, rate: 0.90 },
+            { range: '8,000 – 10,000', min: 8000, max: 10000, rate: 0.85 },
+            { range: '10,000+', min: 10000, max: Infinity, rate: 0.80 }
+          ]
+        },
+        'butter-paper': {
+          name: 'Butter Paper Sheets (Non OGR)',
+          unit: 'kg',
+          moq: 30,
+          flatRate: 290,
+          tiers: [{ range: 'MOQ 30 KG+', min: 30, max: Infinity, rate: 290 }]
+        },
+        'printed-cups-200': {
+          name: 'Printed Paper Cups 200 ML',
+          unit: 'pcs',
+          moq: 3000,
+          flatRate: 2.10,
+          tiers: [{ range: 'MOQ 3,000+', min: 3000, max: Infinity, rate: 2.10 }]
+        },
+        'printed-cups-250': {
+          name: 'Printed Paper Cups 250 ML',
+          unit: 'pcs',
+          moq: 3000,
+          flatRate: 2.40,
+          tiers: [{ range: 'MOQ 3,000+', min: 3000, max: Infinity, rate: 2.40 }]
+        },
+        'printed-cups-350': {
+          name: 'Printed Paper Cups 350 ML',
+          unit: 'pcs',
+          moq: 3000,
+          flatRate: 3.50,
+          tiers: [{ range: 'MOQ 3,000+', min: 3000, max: Infinity, rate: 3.50 }]
+        },
+        'plain-cups-200': {
+          name: 'Plain White Cups 200 ML',
+          unit: 'pcs',
+          moq: 2000,
+          flatRate: 1.45,
+          tiers: [{ range: 'MOQ 20 Cartons', min: 2000, max: Infinity, rate: 1.45 }]
+        },
+        'tissue-hard-60': {
+          name: 'Hard Tissue 60 Pcs / Pack (27x27cm)',
+          unit: 'packs',
+          moq: 250,
+          tiers: [
+            { range: '250 – 499 Packs', min: 250, max: 499, rate: 13.75 },
+            { range: '500 – 749 Packs', min: 500, max: 749, rate: 13.20 },
+            { range: '750+ Packs', min: 750, max: Infinity, rate: 12.70 }
+          ]
+        },
+        'tissue-soft-60': {
+          name: 'Soft Tissue 60 Pcs / Pack (27x27cm)',
+          unit: 'packs',
+          moq: 250,
+          tiers: [
+            { range: '250 – 499 Packs', min: 250, max: 499, rate: 15.00 },
+            { range: '500 – 749 Packs', min: 500, max: 749, rate: 14.40 },
+            { range: '750+ Packs', min: 750, max: Infinity, rate: 13.80 }
+          ]
+        },
+        'chopstick': {
+          name: 'Custom Printed Chopsticks (Pair)',
+          unit: 'pairs',
+          moq: 2000,
+          tiers: [
+            { range: '2,000 – 4,000', min: 2000, max: 4000, rate: 2.95 },
+            { range: '4,000 – 6,000', min: 4000, max: 6000, rate: 2.90 },
+            { range: '6,000 – 8,000', min: 6000, max: 8000, rate: 2.85 },
+            { range: '8,000+', min: 8000, max: Infinity, rate: 2.80 }
+          ]
+        },
+        'qr-display-stand': {
+          name: 'QR Tabletop Display Stand',
+          unit: 'pcs',
+          moq: 1,
+          flatRate: 149,
+          tiers: [{ range: 'Per Piece', min: 1, max: Infinity, rate: 149 }]
+        },
+        'acrylic-t-stand': {
+          name: 'Acrylic T-Stand Crystal Clear',
+          unit: 'pcs',
+          moq: 1,
+          flatRate: 349,
+          tiers: [{ range: 'Per Piece', min: 1, max: Infinity, rate: 349 }]
+        },
+        'gold-frame-stand': {
+          name: 'Gold Frame Luxury Stand',
+          unit: 'pcs',
+          moq: 1,
+          flatRate: 449,
+          tiers: [{ range: 'Per Piece', min: 1, max: Infinity, rate: 449 }]
+        },
+        'qr-standard-plan': {
+          name: 'Standard Plan (Google + Insta setup)',
+          unit: 'package',
+          moq: 1,
+          flatRate: 2999,
+          tiers: [{ range: 'One Time Setup', min: 1, max: Infinity, rate: 2999 }]
+        },
+        'qr-menu-plan': {
+          name: 'Premium Menu Plan (Digital + WhatsApp)',
+          unit: 'yr',
+          moq: 1,
+          flatRate: 5999,
+          tiers: [{ range: 'Annual Plan (12 Stands Free)', min: 1, max: Infinity, rate: 5999 }]
+        }
+      },
+
+      currentRate: 0.85,
+      currentDye: 600,
+      currentQty: 6000,
+
+      onProductChange: function() {
+        const prodKey = document.getElementById('calcProductSelector').value;
+        const info = this.productMatrix[prodKey];
+        if (!info) return;
+
+        // update unit label
+        document.getElementById('calcUnitLabel').innerText = `(in ${info.unit})`;
+        
+        // update default qty if below moq
+        const qtyInput = document.getElementById('calcQtyInputField');
+        if (Number(qtyInput.value) < info.moq) {
+          qtyInput.value = info.moq;
+        }
+
+        // if QR hardware or plan, dye is 0
+        const dyeSel = document.getElementById('calcDyeSelector');
+        if (prodKey.startsWith('qr-') || prodKey.startsWith('acrylic-') || prodKey.startsWith('gold-')) {
+          dyeSel.value = '0';
+        }
+
+        this.calculate();
+      },
+
+      setQty: function(val) {
+        document.getElementById('calcQtyInputField').value = val;
+        document.querySelectorAll('.quick-qty-btn').forEach(b => b.classList.remove('active'));
+        if (event && event.target) event.target.classList.add('active');
+        this.calculate();
+      },
+
+      calculate: function() {
+        const prodKey = document.getElementById('calcProductSelector').value;
+        const info = this.productMatrix[prodKey];
+        if (!info) return;
+
+        const qtyInput = document.getElementById('calcQtyInputField');
+        let qty = Math.max(1, Number(qtyInput.value) || info.moq);
+        this.currentQty = qty;
+
+        // determine unit rate
+        let rate = info.flatRate || 0.85;
+        let matchedTierRange = '';
+        if (info.tiers && info.tiers.length > 0) {
+          const tier = info.tiers.find(t => qty >= t.min && qty <= t.max) || info.tiers[info.tiers.length - 1];
+          rate = tier.rate;
+          matchedTierRange = tier.range;
+        }
+        this.currentRate = rate;
+
+        const dyeVal = Number(document.getElementById('calcDyeSelector').value) || 0;
+        this.currentDye = dyeVal;
+
+        const itemCost = qty * rate;
+        const grandTotal = itemCost + dyeVal;
+
+        // Update UI
+        document.getElementById('calcSummaryProductName').innerText = info.name;
+        document.getElementById('calcDisplayRate').innerHTML = `₹ ${rate.toFixed(2)} <span style="font-size:0.8rem; font-weight:500; color:#64748b;">/ ${info.unit}</span>`;
+        document.getElementById('calcDisplayQtyText').innerText = `${qty.toLocaleString('en-IN')} ${info.unit}`;
+        document.getElementById('calcDisplayItemCost').innerText = `₹ ${Math.round(itemCost).toLocaleString('en-IN')}`;
+        document.getElementById('calcDisplayDyeCost').innerText = `₹ ${dyeVal.toLocaleString('en-IN')}`;
+        document.getElementById('calcDisplayGrandTotal').innerText = `₹ ${Math.round(grandTotal).toLocaleString('en-IN')}`;
+
+        // Render Matrix Table
+        const tblWrap = document.getElementById('calcRateMatrixTable');
+        if (info.tiers && info.tiers.length > 1) {
+          let rowsHtml = `
+            <table style="width:100%; border-collapse:collapse; text-align:left;">
+              <thead>
+                <tr style="background:#f8fafc; border-bottom:1px solid #e2e8f0;">
+                  <th style="padding:8px 12px; color:#475569;">Volume Tier</th>
+                  <th style="padding:8px 12px; color:#475569; text-align:right;">Rate / ${info.unit}</th>
+                </tr>
+              </thead>
+              <tbody>
+          `;
+          info.tiers.forEach(t => {
+            const isCurrent = (qty >= t.min && qty <= t.max);
+            rowsHtml += `
+              <tr style="border-bottom:1px solid #f1f5f9; ${isCurrent ? 'background:#fef3c7; font-weight:800; color:#0b3b82;' : ''}">
+                <td style="padding:8px 12px;">${t.range} ${isCurrent ? '⭐ (Your Tier)' : ''}</td>
+                <td style="padding:8px 12px; text-align:right; color:${isCurrent ? '#0b3b82' : '#b8860b'}; font-weight:700;">₹ ${t.rate.toFixed(2)}</td>
+              </tr>
+            `;
+          });
+          rowsHtml += `</tbody></table>`;
+          tblWrap.innerHTML = rowsHtml;
+          tblWrap.style.display = 'block';
+        } else {
+          tblWrap.innerHTML = `
+            <div style="padding:12px; color:#64748b; font-size:0.85rem;">
+              Flat wholesale rate: <strong>₹ ${rate.toFixed(2)} / ${info.unit}</strong> (Min order: ${info.moq} ${info.unit}).
+            </div>
+          `;
+        }
+      },
+
+      addToCart: function() {
+        const prodKey = document.getElementById('calcProductSelector').value;
+        const info = this.productMatrix[prodKey];
+        if (!info) return;
+
+        const qty = this.currentQty;
+        const rate = this.currentRate;
+        const dye = this.currentDye;
+        const amount = (qty * rate) + dye;
+
+        app.cart.push({
+          cartId: 'c_' + Date.now(),
+          productId: prodKey,
+          name: info.name,
+          qty: qty,
+          unit: info.unit,
+          rate: rate,
+          dye: dye,
+          amount: amount
+        });
+
+        app.renderCart();
+        app.toggleCart(true);
+      },
+
+      sendWhatsAppInquiry: function() {
+        const prodKey = document.getElementById('calcProductSelector').value;
+        const info = this.productMatrix[prodKey];
+        if (!info) return;
+
+        const qty = this.currentQty;
+        const rate = this.currentRate;
+        const dye = this.currentDye;
+        const total = Math.round((qty * rate) + dye);
+
+        const msg = `Hello Naman & Ansh (P6S),%0A%0AI used the live website calculator and would like to order:%0A• *Product:* ${info.name}%0A• *Quantity:* ${qty.toLocaleString('en-IN')} ${info.unit}%0A• *Calculated Rate:* Rs. ${rate.toFixed(2)}/${info.unit}%0A• *Dye/Plate Charge:* Rs. ${dye}%0A• *Estimated Total:* Rs. ${total.toLocaleString('en-IN')}%0A%0APlease confirm lead time and dispatch details to our restaurant.`;
+        window.open(`https://wa.me/918462063330?text=${msg}`, '_blank');
+      }
+    };
+
+    window.addEventListener('DOMContentLoaded', () => {
+      calcPage.onProductChange();
+    });
+  </script>
+</body>
+</html>

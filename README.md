@@ -1,75 +1,89 @@
-# Premium Packaging Solutions (P2S) - Official Web Platform
+# Premium Packaging Solutions (P6S) - Luxury Hospitality Atelier
 
-Welcome to the official web application of **Premium Packaging Solutions (P2S)**, supplier of Smart Sachets & Hospitality Packaging Solutions based in Indore, Madhya Pradesh.
+Official multi-page web platform for **Premium Packaging Solutions (P6S)**, Indore's premier manufacturer and supplier of Smart Sachets™, food wrapping sheets, custom paper cups, tissues, and restaurant QR display technology.
 
----
-
-## 🌟 Key Features
-
-1. **Luxury Hospitality Aesthetic & Consistent Background**
-   - Built with Google Fonts (*Cinzel*, *Outfit*, and *Plus Jakarta Sans*).
-   - Unified luxury dark obsidian (`#080c14`) background with ambient champagne gold gradients and micro-mesh pattern across all pages, modals, and views.
-
-2. **Complete Product Catalog & Tier Pricing (From Official Rate Card)**
-   - **Smart Sachets™** (01 Basic Custom, 02 QR Rating, 03 Experience, 04 Reward, 05 Campaign)
-   - **Mouth Freshener Sachets** (Mixture, Madrasi White, Madrasi Green)
-   - **Sugar Sachets** (White Refined Sugar & Brown Demerara Sugar)
-   - **Salt Sachets** (In Poster Paper & Metallized Paper)
-   - **Pizza Seasoning & Chilli Flakes Sachets** (In Metallized Paper)
-   - **Black Pepper Sachets** (In Poster Paper & Metallized Paper)
-   - **Butter Paper Sheets** (Non OGR, 1-Color Branded, 30kg MOQ @ ₹290/kg)
-   - **Tissue Paper Price List** (27 x 27 cm, Hard & Soft Tissue, Customization options)
-   - **Chopsticks** (Custom Paper Sleeve Chopsticks, 2000 pairs MOQ)
-   - **QR Menu & Customer Engagement Stands** (Acrylic T-Stands, Gold Frame Stands, Standard Plan ₹2,999, Premium Menu Plan)
-   - **Printed Paper Cups** (200ml, 250ml, 350ml, 480ml + Dome & Sipper Lids, Single Color & Multicolor Dye)
-   - **Plain Paper Cups** (Stock White Cups)
-
-3. **Official Bill / Invoice Generator (Exact Duplicate of Attached Format)**
-   - Generates authentic A4 invoices matching the company template:
-     - Header: *Premium Packaging Solutions*
-     - Subtitle: *SUPPLIER OF SMART SACHETS & HOSPITALITY PACKAGING SOLUTIONS*
-     - Deep Blue Banner: *INVOICE*
-     - Invoice No (`#INV-2026-XXX`), Date, Place (`Indore`), Client Name
-     - Table: `S.NO`, `DESCRIPTION`, `QTY`, `RATE`, `DYE`, `AMOUNT`
-     - Summary: Items Total, Dye Charges, Delivery Charges, Discount, **GRAND TOTAL**
-     - Terms & Conditions (1 to 5 verbatim)
-     - Business Owners: **Ansh & Naman**
-     - Contact numbers: **+91 9111789220 | +91 8462063330**
-   - 1-Click **Print / Save as PDF** (Standard A4 Print CSS)
-   - 1-Click **Download PDF** (via `html2pdf.js`)
-   - 1-Click **Send Invoice to WhatsApp** (Pre-formatted itemized invoice message)
-
-4. **Direct WhatsApp Integration (Dual Numbers)**
-   - Primary Phone: **8462063330**
-   - Secondary Phone: **9111789220**
-   - Instant WhatsApp Order buttons for individual products and full cart orders.
-
-5. **Link Tap & Visitor Attribution Tracking (Instagram & WhatsApp)**
-   - Parses URL query parameters:
-     - `?source=instagram&ref=@your_client`
-     - `?source=whatsapp&phone=9876543210`
-     - `?source=qr_stand`
-   - Shows personalized luxury welcome pill at the top:
-     *"Welcome @client from Instagram! Special hospitality supply pricing is activated."*
-   - Pre-fills Client info in the checkout and invoice.
-   - Logs visit in the **Owner Portal (Ansh & Naman Dashboard)**.
-
-6. **Founders / Owner Portal (Ansh & Naman)**
-   - Accessed via the "👑 Owners" button in the top navigation.
-   - Protected with Security PIN: `2026`.
-   - **Custom Trackable Link Generator**: Create links for Instagram bio, DMs, or WhatsApp broadcasts and copy with 1 click!
-   - **Live Tap Logs**: View who clicked, their platform, handle/phone, device, and timestamp.
-
-7. **Client Authentication & Restaurant Profile**
-   - Save restaurant name, owner contact, delivery address, and GST/FSSAI details.
-   - Auto-fills billing details.
+- **Founders:** Naman & Ansh
+- **Headquarters & Dispatch:** Indore, Madhya Pradesh
+- **Founders Hotlines:** [+91 8462063330](tel:+918462063330) | [+91 9111789220](tel:+919111789220)
+- **Client Website Link:** [https://namangarg-06.github.io/My-Business/](https://namangarg-06.github.io/My-Business/)
+- **GitHub Repository:** [https://github.com/Namangarg-06/My-Business.git](https://github.com/Namangarg-06/My-Business.git)
 
 ---
 
-## 🚀 How to Run
+## 🏛️ Multi-Page Architecture (Zero Clutter)
 
-Simply double-click `index.html` or open it with any web browser (Chrome, Edge, Safari, Firefox). No build steps or terminal commands required!
+To maintain a spacious, uncluttered luxury aesthetic inspired by high-end design houses (Louis Vuitton monogram crest, warm alabaster `#faf8f5` palette, polished gold accents), the website is divided into 8 dedicated pages:
 
-To test link tap tracking:
-- Instagram test: `index.html?source=instagram&ref=@the_midnight_cafe`
-- WhatsApp test: `index.html?source=whatsapp&phone=9876543210&name=MidwayDhaba`
+1. **[index.html](index.html) (Grand Homepage & Atelier Portal)**
+   - Brand story, signature innovation summary, trust badges.
+   - Category gateway cards leading to each department.
+   - 100% client-facing navigation with discreet footer owner portal.
+
+2. **[smart-sachets.html](smart-sachets.html) (Smart Sachets™ & Mouth Freshener)**
+   - The 5 Smart Sachet types: Basic Custom, QR Rating, Experience, Reward, Campaign.
+   - Interactive 3D flip sachet mockup (Front branding vs Back Google Review QR).
+   - Exact rate card tables for Mouth Freshener Mixture, Madrasi White, and Madrasi Green.
+
+3. **[sachets.html](sachets.html) (Dining Condiments & Spices)**
+   - White Crystal Sugar & Golden Brown Demerara Sugar.
+   - Iodised Salt Sachets (Poster Paper vs Metallized Paper comparison).
+   - Pure Black Pepper Sachets (Poster vs Metallized).
+   - Pizza Seasoning & Fiery Chilli Flakes Sachets in Metallized paper.
+
+4. **[packaging-cups.html](packaging-cups.html) (Paper Cups, Butter Paper & Tissues)**
+   - Non OGR Butter Paper Sheets (MOQ 30 KG @ ₹290/kg).
+   - Custom Printed Paper Cups (200ml, 250ml, 350ml, 480ml + Dome & Sipper lids + Plate Dye breakdown).
+   - Plain Stock White Cups (MOQ 20 Cartons).
+   - Natural Fiber 1-Ply Tissue Papers (27 x 27 cm, Hard & Soft matrix).
+   - Bamboo Chopsticks in custom printed paper sleeves.
+
+5. **[qr-stands.html](qr-stands.html) (QR Tabletop Displays & Digital Menu)**
+   - QR Tabletop Display Stand (₹149).
+   - Crystal Clear Acrylic T-Stand (₹349).
+   - Gold Frame Ultra-Luxury Stand (₹449).
+   - Standard Plan (Google Reviews + Instagram integration: ₹2,999 one-time).
+   - Premium Menu Plan (Dynamic Digital Menu + WhatsApp ordering: ₹5,999/yr with 12 stands free).
+
+6. **[calculator.html](calculator.html) (Live Packaging Cost Calculator)**
+   - Interactive quantity and product selector across all categories.
+   - Live unit rate calculation matching exact volume tiers.
+   - One-time printing plate / dye fee selector (₹600 single colour / ₹2,500 multicolor).
+   - Immediate subtotal calculation, "Add to Cart", and "WhatsApp Quote" triggers.
+
+7. **[invoice.html](invoice.html) (Official A4 PDF Billing Center)**
+   - Exact replica of the official company invoice format (PDF 2).
+   - Interactive bill editor with custom line items, dye fees, delivery fees, and discounts.
+   - 1-Click A4 PDF download via `html2pdf.js`.
+   - 1-Click Clean Print & 1-Click WhatsApp bill dispatch.
+   - 5 Verbatim Terms & Conditions and signature "Business Owners: Naman & Ansh".
+
+8. **[about.html](about.html) (About P6S & Founders Hotline)**
+   - Profiles for Naman (Operations & Client Partnerships) and Ansh (Production & Tech Quality).
+   - Direct call & WhatsApp links to 8462063330 and 9111789220.
+   - Indore manufacturing hub & dispatch assurances.
+   - Interactive direct WhatsApp inquiry generator.
+   - Comprehensive hospitality procurement FAQ.
+
+---
+
+## 🚀 How to Publish & Update to GitHub
+
+Whenever you want to push your latest updates live to GitHub and your clients:
+
+1. Open the project folder `d:\Desktop\My Business\`.
+2. Double-click on **`PUSH_TO_GITHUB.bat`**.
+3. The script will automatically stage all 8 pages, commit the changes, and push them to `https://github.com/Namangarg-06/My-Business.git`.
+4. Your live link will update within 1-2 minutes:
+   **[https://namangarg-06.github.io/My-Business/](https://namangarg-06.github.io/My-Business/)**
+
+---
+
+## 🔐 Founders / Owner Access
+
+To view visitor link tap analytics (Instagram handles, WhatsApp leads, total clicks):
+1. Scroll down to the bottom of any page footer.
+2. Click on the subtle **"Founders Portal"** button.
+3. Enter PIN: **`2026`**
+4. Generate custom referral links with automatic source tagging:
+   - Instagram: `https://namangarg-06.github.io/My-Business/?source=instagram&ref=@cafe_handle`
+   - WhatsApp: `https://namangarg-06.github.io/My-Business/?source=whatsapp&phone=9876543210`

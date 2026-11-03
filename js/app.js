@@ -1010,8 +1010,8 @@ Please share the design preview & confirmation!`;
   ------------------------------------------------------------- */
   renderCart() {
     const countBadge = document.getElementById('navCartCount');
-    const cartItemsEl = document.getElementById('cartDrawerItems');
-    const subtotalEl = document.getElementById('cartDrawerSubtotal');
+    const cartItemsEl = document.getElementById('cartDrawerItems') || document.getElementById('cartItemsList');
+    const subtotalEl = document.getElementById('cartDrawerSubtotal') || document.getElementById('cartSubtotalText');
 
     if (countBadge) countBadge.innerText = this.cart.length;
     if (!cartItemsEl) return;
@@ -1051,6 +1051,20 @@ Please share the design preview & confirmation!`;
     }).join('');
 
     if (subtotalEl) subtotalEl.innerText = `₹ ${Math.round(subtotal).toLocaleString('en-IN')}`;
+
+    const waBtn = document.getElementById('cartWhatsAppOrderBtn');
+    if (waBtn) {
+      if (this.cart.length > 0) {
+        let msg = `Hello Naman & Ansh (P6S), I would like to place an order:%0A%0A`;
+        this.cart.forEach((it, idx) => {
+          msg += `${idx + 1}. *${it.name}* - ${it.qty} ${it.unit} @ Rs. ${it.rate.toFixed(2)}${it.dye > 0 ? ` (Dye: Rs. ${it.dye})` : ''} = Rs. ${Math.round(it.amount)}%0A`;
+        });
+        msg += `%0A*Estimated Total:* Rs. ${Math.round(subtotal).toLocaleString('en-IN')}%0A%0APlease confirm dispatch timelines for our restaurant.`;
+        waBtn.href = `https://wa.me/918462063330?text=${msg}`;
+      } else {
+        waBtn.href = `https://wa.me/918462063330?text=Hello%20P6S%2C%20I%20want%20to%20order%20packaging.`;
+      }
+    }
   }
 
   removeFromCart(index) {

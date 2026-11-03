@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Official Invoice &amp; Bill Generator | Premium Packaging Solutions (P6S)</title>
+  <meta name="description" content="Generate official hospitality packaging invoices, download A4 PDF bills, and send instantly via WhatsApp for restaurants in Indore.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .invoice-builder-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 32px;
+      margin-top: 30px;
+    }
+    @media (max-width: 1024px) {
+      .invoice-builder-layout { grid-template-columns: 1fr; }
+    }
+    .panel-card {
+      background: #ffffff;
+      border: 1px solid var(--border-gold-solid);
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    }
+    .bill-item-row {
+      display: grid;
+      grid-template-columns: 2.2fr 1fr 1fr 1fr 36px;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px dashed #e2e8f0;
+    }
+    @media (max-width: 600px) {
+      .bill-item-row { grid-template-columns: 1fr 1fr; }
+    }
+    .bill-item-row input, .bill-item-row select {
+      padding: 8px 10px;
+      font-size: 0.88rem;
+    }
+    .invoice-preview-pane {
+      background: #ffffff;
+      border: 2px solid var(--border-gold-solid);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+      position: sticky;
+      top: 90px;
+    }
+    .toolbar-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Notification & Contact Bar -->
+  <div id="sourceTrackingBanner" class="source-banner">
+    <div class="source-banner-content">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span id="sourceBannerPill" class="source-tag-pill"><i class="fas fa-file-invoice"></i> BILLING CENTER</span>
+        <span id="sourceBannerText">Hospitality Invoicing Engine • Standard PDF Invoices with Verification</span>
+      </div>
+      <div class="source-phone-links">
+        <span><i class="fas fa-phone-alt"></i> Founders Hotline:</span>
+        <a href="tel:+918462063330">8462063330</a>
+        <a href="tel:+919111789220">9111789220</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-wrapper">
+        <div class="brand-lv-crest">
+          <svg class="p6s-svg-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="p6sGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#E5C07B" /><stop offset="50%" stop-color="#C5A059" /><stop offset="100%" stop-color="#8C6D23" />
+              </linearGradient>
+            </defs>
+            <path d="M50 4 C54 26 74 46 96 50 C74 54 54 74 50 96 C46 74 26 54 4 50 C26 46 46 26 50 4 Z" stroke="url(#p6sGoldGrad)" stroke-width="2" fill="#faf8f5" />
+            <rect x="25" y="25" width="50" height="50" rx="4" transform="rotate(45 50 50)" stroke="url(#p6sGoldGrad)" stroke-width="1.5" fill="#ffffff" />
+            <text x="50" y="58" font-family="'Cinzel', serif" font-size="22" font-weight="900" fill="url(#p6sGoldGrad)" text-anchor="middle" letter-spacing="1">P6S</text>
+          </svg>
+        </div>
+        <div class="brand-info">
+          <div class="brand-name">PREMIUM <span>PACKAGING</span></div>
+          <div class="brand-sub">SOLUTIONS (P6S) • INDORE</div>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="smart-sachets.html">Smart Sachets</a></li>
+        <li><a href="sachets.html">Spices &amp; Sugar</a></li>
+        <li><a href="packaging-cups.html">Cups &amp; Paper</a></li>
+        <li><a href="qr-stands.html">QR Stands</a></li>
+        <li><a href="calculator.html">Price Calculator</a></li>
+        <li><a href="invoice.html" class="active">Instant Bill</a></li>
+        <li><a href="about.html">Contact Us</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="navUserBtn" class="btn btn-outline-gold" onclick="app.openLoginModal()" style="padding: 8px 14px; font-size: 0.84rem;">
+          <i class="fas fa-sign-in-alt"></i> Client Login
+        </button>
+        <button class="btn btn-cart" onclick="app.toggleCart(true)" title="View Order List">
+          <i class="fas fa-shopping-bag text-gold"></i>
+          <span id="navCartCount" class="cart-count">0</span>
+        </button>
+        <a href="https://wa.me/918462063330?text=Hello%20P6S%2C%20I%20have%20an%20inquiry%20regarding%20billing." target="_blank" class="btn btn-whatsapp" style="padding: 8px 14px; font-size: 0.84rem;">
+          <i class="fab fa-whatsapp"></i> Billing Support
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Hero Banner -->
+  <div class="page-hero-banner">
+    <div class="container">
+      <span class="page-hero-kicker">Instant Procurement Document</span>
+      <h1 class="page-hero-title">Official Hospitality Invoice Generator</h1>
+      <p class="page-hero-desc">
+        Create, preview, print, or download official A4 PDF invoices matching our verified company format. Direct billing for restaurants, cafes, and hotels.
+      </p>
+      <div class="breadcrumb-wrap">
+        <a href="index.html">Home</a> <span>/</span> <span>Instant Bill Generator</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Invoicing Main Section -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+
+      <div class="invoice-builder-layout">
+
+        <!-- Left: Bill Details & Line Items Form -->
+        <div class="panel-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1.5px solid #e2e8f0; padding-bottom: 14px; margin-bottom: 20px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="width: 40px; height: 40px; border-radius: 8px; background: #faf8f5; border: 1.5px solid var(--border-gold-solid); display: flex; align-items: center; justify-content: center; color: var(--gold-dark);">
+                <i class="fas fa-file-invoice-dollar"></i>
+              </div>
+              <h3 style="color: #0b3b82; font-size: 1.25rem; font-weight: 800; margin: 0;">Bill Configuration</h3>
+            </div>
+            <button class="btn btn-outline-gold" onclick="invoicePage.loadFromCart()" style="padding: 6px 12px; font-size: 0.8rem;">
+              <i class="fas fa-sync-alt"></i> Load Cart Items
+            </button>
+          </div>
+
+          <!-- Client / Restaurant Details -->
+          <div style="background: #faf8f5; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 24px;">
+            <h4 style="color: #0b3b82; font-size: 0.95rem; font-weight: 800; margin-bottom: 12px;">
+              <i class="fas fa-hotel text-gold"></i> Client / Restaurant Information
+            </h4>
+            
+            <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 12px;">
+              <div class="form-group" style="margin-bottom: 10px;">
+                <label class="form-label" style="font-size: 0.8rem;">Restaurant / Cafe Name:</label>
+                <input type="text" id="billClientName" class="form-control" value="Shree Kripa Midway Restaurant" oninput="invoicePage.renderPreview()">
+              </div>
+              <div class="form-group" style="margin-bottom: 10px;">
+                <label class="form-label" style="font-size: 0.8rem;">Contact Number:</label>
+                <input type="tel" id="billClientPhone" class="form-control" value="+91 8462063330" oninput="invoicePage.renderPreview()">
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 4px;">
+              <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label" style="font-size: 0.8rem;">City / Dispatch Place:</label>
+                <input type="text" id="billClientPlace" class="form-control" value="Indore" oninput="invoicePage.renderPreview()">
+              </div>
+              <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label" style="font-size: 0.8rem;">Invoice Date:</label>
+                <input type="text" id="billInvoiceDate" class="form-control" oninput="invoicePage.renderPreview()">
+              </div>
+            </div>
+          </div>
+
+          <!-- Line Items Section -->
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px;">
+              <h4 style="color: #0b3b82; font-size: 1.05rem; font-weight: 800; margin: 0;">
+                <i class="fas fa-boxes text-gold"></i> Invoice Items (Line by Line)
+              </h4>
+              <button class="btn btn-outline-gold" onclick="invoicePage.addRow()" style="padding: 4px 10px; font-size: 0.78rem;">
+                <i class="fas fa-plus"></i> Add Item
+              </button>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 2.2fr 1fr 1fr 1fr 36px; gap: 8px; font-size: 0.75rem; font-weight: 800; color: #64748b; text-transform: uppercase; margin-bottom: 6px; padding: 0 4px;">
+              <div>Description</div>
+              <div>Qty</div>
+              <div>Rate (₹)</div>
+              <div>Dye (₹)</div>
+              <div></div>
+            </div>
+
+            <!-- Dynamic Items Container -->
+            <div id="billItemsContainer"></div>
+
+            <!-- Quick Add Catalog Item Dropdown -->
+            <div style="margin-top: 14px; display: flex; gap: 8px;">
+              <select id="quickProductAddSelect" class="form-control" style="font-size: 0.85rem; padding: 8px 12px;">
+                <option value="">-- Quick Add Catalog Item --</option>
+                <option value="Butter Paper (customized)|15.4 kg|280|600">Butter Paper (customized) - 15.4 kg @ ₹280</option>
+                <option value="White Acrylic Stand|42 pcs|150|0">White Acrylic Stand - 42 pcs @ ₹150</option>
+                <option value="Golden QR Stand|3 pcs|600|0">Golden QR Stand - 3 pcs @ ₹600</option>
+                <option value="Madrasi Sauf|5 kg|180|0">Madrasi Sauf - 5 kg @ ₹180</option>
+                <option value="Coupon Voucher|4200 pcs|3.30|0">Coupon Voucher - 4,200 pcs @ ₹3.30</option>
+                <option value="Mouth Freshener Mixture|6000 pcs|0.85|600">Mouth Freshener Mixture - 6,000 pcs @ ₹0.85</option>
+                <option value="White Sugar Sachet|6000 pcs|0.85|600">White Sugar Sachet - 6,000 pcs @ ₹0.85</option>
+                <option value="Salt Sachet Poster Paper|6000 pcs|0.50|600">Salt Sachet Poster - 6,000 pcs @ ₹0.50</option>
+                <option value="Printed Paper Cups 200 ML|3000 pcs|2.10|600">Printed Cups 200 ML - 3,000 pcs @ ₹2.10</option>
+              </select>
+              <button class="btn btn-primary" onclick="invoicePage.addSelectedCatalogItem()" style="padding: 8px 16px; font-size: 0.85rem; white-space: nowrap;">
+                <i class="fas fa-plus-circle"></i> Add
+              </button>
+            </div>
+          </div>
+
+          <!-- Adjustments: Dye, Delivery, Discount -->
+          <div style="background: #faf8f5; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-top: 24px;">
+            <h4 style="color: #0b3b82; font-size: 0.95rem; font-weight: 800; margin-bottom: 12px;">
+              <i class="fas fa-calculator text-gold"></i> Surcharges &amp; Discounts
+            </h4>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;">
+              <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label" style="font-size: 0.78rem;">One-Time Dye (₹):</label>
+                <input type="number" id="billDyeCharges" class="form-control" value="600" oninput="invoicePage.renderPreview()">
+              </div>
+              <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label" style="font-size: 0.78rem;">Delivery Fee (₹):</label>
+                <input type="number" id="billDeliveryCharges" class="form-control" value="300" oninput="invoicePage.renderPreview()">
+              </div>
+              <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label" style="font-size: 0.78rem;">Discount (₹):</label>
+                <input type="number" id="billDiscount" class="form-control" value="300" oninput="invoicePage.renderPreview()">
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right: Official A4 Live Preview & Action Toolbar -->
+        <div>
+          <div class="invoice-preview-pane">
+            <!-- Toolbar -->
+            <div class="toolbar-actions">
+              <button class="btn btn-outline-gold" onclick="window.invoiceEngine.downloadPDF()" style="flex: 1; padding: 10px 14px; font-size: 0.88rem;">
+                <i class="fas fa-file-pdf"></i> Download PDF
+              </button>
+              <button class="btn btn-primary" onclick="window.invoiceEngine.printInvoice()" style="flex: 1; padding: 10px 14px; font-size: 0.88rem;">
+                <i class="fas fa-print"></i> Print A4
+              </button>
+              <button class="btn btn-whatsapp" onclick="window.invoiceEngine.shareViaWhatsApp()" style="flex: 1; padding: 10px 14px; font-size: 0.88rem;">
+                <i class="fab fa-whatsapp"></i> WhatsApp Bill
+              </button>
+            </div>
+
+            <!-- Live Printable Invoice Sheet -->
+            <div id="invoiceRenderContainer"></div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Luxury Footer -->
+  <footer class="luxury-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-brand-title">PREMIUM PACKAGING SOLUTIONS (P6S)</div>
+        <p class="footer-desc">
+          Indore's leading hospitality atelier manufacturing bespoke smart sachets, greaseproof wrapping sheets, paper cups, eco tissues, and modern QR stands.
+        </p>
+        <div class="footer-contact-info">
+          <div><i class="fas fa-map-marker-alt"></i> Manufacturing &amp; Dispatch: Indore, Madhya Pradesh</div>
+          <div><i class="fas fa-phone-alt"></i> Naman: <a href="tel:+918462063330" style="color:#0b3b82; font-weight:700;">+91 8462063330</a></div>
+          <div><i class="fas fa-phone-alt"></i> Ansh: <a href="tel:+919111789220" style="color:#0b3b82; font-weight:700;">+91 9111789220</a></div>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="footer-column-title">Departments</h4>
+        <ul class="footer-links">
+          <li><a href="smart-sachets.html">Smart Sachets™ &amp; Mouth Freshener</a></li>
+          <li><a href="sachets.html">Dining Condiments &amp; Spices</a></li>
+          <li><a href="packaging-cups.html">Paper Cups, Wraps &amp; Tissues</a></li>
+          <li><a href="qr-stands.html">QR Displays &amp; Digital Menu</a></li>
+          <li><a href="calculator.html">Live Packaging Calculator</a></li>
+          <li><a href="invoice.html">Instant PDF Billing Engine</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-column-title">Founders &amp; Support</h4>
+        <p style="color: #64748b; font-size: 0.9rem; line-height: 1.6; margin-bottom: 14px;">
+          Managed by <strong>Naman &amp; Ansh</strong>. Direct supplier to premium cafes, cloud kitchens, and luxury hotels across central India.
+        </p>
+        <a href="https://wa.me/918462063330" target="_blank" class="btn btn-whatsapp" style="display: inline-flex; width: 100%; justify-content: center; margin-bottom: 12px;">
+          <i class="fab fa-whatsapp"></i> Chat with Naman
+        </a>
+        <a href="https://wa.me/919111789220" target="_blank" class="btn btn-outline-gold" style="display: inline-flex; width: 100%; justify-content: center;">
+          <i class="fab fa-whatsapp"></i> Chat with Ansh
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-content">
+        <div>
+          &copy; 2026 Premium Packaging Solutions (P6S) • Handcrafted for Luxury Hospitality
+        </div>
+        <div>
+          <button class="footer-owner-btn" onclick="app.openOwnerPortal()" title="Founders Access">
+            <i class="fas fa-lock"></i> Founders Portal
+          </button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cart Drawer -->
+  <div id="cartDrawer" class="cart-drawer">
+    <div class="cart-header">
+      <div class="cart-title">
+        <i class="fas fa-shopping-bag text-gold"></i> Your Order List
+      </div>
+      <button class="cart-close" onclick="app.toggleCart(false)"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="cart-body" id="cartItemsList"></div>
+    <div class="cart-footer">
+      <div class="cart-total-row">
+        <span>Estimated Subtotal:</span>
+        <span id="cartSubtotalText">₹ 0</span>
+      </div>
+      <div class="cart-actions-grid">
+        <button class="btn btn-outline-gold" onclick="app.clearCart()"><i class="fas fa-trash-alt"></i> Clear</button>
+        <button class="btn btn-primary" onclick="app.generateInvoiceFromCart()"><i class="fas fa-file-invoice"></i> Generate Bill</button>
+      </div>
+      <a href="https://wa.me/918462063330?text=Hello%20P6S%2C%20here%20is%20my%20order." id="cartWhatsAppOrderBtn" target="_blank" class="btn btn-whatsapp" style="margin-top: 10px; width: 100%; text-align: center;">
+        <i class="fab fa-whatsapp"></i> Send Order to WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- Order Builder Modal -->
+  <div id="orderBuilderModal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="modal-close-btn" onclick="app.closeModal('orderBuilderModal')"><i class="fas fa-times"></i></button>
+      <div class="modal-header">
+        <h3 id="builderModalTitle">Order Product</h3>
+        <p id="builderModalSubtitle" style="color: #64748b; font-size: 0.9rem; margin-top: 4px;"></p>
+      </div>
+      <div id="builderModalBody"></div>
+    </div>
+  </div>
+
+  <!-- Client Login Modal -->
+  <div id="loginModal" class="modal-overlay">
+    <div class="modal-content" style="max-width: 480px;">
+      <button class="modal-close-btn" onclick="app.closeModal('loginModal')"><i class="fas fa-times"></i></button>
+      <div style="text-align: center; margin-bottom: 20px;">
+        <h3 style="color: #0b3b82; font-size: 1.4rem; font-weight: 800;">Hospitality Client Login</h3>
+        <p style="color: #64748b; font-size: 0.88rem;">Save your restaurant profile for one-click invoice generation</p>
+      </div>
+      <div class="form-group"><label class="form-label">Restaurant / Cafe Name *</label><input type="text" id="authRestName" class="form-control" placeholder="e.g. Royal Spice Bistro"></div>
+      <div class="form-group"><label class="form-label">Owner / Manager Name</label><input type="text" id="authOwnerName" class="form-control" placeholder="e.g. Rahul Sharma"></div>
+      <div class="form-group"><label class="form-label">WhatsApp Contact Number *</label><input type="tel" id="authPhone" class="form-control" placeholder="e.g. 9876543210"></div>
+      <div class="form-group"><label class="form-label">City</label><input type="text" id="authCity" class="form-control" value="Indore"></div>
+      <div class="form-group"><label class="form-label">GST Number (Optional)</label><input type="text" id="authGST" class="form-control" placeholder="23AAAAA0000A1Z5"></div>
+      <button class="btn btn-primary" onclick="app.saveUserProfile()" style="width: 100%; padding: 12px; margin-top: 10px;"><i class="fas fa-check-circle"></i> Save Profile</button>
+    </div>
+  </div>
+
+  <!-- Profile Modal -->
+  <div id="profileModal" class="modal-overlay">
+    <div class="modal-content" style="max-width: 450px;">
+      <button class="modal-close-btn" onclick="app.closeModal('profileModal')"><i class="fas fa-times"></i></button>
+      <h3 style="color: #0b3b82; font-size: 1.3rem; font-weight: 800; margin-bottom: 16px;">Restaurant Profile</h3>
+      <div style="background: #faf8f5; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 18px;">
+        <div style="margin-bottom: 8px;"><span style="color:#64748b;">Restaurant:</span> <strong id="profRestName"></strong></div>
+        <div style="margin-bottom: 8px;"><span style="color:#64748b;">Contact:</span> <strong id="profOwnerName"></strong></div>
+        <div style="margin-bottom: 8px;"><span style="color:#64748b;">Phone:</span> <strong id="profPhone" style="color:#0b3b82;"></strong></div>
+        <div><span style="color:#64748b;">City:</span> <strong id="profCity"></strong></div>
+      </div>
+      <button class="btn" onclick="app.logoutUser()" style="width: 100%; background: #fee2e2; color: #dc2626; border: 1px solid #fca5a5;">Logout / Switch Account</button>
+    </div>
+  </div>
+
+  <!-- Owner Portal Modal -->
+  <div id="ownerPortalModal" class="modal-overlay">
+    <div class="modal-content modal-lg">
+      <button class="modal-close-btn" onclick="app.closeModal('ownerPortalModal')"><i class="fas fa-times"></i></button>
+      <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid var(--border-gold-solid); padding-bottom: 14px; margin-bottom: 20px;">
+        <div>
+          <span style="background:#0b3b82; color:#fff; font-size:0.75rem; font-weight:800; padding:3px 10px; border-radius:12px;">FOUNDERS ONLY</span>
+          <h2 style="color: #0b3b82; font-size: 1.6rem; font-weight: 800; margin-top: 6px;">Naman &amp; Ansh • Operations &amp; Lead Tracker</h2>
+        </div>
+        <div style="text-align: right; font-size: 0.85rem; color: #64748b;">
+          Headquarters: <strong>Indore</strong><br>
+          Phones: <strong>8462063330 / 9111789220</strong>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 24px;">
+        <div style="background:#faf8f5; border:1px solid #e2e8f0; border-radius:12px; padding:16px; text-align:center;">
+          <div id="statTotalTaps" style="font-size: 1.8rem; font-weight: 800; color: #0b3b82;">0</div>
+          <div style="font-size:0.8rem; color:#64748b;">Total Link Taps</div>
+        </div>
+        <div style="background:#faf8f5; border:1px solid #e2e8f0; border-radius:12px; padding:16px; text-align:center;">
+          <div id="statInstaLeads" style="font-size: 1.8rem; font-weight: 800; color: #ec4899;">0</div>
+          <div style="font-size:0.8rem; color:#64748b;">Instagram Visitors</div>
+        </div>
+        <div style="background:#faf8f5; border:1px solid #e2e8f0; border-radius:12px; padding:16px; text-align:center;">
+          <div id="statWhatsLeads" style="font-size: 1.8rem; font-weight: 800; color: #25d366;">0</div>
+          <div style="font-size:0.8rem; color:#64748b;">WhatsApp Leads</div>
+        </div>
+        <div style="background:#faf8f5; border:1px solid #e2e8f0; border-radius:12px; padding:16px; text-align:center;">
+          <div id="statTotalInvoices" style="font-size: 1.8rem; font-weight: 800; color: #b8860b;">0</div>
+          <div style="font-size:0.8rem; color:#64748b;">Invoices Created</div>
+        </div>
+      </div>
+      <div style="background: #faf8f5; border: 1.5px dashed var(--border-gold-solid); border-radius: 12px; padding: 20px;">
+        <h4 style="color: #0b3b82; font-size: 1.05rem; margin-bottom: 8px;"><i class="fas fa-link text-gold"></i> Create Trackable Referral Link</h4>
+        <div style="display: grid; grid-template-columns: 1fr 1.5fr 1fr; gap: 10px;">
+          <div>
+            <label class="form-label" style="font-size: 0.78rem;">Platform:</label>
+            <select id="genPlatform" class="form-control" style="padding: 8px;">
+              <option value="instagram">Instagram</option>
+              <option value="whatsapp">WhatsApp</option>
+              <option value="qr_stand">QR Sachet Scan</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size: 0.78rem;">Insta Handle / Phone / Name:</label>
+            <input type="text" id="genClientRef" class="form-control" placeholder="e.g. @the_midnight_cafe or 9876543210" style="padding: 8px;">
+          </div>
+          <div style="align-self: flex-end;">
+            <button class="btn btn-primary" onclick="app.generateTrackedLink()" style="width: 100%; padding: 8px 12px; font-size: 0.88rem;">Generate</button>
+          </div>
+        </div>
+        <div style="display: flex; gap: 8px; margin-top: 12px;">
+          <input type="text" id="generatedLinkOutput" class="form-control" placeholder="Your trackable link will appear here..." readonly style="font-size: 0.85rem; background: #ffffff;">
+          <button class="btn btn-outline-gold" onclick="app.copyGeneratedLink()" style="padding: 8px 16px;"><i class="fas fa-copy"></i> Copy</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/invoice.js"></script>
+  <script src="js/app.js"></script>
+
+  <!-- Invoicing Page Interactive Controller -->
+  <script>
+    const invoicePage = {
+      items: [
+        { name: "Butter Paper (customized)", qty: "15.4 kg", rate: 280, dye: 600, amount: 4912 },
+        { name: "White Acrylic Stand", qty: "42 pcs", rate: 150, dye: 0, amount: 6300 },
+        { name: "Golden QR Stand", qty: "3 pcs", rate: 600, dye: 0, amount: 1800 },
+        { name: "Madrasi Sauf", qty: "5 kg", rate: 180, dye: 0, amount: 900 },
+        { name: "Coupon Voucher", qty: "4200 pcs", rate: 3.30, dye: 0, amount: 13860 }
+      ],
+
+      init: function() {
+        // Set today's date
+        const d = new Date();
+        const dateStr = `${String(d.getDate()).padStart(2,'0')}/${String(d.getMonth()+1).padStart(2,'0')}/${d.getFullYear()}`;
+        document.getElementById('billInvoiceDate').value = dateStr;
+
+        // Check if client name is in app or URL
+        if (window.app && window.app.currentUser) {
+          document.getElementById('billClientName').value = window.app.currentUser.restaurantName;
+          document.getElementById('billClientPhone').value = window.app.currentUser.phone;
+          document.getElementById('billClientPlace').value = window.app.currentUser.city || 'Indore';
+        }
+
+        // Render rows and initial preview
+        this.renderRows();
+        this.renderPreview();
+      },
+
+      renderRows: function() {
+        const container = document.getElementById('billItemsContainer');
+        if (!container) return;
+
+        container.innerHTML = this.items.map((it, idx) => `
+          <div class="bill-item-row" data-index="${idx}">
+            <input type="text" class="form-control" value="${it.name}" oninput="invoicePage.updateItem(${idx}, 'name', this.value)" placeholder="Product Description">
+            <input type="text" class="form-control" value="${it.qty}" oninput="invoicePage.updateItem(${idx}, 'qty', this.value)" placeholder="Qty & Unit">
+            <input type="number" step="0.01" class="form-control" value="${it.rate}" oninput="invoicePage.updateItem(${idx}, 'rate', this.value)" placeholder="Rate">
+            <input type="number" class="form-control" value="${it.dye}" oninput="invoicePage.updateItem(${idx}, 'dye', this.value)" placeholder="Dye">
+            <button type="button" class="btn" onclick="invoicePage.removeItem(${idx})" style="padding: 6px; background: #fee2e2; color: #dc2626; border: 1px solid #fca5a5; border-radius: 6px;">
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+        `).join('');
+      },
+
+      addRow: function(item = { name: "New Product", qty: "1000 pcs", rate: 1.00, dye: 0, amount: 1000 }) {
+        this.items.push(item);
+        this.renderRows();
+        this.renderPreview();
+      },
+
+      removeItem: function(idx) {
+        if (this.items.length <= 1) {
+          alert("Invoice must have at least one line item.");
+          return;
+        }
+        this.items.splice(idx, 1);
+        this.renderRows();
+        this.renderPreview();
+      },
+
+      updateItem: function(idx, field, value) {
+        if (!this.items[idx]) return;
+        this.items[idx][field] = value;
+        
+        // Recalculate amount if rate or qty changes
+        const numQty = parseFloat(String(this.items[idx].qty).replace(/[^\d.]/g, '')) || 1;
+        const numRate = parseFloat(this.items[idx].rate) || 0;
+        const numDye = parseFloat(this.items[idx].dye) || 0;
+        this.items[idx].amount = (numQty * numRate) + numDye;
+
+        this.renderPreview();
+      },
+
+      addSelectedCatalogItem: function() {
+        const sel = document.getElementById('quickProductAddSelect');
+        const val = sel.value;
+        if (!val) return;
+
+        const parts = val.split('|');
+        if (parts.length >= 4) {
+          const name = parts[0];
+          const qty = parts[1];
+          const rate = parseFloat(parts[2]);
+          const dye = parseFloat(parts[3]);
+          const numQty = parseFloat(qty.replace(/[^\d.]/g, '')) || 1;
+          const amount = (numQty * rate) + dye;
+
+          this.addRow({ name, qty, rate, dye, amount });
+          sel.value = "";
+        }
+      },
+
+      loadFromCart: function() {
+        if (!window.app || !window.app.cart || window.app.cart.length === 0) {
+          alert("Your cart is empty. Add items from the product pages or calculator first, or use the quick add dropdown below.");
+          return;
+        }
+
+        this.items = window.app.cart.map(c => ({
+          name: c.name,
+          qty: `${c.qty} ${c.unit || 'pcs'}`,
+          rate: c.rate,
+          dye: c.dye || 0,
+          amount: c.amount || ((c.qty * c.rate) + (c.dye || 0))
+        }));
+
+        this.renderRows();
+        this.renderPreview();
+        alert("✅ Successfully loaded " + this.items.length + " item(s) from your order cart!");
+      },
+
+      renderPreview: function() {
+        const clientName = document.getElementById('billClientName').value.trim() || "Valued Client";
+        const clientPhone = document.getElementById('billClientPhone').value.trim();
+        const clientPlace = document.getElementById('billClientPlace').value.trim() || "Indore";
+        const customDate = document.getElementById('billInvoiceDate').value.trim();
+        const dyeCharges = parseFloat(document.getElementById('billDyeCharges').value) || 0;
+        const deliveryCharges = parseFloat(document.getElementById('billDeliveryCharges').value) || 0;
+        const discount = parseFloat(document.getElementById('billDiscount').value) || 0;
+
+        const invoice = window.invoiceEngine.createInvoice({
+          clientName: clientName,
+          clientPhone: clientPhone,
+          clientAddress: clientPlace,
+          items: this.items,
+          dyeCharges: dyeCharges,
+          deliveryCharges: deliveryCharges,
+          discount: discount,
+          sourceTag: "Direct Bill Generator"
+        });
+
+        if (customDate) invoice.date = customDate;
+        if (clientPlace) invoice.place = clientPlace;
+
+        const container = document.getElementById('invoiceRenderContainer');
+        if (container) {
+          container.innerHTML = window.invoiceEngine.renderHTML(invoice);
+        }
+      }
+    };
+
+    window.addEventListener('DOMContentLoaded', () => {
+      invoicePage.init();
+    });
+  </script>
+</body>
+</html>

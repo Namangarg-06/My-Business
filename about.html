@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us &amp; Contact Founders | Premium Packaging Solutions (P6S)</title>
+  <meta name="description" content="Contact founders Naman &amp; Ansh at Premium Packaging Solutions (P6S) Indore. Ph: 8462063330, 9111789220. Bespoke hospitality packaging and smart sachets.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 30px;
+    }
+    @media (max-width: 900px) {
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+    .founder-card {
+      background: #ffffff;
+      border: 1px solid var(--border-gold-solid);
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .founder-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(11,59,130,0.08);
+      border-color: var(--gold-primary);
+    }
+    .founder-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #faf8f5;
+      border: 2px solid var(--border-gold-solid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      color: var(--gold-dark);
+      margin-bottom: 16px;
+    }
+    .faq-item {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+    .faq-q {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #0b3b82;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .faq-a {
+      font-size: 0.92rem;
+      color: #475569;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Notification & Contact Bar -->
+  <div id="sourceTrackingBanner" class="source-banner">
+    <div class="source-banner-content">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span id="sourceBannerPill" class="source-tag-pill"><i class="fas fa-crown"></i> FOUNDERS DESK</span>
+        <span id="sourceBannerText">Meet Naman &amp; Ansh • Direct Factory Line for Restaurateurs</span>
+      </div>
+      <div class="source-phone-links">
+        <span><i class="fas fa-phone-alt"></i> Hotline:</span>
+        <a href="tel:+918462063330">8462063330</a>
+        <a href="tel:+919111789220">9111789220</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-wrapper">
+        <div class="brand-lv-crest">
+          <svg class="p6s-svg-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="p6sGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#E5C07B" /><stop offset="50%" stop-color="#C5A059" /><stop offset="100%" stop-color="#8C6D23" />
+              </linearGradient>
+            </defs>
+            <path d="M50 4 C54 26 74 46 96 50 C74 54 54 74 50 96 C46 74 26 54 4 50 C26 46 46 26 50 4 Z" stroke="url(#p6sGoldGrad)" stroke-width="2" fill="#faf8f5" />
+            <rect x="25" y="25" width="50" height="50" rx="4" transform="rotate(45 50 50)" stroke="url(#p6sGoldGrad)" stroke-width="1.5" fill="#ffffff" />
+            <text x="50" y="58" font-family="'Cinzel', serif" font-size="22" font-weight="900" fill="url(#p6sGoldGrad)" text-anchor="middle" letter-spacing="1">P6S</text>
+          </svg>
+        </div>
+        <div class="brand-info">
+          <div class="brand-name">PREMIUM <span>PACKAGING</span></div>
+          <div class="brand-sub">SOLUTIONS (P6S) • INDORE</div>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="smart-sachets.html">Smart Sachets</a></li>
+        <li><a href="sachets.html">Spices &amp; Sugar</a></li>
+        <li><a href="packaging-cups.html">Cups &amp; Paper</a></li>
+        <li><a href="qr-stands.html">QR Stands</a></li>
+        <li><a href="calculator.html">Price Calculator</a></li>
+        <li><a href="invoice.html">Instant Bill</a></li>
+        <li><a href="about.html" class="active">Contact Us</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="navUserBtn" class="btn btn-outline-gold" onclick="app.openLoginModal()" style="padding: 8px 14px; font-size: 0.84rem;">
+          <i class="fas fa-sign-in-alt"></i> Client Login
+        </button>
+        <button class="btn btn-cart" onclick="app.toggleCart(true)" title="View Order List">
+          <i class="fas fa-shopping-bag text-gold"></i>
+          <span id="navCartCount" class="cart-count">0</span>
+        </button>
+        <a href="https://wa.me/918462063330?text=Hello%20Naman%20%26%20Ansh%2C%20I%20want%20to%20connect%20regarding%20packaging." target="_blank" class="btn btn-whatsapp" style="padding: 8px 14px; font-size: 0.84rem;">
+          <i class="fab fa-whatsapp"></i> WhatsApp Us
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Hero Banner -->
+  <div class="page-hero-banner">
+    <div class="container">
+      <span class="page-hero-kicker">Hospitality Packaging Atelier</span>
+      <h1 class="page-hero-title">About P6S &amp; Founders Hotline</h1>
+      <p class="page-hero-desc">
+        Founded by Naman &amp; Ansh in Indore. We engineer high-touch, food-grade customized packaging that elevates your restaurant's brand image and drives repeat customer loyalty.
+      </p>
+      <div class="breadcrumb-wrap">
+        <a href="index.html">Home</a> <span>/</span> <span>Contact &amp; About Us</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Founders Section -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+
+      <div style="text-align: center; max-width: 680px; margin: 0 auto 36px;">
+        <span style="font-size: 0.82rem; font-weight: 800; color: #b8860b; text-transform: uppercase; letter-spacing: 0.08em;">LEADERSHIP &amp; OPERATIONS</span>
+        <h2 style="color: #0b3b82; font-size: 2.2rem; font-weight: 800; margin-top: 6px;">Meet The Founders</h2>
+        <p style="color: #64748b; font-size: 0.95rem;">
+          Direct communication, zero middlemen, and personalized hospitality consultancy for every dining establishment.
+        </p>
+      </div>
+
+      <!-- Two Founders Cards Grid -->
+      <div class="contact-grid">
+        
+        <!-- Founder 1: Naman -->
+        <div class="founder-card">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <div class="founder-avatar">
+              <i class="fas fa-user-tie"></i>
+            </div>
+            <span style="background: #eff6ff; color: #1d4ed8; font-size: 0.78rem; font-weight: 800; padding: 4px 12px; border-radius: 12px;">CO-FOUNDER</span>
+          </div>
+
+          <h3 style="color: #0b3b82; font-size: 1.6rem; font-weight: 800; margin-bottom: 4px;">Naman</h3>
+          <div style="font-size: 0.88rem; font-weight: 700; color: #b8860b; margin-bottom: 12px;">
+            Head of Operations &amp; Client Partnerships
+          </div>
+          <p style="color: #64748b; font-size: 0.92rem; line-height: 1.6; margin-bottom: 20px;">
+            Oversees commercial client onboarding, bulk contract manufacturing, dispatch schedules, and ensures guaranteed factory-direct pricing for all dining venues.
+          </p>
+
+          <div style="background: #faf8f5; border: 1px solid #e2e8f0; border-radius: 12px; padding: 14px 18px; margin-bottom: 20px;">
+            <div style="font-size: 0.82rem; color: #64748b; margin-bottom: 4px;">Direct Phone Line:</div>
+            <a href="tel:+918462063330" style="color: #0b3b82; font-size: 1.25rem; font-weight: 800; text-decoration: none; display: flex; align-items: center; gap: 8px;">
+              <i class="fas fa-phone-alt text-gold"></i> +91 8462063330
+            </a>
+          </div>
+
+          <div style="display: flex; gap: 10px;">
+            <a href="https://wa.me/918462063330?text=Hello%20Naman%2C%20I%20am%20interested%20in%20P6S%20packaging%20for%20my%20restaurant." target="_blank" class="btn btn-whatsapp" style="flex: 1; text-align: center; padding: 10px 14px;">
+              <i class="fab fa-whatsapp"></i> Chat with Naman
+            </a>
+            <a href="tel:+918462063330" class="btn btn-outline-gold" style="padding: 10px 14px;">
+              <i class="fas fa-phone"></i> Call
+            </a>
+          </div>
+        </div>
+
+        <!-- Founder 2: Ansh -->
+        <div class="founder-card">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <div class="founder-avatar">
+              <i class="fas fa-user-shield"></i>
+            </div>
+            <span style="background: #f0fdf4; color: #15803d; font-size: 0.78rem; font-weight: 800; padding: 4px 12px; border-radius: 12px;">CO-FOUNDER</span>
+          </div>
+
+          <h3 style="color: #0b3b82; font-size: 1.6rem; font-weight: 800; margin-bottom: 4px;">Ansh</h3>
+          <div style="font-size: 0.88rem; font-weight: 700; color: #b8860b; margin-bottom: 12px;">
+            Head of Production Quality &amp; Smart Sachet Tech
+          </div>
+          <p style="color: #64748b; font-size: 0.92rem; line-height: 1.6; margin-bottom: 20px;">
+            Manages food-grade cylinder printing precision, greaseproof paper testing, dynamic QR integration for Google reviews, and technical logistics.
+          </p>
+
+          <div style="background: #faf8f5; border: 1px solid #e2e8f0; border-radius: 12px; padding: 14px 18px; margin-bottom: 20px;">
+            <div style="font-size: 0.82rem; color: #64748b; margin-bottom: 4px;">Direct Phone Line:</div>
+            <a href="tel:+919111789220" style="color: #0b3b82; font-size: 1.25rem; font-weight: 800; text-decoration: none; display: flex; align-items: center; gap: 8px;">
+              <i class="fas fa-phone-alt text-gold"></i> +91 9111789220
+            </a>
+          </div>
+
+          <div style="display: flex; gap: 10px;">
+            <a href="https://wa.me/919111789220?text=Hello%20Ansh%2C%20I%20am%20interested%20in%20P6S%20custom%20printing%20and%20smart%20sachets." target="_blank" class="btn btn-whatsapp" style="flex: 1; text-align: center; padding: 10px 14px;">
+              <i class="fab fa-whatsapp"></i> Chat with Ansh
+            </a>
+            <a href="tel:+919111789220" class="btn btn-outline-gold" style="padding: 10px 14px;">
+              <i class="fas fa-phone"></i> Call
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive Inquiry & Dispatch Center -->
+  <section class="section" style="background: #ffffff; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0;">
+    <div class="container">
+      
+      <div class="contact-grid">
+        
+        <!-- Left: Quick Direct WhatsApp Inquiry Form -->
+        <div style="background: #faf8f5; border: 1px solid var(--border-gold-solid); border-radius: 16px; padding: 30px;">
+          <h3 style="color: #0b3b82; font-size: 1.35rem; font-weight: 800; margin-bottom: 6px;">
+            <i class="fab fa-whatsapp" style="color: #25d366;"></i> Instant WhatsApp Inquiry
+          </h3>
+          <p style="color: #64748b; font-size: 0.88rem; margin-bottom: 20px;">
+            Fill in your requirement below and we will automatically format your query and connect you directly with Naman &amp; Ansh on WhatsApp.
+          </p>
+
+          <div class="form-group">
+            <label class="form-label" style="font-size: 0.82rem;">Restaurant / Cafe Name *</label>
+            <input type="text" id="inqRestName" class="form-control" placeholder="e.g. Amber Kitchen Cafe">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" style="font-size: 0.82rem;">Your Name &amp; Role</label>
+            <input type="text" id="inqPersonName" class="form-control" placeholder="e.g. Vikas Patel (Owner)">
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div class="form-group">
+              <label class="form-label" style="font-size: 0.82rem;">Your Contact Number *</label>
+              <input type="tel" id="inqPhone" class="form-control" placeholder="9876543210">
+            </div>
+            <div class="form-group">
+              <label class="form-label" style="font-size: 0.82rem;">City</label>
+              <input type="text" id="inqCity" class="form-control" value="Indore">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" style="font-size: 0.82rem;">Primary Requirement</label>
+            <select id="inqCategory" class="form-control">
+              <option value="Smart Sachets (Mouth Freshener / Google Review)">Smart Sachets (Mouth Freshener &amp; QR)</option>
+              <option value="Sugar & Spice Condiment Sachets">Sugar &amp; Spice Condiment Sachets</option>
+              <option value="Butter Paper Sheets (Non OGR)">Butter Paper Sheets (Non OGR, 30kg+)</option>
+              <option value="Custom Printed Paper Cups">Custom Printed Paper Cups (200ml - 480ml)</option>
+              <option value="Eco Friendly Tissue Papers">Eco Friendly Tissue Papers (27x27cm)</option>
+              <option value="QR Display Table Stands">QR Display Table Stands &amp; Menu Setup</option>
+              <option value="Complete Restaurant Starter Kit">Complete Restaurant Starter Kit (All Products)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" style="font-size: 0.82rem;">Estimated Monthly Requirement</label>
+            <input type="text" id="inqVolume" class="form-control" placeholder="e.g. 10,000 sachets / 50 kg butter paper">
+          </div>
+
+          <button class="btn btn-whatsapp" onclick="aboutPage.sendInquiry()" style="width: 100%; padding: 14px; font-size: 1rem; margin-top: 10px;">
+            <i class="fab fa-whatsapp"></i> Send to Naman &amp; Ansh on WhatsApp
+          </button>
+        </div>
+
+        <!-- Right: Dispatch Facility & Quality Assurances -->
+        <div>
+          <div style="margin-bottom: 24px;">
+            <span style="font-size: 0.78rem; font-weight: 800; color: #b8860b; text-transform: uppercase; letter-spacing: 0.08em;">ATELIER HEADQUARTERS</span>
+            <h3 style="color: #0b3b82; font-size: 1.5rem; font-weight: 800; margin-top: 4px;">Indore Manufacturing Hub</h3>
+            <p style="color: #64748b; font-size: 0.92rem; line-height: 1.6;">
+              Headquartered in Indore, Madhya Pradesh — strategically located at the commercial nexus of India. We dispatch goods securely with trusted express freight partners across central and all major Indian cities.
+            </p>
+          </div>
+
+          <div style="display: grid; gap: 14px;">
+            <div style="display: flex; gap: 14px; align-items: flex-start; background: #faf8f5; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px;">
+              <div style="font-size: 1.4rem; color: #b8860b;"><i class="fas fa-shield-virus"></i></div>
+              <div>
+                <h4 style="color: #0b3b82; font-size: 1rem; font-weight: 800; margin: 0 0 4px;">100% Food-Grade Certification</h4>
+                <p style="color: #64748b; font-size: 0.85rem; margin: 0;">Virgin paper pulp, certified inks, odor-free metallized foils, strictly compliant with hospitality food contact norms.</p>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 14px; align-items: flex-start; background: #faf8f5; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px;">
+              <div style="font-size: 1.4rem; color: #0b3b82;"><i class="fas fa-bolt"></i></div>
+              <div>
+                <h4 style="color: #0b3b82; font-size: 1rem; font-weight: 800; margin: 0 0 4px;">Fast Turnaround &amp; Repeat Logistics</h4>
+                <p style="color: #64748b; font-size: 0.85rem; margin: 0;">Plate approval within 48 hours. Quick re-orders dispatched promptly with zero recurring dye charges.</p>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 14px; align-items: flex-start; background: #faf8f5; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px;">
+              <div style="font-size: 1.4rem; color: #166534;"><i class="fas fa-file-invoice-dollar"></i></div>
+              <div>
+                <h4 style="color: #0b3b82; font-size: 1rem; font-weight: 800; margin: 0 0 4px;">Official Verifiable Billing</h4>
+                <p style="color: #64748b; font-size: 0.85rem; margin: 0;">Every dispatch is accompanied by an itemized official P6S tax invoice with transparent terms and dispatch place Indore.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section">
+    <div class="container">
+      <div style="text-align: center; max-width: 650px; margin: 0 auto 36px;">
+        <span style="font-size: 0.82rem; font-weight: 800; color: #b8860b; text-transform: uppercase; letter-spacing: 0.08em;">FREQUENTLY ASKED QUESTIONS</span>
+        <h2 style="color: #0b3b82; font-size: 2.2rem; font-weight: 800; margin-top: 6px;">Hospitality Procurement FAQ</h2>
+      </div>
+
+      <div style="max-width: 820px; margin: 0 auto;">
+        
+        <div class="faq-item">
+          <div class="faq-q"><i class="fas fa-question-circle text-gold"></i> What are the Minimum Order Quantities (MOQ)?</div>
+          <div class="faq-a">
+            • <strong>Smart Sachets &amp; Mouth Freshener:</strong> 4,000 Sachets.<br>
+            • <strong>Butter Paper Sheets:</strong> 30 KG.<br>
+            • <strong>Printed Paper Cups:</strong> 3,000 Pcs.<br>
+            • <strong>Tissue Papers:</strong> 250 Packets (500 Packets for custom logo printing).<br>
+            • <strong>Chopsticks:</strong> 2,000 Pairs.<br>
+            • <strong>QR Stands:</strong> No MOQ (Single pieces available).
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q"><i class="fas fa-question-circle text-gold"></i> Are printing plate / dye charges paid every time?</div>
+          <div class="faq-a">
+            No! Dye charges (₹600 for Single Colour, ₹2,500 for Multi-Colour) are a strictly <strong>one-time initial investment</strong>. For all your future repeat batches, dye charges are <strong>₹0</strong>.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q"><i class="fas fa-question-circle text-gold"></i> How do the QR Codes on Smart Sachets work?</div>
+          <div class="faq-a">
+            We generate and print a dynamic QR code on the back of each sachet that directly opens your Google Business Review link, Instagram profile, or digital food menu without the diner having to search or type your name.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q"><i class="fas fa-question-circle text-gold"></i> What are the official payment and dispatch terms?</div>
+          <div class="faq-a">
+            As stated on our official bills: 50% advance upon digital mock-up confirmation and 50% balance before factory dispatch. Goods are dispatched directly from our Indore atelier.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Luxury Footer -->
+  <footer class="luxury-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-brand-title">PREMIUM PACKAGING SOLUTIONS (P6S)</div>
+        <p class="footer-desc">
+          Indore's leading hospitality atelier manufacturing bespoke smart sachets, greaseproof wrapping sheets, paper cups, eco tissues, and modern QR stands.
+        </p>
+        <div class="footer-contact-info">
+          <div><i class="fas fa-map-marker-alt"></i> Manufacturing &amp; Dispatch: Indore, Madhya Pradesh</div>
+          <div><i class="fas fa-phone-alt"></i> Naman: <a href="tel:+918462063330" style="color:#0b3b82; font-weight:700;">+91 8462063330</a></div>
+          <div><i class="fas fa-phone-alt"></i> Ansh: <a href="tel:+919111789220" style="color:#0b3b82; font-weight:700;">+91 9111789220</a></div>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="footer-column-title">Departments</h4>
+        <ul class="footer-links">
+          <li><a href="smart-sachets.html">Smart Sachets™ &amp; Mouth Freshener</a></li>
+          <li><a href="sachets.html">Dining Condiments &amp; Spices</a></li>
+          <li><a href="packaging-cups.html">Paper Cups, Wraps &amp; Tissues</a></li>
+          <li><a href="qr-stands.html">QR Displays &amp; Digital Menu</a></li>
+          <li><a href="calculator.html">Live Packaging Calculator</a></li>
+          <li><a href="invoice.html">Instant PDF Billing Engine</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-column-title">Founders &amp; Support</h4>
+        <p style="color: #64748b; font-size: 0.9rem; line-height: 1.6; margin-bottom: 14px;">
+          Managed by <strong>Naman &amp; Ansh</strong>. Direct supplier to premium cafes, cloud kitchens, and luxury hotels across central India.
+        </p>
+        <a href="https://wa.me/918462063330" target="_blank" class="btn btn-whatsapp" style="display: inline-flex; width: 100%; justify-content: center; margin-bottom: 12px;">
+          <i class="fab fa-whatsapp"></i> Chat with Naman
+        </a>
+        <a href="https://wa.me/919111789220" target="_blank" class="btn btn-outline-gold" style="display: inline-flex; width: 100%; justify-content: center;">
+          <i class="fab fa-whatsapp"></i> Chat with Ansh
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-content">
+        <div>
+          &copy; 2026 Premium Packaging Solutions (P6S) • Handcrafted for Luxury Hospitality
+        </div>
+        <div>
+          <button class="footer-owner-btn" onclick="app.openOwnerPortal()" title="Founders Access">
+            <i class="fas fa-lock"></i> Founders Portal
+          </button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cart Drawer -->
+  <div id="cartDrawer" class="cart-drawer">
+    <div class="cart-header">
+      <div class="cart-title">
+        <i class="fas fa-shopping-bag text-gold"></i> Your Order List
+      </div>
+      <button class="cart-close" onclick="app.toggleCart(false)"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="cart-body" id="cartItemsList"></div>
+    <div class="cart-footer">
+      <div class="cart-total-row">
+        <span>Estimated Subtotal:</span>
+        <span id="cartSubtotalText">₹ 0</span>
+      </div>
+      <div class="cart-actions-grid">
+        <button class="btn btn-outline-gold" onclick="app.clearCart()"><i class="fas fa-trash-alt"></i> Clear</button>
+        <button class="btn btn-primary" onclick="app.generateInvoiceFromCart()"><i class="fas fa-file-invoice"></i> Generate Bill</button>
+      </div>
+      <a href="https://wa.me/918462063330?text=Hello%20P6S%2C%20here%20is%20my%20order." id="cartWhatsAppOrderBtn" target="_blank" class="btn btn-whatsapp" style="margin-top: 10px; width: 100%; text-align: center;">
+        <i class="fab fa-whatsapp"></i> Send Order to WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- Client Login Modal -->
+  <div id="loginModal" class="modal-overlay">
+    <div class="modal-content" style="max-width: 480px;">
+      <button class="modal-close-btn" onclick="app.closeModal('loginModal')"><i class="fas fa-times"></i></button>
+      <div style="text-align: center; margin-bottom: 20px;">
+        <h3 style="color: #0b3b82; font-size: 1.4rem; font-weight: 800;">Hospitality Client Login</h3>
+        <p style="color: #64748b; font-size: 0.88rem;">Save your restaurant profile for one-click invoice generation</p>
+      </div>
+      <div class="form-group"><label class="form-label">Restaurant / Cafe Name *</label><input type="text" id="authRestName" class="form-control" placeholder="e.g. Royal Spice Bistro"></div>
+      <div class="form-group"><label class="form-label">Owner / Manager Name</label><input type="text" id="authOwnerName" class="form-control" placeholder="e.g. Rahul Sharma"></div>
+      <div class="form-group"><label class="form-label">WhatsApp Contact Number *</label><input type="tel" id="authPhone" class="form-control" placeholder="e.g. 9876543210"></div>
+      <div class="form-group"><label class="form-label">City</label><input type="text" id="authCity" class="form-control" value="Indore"></div>
+      <div class="form-group"><label class="form-label">GST Number (Optional)</label><input type="text" id="authGST" class="form-control" placeholder="23AAAAA0000A1Z5"></div>
+      <button class="btn btn-primary" onclick="app.saveUserProfile()" style="width: 100%; padding: 12px; margin-top: 10px;"><i class="fas fa-check-circle"></i> Save Profile</button>
+    </div>
+  </div>
+
+  <!-- Profile Modal -->
+  <div id="profileModal" class="modal-overlay">
+    <div class="modal-content" style="max-width: 450px;">
+      <button class="modal-close-btn" onclick="app.closeModal('profileModal')"><i class="fas fa-times"></i></button>
+      <h3 style="color: #0b3b82; font-size: 1.3rem; font-weight: 800; margin-bottom: 16px;">Restaurant Profile</h3>
+      <div style="background: #faf8f5; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 18px;">
+        <div style="margin-bottom: 8px;"><span style="color:#64748b;">Restaurant:</span> <strong id="profRestName"></strong></div>
+        <div style="margin-bottom: 8px;"><span style="color:#64748b;">Contact:</span> <strong id="profOwnerName"></strong></div>
+        <div style="margin-bottom: 8px;"><span style="color:#64748b;">Phone:</span> <strong id="profPhone" style="color:#0b3b82;"></strong></div>
+        <div><span style="color:#64748b;">City:</span> <strong id="profCity"></strong></div>
+      </div>
+      <button class="btn" onclick="app.logoutUser()" style="width: 100%; background: #fee2e2; color: #dc2626; border: 1px solid #fca5a5;">Logout / Switch Account</button>
+    </div>
+  </div>
+
+  <!-- Owner Portal Modal -->
+  <div id="ownerPortalModal" class="modal-overlay">
+    <div class="modal-content modal-lg">
+      <button class="modal-close-btn" onclick="app.closeModal('ownerPortalModal')"><i class="fas fa-times"></i></button>
+      <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid var(--border-gold-solid); padding-bottom: 14px; margin-bottom: 20px;">
+        <div>
+          <span style="background:#0b3b82; color:#fff; font-size:0.75rem; font-weight:800; padding:3px 10px; border-radius:12px;">FOUNDERS ONLY</span>
+          <h2 style="color: #0b3b82; font-size: 1.6rem; font-weight: 800; margin-top: 6px;">Naman &amp; Ansh • Operations &amp; Lead Tracker</h2>
+        </div>
+        <div style="text-align: right; font-size: 0.85rem; color: #64748b;">
+          Headquarters: <strong>Indore</strong><br>
+          Phones: <strong>8462063330 / 9111789220</strong>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 24px;">
+        <div style="background:#faf8f5; border:1px solid #e2e8f0; border-radius:12px; padding:16px; text-align:center;">
+          <div id="statTotalTaps" style="font-size: 1.8rem; font-weight: 800; color: #0b3b82;">0</div>
+          <div style="font-size:0.8rem; color:#64748b;">Total Link Taps</div>
+        </div>
+        <div style="background:#faf8f5; border:1px solid #e2e8f0; border-radius:12px; padding:16px; text-align:center;">
+          <div id="statInstaLeads" style="font-size: 1.8rem; font-weight: 800; color: #ec4899;">0</div>
+          <div style="font-size:0.8rem; color:#64748b;">Instagram Visitors</div>
+        </div>
+        <div style="background:#faf8f5; border:1px solid #e2e8f0; border-radius:12px; padding:16px; text-align:center;">
+          <div id="statWhatsLeads" style="font-size: 1.8rem; font-weight: 800; color: #25d366;">0</div>
+          <div style="font-size:0.8rem; color:#64748b;">WhatsApp Leads</div>
+        </div>
+        <div style="background:#faf8f5; border:1px solid #e2e8f0; border-radius:12px; padding:16px; text-align:center;">
+          <div id="statTotalInvoices" style="font-size: 1.8rem; font-weight: 800; color: #b8860b;">0</div>
+          <div style="font-size:0.8rem; color:#64748b;">Invoices Created</div>
+        </div>
+      </div>
+      <div style="background: #faf8f5; border: 1.5px dashed var(--border-gold-solid); border-radius: 12px; padding: 20px;">
+        <h4 style="color: #0b3b82; font-size: 1.05rem; margin-bottom: 8px;"><i class="fas fa-link text-gold"></i> Create Trackable Referral Link</h4>
+        <div style="display: grid; grid-template-columns: 1fr 1.5fr 1fr; gap: 10px;">
+          <div>
+            <label class="form-label" style="font-size: 0.78rem;">Platform:</label>
+            <select id="genPlatform" class="form-control" style="padding: 8px;">
+              <option value="instagram">Instagram</option>
+              <option value="whatsapp">WhatsApp</option>
+              <option value="qr_stand">QR Sachet Scan</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size: 0.78rem;">Insta Handle / Phone / Name:</label>
+            <input type="text" id="genClientRef" class="form-control" placeholder="e.g. @the_midnight_cafe or 9876543210" style="padding: 8px;">
+          </div>
+          <div style="align-self: flex-end;">
+            <button class="btn btn-primary" onclick="app.generateTrackedLink()" style="width: 100%; padding: 8px 12px; font-size: 0.88rem;">Generate</button>
+          </div>
+        </div>
+        <div style="display: flex; gap: 8px; margin-top: 12px;">
+          <input type="text" id="generatedLinkOutput" class="form-control" placeholder="Your trackable link will appear here..." readonly style="font-size: 0.85rem; background: #ffffff;">
+          <button class="btn btn-outline-gold" onclick="app.copyGeneratedLink()" style="padding: 8px 16px;"><i class="fas fa-copy"></i> Copy</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/invoice.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    const aboutPage = {
+      sendInquiry: function() {
+        const rest = document.getElementById('inqRestName').value.trim();
+        const person = document.getElementById('inqPersonName').value.trim();
+        const phone = document.getElementById('inqPhone').value.trim();
+        const city = document.getElementById('inqCity').value.trim() || 'Indore';
+        const category = document.getElementById('inqCategory').value;
+        const volume = document.getElementById('inqVolume').value.trim();
+
+        if (!rest && !phone) {
+          alert("Please enter your Restaurant Name and Phone Number.");
+          return;
+        }
+
+        const msg = `Hello Naman & Ansh (P6S),%0A%0AI want to connect regarding packaging for my establishment:%0A• *Restaurant:* ${rest || 'Dining Venue'}%0A• *Contact Person:* ${person || 'Owner'}%0A• *Phone:* ${phone || 'Not provided'}%0A• *City:* ${city}%0A• *Product Interest:* ${category}%0A• *Estimated Volume:* ${volume || 'To be discussed'}%0A%0APlease share catalog samples and pricing terms.`;
+        
+        window.open(`https://wa.me/918462063330?text=${msg}`, '_blank');
+      }
+    };
+  </script>
+</body>
+</html>
