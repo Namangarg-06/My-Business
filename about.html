@@ -76,6 +76,138 @@
 </head>
 <body>
 
+  <!-- Royal "स्वागतम्" (Swagatam) Luxury Splash Curtain with Voice Speech -->
+  <div id="p6sSplashCurtain" title="Click anywhere to enter Atelier">
+    <div class="splash-bg-glow"></div>
+    <div class="splash-crest-wrap">
+      <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="splashLvGold" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#FFF5D6" />
+            <stop offset="25%" stop-color="#E5C07B" />
+            <stop offset="55%" stop-color="#C5A059" />
+            <stop offset="85%" stop-color="#8C6D23" />
+            <stop offset="100%" stop-color="#5A4310" />
+          </linearGradient>
+          <linearGradient id="splashRoyalNavy" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#0f2b5c" />
+            <stop offset="100%" stop-color="#071630" />
+          </linearGradient>
+        </defs>
+        <path d="M60 4 C65 32 88 55 116 60 C88 65 65 88 60 116 C55 88 32 65 4 60 C32 55 55 32 60 4 Z" stroke="url(#splashLvGold)" stroke-width="2.5" fill="#faf8f5" />
+        <rect x="33" y="33" width="54" height="54" rx="7" transform="rotate(45 60 60)" fill="url(#splashRoyalNavy)" stroke="url(#splashLvGold)" stroke-width="2" />
+        <text x="60" y="65" font-family="'Cinzel', serif" font-size="22" font-weight="900" fill="url(#splashLvGold)" text-anchor="middle" letter-spacing="1.5">P6S</text>
+        <text x="60" y="74" font-family="'Plus Jakarta Sans', sans-serif" font-size="6" font-weight="800" fill="#E5C07B" text-anchor="middle" letter-spacing="2">ATELIER</text>
+      </svg>
+    </div>
+    <div class="splash-swagatam">स्वागतम्</div>
+    <div id="splashClientName" class="splash-client-display"></div>
+    <div class="splash-welcome-en">Welcome to P6S Atelier</div>
+    <div class="splash-brand-sub">Premium Packaging Solutions • Indore</div>
+    <div id="splashLeadGreeting" class="splash-lead-pill">
+      <i class="fas fa-handshake text-gold"></i> Founders Desk • Naman &amp; Ansh • Indore
+    </div>
+    <div class="splash-progress-track">
+      <div id="splashProgressBar" class="splash-progress-bar"></div>
+    </div>
+    <div class="splash-actions-row">
+      <button type="button" id="splashSoundBtn" class="splash-sound-btn" onclick="app.replayVoice()" title="Voice Greeting">
+        <i class="fas fa-volume-up"></i> Voice Greeting
+      </button>
+      <button type="button" class="splash-enter-btn" onclick="app.dismissSplash()">
+        Enter Atelier <i class="fas fa-arrow-right" style="margin-left: 6px;"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Off-Canvas Luxury "All Products" Side Drawer -->
+  <div id="sideDrawerBackdrop" class="side-drawer-backdrop" onclick="app.closeProductsDrawer()"></div>
+  <div id="allProductsSideDrawer" class="all-products-drawer">
+    <div class="side-drawer-header">
+      <div class="side-drawer-header-left">
+        <div class="brand-lv-crest" style="width: 38px; height: 38px;">
+          <svg viewBox="0 0 120 120" fill="none">
+            <path d="M60 4 C65 32 88 55 116 60 C88 65 65 88 60 116 C55 88 32 65 4 60 C32 55 55 32 60 4 Z" stroke="#c5a059" stroke-width="2.5" fill="#faf8f5" />
+            <rect x="35" y="35" width="50" height="50" rx="6" transform="rotate(45 60 60)" fill="#0b3b82" stroke="#e5c07b" stroke-width="1.8" />
+            <text x="60" y="66" font-family="'Cinzel', serif" font-size="20" font-weight="900" fill="#e5c07b" text-anchor="middle">P6S</text>
+          </svg>
+        </div>
+        <div>
+          <div style="font-family: 'Cinzel', serif; font-size: 1.05rem; font-weight: 900; color: #ffffff;">ALL PRODUCTS ATELIER</div>
+          <div style="font-size: 0.68rem; color: #cbd5e1; letter-spacing: 0.1em;">INDORE FACTORY DIRECT SUPPLY</div>
+        </div>
+      </div>
+      <button class="side-drawer-close-btn" onclick="app.closeProductsDrawer()" title="Close side menu">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="side-drawer-body">
+      <div class="side-drawer-cat-block">
+        <div class="side-drawer-cat-header">
+          <div class="side-drawer-cat-title"><i class="fas fa-leaf text-gold"></i> Smart Sachets™</div>
+          <span class="side-drawer-cat-badge">From ₹0.75</span>
+        </div>
+        <div class="side-drawer-items-list">
+          <a href="smart-sachets.html" class="side-drawer-item-row"><span>Mouth Freshener Saunf Mixture</span><span class="side-drawer-item-rate">₹0.75 - ₹0.90</span></a>
+          <a href="smart-sachets.html" class="side-drawer-item-row"><span>Madrasi White Saunf</span><span class="side-drawer-item-rate">₹0.85 - ₹1.00</span></a>
+          <a href="smart-sachets.html" class="side-drawer-item-row"><span>Madrasi Green Saunf</span><span class="side-drawer-item-rate">₹0.85 - ₹1.00</span></a>
+          <a href="smart-sachets.html" class="side-drawer-item-row"><span>Google Review QR Rating Sachet</span><span class="side-drawer-item-rate">QR Enabled</span></a>
+          <a href="smart-sachets.html" class="side-drawer-item-row"><span>Experience &amp; Video Connect</span><span class="side-drawer-item-rate">Dynamic</span></a>
+        </div>
+        <a href="smart-sachets.html" class="side-drawer-cat-link">Open Smart Sachets Page →</a>
+      </div>
+      <div class="side-drawer-cat-block">
+        <div class="side-drawer-cat-header">
+          <div class="side-drawer-cat-title"><i class="fas fa-coffee text-gold"></i> Cups &amp; Butter Paper</div>
+          <span class="side-drawer-cat-badge">Wraps &amp; Cups</span>
+        </div>
+        <div class="side-drawer-items-list">
+          <a href="packaging-cups.html" class="side-drawer-item-row"><span>Custom Butter Paper (Non OGR)</span><span class="side-drawer-item-rate">₹290 / kg</span></a>
+          <a href="packaging-cups.html" class="side-drawer-item-row"><span>Printed Paper Cups (200-480ml)</span><span class="side-drawer-item-rate">From ₹2.10</span></a>
+          <a href="packaging-cups.html" class="side-drawer-item-row"><span>Plain White Cups</span><span class="side-drawer-item-rate">Wholesale</span></a>
+          <a href="packaging-cups.html" class="side-drawer-item-row"><span>Eco Food Tissues (27x27 cm)</span><span class="side-drawer-item-rate">1-Ply Packs</span></a>
+          <a href="packaging-cups.html" class="side-drawer-item-row"><span>Custom Printed Chopsticks</span><span class="side-drawer-item-rate">₹2.80 / pair</span></a>
+        </div>
+        <a href="packaging-cups.html" class="side-drawer-cat-link">Open Cups &amp; Butter Paper Page →</a>
+      </div>
+      <div class="side-drawer-cat-block">
+        <div class="side-drawer-cat-header">
+          <div class="side-drawer-cat-title"><i class="fas fa-pepper-hot text-gold"></i> Dining Spices &amp; Sugar</div>
+          <span class="side-drawer-cat-badge">Condiments</span>
+        </div>
+        <div class="side-drawer-items-list">
+          <a href="sachets.html" class="side-drawer-item-row"><span>White Crystal Sugar (5g)</span><span class="side-drawer-item-rate">₹0.75 - ₹0.90</span></a>
+          <a href="sachets.html" class="side-drawer-item-row"><span>Brown Demerara Sugar (5g)</span><span class="side-drawer-item-rate">₹0.95 - ₹1.10</span></a>
+          <a href="sachets.html" class="side-drawer-item-row"><span>Iodised Salt (Poster Paper)</span><span class="side-drawer-item-rate">₹0.40 - ₹0.55</span></a>
+          <a href="sachets.html" class="side-drawer-item-row"><span>Iodised Salt (Metallized Paper)</span><span class="side-drawer-item-rate">₹0.55 - ₹0.70</span></a>
+          <a href="sachets.html" class="side-drawer-item-row"><span>Black Pepper &amp; Pizza Seasonings</span><span class="side-drawer-item-rate">₹0.70 - ₹0.80</span></a>
+        </div>
+        <a href="sachets.html" class="side-drawer-cat-link">Open Spices &amp; Sugar Page →</a>
+      </div>
+      <div class="side-drawer-cat-block">
+        <div class="side-drawer-cat-header">
+          <div class="side-drawer-cat-title"><i class="fas fa-qrcode text-gold"></i> QR Tabletop Stands</div>
+          <span class="side-drawer-cat-badge">Tech &amp; Stands</span>
+        </div>
+        <div class="side-drawer-items-list">
+          <a href="qr-stands.html" class="side-drawer-item-row"><span>QR Display Stand (Entry)</span><span class="side-drawer-item-rate">₹149</span></a>
+          <a href="qr-stands.html" class="side-drawer-item-row"><span>White Acrylic T-Stand</span><span class="side-drawer-item-rate">₹349</span></a>
+          <a href="qr-stands.html" class="side-drawer-item-row"><span>Royal Golden Frame Stand</span><span class="side-drawer-item-rate">₹449</span></a>
+          <a href="qr-stands.html" class="side-drawer-item-row"><span>Standard Google Review Booster</span><span class="side-drawer-item-rate">₹2,999 (8 Free Stands)</span></a>
+          <a href="qr-stands.html" class="side-drawer-item-row"><span>Dynamic WhatsApp Menu Software</span><span class="side-drawer-item-rate">₹5,999 / yr</span></a>
+        </div>
+        <a href="qr-stands.html" class="side-drawer-cat-link">Open QR Stands Page →</a>
+      </div>
+    </div>
+    <div class="side-drawer-footer">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+        <a href="calculator.html" class="btn btn-primary" style="padding: 10px; font-size: 0.85rem; text-align: center;"><i class="fas fa-calculator"></i> Price Calculator</a>
+        <a href="invoice.html" class="btn btn-outline-gold" style="padding: 10px; font-size: 0.85rem; text-align: center;"><i class="fas fa-file-invoice"></i> Instant Bill</a>
+      </div>
+      <a href="https://wa.me/918462063330?text=Hello%20P6S%2C%20I%20am%20browsing%20all%20products." target="_blank" class="btn btn-whatsapp" style="width: 100%; padding: 10px; font-size: 0.88rem;"><i class="fab fa-whatsapp"></i> WhatsApp Inquiry (8462063330)</a>
+    </div>
+  </div>
+
   <!-- Top Notification & Contact Bar -->
   <div id="sourceTrackingBanner" class="source-banner">
     <div class="source-banner-content">
@@ -96,15 +228,33 @@
     <div class="container nav-container">
       <a href="index.html" class="brand-wrapper">
         <div class="brand-lv-crest">
-          <svg class="p6s-svg-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg class="p6s-svg-icon" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <linearGradient id="p6sGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#E5C07B" /><stop offset="50%" stop-color="#C5A059" /><stop offset="100%" stop-color="#8C6D23" />
+              <linearGradient id="p6sLvGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FFF5D6" />
+                <stop offset="25%" stop-color="#E5C07B" />
+                <stop offset="55%" stop-color="#C5A059" />
+                <stop offset="85%" stop-color="#8C6D23" />
+                <stop offset="100%" stop-color="#5A4310" />
               </linearGradient>
+              <linearGradient id="p6sRoyalNavy" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#0f2b5c" />
+                <stop offset="100%" stop-color="#071630" />
+              </linearGradient>
+              <filter id="p6sSoftGlow" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#8C6D23" flood-opacity="0.3"/>
+              </filter>
             </defs>
-            <path d="M50 4 C54 26 74 46 96 50 C74 54 54 74 50 96 C46 74 26 54 4 50 C26 46 46 26 50 4 Z" stroke="url(#p6sGoldGrad)" stroke-width="2" fill="#faf8f5" />
-            <rect x="25" y="25" width="50" height="50" rx="4" transform="rotate(45 50 50)" stroke="url(#p6sGoldGrad)" stroke-width="1.5" fill="#ffffff" />
-            <text x="50" y="58" font-family="'Cinzel', serif" font-size="22" font-weight="900" fill="url(#p6sGoldGrad)" text-anchor="middle" letter-spacing="1">P6S</text>
+            <path d="M60 4 C65 32 88 55 116 60 C88 65 65 88 60 116 C55 88 32 65 4 60 C32 55 55 32 60 4 Z" stroke="url(#p6sLvGold)" stroke-width="2.2" fill="#faf8f5" filter="url(#p6sSoftGlow)" />
+            <path d="M60 14 C64 36 84 56 106 60 C84 64 64 84 60 106 C56 84 36 64 14 60 C36 56 56 36 60 14 Z" stroke="url(#p6sLvGold)" stroke-width="1" stroke-dasharray="2.5 1.5" fill="none" opacity="0.85" />
+            <rect x="33" y="33" width="54" height="54" rx="7" transform="rotate(45 60 60)" fill="url(#p6sRoyalNavy)" stroke="url(#p6sLvGold)" stroke-width="2" />
+            <rect x="37" y="37" width="46" height="46" rx="5" transform="rotate(45 60 60)" fill="none" stroke="url(#p6sLvGold)" stroke-width="0.8" opacity="0.75" />
+            <circle cx="60" cy="18" r="2.2" fill="url(#p6sLvGold)" />
+            <circle cx="60" cy="102" r="2.2" fill="url(#p6sLvGold)" />
+            <circle cx="18" cy="60" r="2.2" fill="url(#p6sLvGold)" />
+            <circle cx="102" cy="60" r="2.2" fill="url(#p6sLvGold)" />
+            <text x="60" y="65" font-family="'Cinzel', serif" font-size="22" font-weight="900" fill="url(#p6sLvGold)" text-anchor="middle" letter-spacing="1.5">P6S</text>
+            <text x="60" y="74" font-family="'Plus Jakarta Sans', sans-serif" font-size="6" font-weight="800" fill="#E5C07B" text-anchor="middle" letter-spacing="2">ATELIER</text>
           </svg>
         </div>
         <div class="brand-info">
@@ -115,10 +265,11 @@
 
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
-        <li><a href="smart-sachets.html">Smart Sachets</a></li>
-        <li><a href="sachets.html">Spices &amp; Sugar</a></li>
-        <li><a href="packaging-cups.html">Cups &amp; Paper</a></li>
-        <li><a href="qr-stands.html">QR Stands</a></li>
+        <li>
+          <button type="button" class="btn btn-outline-gold" onclick="app.openProductsDrawer()" style="padding: 7px 16px; font-size: 0.86rem; border-radius: 20px;">
+            <i class="fas fa-th-large text-gold"></i> <strong>All Products</strong> <i class="fas fa-arrow-right" style="font-size: 0.7rem; margin-left: 4px;"></i>
+          </button>
+        </li>
         <li><a href="calculator.html">Price Calculator</a></li>
         <li><a href="invoice.html">Instant Bill</a></li>
         <li><a href="about.html" class="active">Contact Us</a></li>
@@ -468,35 +619,131 @@
     </div>
   </div>
 
-  <!-- Client Login Modal -->
+  <!-- Ultra-Luxury Client Concierge Login Modal -->
   <div id="loginModal" class="modal-overlay">
-    <div class="modal-content" style="max-width: 480px;">
-      <button class="modal-close-btn" onclick="app.closeModal('loginModal')"><i class="fas fa-times"></i></button>
-      <div style="text-align: center; margin-bottom: 20px;">
-        <h3 style="color: #0b3b82; font-size: 1.4rem; font-weight: 800;">Hospitality Client Login</h3>
-        <p style="color: #64748b; font-size: 0.88rem;">Save your restaurant profile for one-click invoice generation</p>
+    <div class="modal-content vip-login-modal">
+      <button class="modal-close-btn" onclick="app.closeModal('loginModal')">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <div class="vip-concierge-header">
+        <div class="vip-crest-circle">
+          <svg style="width:34px; height:34px;" viewBox="0 0 120 120" fill="none">
+            <path d="M60 4 C65 32 88 55 116 60 C88 65 65 88 60 116 C55 88 32 65 4 60 C32 55 55 32 60 4 Z" stroke="#C5A059" stroke-width="2.5" fill="#faf8f5" />
+            <rect x="35" y="35" width="50" height="50" rx="6" transform="rotate(45 60 60)" fill="#0b3b82" stroke="#E5C07B" stroke-width="1.8" />
+            <text x="60" y="66" font-family="'Cinzel', serif" font-size="20" font-weight="900" fill="#E5C07B" text-anchor="middle">P6S</text>
+          </svg>
+        </div>
+        <span style="font-size: 0.72rem; font-weight: 800; color: #b8860b; text-transform: uppercase; letter-spacing: 0.12em;">HOSPITALITY CONCIERGE ATELIER</span>
+        <h3 style="color: #0b3b82; font-size: 1.45rem; font-weight: 800; margin-top: 4px; margin-bottom: 6px;">Client &amp; Restaurant Portal</h3>
+        <p style="color: #64748b; font-size: 0.84rem; margin: 0;">Access factory-direct wholesale pricing, instant bills &amp; dispatch tracking</p>
       </div>
-      <div class="form-group"><label class="form-label">Restaurant / Cafe Name *</label><input type="text" id="authRestName" class="form-control" placeholder="e.g. Royal Spice Bistro"></div>
-      <div class="form-group"><label class="form-label">Owner / Manager Name</label><input type="text" id="authOwnerName" class="form-control" placeholder="e.g. Rahul Sharma"></div>
-      <div class="form-group"><label class="form-label">WhatsApp Contact Number *</label><input type="tel" id="authPhone" class="form-control" placeholder="e.g. 9876543210"></div>
-      <div class="form-group"><label class="form-label">City</label><input type="text" id="authCity" class="form-control" value="Indore"></div>
-      <div class="form-group"><label class="form-label">GST Number (Optional)</label><input type="text" id="authGST" class="form-control" placeholder="23AAAAA0000A1Z5"></div>
-      <button class="btn btn-primary" onclick="app.saveUserProfile()" style="width: 100%; padding: 12px; margin-top: 10px;"><i class="fas fa-check-circle"></i> Save Profile</button>
+
+      <!-- Perks Strip -->
+      <div class="vip-perks-strip">
+        <div class="vip-perk-item"><i class="fas fa-bolt text-gold"></i> 1-Click Invoices</div>
+        <div class="vip-perk-item"><i class="fas fa-percentage text-gold"></i> Factory Rates</div>
+        <div class="vip-perk-item"><i class="fas fa-truck text-gold"></i> Indore Dispatch</div>
+      </div>
+
+      <div class="form-group" style="margin-bottom: 12px;">
+        <label class="form-label" style="font-size: 0.8rem; font-weight: 700; color: #0b3b82;">Restaurant / Cafe Name *</label>
+        <div style="position: relative;">
+          <input type="text" id="authRestName" class="form-control" placeholder="e.g. Mudoven Cafe or Chef Bhupi Kitchen" style="padding-left: 36px;">
+          <i class="fas fa-hotel" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 0.9rem;"></i>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;">
+        <div class="form-group" style="margin-bottom: 0;">
+          <label class="form-label" style="font-size: 0.8rem; font-weight: 700; color: #0b3b82;">Owner / Contact Name</label>
+          <input type="text" id="authOwnerName" class="form-control" placeholder="e.g. Naman / Rahul">
+        </div>
+        <div class="form-group" style="margin-bottom: 0;">
+          <label class="form-label" style="font-size: 0.8rem; font-weight: 700; color: #0b3b82;">WhatsApp Number *</label>
+          <input type="tel" id="authPhone" class="form-control" placeholder="9876543210">
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 10px; margin-bottom: 16px;">
+        <div class="form-group" style="margin-bottom: 0;">
+          <label class="form-label" style="font-size: 0.8rem; font-weight: 700; color: #0b3b82;">City</label>
+          <input type="text" id="authCity" class="form-control" value="Indore">
+        </div>
+        <div class="form-group" style="margin-bottom: 0;">
+          <label class="form-label" style="font-size: 0.8rem; font-weight: 700; color: #0b3b82;">GSTIN / FSSAI (Optional)</label>
+          <input type="text" id="authGST" class="form-control" placeholder="Optional">
+        </div>
+      </div>
+
+      <button class="btn btn-primary" onclick="app.saveUserProfile()" style="width: 100%; padding: 13px; font-size: 0.96rem; font-weight: 800; border-radius: 10px;">
+        <i class="fas fa-crown"></i> Activate Client Profile &amp; Save
+      </button>
+
+      <div style="text-align: center; margin-top: 14px;">
+        <button type="button" onclick="app.fillDemoProfile()" style="background: none; border: none; color: #b8860b; font-size: 0.78rem; font-weight: 700; cursor: pointer; text-decoration: underline;">
+          ⚡ Auto-fill sample restaurant profile (Testing)
+        </button>
+      </div>
     </div>
   </div>
 
-  <!-- Profile Modal -->
+  <!-- Luxury Profile Modal with Gold Card -->
   <div id="profileModal" class="modal-overlay">
-    <div class="modal-content" style="max-width: 450px;">
-      <button class="modal-close-btn" onclick="app.closeModal('profileModal')"><i class="fas fa-times"></i></button>
-      <h3 style="color: #0b3b82; font-size: 1.3rem; font-weight: 800; margin-bottom: 16px;">Restaurant Profile</h3>
-      <div style="background: #faf8f5; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 18px;">
-        <div style="margin-bottom: 8px;"><span style="color:#64748b;">Restaurant:</span> <strong id="profRestName"></strong></div>
-        <div style="margin-bottom: 8px;"><span style="color:#64748b;">Contact:</span> <strong id="profOwnerName"></strong></div>
-        <div style="margin-bottom: 8px;"><span style="color:#64748b;">Phone:</span> <strong id="profPhone" style="color:#0b3b82;"></strong></div>
-        <div><span style="color:#64748b;">City:</span> <strong id="profCity"></strong></div>
+    <div class="modal-content" style="max-width: 480px;">
+      <button class="modal-close-btn" onclick="app.closeModal('profileModal')">
+        <i class="fas fa-times"></i>
+      </button>
+      
+      <div style="text-align: center; margin-bottom: 16px;">
+        <span style="font-size: 0.72rem; font-weight: 800; color: #b8860b; text-transform: uppercase; letter-spacing: 0.12em;">VERIFIED CLIENT ACCOUNT</span>
+        <h3 style="color: #0b3b82; font-size: 1.35rem; font-weight: 800; margin: 4px 0 0;">Restaurant Concierge Card</h3>
       </div>
-      <button class="btn" onclick="app.logoutUser()" style="width: 100%; background: #fee2e2; color: #dc2626; border: 1px solid #fca5a5;">Logout / Switch Account</button>
+
+      <!-- VIP Gold Card -->
+      <div class="vip-gold-card">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+          <div class="vip-card-chip"></div>
+          <div style="text-align: right;">
+            <div style="font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 900; color: #fbf0b9;">P6S ATELIER</div>
+            <div style="font-size: 0.68rem; letter-spacing: 0.1em; color: #cbd5e1;">VIP HOSPITALITY MEMBER</div>
+          </div>
+        </div>
+
+        <div class="vip-card-number">P6S • 2026 • VIP • CLIENT</div>
+
+        <div class="vip-card-details">
+          <div>
+            <div style="font-size: 0.68rem; color: #cbd5e1; text-transform: uppercase;">RESTAURANT</div>
+            <strong id="profRestName" style="font-size: 1.05rem; color: #ffffff;"></strong>
+            <div id="profOwnerName" style="font-size: 0.75rem; color: #fbf0b9; margin-top: 2px;"></div>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 0.68rem; color: #cbd5e1; text-transform: uppercase;">HUB</div>
+            <strong id="profCity" style="color: #ffffff;">Indore</strong>
+          </div>
+        </div>
+      </div>
+
+      <div style="background: #faf8f5; border: 1px solid #e2e8f0; border-radius: 12px; padding: 14px 18px; margin-bottom: 18px; font-size: 0.88rem;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+          <span style="color: #64748b;">Phone:</span>
+          <strong id="profPhone" style="color: #0b3b82;"></strong>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+          <span style="color: #64748b;">Tier Status:</span>
+          <span style="color: #16a34a; font-weight: 800;"><i class="fas fa-check-circle"></i> Factory Direct Pricing Active</span>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+        <a href="invoice.html" class="btn btn-primary" style="padding: 10px; font-size: 0.85rem; text-align: center;">
+          <i class="fas fa-file-invoice"></i> Generate Bill
+        </a>
+        <button class="btn" onclick="app.logoutUser()" style="padding: 10px; font-size: 0.85rem; background: #fee2e2; color: #dc2626; border: 1px solid #fca5a5;">
+          <i class="fas fa-sign-out-alt"></i> Logout / Switch
+        </button>
+      </div>
     </div>
   </div>
 

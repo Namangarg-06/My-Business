@@ -15,6 +15,226 @@
 </head>
 <body>
 
+  <!-- ==========================================================================
+       ROYAL "स्वागतम्" (SWAGATAM) LUXURY SPLASH CURTAIN WITH VOICE SPEECH
+       ========================================================================== -->
+  <div id="p6sSplashCurtain" title="Click anywhere to enter Atelier">
+    <div class="splash-bg-glow"></div>
+    
+    <div class="splash-crest-wrap">
+      <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="splashLvGold" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#FFF5D6" />
+            <stop offset="25%" stop-color="#E5C07B" />
+            <stop offset="55%" stop-color="#C5A059" />
+            <stop offset="85%" stop-color="#8C6D23" />
+            <stop offset="100%" stop-color="#5A4310" />
+          </linearGradient>
+          <linearGradient id="splashRoyalNavy" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#0f2b5c" />
+            <stop offset="100%" stop-color="#071630" />
+          </linearGradient>
+        </defs>
+        <path d="M60 4 C65 32 88 55 116 60 C88 65 65 88 60 116 C55 88 32 65 4 60 C32 55 55 32 60 4 Z" stroke="url(#splashLvGold)" stroke-width="2.5" fill="#faf8f5" />
+        <rect x="33" y="33" width="54" height="54" rx="7" transform="rotate(45 60 60)" fill="url(#splashRoyalNavy)" stroke="url(#splashLvGold)" stroke-width="2" />
+        <text x="60" y="65" font-family="'Cinzel', serif" font-size="22" font-weight="900" fill="url(#splashLvGold)" text-anchor="middle" letter-spacing="1.5">P6S</text>
+        <text x="60" y="74" font-family="'Plus Jakarta Sans', sans-serif" font-size="6" font-weight="800" fill="#E5C07B" text-anchor="middle" letter-spacing="2">ATELIER</text>
+      </svg>
+    </div>
+
+    <div class="splash-swagatam">स्वागतम्</div>
+    <div id="splashClientName" class="splash-client-display"></div>
+    <div class="splash-welcome-en">Welcome to P6S Atelier</div>
+    <div class="splash-brand-sub">Premium Packaging Solutions • Indore</div>
+
+    <div id="splashLeadGreeting" class="splash-lead-pill">
+      <i class="fas fa-crown text-gold"></i> Luxury Hospitality Packaging • Indore
+    </div>
+
+    <div class="splash-progress-track">
+      <div id="splashProgressBar" class="splash-progress-bar"></div>
+    </div>
+
+    <div class="splash-actions-row">
+      <button type="button" id="splashSoundBtn" class="splash-sound-btn" onclick="app.replayVoice()" title="Voice Greeting">
+        <i class="fas fa-volume-up"></i> Voice Greeting
+      </button>
+      <button type="button" class="splash-enter-btn" onclick="app.dismissSplash()">
+        Enter Atelier <i class="fas fa-arrow-right" style="margin-left: 6px;"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       OFF-CANVAS LUXURY "ALL PRODUCTS" SIDE DRAWER
+       Everything organized neatly on the side!
+       ========================================================================== -->
+  <div id="sideDrawerBackdrop" class="side-drawer-backdrop" onclick="app.closeProductsDrawer()"></div>
+
+  <div id="allProductsSideDrawer" class="all-products-drawer">
+    <div class="side-drawer-header">
+      <div class="side-drawer-header-left">
+        <div class="brand-lv-crest" style="width: 38px; height: 38px;">
+          <svg viewBox="0 0 120 120" fill="none">
+            <path d="M60 4 C65 32 88 55 116 60 C88 65 65 88 60 116 C55 88 32 65 4 60 C32 55 55 32 60 4 Z" stroke="#c5a059" stroke-width="2.5" fill="#faf8f5" />
+            <rect x="35" y="35" width="50" height="50" rx="6" transform="rotate(45 60 60)" fill="#0b3b82" stroke="#e5c07b" stroke-width="1.8" />
+            <text x="60" y="66" font-family="'Cinzel', serif" font-size="20" font-weight="900" fill="#e5c07b" text-anchor="middle">P6S</text>
+          </svg>
+        </div>
+        <div>
+          <div style="font-family: 'Cinzel', serif; font-size: 1.05rem; font-weight: 900; color: #ffffff;">ALL PRODUCTS ATELIER</div>
+          <div style="font-size: 0.68rem; color: #cbd5e1; letter-spacing: 0.1em;">INDORE FACTORY DIRECT SUPPLY</div>
+        </div>
+      </div>
+      <button class="side-drawer-close-btn" onclick="app.closeProductsDrawer()" title="Close side menu">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <div class="side-drawer-body">
+      
+      <!-- 1. Smart Sachets™ & Saunf -->
+      <div class="side-drawer-cat-block">
+        <div class="side-drawer-cat-header">
+          <div class="side-drawer-cat-title"><i class="fas fa-leaf text-gold"></i> Smart Sachets™</div>
+          <span class="side-drawer-cat-badge">From ₹0.75</span>
+        </div>
+        <div class="side-drawer-items-list">
+          <a href="smart-sachets.html" class="side-drawer-item-row">
+            <span>Mouth Freshener Saunf Mixture</span>
+            <span class="side-drawer-item-rate">₹0.75 - ₹0.90</span>
+          </a>
+          <a href="smart-sachets.html" class="side-drawer-item-row">
+            <span>Madrasi White Saunf</span>
+            <span class="side-drawer-item-rate">₹0.85 - ₹1.00</span>
+          </a>
+          <a href="smart-sachets.html" class="side-drawer-item-row">
+            <span>Madrasi Green Saunf</span>
+            <span class="side-drawer-item-rate">₹0.85 - ₹1.00</span>
+          </a>
+          <a href="smart-sachets.html" class="side-drawer-item-row">
+            <span>Google Review QR Rating Sachet</span>
+            <span class="side-drawer-item-rate">QR Enabled</span>
+          </a>
+          <a href="smart-sachets.html" class="side-drawer-item-row">
+            <span>Experience &amp; Video Connect Sachet</span>
+            <span class="side-drawer-item-rate">Dynamic</span>
+          </a>
+        </div>
+        <a href="smart-sachets.html" class="side-drawer-cat-link">Open Smart Sachets Page →</a>
+      </div>
+
+      <!-- 2. Cups & Butter Paper -->
+      <div class="side-drawer-cat-block">
+        <div class="side-drawer-cat-header">
+          <div class="side-drawer-cat-title"><i class="fas fa-coffee text-gold"></i> Cups &amp; Butter Paper</div>
+          <span class="side-drawer-cat-badge">Wraps &amp; Cups</span>
+        </div>
+        <div class="side-drawer-items-list">
+          <a href="packaging-cups.html" class="side-drawer-item-row">
+            <span>Custom Butter Paper (Non OGR)</span>
+            <span class="side-drawer-item-rate">₹290 / kg</span>
+          </a>
+          <a href="packaging-cups.html" class="side-drawer-item-row">
+            <span>Printed Paper Cups (200ml - 480ml)</span>
+            <span class="side-drawer-item-rate">From ₹2.10</span>
+          </a>
+          <a href="packaging-cups.html" class="side-drawer-item-row">
+            <span>Plain White Disposable Cups</span>
+            <span class="side-drawer-item-rate">Wholesale</span>
+          </a>
+          <a href="packaging-cups.html" class="side-drawer-item-row">
+            <span>Eco Food Tissues (27x27 cm)</span>
+            <span class="side-drawer-item-rate">1-Ply Packs</span>
+          </a>
+          <a href="packaging-cups.html" class="side-drawer-item-row">
+            <span>Custom Printed Chopsticks</span>
+            <span class="side-drawer-item-rate">₹2.80 / pair</span>
+          </a>
+        </div>
+        <a href="packaging-cups.html" class="side-drawer-cat-link">Open Cups &amp; Butter Paper Page →</a>
+      </div>
+
+      <!-- 3. Spices, Sugar & Seasonings -->
+      <div class="side-drawer-cat-block">
+        <div class="side-drawer-cat-header">
+          <div class="side-drawer-cat-title"><i class="fas fa-pepper-hot text-gold"></i> Dining Spices &amp; Sugar</div>
+          <span class="side-drawer-cat-badge">Condiments</span>
+        </div>
+        <div class="side-drawer-items-list">
+          <a href="sachets.html" class="side-drawer-item-row">
+            <span>White Crystal Sugar (5g)</span>
+            <span class="side-drawer-item-rate">₹0.75 - ₹0.90</span>
+          </a>
+          <a href="sachets.html" class="side-drawer-item-row">
+            <span>Brown Demerara Sugar (5g)</span>
+            <span class="side-drawer-item-rate">₹0.95 - ₹1.10</span>
+          </a>
+          <a href="sachets.html" class="side-drawer-item-row">
+            <span>Iodised Salt (Poster Paper)</span>
+            <span class="side-drawer-item-rate">₹0.40 - ₹0.55</span>
+          </a>
+          <a href="sachets.html" class="side-drawer-item-row">
+            <span>Iodised Salt (Metallized Paper)</span>
+            <span class="side-drawer-item-rate">₹0.55 - ₹0.70</span>
+          </a>
+          <a href="sachets.html" class="side-drawer-item-row">
+            <span>Black Pepper &amp; Pizza Seasonings</span>
+            <span class="side-drawer-item-rate">₹0.70 - ₹0.80</span>
+          </a>
+        </div>
+        <a href="sachets.html" class="side-drawer-cat-link">Open Spices &amp; Sugar Page →</a>
+      </div>
+
+      <!-- 4. Tabletop QR Menu & Review Stands -->
+      <div class="side-drawer-cat-block">
+        <div class="side-drawer-cat-header">
+          <div class="side-drawer-cat-title"><i class="fas fa-qrcode text-gold"></i> QR Tabletop Stands</div>
+          <span class="side-drawer-cat-badge">Tech &amp; Stands</span>
+        </div>
+        <div class="side-drawer-items-list">
+          <a href="qr-stands.html" class="side-drawer-item-row">
+            <span>QR Display Stand (Entry)</span>
+            <span class="side-drawer-item-rate">₹149</span>
+          </a>
+          <a href="qr-stands.html" class="side-drawer-item-row">
+            <span>White Acrylic T-Stand</span>
+            <span class="side-drawer-item-rate">₹349</span>
+          </a>
+          <a href="qr-stands.html" class="side-drawer-item-row">
+            <span>Royal Golden Frame Stand</span>
+            <span class="side-drawer-item-rate">₹449</span>
+          </a>
+          <a href="qr-stands.html" class="side-drawer-item-row">
+            <span>Standard Google Review Booster</span>
+            <span class="side-drawer-item-rate">₹2,999 (8 Free Stands)</span>
+          </a>
+          <a href="qr-stands.html" class="side-drawer-item-row">
+            <span>Dynamic WhatsApp Menu Software</span>
+            <span class="side-drawer-item-rate">₹5,999 / yr</span>
+          </a>
+        </div>
+        <a href="qr-stands.html" class="side-drawer-cat-link">Open QR Stands Page →</a>
+      </div>
+
+    </div>
+
+    <div class="side-drawer-footer">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+        <a href="calculator.html" class="btn btn-primary" style="padding: 10px; font-size: 0.85rem; text-align: center;">
+          <i class="fas fa-calculator"></i> Price Calculator
+        </a>
+        <a href="invoice.html" class="btn btn-outline-gold" style="padding: 10px; font-size: 0.85rem; text-align: center;">
+          <i class="fas fa-file-invoice"></i> Instant Bill
+        </a>
+      </div>
+      <a href="https://wa.me/918462063330?text=Hello%20P6S%2C%20I%20am%20browsing%20all%20products." target="_blank" class="btn btn-whatsapp" style="width: 100%; padding: 10px; font-size: 0.88rem;">
+        <i class="fab fa-whatsapp"></i> WhatsApp Inquiry (8462063330)
+      </a>
+    </div>
+  </div>
+
   <!-- Top Notification & Contact Bar -->
   <div id="sourceTrackingBanner" class="source-banner">
     <div class="source-banner-content">
@@ -32,27 +252,39 @@
     </div>
   </div>
 
-  <!-- Main Navigation Header -->
+  <!-- Main Navigation Header (Clean & Uncluttered) -->
   <header class="main-header">
     <div class="container nav-container">
       
       <a href="index.html" class="brand-wrapper">
         <div class="brand-lv-crest">
-          <svg class="p6s-svg-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg class="p6s-svg-icon" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <linearGradient id="p6sGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#E5C07B" />
-                <stop offset="50%" stop-color="#C5A059" />
-                <stop offset="100%" stop-color="#8C6D23" />
+              <linearGradient id="p6sLvGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FFF5D6" />
+                <stop offset="25%" stop-color="#E5C07B" />
+                <stop offset="55%" stop-color="#C5A059" />
+                <stop offset="85%" stop-color="#8C6D23" />
+                <stop offset="100%" stop-color="#5A4310" />
               </linearGradient>
+              <linearGradient id="p6sRoyalNavy" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#0f2b5c" />
+                <stop offset="100%" stop-color="#071630" />
+              </linearGradient>
+              <filter id="p6sSoftGlow" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#8C6D23" flood-opacity="0.3"/>
+              </filter>
             </defs>
-            <path d="M50 4 C54 26 74 46 96 50 C74 54 54 74 50 96 C46 74 26 54 4 50 C26 46 46 26 50 4 Z" stroke="url(#p6sGoldGrad)" stroke-width="2" fill="#faf8f5" />
-            <rect x="25" y="25" width="50" height="50" rx="4" transform="rotate(45 50 50)" stroke="url(#p6sGoldGrad)" stroke-width="1.5" fill="#ffffff" />
-            <text x="50" y="58" font-family="'Cinzel', serif" font-size="22" font-weight="900" fill="url(#p6sGoldGrad)" text-anchor="middle" letter-spacing="1">P6S</text>
-            <circle cx="50" cy="18" r="1.8" fill="url(#p6sGoldGrad)" />
-            <circle cx="50" cy="82" r="1.8" fill="url(#p6sGoldGrad)" />
-            <circle cx="18" cy="50" r="1.8" fill="url(#p6sGoldGrad)" />
-            <circle cx="82" cy="50" r="1.8" fill="url(#p6sGoldGrad)" />
+            <path d="M60 4 C65 32 88 55 116 60 C88 65 65 88 60 116 C55 88 32 65 4 60 C32 55 55 32 60 4 Z" stroke="url(#p6sLvGold)" stroke-width="2.2" fill="#faf8f5" filter="url(#p6sSoftGlow)" />
+            <path d="M60 14 C64 36 84 56 106 60 C84 64 64 84 60 106 C56 84 36 64 14 60 C36 56 56 36 60 14 Z" stroke="url(#p6sLvGold)" stroke-width="1" stroke-dasharray="2.5 1.5" fill="none" opacity="0.85" />
+            <rect x="33" y="33" width="54" height="54" rx="7" transform="rotate(45 60 60)" fill="url(#p6sRoyalNavy)" stroke="url(#p6sLvGold)" stroke-width="2" />
+            <rect x="37" y="37" width="46" height="46" rx="5" transform="rotate(45 60 60)" fill="none" stroke="url(#p6sLvGold)" stroke-width="0.8" opacity="0.75" />
+            <circle cx="60" cy="18" r="2.2" fill="url(#p6sLvGold)" />
+            <circle cx="60" cy="102" r="2.2" fill="url(#p6sLvGold)" />
+            <circle cx="18" cy="60" r="2.2" fill="url(#p6sLvGold)" />
+            <circle cx="102" cy="60" r="2.2" fill="url(#p6sLvGold)" />
+            <text x="60" y="65" font-family="'Cinzel', serif" font-size="22" font-weight="900" fill="url(#p6sLvGold)" text-anchor="middle" letter-spacing="1.5">P6S</text>
+            <text x="60" y="74" font-family="'Plus Jakarta Sans', sans-serif" font-size="6" font-weight="800" fill="#E5C07B" text-anchor="middle" letter-spacing="2">ATELIER</text>
           </svg>
         </div>
         <div class="brand-info">
@@ -61,12 +293,17 @@
         </div>
       </a>
 
+      <!-- Clean Minimal Nav Links -->
       <ul class="nav-links">
         <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="smart-sachets.html">Smart Sachets</a></li>
-        <li><a href="sachets.html">Spices &amp; Sugar</a></li>
-        <li><a href="packaging-cups.html">Cups &amp; Paper</a></li>
-        <li><a href="qr-stands.html">QR Stands</a></li>
+        
+        <!-- "All Products" opens the side drawer -->
+        <li>
+          <button type="button" class="btn btn-outline-gold" onclick="app.openProductsDrawer()" style="padding: 7px 16px; font-size: 0.86rem; border-radius: 20px;">
+            <i class="fas fa-th-large text-gold"></i> <strong>All Products</strong> <i class="fas fa-arrow-right" style="font-size: 0.7rem; margin-left: 4px;"></i>
+          </button>
+        </li>
+
         <li><a href="calculator.html">Price Calculator</a></li>
         <li><a href="invoice.html">Instant Bill</a></li>
         <li><a href="about.html">Contact Us</a></li>
@@ -90,197 +327,209 @@
     </div>
   </header>
 
-  <!-- Clean, Spacious Luxury Hero Section -->
-  <section class="hero-section" style="padding: 80px 0 50px;">
-    <div class="container">
-      <div class="hero-pill">
-        <i class="fas fa-crown text-gold"></i> SUPPLIER OF SMART SACHETS &amp; HOSPITALITY SOLUTIONS
+  <!-- ==========================================================================
+       SHORT, SPACIOUS & MINIMALIST LUXURY HERO
+       ========================================================================== -->
+  <section class="hero-section" style="padding: 75px 0 50px; text-align: center;">
+    <div class="container" style="max-width: 920px;">
+      
+      <div class="hero-pill" style="margin-bottom: 22px;">
+        <i class="fas fa-crown text-gold"></i> P6S ATELIER • FACTORY DIRECT SUPPLY • INDORE
       </div>
 
-      <h1 class="hero-title" style="font-size: 3.4rem; margin-bottom: 24px;">
-        TURNING EVERY PACKET INTO A <span class="text-gold-gradient">LUXURY BRAND EXPERIENCE</span>
+      <h1 class="hero-title" style="font-size: 3.2rem; font-weight: 900; line-height: 1.22; margin-bottom: 20px;">
+        THE ART OF <span class="text-gold-gradient">HOSPITALITY PACKAGING</span>
       </h1>
 
-      <p class="hero-desc" style="font-size: 1.15rem; max-width: 800px; margin-bottom: 36px;">
-        India's elite manufacturer &amp; supplier of custom printed mouth freshener sachets, sugar &amp; salt packets, food grade butter papers, custom printed paper cups, and interactive QR stands. Factory-direct dispatch from <strong>Indore</strong>.
+      <p class="hero-desc" style="font-size: 1.15rem; color: #475569; max-width: 740px; margin: 0 auto 32px; line-height: 1.7;">
+        Bespoke mouth freshener sachets, food-grade butter paper, printed beverage cups &amp; smart tabletop QR stands for premier restaurants, cafes &amp; hotels.
       </p>
 
-      <div class="hero-ctas">
-        <a href="smart-sachets.html" class="btn btn-primary" style="padding: 14px 30px; font-size: 1rem;">
-          <i class="fas fa-gem"></i> Explore Smart Sachets™
-        </a>
-        <a href="calculator.html" class="btn btn-outline-gold" style="padding: 14px 26px; font-size: 1rem;">
+      <!-- 3 Quick Action Buttons -->
+      <div style="display: flex; justify-content: center; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 36px;">
+        <button type="button" class="btn btn-primary" onclick="app.openProductsDrawer()" style="padding: 14px 32px; font-size: 1rem; border-radius: 12px;">
+          <i class="fas fa-th-large"></i> Explore All Products
+        </button>
+        <a href="calculator.html" class="btn btn-outline-gold" style="padding: 14px 28px; font-size: 1rem; border-radius: 12px;">
           <i class="fas fa-calculator"></i> Price Calculator
         </a>
-        <a href="invoice.html" class="btn btn-invoice" style="padding: 14px 26px; font-size: 1rem;">
-          <i class="fas fa-file-invoice"></i> Generate Official Bill
-        </a>
-        <a href="https://wa.me/918462063330?text=Hello%20P6S%20Packaging%2C%20I%20want%20to%20order%20packaging." target="_blank" class="btn btn-whatsapp" style="padding: 14px 24px; font-size: 1rem;">
+        <a href="https://wa.me/918462063330?text=Hello%20P6S%20Packaging%2C%20I%20want%20to%20order%20packaging%20for%20my%20restaurant." target="_blank" class="btn btn-whatsapp" style="padding: 14px 28px; font-size: 1rem; border-radius: 12px;">
           <i class="fab fa-whatsapp"></i> WhatsApp Order (8462063330)
         </a>
       </div>
 
-      <div class="hero-trust-bar">
-        <div class="trust-item">
-          <span class="icon"><i class="fas fa-shield-alt"></i></span>
-          <span>100% Food Grade &amp; FSSAI Compliant</span>
-        </div>
-        <div class="trust-item">
-          <span class="icon"><i class="fas fa-shipping-fast"></i></span>
-          <span>Free 1st Order Pan-India Delivery</span>
-        </div>
-        <div class="trust-item">
-          <span class="icon"><i class="fas fa-palette"></i></span>
-          <span>Free Custom Logo &amp; QR Setup</span>
-        </div>
-        <div class="trust-item">
-          <span class="icon"><i class="fas fa-phone-alt"></i></span>
-          <span>Founders: Naman &amp; Ansh (<strong>8462063330 / 9111789220</strong>)</span>
-        </div>
+      <!-- Compact Trust Strip -->
+      <div style="display: flex; justify-content: center; align-items: center; gap: 28px; flex-wrap: wrap; font-size: 0.88rem; color: #64748b; font-weight: 700; border-top: 1px solid #e2e8f0; padding-top: 24px;">
+        <div><i class="fas fa-shield-alt" style="color: #16a34a; margin-right: 6px;"></i> 100% Food Grade (FSSAI)</div>
+        <div><i class="fas fa-truck-moving text-gold" style="margin-right: 6px;"></i> Free 1st Order Pan-India Delivery</div>
+        <div><i class="fas fa-palette text-gold" style="margin-right: 6px;"></i> Free Custom Logo &amp; QR Setup</div>
+        <div><i class="fas fa-phone-alt text-gold" style="margin-right: 6px;"></i> Naman &amp; Ansh: <strong>8462063330 / 9111789220</strong></div>
       </div>
+
     </div>
   </section>
 
-  <!-- Clean Category Portal Grid (Separate Pages) -->
-  <section class="section" style="padding: 40px 0 70px;">
+  <!-- ==========================================================================
+       CLEAN 4-MASTER COLLECTIONS SHOWROOM (COMPACT & CRISP)
+       ========================================================================== -->
+  <section id="collections" class="clean-showroom-section">
     <div class="container">
-      <div class="section-header">
-        <span class="section-kicker">Hospitality Collections</span>
-        <h2 class="section-title">Select A Category To View Official Rate Cards</h2>
-        <p class="section-subtitle">
-          Click any department below to view full item specifications, volume tier rates, and custom branding choices.
+      
+      <div class="clean-showroom-header">
+        <span class="clean-kicker">ATELIER MASTER SHOWROOM</span>
+        <h2 class="clean-title">Our Master Collections</h2>
+        <p class="clean-subtitle">
+          Factory-direct dispatch from Indore with precision custom restaurant logo branding.
         </p>
       </div>
 
-      <div class="category-portal-grid">
+      <!-- 4 Master Showroom Cards (2x2 Grid) -->
+      <div class="clean-collections-grid">
         
-        <!-- 1. Smart Sachets & Mouth Fresheners -->
-        <a href="smart-sachets.html" class="category-portal-card">
-          <span class="portal-card-badge">Signature Innovation</span>
-          <div class="portal-card-icon-box">
-            <i class="fas fa-gem"></i>
+        <!-- 1. Smart Sachets™ & Mouth Freshener -->
+        <a href="smart-sachets.html" class="clean-collection-card">
+          <span class="clean-card-badge">Signature Innovation</span>
+          <div class="clean-card-icon">
+            <i class="fas fa-leaf"></i>
           </div>
-          <h3 class="portal-card-title">Smart Sachets™ &amp; Mouth Freshener</h3>
-          <p class="portal-card-desc">
-            Post-meal mouth freshener sachets with custom restaurant branding and dynamic QR codes for Google reviews, Instagram followers &amp; loyalty discounts. (Mixture, Madrasi White, Madrasi Green).
+          <h3 class="clean-card-title">Smart Sachets™ &amp; Mouth Freshener</h3>
+          <div class="clean-card-sub">Post-Meal Guest Experience • Mixture, Madrasi White &amp; Green</div>
+          <p class="clean-card-desc">
+            Dual-sided custom printed sachets with dynamic QR code for Google 5-star reviews, Instagram followers, and video messages.
           </p>
-          <div class="portal-card-footer">
-            <span>View Rate Cards &amp; 3D Sachet Flip</span>
+          <div class="clean-card-pricing-strip">
+            <span class="clean-price-label">Starting Rate</span>
+            <span class="clean-price-val">₹0.75 / sachet</span>
+          </div>
+          <div class="clean-card-btn">
+            <span>Explore Smart Sachets &amp; 3D Flip</span>
             <i class="fas fa-arrow-right"></i>
           </div>
         </a>
 
-        <!-- 2. Spices, Sugar & Seasonings -->
-        <a href="sachets.html" class="category-portal-card">
-          <span class="portal-card-badge">Dining Essentials</span>
-          <div class="portal-card-icon-box">
-            <i class="fas fa-cube"></i>
-          </div>
-          <h3 class="portal-card-title">Sugar, Salt &amp; Pizza Seasonings</h3>
-          <p class="portal-card-desc">
-            White &amp; brown sugar sachets, iodised free-flow salt sachets (in poster &amp; metallized paper), oregano seasoning, red chilli flakes, and black pepper sachets.
-          </p>
-          <div class="portal-card-footer">
-            <span>View Pricing &amp; Order</span>
-            <i class="fas fa-arrow-right"></i>
-          </div>
-        </a>
-
-        <!-- 3. Cups & Paper Packaging -->
-        <a href="packaging-cups.html" class="category-portal-card">
-          <span class="portal-card-badge">Eco Friendly</span>
-          <div class="portal-card-icon-box">
+        <!-- 2. Cups & Butter Paper -->
+        <a href="packaging-cups.html" class="clean-collection-card">
+          <span class="clean-card-badge">Beverage &amp; Wrap</span>
+          <div class="clean-card-icon">
             <i class="fas fa-coffee"></i>
           </div>
-          <h3 class="portal-card-title">Paper Cups, Butter Paper &amp; Tissues</h3>
-          <p class="portal-card-desc">
-            Printed &amp; plain paper cups (200ml to 480ml), matching dome/sipper lids, 1-color branded butter paper sheets (Non OGR, 30kg MOQ), 1-ply tissue packs, and chopsticks.
+          <h3 class="clean-card-title">Cups &amp; Butter Paper Packaging</h3>
+          <div class="clean-card-sub">Food Grade Wrapping Paper &amp; Printed Paper Cups</div>
+          <p class="clean-card-desc">
+            1-color branded butter paper sheets (Non-OGR, 30kg MOQ @ ₹290/kg) and ripple / single-wall cups (200ml to 480ml from ₹2.10).
           </p>
-          <div class="portal-card-footer">
-            <span>View Cup &amp; Paper Rates</span>
+          <div class="clean-card-pricing-strip">
+            <span class="clean-price-label">Butter Paper &amp; Cups</span>
+            <span class="clean-price-val">₹290/kg • ₹2.10/pc</span>
+          </div>
+          <div class="clean-card-btn">
+            <span>Explore Cups &amp; Butter Paper</span>
             <i class="fas fa-arrow-right"></i>
           </div>
         </a>
 
-        <!-- 4. QR Menu & Digital Stands -->
-        <a href="qr-stands.html" class="category-portal-card">
-          <span class="portal-card-badge">Restaurant Tech</span>
-          <div class="portal-card-icon-box">
+        <!-- 3. Spices, Sugar & Seasonings -->
+        <a href="sachets.html" class="clean-collection-card">
+          <span class="clean-card-badge">Table Essentials</span>
+          <div class="clean-card-icon">
+            <i class="fas fa-cube"></i>
+          </div>
+          <h3 class="clean-card-title">Spices, Sugar &amp; Dining Condiments</h3>
+          <div class="clean-card-sub">Hygienic Single-Serve Condiments for Dining Tables</div>
+          <p class="clean-card-desc">
+            White &amp; brown sugar sachets, iodised salt in poster &amp; metallized papers (from ₹0.40), black pepper powder, and oregano flakes.
+          </p>
+          <div class="clean-card-pricing-strip">
+            <span class="clean-price-label">Condiments Rate Card</span>
+            <span class="clean-price-val">From ₹0.40 / sachet</span>
+          </div>
+          <div class="clean-card-btn">
+            <span>Explore Spices &amp; Sugar</span>
+            <i class="fas fa-arrow-right"></i>
+          </div>
+        </a>
+
+        <!-- 4. Tabletop QR Menu & Review Stands -->
+        <a href="qr-stands.html" class="clean-collection-card">
+          <span class="clean-card-badge">Smart Tech</span>
+          <div class="clean-card-icon">
             <i class="fas fa-qrcode"></i>
           </div>
-          <h3 class="portal-card-title">QR Menu &amp; Engagement Stands</h3>
-          <p class="portal-card-desc">
-            Acrylic T-Stands, Gold Frame luxury stands, and complete digital restaurant setups with Google Review Boosters &amp; WhatsApp dynamic menus.
+          <h3 class="clean-card-title">QR Menu &amp; Review Growth Stands</h3>
+          <div class="clean-card-sub">Acrylic T-Stands, Gold Frames &amp; Dynamic QR Systems</div>
+          <p class="clean-card-desc">
+            Premium tabletop displays designed to boost Google reviews and provide instant digital contactless menu access via WhatsApp.
           </p>
-          <div class="portal-card-footer">
-            <span>Explore Stands &amp; Plans</span>
+          <div class="clean-card-pricing-strip">
+            <span class="clean-price-label">Hardware &amp; Plans</span>
+            <span class="clean-price-val">From ₹149 / stand</span>
+          </div>
+          <div class="clean-card-btn">
+            <span>Explore QR Stands &amp; Software</span>
             <i class="fas fa-arrow-right"></i>
           </div>
         </a>
 
-        <!-- 5. Live Price Calculator -->
-        <a href="calculator.html" class="category-portal-card">
-          <span class="portal-card-badge">Instant Quotation</span>
-          <div class="portal-card-icon-box">
+      </div>
+
+      <!-- 2 Sleek Utility Cards (Calculator & Invoice Generator) -->
+      <div class="clean-utility-grid">
+        <a href="calculator.html" class="clean-utility-card">
+          <div class="clean-utility-icon">
             <i class="fas fa-calculator"></i>
           </div>
-          <h3 class="portal-card-title">Live Packaging Price Calculator</h3>
-          <p class="portal-card-desc">
-            Enter your required quantities across products to calculate exact bulk discounts, dye fees, and total estimated billing in real-time.
-          </p>
-          <div class="portal-card-footer">
-            <span>Calculate Bulk Price</span>
-            <i class="fas fa-arrow-right"></i>
+          <div class="clean-utility-info">
+            <h4>Live Price &amp; Bulk Discount Calculator</h4>
+            <p>Input quantities to compute volume tier pricing, plate dye charges, and instant quotes.</p>
           </div>
+          <i class="fas fa-chevron-right text-gold" style="margin-left: auto;"></i>
         </a>
 
-        <!-- 6. Official Bill / Invoice Generator -->
-        <a href="invoice.html" class="category-portal-card">
-          <span class="portal-card-badge">Automated Billing</span>
-          <div class="portal-card-icon-box">
-            <i class="fas fa-receipt"></i>
+        <a href="invoice.html" class="clean-utility-card">
+          <div class="clean-utility-icon">
+            <i class="fas fa-file-invoice"></i>
           </div>
-          <h3 class="portal-card-title">Official Bill / Invoice Generator</h3>
-          <p class="portal-card-desc">
-            Create an authentic P6S invoice matching our official rate card PDF. Includes restaurant details, items breakdown, terms, and 1-click PDF download &amp; WhatsApp share.
-          </p>
-          <div class="portal-card-footer">
-            <span>Generate Official Bill</span>
-            <i class="fas fa-arrow-right"></i>
+          <div class="clean-utility-info">
+            <h4>Official P6S Bill &amp; Invoice Generator</h4>
+            <p>Generate authentic A4 GST invoices matching our official PDF format with 1-click download.</p>
           </div>
+          <i class="fas fa-chevron-right text-gold" style="margin-left: auto;"></i>
         </a>
-
       </div>
+
+      <!-- Clean Founders Direct Hotline Banner -->
+      <div class="clean-founders-box">
+        <div>
+          <span style="font-size: 0.76rem; font-weight: 800; color: #e5c07b; text-transform: uppercase; letter-spacing: 0.15em;">DIRECT FACTORY SUPPLY • INDORE</span>
+          <h3 style="font-family: 'Cinzel', serif; font-size: 1.85rem; font-weight: 900; color: #ffffff; margin: 4px 0 8px;">
+            Founders Hotline: Naman &amp; Ansh
+          </h3>
+          <p style="font-size: 0.95rem; color: #cbd5e1; max-width: 580px; margin: 0; line-height: 1.5;">
+            Need customized sample mockups with your restaurant logo? Call or WhatsApp our founders directly. First orders include free Pan-India dispatch!
+          </p>
+        </div>
+
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="tel:+918462063330" class="btn" style="background: #ffffff; color: #0b3b82; font-weight: 800; padding: 12px 20px;">
+            <i class="fas fa-phone-alt text-gold"></i> 8462063330
+          </a>
+          <a href="tel:+919111789220" class="btn" style="background: #ffffff; color: #0b3b82; font-weight: 800; padding: 12px 20px;">
+            <i class="fas fa-phone-alt text-gold"></i> 9111789220
+          </a>
+          <a href="https://wa.me/918462063330?text=Hello%20P6S%2C%20please%20send%20packaging%20samples%20for%20my%20restaurant." target="_blank" class="btn btn-whatsapp" style="padding: 12px 22px;">
+            <i class="fab fa-whatsapp"></i> WhatsApp Samples
+          </a>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- Clean Call-To-Action Banner -->
-  <section style="background: linear-gradient(135deg, #0b3b82 0%, #152c52 100%); color: #fff; padding: 60px 0; text-align: center;">
-    <div class="container">
-      <h2 style="font-size: 2.4rem; font-weight: 900; margin-bottom: 12px; color: #fff; font-family: 'Cinzel', serif;">
-        Need Custom Packaging Samples For Your Restaurant?
-      </h2>
-      <p style="font-size: 1.1rem; color: #cbd5e1; max-width: 680px; margin: 0 auto 30px;">
-        Connect directly with founders <strong>Naman &amp; Ansh</strong> in Indore. We provide instant mockups with your restaurant logo and pan-India dispatch.
-      </p>
-      <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
-        <a href="tel:+918462063330" class="btn btn-outline-gold" style="background:#fff; color:#0b3b82; padding: 13px 26px;">
-          <i class="fas fa-phone-alt"></i> Call: 8462063330
-        </a>
-        <a href="tel:+919111789220" class="btn btn-outline-gold" style="background:#fff; color:#0b3b82; padding: 13px 26px;">
-          <i class="fas fa-phone-alt"></i> Call: 9111789220
-        </a>
-        <a href="https://wa.me/918462063330?text=Hello%20P6S%2C%20please%20send%20sample%20kit%20for%20my%20restaurant." target="_blank" class="btn btn-whatsapp" style="padding: 13px 28px;">
-          <i class="fab fa-whatsapp"></i> Request Sample Kit on WhatsApp
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Clean Footer -->
-  <footer style="background: #ffffff; border-top: 1.5px solid rgba(197, 160, 89, 0.3); padding: 50px 0 30px;">
+  <!-- Clean, Spacious Luxury Footer -->
+  <footer style="background: #ffffff; border-top: 1.5px solid rgba(197, 160, 89, 0.35); padding: 50px 0 30px;">
     <div class="container">
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; margin-bottom: 40px;">
+        
         <div>
           <div class="brand-name" style="margin-bottom: 10px;">PREMIUM <span>PACKAGING</span></div>
           <p style="color: #475569; font-size: 0.88rem; line-height: 1.6;">
@@ -290,22 +539,23 @@
 
         <div>
           <h4 style="color: #0b3b82; font-size: 1.05rem; margin-bottom: 14px; border-bottom: 2px solid #b8860b; padding-bottom: 4px; display: inline-block;">
-            Quick Pages
+            Showroom Collections
           </h4>
           <ul style="list-style: none; font-size: 0.9rem; line-height: 2;">
+            <li><a href="javascript:void(0)" onclick="app.openProductsDrawer()" style="color: #475569; text-decoration: none;">• All Products Side Menu</a></li>
             <li><a href="smart-sachets.html" style="color: #475569; text-decoration: none;">• Smart Sachets™ &amp; Saunf</a></li>
-            <li><a href="sachets.html" style="color: #475569; text-decoration: none;">• Sugar, Salt &amp; Seasonings</a></li>
-            <li><a href="packaging-cups.html" style="color: #475569; text-decoration: none;">• Paper Cups &amp; Butter Paper</a></li>
-            <li><a href="qr-stands.html" style="color: #475569; text-decoration: none;">• QR Stands &amp; Digital Menu</a></li>
-            <li><a href="calculator.html" style="color: #475569; text-decoration: none;">• Live Price Calculator</a></li>
-            <li><a href="invoice.html" style="color: #475569; text-decoration: none;">• Generate Official Bill</a></li>
+            <li><a href="packaging-cups.html" style="color: #475569; text-decoration: none;">• Cups &amp; Butter Paper</a></li>
+            <li><a href="sachets.html" style="color: #475569; text-decoration: none;">• Sugar, Salt &amp; Spices</a></li>
+            <li><a href="qr-stands.html" style="color: #475569; text-decoration: none;">• QR Stands &amp; Reviews</a></li>
+            <li><a href="calculator.html" style="color: #475569; text-decoration: none;">• Live Bulk Price Calculator</a></li>
+            <li><a href="invoice.html" style="color: #475569; text-decoration: none;">• Official Bill Generator</a></li>
             <li><a href="about.html" style="color: #475569; text-decoration: none;">• Contact &amp; About Us</a></li>
           </ul>
         </div>
 
         <div>
           <h4 style="color: #0b3b82; font-size: 1.05rem; margin-bottom: 14px; border-bottom: 2px solid #b8860b; padding-bottom: 4px; display: inline-block;">
-            Contact Leadership
+            Founders Hotline
           </h4>
           <p style="color: #1e293b; font-size: 0.9rem; margin-bottom: 8px;">
             <strong>Business Owners:</strong> Naman &amp; Ansh
@@ -385,59 +635,131 @@
     </div>
   </div>
 
-  <!-- Client Login Modal -->
+  <!-- Ultra-Luxury Client Concierge Login Modal -->
   <div id="loginModal" class="modal-overlay">
-    <div class="modal-content" style="max-width: 480px;">
+    <div class="modal-content vip-login-modal">
       <button class="modal-close-btn" onclick="app.closeModal('loginModal')">
         <i class="fas fa-times"></i>
       </button>
-      <div style="text-align: center; margin-bottom: 22px;">
-        <div class="brand-name" style="margin-bottom: 6px;">P6S</div>
-        <h3 style="color: #0b3b82; font-size: 1.35rem; font-weight: 800;">Hospitality Partner Login</h3>
-        <p style="color: #64748b; font-size: 0.85rem;">Login to auto-fill invoices, access sample kits &amp; track orders.</p>
+
+      <div class="vip-concierge-header">
+        <div class="vip-crest-circle">
+          <svg style="width:34px; height:34px;" viewBox="0 0 120 120" fill="none">
+            <path d="M60 4 C65 32 88 55 116 60 C88 65 65 88 60 116 C55 88 32 65 4 60 C32 55 55 32 60 4 Z" stroke="#C5A059" stroke-width="2.5" fill="#faf8f5" />
+            <rect x="35" y="35" width="50" height="50" rx="6" transform="rotate(45 60 60)" fill="#0b3b82" stroke="#E5C07B" stroke-width="1.8" />
+            <text x="60" y="66" font-family="'Cinzel', serif" font-size="20" font-weight="900" fill="#E5C07B" text-anchor="middle">P6S</text>
+          </svg>
+        </div>
+        <span style="font-size: 0.72rem; font-weight: 800; color: #b8860b; text-transform: uppercase; letter-spacing: 0.12em;">HOSPITALITY CONCIERGE ATELIER</span>
+        <h3 style="color: #0b3b82; font-size: 1.45rem; font-weight: 800; margin-top: 4px; margin-bottom: 6px;">Client &amp; Restaurant Portal</h3>
+        <p style="color: #64748b; font-size: 0.84rem; margin: 0;">Access factory-direct wholesale pricing, instant bills &amp; dispatch tracking</p>
       </div>
-      <div class="form-group">
-        <label class="form-label">Restaurant / Cafe Name *</label>
-        <input type="text" id="authRestName" class="form-control" placeholder="e.g. Shree Kripa Midway Restaurant">
+
+      <!-- Perks Strip -->
+      <div class="vip-perks-strip">
+        <div class="vip-perk-item"><i class="fas fa-bolt text-gold"></i> 1-Click Invoices</div>
+        <div class="vip-perk-item"><i class="fas fa-percentage text-gold"></i> Factory Rates</div>
+        <div class="vip-perk-item"><i class="fas fa-truck text-gold"></i> Indore Dispatch</div>
       </div>
-      <div class="form-group">
-        <label class="form-label">Contact Person Name</label>
-        <input type="text" id="authOwnerName" class="form-control" placeholder="e.g. Ramesh Kumar">
+
+      <div class="form-group" style="margin-bottom: 12px;">
+        <label class="form-label" style="font-size: 0.8rem; font-weight: 700; color: #0b3b82;">Restaurant / Cafe Name *</label>
+        <div style="position: relative;">
+          <input type="text" id="authRestName" class="form-control" placeholder="e.g. Mudoven Cafe or Chef Bhupi Kitchen" style="padding-left: 36px;">
+          <i class="fas fa-hotel" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 0.9rem;"></i>
+        </div>
       </div>
-      <div class="form-group">
-        <label class="form-label">WhatsApp Contact Number *</label>
-        <input type="tel" id="authPhone" class="form-control" placeholder="e.g. 9876543210">
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;">
+        <div class="form-group" style="margin-bottom: 0;">
+          <label class="form-label" style="font-size: 0.8rem; font-weight: 700; color: #0b3b82;">Owner / Contact Name</label>
+          <input type="text" id="authOwnerName" class="form-control" placeholder="e.g. Naman / Rahul">
+        </div>
+        <div class="form-group" style="margin-bottom: 0;">
+          <label class="form-label" style="font-size: 0.8rem; font-weight: 700; color: #0b3b82;">WhatsApp Number *</label>
+          <input type="tel" id="authPhone" class="form-control" placeholder="9876543210">
+        </div>
       </div>
-      <div class="form-group">
-        <label class="form-label">City / Delivery Address</label>
-        <input type="text" id="authCity" class="form-control" placeholder="e.g. Indore, Madhya Pradesh">
+
+      <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 10px; margin-bottom: 16px;">
+        <div class="form-group" style="margin-bottom: 0;">
+          <label class="form-label" style="font-size: 0.8rem; font-weight: 700; color: #0b3b82;">City</label>
+          <input type="text" id="authCity" class="form-control" value="Indore">
+        </div>
+        <div class="form-group" style="margin-bottom: 0;">
+          <label class="form-label" style="font-size: 0.8rem; font-weight: 700; color: #0b3b82;">GSTIN / FSSAI (Optional)</label>
+          <input type="text" id="authGST" class="form-control" placeholder="Optional">
+        </div>
       </div>
-      <div class="form-group">
-        <label class="form-label">GST / FSSAI Number (Optional)</label>
-        <input type="text" id="authGST" class="form-control" placeholder="Optional">
-      </div>
-      <button class="btn btn-primary" onclick="app.saveUserProfile()" style="width: 100%; padding: 12px; margin-top: 10px;">
-        <i class="fas fa-check-circle"></i> Save &amp; Continue
+
+      <button class="btn btn-primary" onclick="app.saveUserProfile()" style="width: 100%; padding: 13px; font-size: 0.96rem; font-weight: 800; border-radius: 10px;">
+        <i class="fas fa-crown"></i> Activate Client Profile &amp; Save
       </button>
+
+      <div style="text-align: center; margin-top: 14px;">
+        <button type="button" onclick="app.fillDemoProfile()" style="background: none; border: none; color: #b8860b; font-size: 0.78rem; font-weight: 700; cursor: pointer; text-decoration: underline;">
+          ⚡ Auto-fill sample restaurant profile (Testing)
+        </button>
+      </div>
     </div>
   </div>
 
-  <!-- Profile Modal -->
+  <!-- Luxury Profile Modal with Gold Card -->
   <div id="profileModal" class="modal-overlay">
-    <div class="modal-content" style="max-width: 450px;">
+    <div class="modal-content" style="max-width: 480px;">
       <button class="modal-close-btn" onclick="app.closeModal('profileModal')">
         <i class="fas fa-times"></i>
       </button>
-      <h3 style="color: #0b3b82; font-size: 1.3rem; font-weight: 800; margin-bottom: 16px;">Restaurant Profile</h3>
-      <div style="background: #faf8f5; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 18px;">
-        <div style="margin-bottom: 8px;"><span style="color:#64748b;">Restaurant:</span> <strong id="profRestName" style="color:#0f172a;"></strong></div>
-        <div style="margin-bottom: 8px;"><span style="color:#64748b;">Contact:</span> <strong id="profOwnerName" style="color:#0f172a;"></strong></div>
-        <div style="margin-bottom: 8px;"><span style="color:#64748b;">Phone:</span> <strong id="profPhone" style="color:#0b3b82;"></strong></div>
-        <div><span style="color:#64748b;">City:</span> <strong id="profCity" style="color:#0f172a;"></strong></div>
+      
+      <div style="text-align: center; margin-bottom: 16px;">
+        <span style="font-size: 0.72rem; font-weight: 800; color: #b8860b; text-transform: uppercase; letter-spacing: 0.12em;">VERIFIED CLIENT ACCOUNT</span>
+        <h3 style="color: #0b3b82; font-size: 1.35rem; font-weight: 800; margin: 4px 0 0;">Restaurant Concierge Card</h3>
       </div>
-      <button class="btn" onclick="app.logoutUser()" style="width: 100%; background: #fee2e2; color: #dc2626; border: 1px solid #fca5a5;">
-        Logout / Switch Account
-      </button>
+
+      <!-- VIP Gold Card -->
+      <div class="vip-gold-card">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+          <div class="vip-card-chip"></div>
+          <div style="text-align: right;">
+            <div style="font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 900; color: #fbf0b9;">P6S ATELIER</div>
+            <div style="font-size: 0.68rem; letter-spacing: 0.1em; color: #cbd5e1;">VIP HOSPITALITY MEMBER</div>
+          </div>
+        </div>
+
+        <div class="vip-card-number">P6S • 2026 • VIP • CLIENT</div>
+
+        <div class="vip-card-details">
+          <div>
+            <div style="font-size: 0.68rem; color: #cbd5e1; text-transform: uppercase;">RESTAURANT</div>
+            <strong id="profRestName" style="font-size: 1.05rem; color: #ffffff;"></strong>
+            <div id="profOwnerName" style="font-size: 0.75rem; color: #fbf0b9; margin-top: 2px;"></div>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 0.68rem; color: #cbd5e1; text-transform: uppercase;">HUB</div>
+            <strong id="profCity" style="color: #ffffff;">Indore</strong>
+          </div>
+        </div>
+      </div>
+
+      <div style="background: #faf8f5; border: 1px solid #e2e8f0; border-radius: 12px; padding: 14px 18px; margin-bottom: 18px; font-size: 0.88rem;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+          <span style="color: #64748b;">Phone:</span>
+          <strong id="profPhone" style="color: #0b3b82;"></strong>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+          <span style="color: #64748b;">Tier Status:</span>
+          <span style="color: #16a34a; font-weight: 800;"><i class="fas fa-check-circle"></i> Factory Direct Pricing Active</span>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+        <a href="invoice.html" class="btn btn-primary" style="padding: 10px; font-size: 0.85rem; text-align: center;">
+          <i class="fas fa-file-invoice"></i> Generate Bill
+        </a>
+        <button class="btn" onclick="app.logoutUser()" style="padding: 10px; font-size: 0.85rem; background: #fee2e2; color: #dc2626; border: 1px solid #fca5a5;">
+          <i class="fas fa-sign-out-alt"></i> Logout / Switch
+        </button>
+      </div>
     </div>
   </div>
 

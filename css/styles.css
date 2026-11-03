@@ -968,6 +968,278 @@ h1, h2, h3, h4, .font-serif {
   background: var(--royal-blue);
 }
 
+/* ==========================================================================
+   MEGA-DROPDOWN & NAVIGATION UPGRADES
+   ========================================================================== */
+.nav-item-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-35%) translateY(10px);
+  width: 860px;
+  background: #ffffff;
+  border: 1.5px solid var(--border-gold-solid);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 20px 45px rgba(11, 59, 130, 0.12);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1000;
+}
+
+.nav-item-dropdown:hover .nav-dropdown-menu,
+.nav-item-dropdown.active .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-35%) translateY(4px);
+}
+
+.nav-dropdown-col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dropdown-col-header {
+  border-bottom: 1.5px solid #f1f5f9;
+  padding-bottom: 8px;
+  margin-bottom: 6px;
+}
+
+.dropdown-col-title {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #0b3b82;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dropdown-col-desc {
+  font-size: 0.72rem;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.dropdown-product-link {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #334155;
+  text-decoration: none;
+  padding: 5px 8px;
+  border-radius: 6px;
+  transition: all 0.18s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdown-product-link:hover {
+  background: #faf8f5;
+  color: #0b3b82;
+  transform: translateX(3px);
+}
+
+.dropdown-badge {
+  font-size: 0.68rem;
+  background: #f1f5f9;
+  color: #475569;
+  padding: 1px 6px;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+.dropdown-view-all {
+  margin-top: auto;
+  padding-top: 8px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #b8860b;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.dropdown-view-all:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   STANDARD OFFICIAL FSSAI & STATUTORY LABELS
+   ========================================================================== */
+.fssai-standard-box {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 8px 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+}
+
+.fssai-logo-tag {
+  font-family: 'Cinzel', serif;
+  font-weight: 900;
+  font-size: 1.15rem;
+  color: #0b3b82;
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+.fssai-logo-tag span {
+  color: #16a34a;
+  font-size: 0.85rem;
+  vertical-align: super;
+}
+
+.fssai-lic-text {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #1e293b;
+  line-height: 1.3;
+}
+
+.veg-symbol-wrap {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #16a34a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.veg-symbol-dot {
+  width: 8px;
+  height: 8px;
+  background: #16a34a;
+  border-radius: 50%;
+}
+
+/* 3D Sachet Regulatory Back Footer */
+.sachet-regulatory-container {
+  border-top: 1px dashed #cbd5e1;
+  padding-top: 8px;
+  margin-top: 8px;
+  font-size: 0.65rem;
+  color: #334155;
+  line-height: 1.35;
+}
+
+.sachet-fssai-badge-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+/* ==========================================================================
+   ULTRA-LUXURY CLIENT CONCIERGE LOGIN & VIP PROFILE
+   ========================================================================== */
+.vip-login-modal {
+  max-width: 520px;
+  background: #ffffff;
+  border: 2px solid var(--border-gold-solid);
+  border-radius: 20px;
+  padding: 36px 32px;
+  box-shadow: 0 25px 60px rgba(11, 59, 130, 0.15);
+}
+
+.vip-concierge-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.vip-crest-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #faf8f5;
+  border: 2px solid var(--border-gold-solid);
+  margin: 0 auto 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(197, 160, 89, 0.25);
+}
+
+.vip-perks-strip {
+  display: flex;
+  justify-content: space-between;
+  background: #faf8f5;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-bottom: 20px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #0b3b82;
+}
+
+.vip-perk-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.vip-gold-card {
+  background: linear-gradient(135deg, #0b3b82 0%, #152c52 50%, #8c6d23 100%);
+  color: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(11, 59, 130, 0.25);
+  margin-bottom: 20px;
+  border: 1.5px solid #e5c07b;
+}
+
+.vip-card-chip {
+  width: 38px;
+  height: 28px;
+  background: linear-gradient(135deg, #ffd700, #b8860b);
+  border-radius: 4px;
+  margin-bottom: 16px;
+  border: 1px solid #ffffff;
+}
+
+.vip-card-number {
+  font-family: 'Cinzel', serif;
+  font-size: 1.15rem;
+  letter-spacing: 0.15em;
+  color: #fbf0b9;
+  margin-bottom: 14px;
+}
+
+.vip-card-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-size: 0.85rem;
+}
+
 /* Print CSS */
 @media print {
   body {
@@ -996,6 +1268,635 @@ h1, h2, h3, h4, .font-serif {
   
   .no-print {
     display: none !important;
+  }
+}
+
+/* ==========================================================================
+   ROYAL "स्वागतम्" (SWAGATAM) LUXURY SPLASH CURTAIN & WELCOME ANIMATION
+   ========================================================================== */
+#p6sSplashCurtain {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, #0f2b5c 0%, #071630 65%, #020b17 100%);
+  color: #ffffff;
+  padding: 24px;
+  text-align: center;
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.65s;
+  overflow: hidden;
+}
+
+#p6sSplashCurtain.splash-hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.04);
+  pointer-events: none;
+}
+
+/* Ambient Gold Glow */
+.splash-bg-glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(197, 160, 89, 0.22) 0%, rgba(11, 59, 130, 0.06) 50%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: splashPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes splashPulse {
+  0% { transform: scale(0.9); opacity: 0.6; }
+  100% { transform: scale(1.2); opacity: 1; }
+}
+
+/* Splash Monogram Crest */
+.splash-crest-wrap {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  margin-bottom: 20px;
+  animation: splashCrestIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes splashCrestIn {
+  0% { transform: scale(0.6) rotate(-15deg); opacity: 0; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+.splash-crest-wrap svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 6px 22px rgba(197, 160, 89, 0.5));
+}
+
+/* Swagatam Devanagari Calligraphy */
+.splash-swagatam {
+  font-family: 'Cinzel', 'Outfit', serif;
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  background: linear-gradient(135deg, #FFF5D6 0%, #E5C07B 40%, #C5A059 70%, #8C6D23 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 25px rgba(229, 192, 123, 0.4));
+  margin-bottom: 4px;
+  animation: splashFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+/* Dynamic Personalized Client Display */
+.splash-client-display {
+  font-family: 'Cinzel', serif;
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.08em;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.6);
+  margin-bottom: 8px;
+  animation: splashFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.18s both;
+  display: none;
+}
+
+.splash-client-display.visible {
+  display: block;
+}
+
+.splash-welcome-en {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: #f1f5f9;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  animation: splashFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both;
+}
+
+.splash-brand-sub {
+  font-size: 0.82rem;
+  color: #94a3b8;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  animation: splashFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.28s both;
+}
+
+/* Dynamic Personalized Lead Pill */
+.splash-lead-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(197, 160, 89, 0.45);
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  color: #fbf0b9;
+  font-weight: 600;
+  margin-bottom: 24px;
+  animation: splashFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
+}
+
+/* Gold Progress Loading Bar */
+.splash-progress-track {
+  width: 220px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  animation: splashFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+}
+
+.splash-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #d4af37, #FFF5D6, #c5a059);
+  transition: width 1.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+}
+
+.splash-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  animation: splashFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
+}
+
+.splash-enter-btn {
+  background: rgba(197, 160, 89, 0.15);
+  border: 1px solid rgba(197, 160, 89, 0.6);
+  color: #fbf0b9;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 9px 22px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.splash-enter-btn:hover {
+  background: rgba(197, 160, 89, 0.3);
+  border-color: #e5c07b;
+  transform: translateY(-2px);
+}
+
+.splash-sound-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #cbd5e1;
+  font-size: 0.8rem;
+  padding: 8px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+
+.splash-sound-btn:hover {
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+@keyframes splashFadeUp {
+  0% { transform: translateY(18px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* ==========================================================================
+   OFF-CANVAS LUXURY "ALL PRODUCTS" SIDE DRAWER (ALL ITEMS IN ONE SIDE PANEL)
+   ========================================================================== */
+.side-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(7, 22, 48, 0.65);
+  backdrop-filter: blur(5px);
+  z-index: 99990;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.side-drawer-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.all-products-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 440px;
+  background: #ffffff;
+  z-index: 99995;
+  box-shadow: 12px 0 40px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(-100%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.all-products-drawer.open {
+  transform: translateX(0);
+}
+
+.side-drawer-header {
+  padding: 22px 24px;
+  background: linear-gradient(135deg, #0b3b82 0%, #071630 100%);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--border-gold-solid);
+}
+
+.side-drawer-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.side-drawer-close-btn {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.side-drawer-close-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: rotate(90deg);
+}
+
+.side-drawer-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 18px;
+}
+
+.side-drawer-cat-block {
+  margin-bottom: 18px;
+  background: #faf8f5;
+  border: 1.5px solid rgba(197, 160, 89, 0.35);
+  border-radius: 14px;
+  padding: 16px;
+  transition: all 0.2s ease;
+}
+
+.side-drawer-cat-block:hover {
+  border-color: var(--border-gold-solid);
+  background: #ffffff;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+}
+
+.side-drawer-cat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed rgba(197, 160, 89, 0.4);
+}
+
+.side-drawer-cat-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--royal-blue);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.side-drawer-cat-badge {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: var(--gold-dark);
+  background: var(--gold-light);
+  border: 1px solid var(--border-gold-solid);
+  padding: 2px 8px;
+  border-radius: 10px;
+  text-transform: uppercase;
+}
+
+.side-drawer-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+.side-drawer-item-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #334155;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: all 0.15s;
+}
+
+.side-drawer-item-row:hover {
+  background: rgba(197, 160, 89, 0.15);
+  color: var(--royal-blue);
+  transform: translateX(4px);
+}
+
+.side-drawer-item-rate {
+  font-family: 'Cinzel', serif;
+  font-weight: 800;
+  color: var(--royal-blue);
+  font-size: 0.85rem;
+}
+
+.side-drawer-cat-link {
+  display: block;
+  text-align: right;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--gold-dark);
+  text-decoration: none;
+  padding-top: 6px;
+}
+
+.side-drawer-cat-link:hover {
+  text-decoration: underline;
+}
+
+.side-drawer-footer {
+  padding: 16px 20px;
+  background: #ffffff;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ==========================================================================
+   CLEAN & SPACIOUS LUXURY SHOWROOM STYLES (DECLUTTERED HOMEPAGE)
+   ========================================================================== */
+.clean-showroom-section {
+  padding: 60px 0 80px;
+}
+
+.clean-showroom-header {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto 46px;
+}
+
+.clean-kicker {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--gold-dark);
+  margin-bottom: 8px;
+}
+
+.clean-title {
+  font-family: 'Cinzel', serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--royal-blue);
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.clean-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* 4 Master Collections Grid */
+.clean-collections-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+@media (max-width: 860px) {
+  .clean-collections-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.clean-collection-card {
+  background: #ffffff;
+  border: 1.5px solid rgba(197, 160, 89, 0.35);
+  border-radius: 20px;
+  padding: 34px 30px;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+.clean-collection-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-gold-solid);
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08), 0 2px 8px rgba(197, 160, 89, 0.2);
+}
+
+.clean-card-badge {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  background: var(--gold-light);
+  border: 1px solid var(--border-gold-solid);
+  color: var(--gold-dark);
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.clean-card-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #0b3b82 0%, #071630 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e5c07b;
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 14px rgba(11, 59, 130, 0.25);
+}
+
+.clean-card-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--royal-blue);
+  margin-bottom: 6px;
+}
+
+.clean-card-sub {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--gold-dark);
+  margin-bottom: 14px;
+}
+
+.clean-card-desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.clean-card-pricing-strip {
+  background: #faf8f5;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.clean-price-label {
+  font-size: 0.78rem;
+  color: #64748b;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.clean-price-val {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--royal-blue);
+  font-family: 'Cinzel', serif;
+}
+
+.clean-card-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 800;
+  font-size: 0.92rem;
+  color: var(--royal-blue);
+  border-top: 1px solid #f1f5f9;
+  padding-top: 14px;
+  transition: color 0.2s;
+}
+
+.clean-collection-card:hover .clean-card-btn {
+  color: var(--gold-dark);
+}
+
+/* 2 Clean Utility Cards (Calculator & Invoice) */
+.clean-utility-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 50px;
+}
+
+@media (max-width: 768px) {
+  .clean-utility-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.clean-utility-card {
+  background: #ffffff;
+  border: 1.5px dashed var(--border-gold-solid);
+  border-radius: 18px;
+  padding: 26px 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.clean-utility-card:hover {
+  background: #faf8f5;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.clean-utility-icon {
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  border-radius: 12px;
+  background: var(--gold-light);
+  border: 1px solid var(--border-gold-solid);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: var(--royal-blue);
+}
+
+.clean-utility-info h4 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--royal-blue);
+  margin-bottom: 4px;
+}
+
+.clean-utility-info p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Clean Founders Hotline Banner */
+.clean-founders-box {
+  background: linear-gradient(135deg, #0b3b82 0%, #071630 100%);
+  border: 1.5px solid var(--border-gold-solid);
+  border-radius: 20px;
+  padding: 36px 32px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  box-shadow: 0 12px 30px rgba(11, 59, 130, 0.2);
+}
+
+@media (max-width: 860px) {
+  .clean-founders-box {
+    flex-direction: column;
+    text-align: center;
   }
 }
 

@@ -21,12 +21,195 @@ class P6SApp {
   init() {
     this.loadUserFromStorage();
     this.detectSourceTracking();
+    this.initSplashScreen();
     this.renderCatalog();
     this.setupEventListeners();
     this.renderCart();
     this.initInteractiveShowcase();
     this.initCalculator();
     this.updateOwnerStats();
+  }
+
+  /* -------------------------------------------------------------
+     ROYAL "स्वागतम्" (SWAGATAM) LUXURY SPLASH & VOICE ENGINE
+  ------------------------------------------------------------- */
+  initSplashScreen() {
+    const curtain = document.getElementById('p6sSplashCurtain');
+    if (!curtain) return;
+
+    // Detect client name from storage or link referral
+    let clientName = '';
+    let greetingMsg = 'Indore Factory Direct Hospitality Atelier';
+
+    if (this.currentUser && this.currentUser.restaurantName) {
+      clientName = this.currentUser.restaurantName;
+      greetingMsg = 'VIP Hospitality Account Active';
+    } else if (this.trackingData && this.trackingData.ref) {
+      clientName = this.trackingData.ref.startsWith('@') ? this.trackingData.ref : `@${this.trackingData.ref}`;
+      greetingMsg = `Special Welcome for ${this.trackingData.source.toUpperCase()} Partner`;
+    } else if (this.trackingData && this.trackingData.name) {
+      clientName = this.trackingData.name;
+      greetingMsg = 'Valued Partner Guest';
+    }
+
+    const clientDisplay = document.getElementById('splashClientName');
+    const leadGreeting = document.getElementById('splashLeadGreeting');
+    const progressBar = document.getElementById('splashProgressBar');
+
+    if (clientDisplay && clientName) {
+      clientDisplay.textContent = clientName;
+      clientDisplay.classList.add('visible');
+    }
+
+    if (leadGreeting) {
+      if (clientName) {
+        leadGreeting.innerHTML = `<i class="fas fa-gem" style="color:#e5c07b;"></i> Special Welcome For <strong>${clientName}</strong>`;
+      } else {
+        leadGreeting.innerHTML = `<i class="fas fa-crown" style="color:#e5c07b;"></i> Welcome to P6S Hospitality Atelier • Indore`;
+      }
+    }
+
+    if (progressBar) {
+      setTimeout(() => {
+        progressBar.style.width = '100%';
+      }, 50);
+    }
+
+    // Play Voice Welcome Announcement!
+    this.playWelcomeVoice(clientName);
+
+    // Auto dismiss after 2.2 seconds
+    this.splashTimer = setTimeout(() => {
+      this.dismissSplash();
+    }, 2200);
+
+    // Click anywhere to dismiss immediately
+    curtain.addEventListener('click', (e) => {
+      // Don't dismiss if clicking the listen again button
+      if (e.target && (e.target.closest('.splash-sound-btn') || e.target.closest('#splashSoundBtn'))) return;
+      this.dismissSplash();
+    });
+  }
+
+  triggerSwagatamScreen(clientName = '', subMessage = 'Welcome to P6S Atelier • Indore', autoDismissMs = 2800) {
+    const curtain = document.getElementById('p6sSplashCurtain');
+    if (!curtain) return;
+
+    const clientDisplay = document.getElementById('splashClientName');
+    const leadGreeting = document.getElementById('splashLeadGreeting');
+    const progressBar = document.getElementById('splashProgressBar');
+
+    if (clientDisplay) {
+      if (clientName) {
+        clientDisplay.textContent = clientName;
+        clientDisplay.classList.add('visible');
+      } else {
+        clientDisplay.textContent = '';
+        clientDisplay.classList.remove('visible');
+      }
+    }
+
+    if (leadGreeting) {
+      leadGreeting.innerHTML = `<i class="fas fa-crown" style="color:#e5c07b;"></i> ${subMessage}`;
+    }
+
+    curtain.style.display = 'flex';
+    curtain.classList.remove('splash-hidden');
+
+    if (progressBar) {
+      progressBar.style.width = '0%';
+      setTimeout(() => { progressBar.style.width = '100%'; }, 50);
+    }
+
+    // Voice announcement
+    this.playWelcomeVoice(clientName);
+
+    if (this.splashTimer) clearTimeout(this.splashTimer);
+    if (autoDismissMs > 0) {
+      this.splashTimer = setTimeout(() => {
+        this.dismissSplash();
+      }, autoDismissMs);
+    }
+  }
+
+  playWelcomeVoice(name = '', customMessage = '') {
+    if (!('speechSynthesis' in window)) return;
+    try {
+      window.speechSynthesis.cancel();
+
+      const cleanName = name ? name.replace('@', '').trim() : '';
+      let speechText = '';
+
+      if (customMessage) {
+        speechText = customMessage;
+      } else if (cleanName) {
+        speechText = `Swagatam ${cleanName}! Welcome to Premium Packaging Solutions.`;
+      } else {
+        speechText = `Swagatam! Welcome to Premium Packaging Solutions, Indore.`;
+      }
+
+      this.lastSpokenText = speechText;
+
+      const utterance = new SpeechSynthesisUtterance(speechText);
+      utterance.rate = 0.92;
+      utterance.pitch = 1.05;
+      utterance.volume = 1;
+
+      // Select best voice (Hindi or Indian English or default)
+      const voices = window.speechSynthesis.getVoices();
+      if (voices && voices.length > 0) {
+        const preferredVoice = voices.find(v => (v.lang && (v.lang.includes('hi') || v.lang.includes('IN'))) || (v.name && v.name.includes('India')));
+        if (preferredVoice) {
+          utterance.voice = preferredVoice;
+        }
+      }
+
+      window.speechSynthesis.speak(utterance);
+    } catch (e) {
+      console.log("Voice speech info:", e);
+    }
+  }
+
+  replayVoice() {
+    if (this.lastSpokenText) {
+      this.playWelcomeVoice('', this.lastSpokenText);
+    } else {
+      const clientName = this.currentUser ? this.currentUser.restaurantName : (this.trackingData.ref || '');
+      this.playWelcomeVoice(clientName);
+    }
+  }
+
+  dismissSplash() {
+    const curtain = document.getElementById('p6sSplashCurtain');
+    if (!curtain) return;
+    if (this.splashTimer) clearTimeout(this.splashTimer);
+    curtain.classList.add('splash-hidden');
+    setTimeout(() => {
+      if (curtain && curtain.parentNode) curtain.style.display = 'none';
+    }, 700);
+  }
+
+  /* -------------------------------------------------------------
+     OFF-CANVAS "ALL PRODUCTS" SIDE DRAWER CONTROLLER
+  ------------------------------------------------------------- */
+  openProductsDrawer() {
+    const drawer = document.getElementById('allProductsSideDrawer');
+    const backdrop = document.getElementById('sideDrawerBackdrop');
+    if (drawer && backdrop) {
+      drawer.classList.add('open');
+      backdrop.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  closeProductsDrawer() {
+    const drawer = document.getElementById('allProductsSideDrawer');
+    const backdrop = document.getElementById('sideDrawerBackdrop');
+    if (drawer && backdrop) {
+      drawer.classList.remove('open');
+      backdrop.classList.remove('active');
+      document.body.style.overflow = '';
+    }
   }
 
   /* -------------------------------------------------------------
@@ -1159,6 +1342,19 @@ Please share the design preview & confirmation!`;
     } catch (e) {}
   }
 
+  fillDemoProfile() {
+    const r = document.getElementById('authRestName');
+    const o = document.getElementById('authOwnerName');
+    const p = document.getElementById('authPhone');
+    const c = document.getElementById('authCity');
+    const g = document.getElementById('authGST');
+    if (r) r.value = "The Grand Heritage Bistro";
+    if (o) o.value = "Vikram Sharma (Partner)";
+    if (p) p.value = "9876543210";
+    if (c) c.value = "Indore";
+    if (g) g.value = "23AAACH1234F1Z9";
+  }
+
   saveUserProfile() {
     const restName = document.getElementById('authRestName').value.trim();
     const ownerName = document.getElementById('authOwnerName').value.trim();
@@ -1187,7 +1383,12 @@ Please share the design preview & confirmation!`;
     const clientInput = document.getElementById('invoiceClientName');
     if (clientInput) clientInput.value = this.currentUser.restaurantName;
 
-    alert(`✨ Welcome ${this.currentUser.restaurantName}! Your client profile is active.`);
+    // Trigger Royal "स्वागतम्" (Swagatam) Voice & Celebration Screen!
+    this.triggerSwagatamScreen(
+      this.currentUser.restaurantName,
+      `VIP Hospitality Client Account Activated • Factory Rates Active`,
+      2800
+    );
   }
 
   updateUserUI() {
@@ -1418,14 +1619,18 @@ Please share the design preview & confirmation!`;
   openLoginModal() {
     if (this.currentUser) {
       const modal = document.getElementById('profileModal');
-      document.getElementById('profRestName').innerText = this.currentUser.restaurantName;
-      document.getElementById('profOwnerName').innerText = this.currentUser.ownerName;
-      document.getElementById('profPhone').innerText = this.currentUser.phone;
-      document.getElementById('profCity').innerText = this.currentUser.city;
-      modal.classList.add('active');
+      const pRest = document.getElementById('profRestName');
+      const pOwner = document.getElementById('profOwnerName');
+      const pPhone = document.getElementById('profPhone');
+      const pCity = document.getElementById('profCity');
+      if (pRest) pRest.innerText = this.currentUser.restaurantName;
+      if (pOwner) pOwner.innerText = this.currentUser.ownerName;
+      if (pPhone) pPhone.innerText = this.currentUser.phone;
+      if (pCity) pCity.innerText = this.currentUser.city || 'Indore';
+      if (modal) modal.classList.add('active');
     } else {
       const modal = document.getElementById('loginModal');
-      modal.classList.add('active');
+      if (modal) modal.classList.add('active');
     }
   }
 
