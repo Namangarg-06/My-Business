@@ -1,5 +1,5 @@
 /**
- * Premium Packaging Solutions (P2S) - Invoice Generation Engine
+ * Premium Packaging Solutions (P6S) - Invoice Generation Engine
  * Generates official hospitality invoices matching the company format
  */
 
@@ -8,7 +8,6 @@ class InvoiceEngine {
     this.currentInvoice = null;
   }
 
-  // Generate a formatted invoice object
   createInvoice({
     clientName = "Valued Hospitality Client",
     clientPhone = "",
@@ -66,27 +65,25 @@ class InvoiceEngine {
     return invoiceObj;
   }
 
-  // Save generated invoice to localStorage
   saveToHistory(invoice) {
     try {
-      const history = JSON.parse(localStorage.getItem('p2s_invoices_history') || '[]');
+      const history = JSON.parse(localStorage.getItem('p6s_invoices_history') || '[]');
       history.unshift(invoice);
-      localStorage.setItem('p2s_invoices_history', JSON.stringify(history.slice(0, 50)));
+      localStorage.setItem('p6s_invoices_history', JSON.stringify(history.slice(0, 50)));
     } catch (e) {
       console.warn("Could not save to localStorage", e);
     }
   }
 
-  // Render the exact HTML template matching the PDF invoice
   renderHTML(invoice) {
     const itemsRows = invoice.items.map(it => `
       <tr>
-        <td class="text-center">${it.sNo}</td>
-        <td>${it.description}</td>
+        <td class="text-center" style="font-weight: 700;">${it.sNo}</td>
+        <td style="font-weight: 600;">${it.description}</td>
         <td class="text-center">${it.qty}</td>
-        <td class="text-right">${it.rate}</td>
-        <td class="text-right">${it.dye}</td>
-        <td class="text-right" style="font-weight: 700;">${it.amount}</td>
+        <td class="text-right">₹ ${it.rate}</td>
+        <td class="text-right">${it.dye !== '0' ? `₹ ${it.dye}` : '0'}</td>
+        <td class="text-right" style="font-weight: 800; color:#0b3b82;">₹ ${it.amount}</td>
       </tr>
     `).join('');
 
@@ -169,7 +166,7 @@ class InvoiceEngine {
         </div>
 
         <div class="invoice-owners-signature">
-          Business Owners: Ansh & Naman
+          Business Owners: Naman & Ansh
         </div>
 
         <!-- Footer -->
@@ -182,17 +179,15 @@ class InvoiceEngine {
     `;
   }
 
-  // Native print to standard A4
   print() {
     window.print();
   }
 
-  // Download PDF file using html2pdf if available or fallback to print
   downloadPDF(filename = null) {
     const element = document.getElementById('printableInvoice');
     if (!element) return;
 
-    const name = filename || `P2S_Invoice_${this.currentInvoice ? this.currentInvoice.invoiceNo.replace('#', '') : 'order'}.pdf`;
+    const name = filename || `P6S_Invoice_${this.currentInvoice ? this.currentInvoice.invoiceNo.replace('#', '') : 'order'}.pdf`;
 
     if (window.html2pdf) {
       const opt = {
@@ -208,7 +203,6 @@ class InvoiceEngine {
     }
   }
 
-  // Format message and open WhatsApp
   shareToWhatsApp(phoneNumber = "918462063330") {
     if (!this.currentInvoice) return;
     const inv = this.currentInvoice;
@@ -219,7 +213,7 @@ class InvoiceEngine {
     });
 
     const text = 
-`🧾 *OFFICIAL BILL / INVOICE - PREMIUM PACKAGING SOLUTIONS (P2S)*
+`🧾 *OFFICIAL BILL / INVOICE - PREMIUM PACKAGING SOLUTIONS (P6S)*
 ----------------------------------------
 📄 *Invoice No:* ${inv.invoiceNo}
 📅 *Date:* ${inv.date}
@@ -234,7 +228,7 @@ ${itemsText}----------------------------------------
 🎁 *Discount:* Rs. ${inv.discount}
 ⭐ *GRAND TOTAL: Rs. ${inv.grandTotal}*
 ----------------------------------------
-💼 *Business Owners:* Ansh & Naman
+💼 *Business Owners:* Naman & Ansh
 📞 *Contact:* +91 8462063330 | +91 9111789220
 🏷️ *Source:* ${inv.sourceTag}
 ----------------------------------------

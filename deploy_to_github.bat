@@ -1,13 +1,13 @@
 @echo off
 setlocal enabledelayedexpansion
-title Deploying P2S Packaging to GitHub
+title Deploying P6S Packaging to GitHub
 
 cd /d "%~dp0"
 set "PATH=C:\Program Files\Git\cmd;C:\Program Files\Git\bin;%PATH%"
 
 color 0B
 echo ==============================================================================
-echo        PREMIUM PACKAGING SOLUTIONS (P2S) - 1-CLICK GITHUB PUSH
+echo        PREMIUM PACKAGING SOLUTIONS (P6S) - 1-CLICK GITHUB PUSH
 echo ==============================================================================
 echo Working Directory: %CD%
 echo Target Repository: https://github.com/Namangarg-06/My-Business.git
@@ -29,7 +29,7 @@ echo [1/3] Adding all files...
 git add -A
 
 echo [2/3] Committing changes...
-git commit -m "Deploy Premium Packaging Solutions (P2S) Live Website" --allow-empty
+git commit -m "Update P6S Branding, Louis Vuitton Logo Crest, Whitish Luxury Theme & PDF Exact Rate Cards" --allow-empty
 
 echo [3/3] Pushing to https://github.com/Namangarg-06/My-Business.git ...
 git push -u origin main --force
@@ -44,7 +44,7 @@ if %ERRORLEVEL% equ 0 (
     echo ==============================================================================
 ) else (
     color 0C
-    echo Push failed. Please check the error above.
+    echo Push failed.
 )
 
 pause

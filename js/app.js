@@ -1,9 +1,9 @@
 /**
- * Premium Packaging Solutions (P2S) - Main Application Controller
- * Handles Source Tracking, Cart, Auth, Calculator, and Interactive Modals
+ * Premium Packaging Solutions (P6S) - Main Application Controller
+ * Handles Source Tracking, Cart, Auth, Calculator, and PDF-Exact Catalog Render
  */
 
-class P2SApp {
+class P6SApp {
   constructor() {
     this.cart = [];
     this.currentUser = null;
@@ -31,7 +31,6 @@ class P2SApp {
 
   /* -------------------------------------------------------------
      1. LINK TAP & SOURCE TRACKING ENGINE
-     Detects Instagram handles, WhatsApp numbers, QR sources, etc.
   ------------------------------------------------------------- */
   detectSourceTracking() {
     const params = new URLSearchParams(window.location.search);
@@ -49,14 +48,10 @@ class P2SApp {
         timestamp: new Date().toISOString()
       };
 
-      // Save to localStorage leads
       this.logVisitorLead(this.trackingData);
-
-      // Display luxury welcome banner
       this.showSourceBanner(this.trackingData);
     } else {
-      // Check if session had previous referral
-      const savedLead = sessionStorage.getItem('p2s_current_source');
+      const savedLead = sessionStorage.getItem('p6s_current_source');
       if (savedLead) {
         try {
           this.trackingData = JSON.parse(savedLead);
@@ -67,10 +62,9 @@ class P2SApp {
   }
 
   logVisitorLead(data) {
-    sessionStorage.setItem('p2s_current_source', JSON.stringify(data));
+    sessionStorage.setItem('p6s_current_source', JSON.stringify(data));
     try {
-      const logs = JSON.parse(localStorage.getItem('p2s_visitor_leads') || '[]');
-      // Avoid duplicate log within 5 minutes
+      const logs = JSON.parse(localStorage.getItem('p6s_visitor_leads') || '[]');
       const recent = logs.find(l => (l.ref === data.ref || l.phone === data.phone) && (Date.now() - new Date(l.timestamp).getTime() < 300000));
       if (!recent) {
         logs.unshift({
@@ -78,11 +72,9 @@ class P2SApp {
           device: /Mobi|Android/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop',
           id: 'LEAD-' + Math.floor(1000 + Math.random() * 9000)
         });
-        localStorage.setItem('p2s_visitor_leads', JSON.stringify(logs.slice(0, 100)));
+        localStorage.setItem('p6s_visitor_leads', JSON.stringify(logs.slice(0, 100)));
       }
-    } catch (e) {
-      console.warn("Storage error", e);
-    }
+    } catch (e) {}
   }
 
   showSourceBanner(data) {
@@ -91,22 +83,20 @@ class P2SApp {
     const pillEl = document.getElementById('sourceBannerPill');
 
     if (!bannerEl || !textEl) return;
-
     bannerEl.style.display = 'block';
 
     if (data.source.includes('insta')) {
       const handle = data.ref.startsWith('@') ? data.ref : `@${data.ref}`;
       pillEl.innerHTML = `<i class="fab fa-instagram"></i> INSTAGRAM PARTNER`;
-      textEl.innerHTML = `Welcome <strong>${handle || 'Guest'}</strong>! We've unlocked VIP hospitality pricing and custom sample mockups for your brand.`;
+      textEl.innerHTML = `Welcome <strong>${handle || 'Guest'}</strong>! P6S VIP hospitality packaging pricing is unlocked for your restaurant.`;
       
-      // Auto pre-fill client name if empty
       if (!this.currentUser && handle) {
         const clientInput = document.getElementById('invoiceClientName');
-        if (clientInput) clientInput.value = `${handle} Cafe/Restaurant`;
+        if (clientInput) clientInput.value = `${handle} Cafe / Restaurant`;
       }
     } else if (data.source.includes('whats') || data.phone) {
       pillEl.innerHTML = `<i class="fab fa-whatsapp"></i> WHATSAPP DIRECT`;
-      textEl.innerHTML = `Welcome <strong>${data.name || data.phone || 'Valued Partner'}</strong>! Direct restaurant supply pricing is activated.`;
+      textEl.innerHTML = `Welcome <strong>${data.name || data.phone || 'Valued Partner'}</strong>! Direct restaurant supply rates loaded.`;
       
       if (!this.currentUser && data.phone) {
         const phoneInput = document.getElementById('clientPhoneInput');
@@ -114,15 +104,16 @@ class P2SApp {
       }
     } else if (data.source.includes('qr')) {
       pillEl.innerHTML = `📲 SMART SACHET SCAN`;
-      textEl.innerHTML = `You scanned a live <strong>P2S Smart Sachet / QR Stand</strong>! See how your restaurant can have this exact experience.`;
+      textEl.innerHTML = `You scanned an official <strong>P6S Smart Sachet / QR Stand</strong>!`;
     } else {
-      pillEl.innerHTML = `✨ PARTNER LINK`;
-      textEl.innerHTML = `Welcome from <strong>${data.ref || 'Exclusive Referral'}</strong>! Special packaging rates are active.`;
+      pillEl.innerHTML = `✨ EXCLUSIVE LINK`;
+      textEl.innerHTML = `Welcome from <strong>${data.ref || 'Partner Referral'}</strong>! Factory rates active.`;
     }
   }
 
   /* -------------------------------------------------------------
-     2. CATALOG RENDERING & DYNAMIC PRICING
+     2. EXACT PDF-MATCH CATALOG RENDERING
+     Displays crystal clear rate tables just like in the brochure!
   ------------------------------------------------------------- */
   renderCatalog(filterCategory = 'all') {
     const container = document.getElementById('catalogGrid');
@@ -132,184 +123,624 @@ class P2SApp {
       ? PRODUCTS_DATA 
       : PRODUCTS_DATA.filter(p => p.category === filterCategory || (filterCategory === 'sachets' && (p.category === 'smart-sachets' || p.category === 'sachets')));
 
-    container.innerHTML = filtered.map(prod => this.createProductCardHTML(prod)).join('');
+    container.innerHTML = filtered.map(prod => this.createPDFExactCard(prod)).join('');
   }
 
-  createProductCardHTML(prod) {
-    let pricingSnippet = '';
-    let actionButtons = '';
+  createPDFExactCard(prod) {
+    // 0. Smart Sachets Overview
+    if (prod.id === 'smart-sachets-info') {
+      return ''; // Already featured in dedicated spotlight section!
+    }
 
-    // Handle different product structures
-    if (prod.pricingType === 'tiered' && prod.variants) {
-      const v = prod.variants[0];
-      const tierRows = v.tiers.map(t => `
+    // 1. Mouth Freshener Sachet (Page 7 - 3 distinct tables)
+    if (prod.id === 'mouth-freshener') {
+      const tablesHTML = prod.variants.map(v => {
+        const rows = v.tiers.map(t => `
+          <tr>
+            <td>${t.range}</td>
+            <td class="rate-highlight">Rs. ${t.rate.toFixed(2)}</td>
+          </tr>
+        `).join('');
+
+        return `
+          <div style="flex: 1; min-width: 260px;">
+            <div class="pdf-rate-table-wrapper">
+              <div class="pdf-table-header-banner" style="background: ${v.colorTheme};">
+                <i class="fas fa-leaf"></i> ${v.name}
+              </div>
+              <table class="pdf-rate-table">
+                <thead>
+                  <tr style="background: #f1f5f9;">
+                    <th style="width:60%;">QTY. RANGE</th>
+                    <th style="width:40%;">RATE / SACHET</th>
+                  </tr>
+                </thead>
+                <tbody>${rows}</tbody>
+              </table>
+            </div>
+            <div style="display:flex; gap:8px; margin-top:8px;">
+              <button class="btn btn-primary" onclick="app.openOrderBuilder('${prod.id}', '${v.id}')" style="flex:1; padding:7px 12px; font-size:0.82rem;">
+                <i class="fas fa-calculator"></i> Order ${v.name.split(' ')[2] || 'Saunf'}
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      return `
+        <div class="pdf-product-showcase-card" data-category="${prod.category}">
+          <div class="pdf-card-header">
+            <div class="pdf-card-title-group">
+              <h3>${prod.name}</h3>
+              <p>${prod.tagline}</p>
+            </div>
+            <span class="pdf-card-badge">${prod.badge}</span>
+          </div>
+
+          <div style="display:flex; flex-wrap:wrap; gap:16px;">
+            ${tablesHTML}
+          </div>
+
+          <div class="pdf-storage-note-box">
+            <i class="fas fa-shield-alt"></i>
+            <span><strong>Note:</strong> ${prod.storageNote}</span>
+          </div>
+        </div>
+      `;
+    }
+
+    // 2. Sugar Sachet (Page 8 - White & Brown Sugar)
+    if (prod.id === 'sugar-sachets') {
+      const tablesHTML = prod.variants.map(v => {
+        const rows = v.tiers.map(t => `
+          <tr>
+            <td>${t.range}</td>
+            <td class="rate-highlight">Rs. ${t.rate.toFixed(2)}</td>
+          </tr>
+        `).join('');
+
+        return `
+          <div style="flex: 1; min-width: 280px;">
+            <div class="pdf-rate-table-wrapper">
+              <div class="pdf-table-header-banner" style="background: ${v.colorTheme};">
+                <i class="fas fa-cube"></i> ${v.name}
+              </div>
+              <table class="pdf-rate-table">
+                <thead>
+                  <tr style="background: #f1f5f9;">
+                    <th style="width:60%;">QTY. RANGE</th>
+                    <th style="width:40%;">RATE / SACHET</th>
+                  </tr>
+                </thead>
+                <tbody>${rows}</tbody>
+              </table>
+            </div>
+            <button class="btn btn-primary" onclick="app.openOrderBuilder('${prod.id}', '${v.id}')" style="width:100%; padding:8px 12px; font-size:0.85rem; margin-top:6px;">
+              <i class="fas fa-cart-plus"></i> Order ${v.name}
+            </button>
+          </div>
+        `;
+      }).join('');
+
+      return `
+        <div class="pdf-product-showcase-card" data-category="${prod.category}">
+          <div class="pdf-card-header">
+            <div class="pdf-card-title-group">
+              <h3>${prod.name}</h3>
+              <p>${prod.tagline}</p>
+            </div>
+            <span class="pdf-card-badge">${prod.badge}</span>
+          </div>
+
+          <div style="display:flex; flex-wrap:wrap; gap:20px;">
+            ${tablesHTML}
+          </div>
+
+          <div class="pdf-storage-note-box">
+            <i class="fas fa-shield-alt"></i>
+            <span><strong>Note:</strong> ${prod.storageNote}</span>
+          </div>
+        </div>
+      `;
+    }
+
+    // 3. Salt Sachet (Page 9 - Poster Paper vs Metallized Paper)
+    if (prod.id === 'salt-sachets' || prod.id === 'black-pepper-sachets') {
+      const paperCols = prod.paperOptions.map(p => {
+        const rows = p.tiers.map(t => `
+          <tr>
+            <td>${t.range}</td>
+            <td class="rate-highlight">Rs. ${t.rate.toFixed(2)}</td>
+          </tr>
+        `).join('');
+
+        return `
+          <div style="flex: 1; min-width: 270px;">
+            <div class="pdf-rate-table-wrapper">
+              <div class="pdf-table-header-banner" style="background: #991b1b;">
+                <i class="fas fa-scroll"></i> ${p.title}
+              </div>
+              <table class="pdf-rate-table">
+                <thead>
+                  <tr style="background: #f1f5f9;">
+                    <th style="width:60%;">QTY. RANGE</th>
+                    <th style="width:40%;">RATE / SACHET</th>
+                  </tr>
+                </thead>
+                <tbody>${rows}</tbody>
+              </table>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      return `
+        <div class="pdf-product-showcase-card" data-category="${prod.category}">
+          <div class="pdf-card-header">
+            <div class="pdf-card-title-group">
+              <h3>${prod.name}</h3>
+              <p>${prod.tagline}</p>
+            </div>
+            <span class="pdf-card-badge">${prod.badge}</span>
+          </div>
+
+          <div style="display:flex; flex-wrap:wrap; gap:20px;">
+            ${paperCols}
+          </div>
+
+          <div style="display:flex; gap:12px; margin-top:14px; flex-wrap:wrap;">
+            <button class="btn btn-primary" onclick="app.openOrderBuilder('${prod.id}', 'poster')" style="flex:1;">
+              <i class="fas fa-calculator"></i> Order Poster Paper
+            </button>
+            <button class="btn btn-primary" onclick="app.openOrderBuilder('${prod.id}', 'metallized')" style="flex:1; background:#0b3b82;">
+              <i class="fas fa-shield-alt"></i> Order Metallized Paper
+            </button>
+            <button class="btn btn-whatsapp" onclick="app.quickWhatsAppProduct('${prod.name}')">
+              <i class="fab fa-whatsapp"></i> WhatsApp
+            </button>
+          </div>
+
+          <div class="pdf-storage-note-box">
+            <i class="fas fa-shield-alt"></i>
+            <span><strong>Note:</strong> ${prod.storageNote}</span>
+          </div>
+        </div>
+      `;
+    }
+
+    // 4. Pizza Seasoning & Chilli Flakes (Page 10)
+    if (prod.id === 'pizza-seasoning-chilli') {
+      const variantsCols = prod.variants.map(v => {
+        const rows = v.tiers.map(t => `
+          <tr>
+            <td>${t.range}</td>
+            <td class="rate-highlight">Rs. ${t.rate.toFixed(2)}</td>
+          </tr>
+        `).join('');
+
+        return `
+          <div style="flex: 1; min-width: 270px;">
+            <div class="pdf-rate-table-wrapper">
+              <div class="pdf-table-header-banner" style="background: ${v.colorTheme};">
+                <i class="fas fa-pizza-slice"></i> ${v.name}
+              </div>
+              <table class="pdf-rate-table">
+                <thead>
+                  <tr style="background: #f1f5f9;">
+                    <th style="width:60%;">QTY. RANGE</th>
+                    <th style="width:40%;">RATE / SACHET</th>
+                  </tr>
+                </thead>
+                <tbody>${rows}</tbody>
+              </table>
+            </div>
+            <button class="btn btn-primary" onclick="app.openOrderBuilder('${prod.id}', '${v.id}')" style="width:100%; padding:8px 12px; font-size:0.85rem; margin-top:6px;">
+              <i class="fas fa-cart-plus"></i> Order ${v.name.split(' ')[0]}
+            </button>
+          </div>
+        `;
+      }).join('');
+
+      return `
+        <div class="pdf-product-showcase-card" data-category="${prod.category}">
+          <div class="pdf-card-header">
+            <div class="pdf-card-title-group">
+              <h3>${prod.name}</h3>
+              <p>${prod.tagline}</p>
+            </div>
+            <span class="pdf-card-badge">${prod.badge}</span>
+          </div>
+
+          <div style="display:flex; flex-wrap:wrap; gap:20px;">
+            ${variantsCols}
+          </div>
+
+          <div class="pdf-storage-note-box">
+            <i class="fas fa-shield-alt"></i>
+            <span><strong>Note:</strong> ${prod.storageNote}</span>
+          </div>
+        </div>
+      `;
+    }
+
+    // 5. Butter Paper Sheet (Page 12)
+    if (prod.id === 'butter-paper') {
+      return `
+        <div class="pdf-product-showcase-card" data-category="${prod.category}">
+          <div class="pdf-card-header">
+            <div class="pdf-card-title-group">
+              <h3>${prod.name}</h3>
+              <p>${prod.tagline}</p>
+            </div>
+            <span class="pdf-card-badge">${prod.badge}</span>
+          </div>
+
+          <div style="display:flex; justify-content:space-between; align-items:center; background:#faf8f5; border:2px dashed #c5a059; border-radius:14px; padding:24px; flex-wrap:wrap; gap:20px;">
+            <div>
+              <div style="font-size:0.9rem; font-weight:800; color:#854d0e; text-transform:uppercase; letter-spacing:0.05em;">NON OGR FOOD WRAPPING SHEET</div>
+              <div style="font-size:3rem; font-weight:900; color:#0b3b82; line-height:1.1;">
+                Rs. 290 <span style="font-size:1.1rem; color:#64748b; font-weight:600;">/- kg</span>
+              </div>
+              <div style="font-size:0.95rem; font-weight:700; color:#991b1b; margin-top:4px;">
+                <i class="fas fa-box"></i> MINIMUM ORDER QUANTITY: 30KG
+              </div>
+            </div>
+
+            <div style="display:flex; flex-direction:column; gap:10px;">
+              <button class="btn btn-primary" onclick="app.openOrderBuilder('${prod.id}')" style="padding:12px 24px;">
+                <i class="fas fa-cart-plus"></i> Configure Butter Paper Order
+              </button>
+              <button class="btn btn-whatsapp" onclick="app.quickWhatsAppProduct('Butter Paper Sheets 30KG')">
+                <i class="fab fa-whatsapp"></i> WhatsApp Instant Order
+              </button>
+            </div>
+          </div>
+
+          <div class="pdf-storage-note-box">
+            <i class="fas fa-shield-alt"></i>
+            <span><strong>Note:</strong> ${prod.storageNote}</span>
+          </div>
+        </div>
+      `;
+    }
+
+    // 6. Tissue Paper Price List (Page 13)
+    if (prod.id === 'tissue-paper') {
+      const renderTissueTable = (tbl, bgHeader) => {
+        const rows = tbl.rows.map(r => `
+          <tr>
+            <td style="font-weight:700;">${r.qty}</td>
+            <td class="rate-highlight">₹ ${r.p750}</td>
+            <td class="rate-highlight">₹ ${r.p500}</td>
+            <td class="rate-highlight">₹ ${r.p250}</td>
+          </tr>
+        `).join('');
+
+        return `
+          <div style="flex:1; min-width:300px;">
+            <div class="pdf-rate-table-wrapper">
+              <div class="pdf-table-header-banner" style="background:${bgHeader};">
+                ${tbl.title}
+              </div>
+              <table class="pdf-rate-table">
+                <thead>
+                  <tr style="background:#f1f5f9;">
+                    <th>QTY</th>
+                    <th>750 PACKS</th>
+                    <th>500 PACKS</th>
+                    <th>250 PACKS</th>
+                  </tr>
+                </thead>
+                <tbody>${rows}</tbody>
+              </table>
+            </div>
+          </div>
+        `;
+      };
+
+      return `
+        <div class="pdf-product-showcase-card" data-category="${prod.category}">
+          <div class="pdf-card-header">
+            <div class="pdf-card-title-group">
+              <h3>${prod.name}</h3>
+              <p>${prod.tagline}</p>
+            </div>
+            <div style="background:#0b3b82; color:#fff; padding:6px 14px; border-radius:20px; font-weight:800; font-size:0.82rem;">
+              SIZE : 27 x 27 CM | 1 PLY
+            </div>
+          </div>
+
+          <div style="display:flex; flex-wrap:wrap; gap:20px;">
+            ${renderTissueTable(prod.tables.hardTissue, '#0f172a')}
+            ${renderTissueTable(prod.tables.softTissue, '#166534')}
+          </div>
+
+          <div style="background:#fef3c7; border:1.5px solid #f59e0b; border-radius:10px; padding:12px 18px; margin-top:16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+            <div style="font-size:0.95rem; font-weight:800; color:#92400e;">
+              <i class="fas fa-cog"></i> CUSTOMISATION CHARGES : ₹2 EXTRA / PACK
+            </div>
+            <div style="font-size:0.85rem; font-weight:700; color:#b45309;">
+              • Minimum Order Quantity for Customisation: 500 Packets
+            </div>
+          </div>
+
+          <div style="margin-top:16px; display:flex; gap:12px;">
+            <button class="btn btn-primary" onclick="app.openOrderBuilder('${prod.id}')" style="flex:1;">
+              <i class="fas fa-calculator"></i> Calculate Tissue Order
+            </button>
+            <button class="btn btn-whatsapp" onclick="app.quickWhatsAppProduct('Tissue Paper Custom Printing')">
+              <i class="fab fa-whatsapp"></i> Inquire on WhatsApp
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    // 7. Chopstick (Page 14)
+    if (prod.id === 'chopstick') {
+      const rows = prod.tiers.map(t => `
         <tr>
-          <td>${t.max === Infinity ? `${t.min.toLocaleString('en-IN')}+` : `${t.min.toLocaleString('en-IN')} - ${t.max.toLocaleString('en-IN')}`}</td>
-          <td style="font-weight: 700; color: #f5d77f;">₹ ${t.rate.toFixed(2)}</td>
+          <td>${t.range}</td>
+          <td class="rate-highlight">Rs. ${t.rate.toFixed(2)}</td>
         </tr>
       `).join('');
 
-      pricingSnippet = `
-        <div style="font-size:0.82rem; font-weight:700; color:#d4af37; margin-bottom:6px;">
-          ${v.name} (Tiered Rates)
-        </div>
-        <table class="tier-pricing-table">
-          <thead>
-            <tr><th>Qty Range</th><th>Rate / ${prod.unit}</th></tr>
-          </thead>
-          <tbody>${tierRows}</tbody>
-        </table>
-      `;
-
-      actionButtons = `
-        <button class="btn btn-primary" onclick="app.openOrderBuilder('${prod.id}', '${v.id}')" style="flex:1;">
-          <i class="fas fa-calculator"></i> Order & Price
-        </button>
-        <button class="btn btn-whatsapp" onclick="app.quickWhatsAppProduct('${prod.name}')" title="Quick WhatsApp Inquiry">
-          <i class="fab fa-whatsapp"></i>
-        </button>
-      `;
-    } 
-    else if (prod.pricingType === 'tiered_paper' && prod.paperOptions) {
-      const poster = prod.paperOptions[0];
-      const metal = prod.paperOptions[1];
-      pricingSnippet = `
-        <div style="display:flex; justify-content:space-between; font-size:0.8rem; margin-bottom:8px; color:#d4af37;">
-          <span>Poster Paper: ₹0.55 - ₹0.40</span>
-          <span>Metallized: ₹0.65 - ₹0.50</span>
-        </div>
-        <table class="tier-pricing-table">
-          <thead>
-            <tr><th>Qty</th><th>Poster</th><th>Metallized</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>4k - 6k</td><td>₹ 0.55</td><td>₹ 0.65</td></tr>
-            <tr><td>6k - 8k</td><td>₹ 0.50</td><td>₹ 0.60</td></tr>
-            <tr><td>8k - 10k</td><td>₹ 0.45</td><td>₹ 0.55</td></tr>
-            <tr><td>10k+</td><td>₹ 0.40</td><td>₹ 0.50</td></tr>
-          </tbody>
-        </table>
-      `;
-      actionButtons = `
-        <button class="btn btn-primary" onclick="app.openOrderBuilder('${prod.id}', 'poster')" style="flex:1;">
-          <i class="fas fa-calculator"></i> Order & Price
-        </button>
-        <button class="btn btn-whatsapp" onclick="app.quickWhatsAppProduct('${prod.name}')">
-          <i class="fab fa-whatsapp"></i>
-        </button>
-      `;
-    }
-    else if (prod.pricingType === 'weight') {
-      pricingSnippet = `
-        <div style="background:rgba(212,175,55,0.08); border:1px solid rgba(212,175,55,0.3); border-radius:8px; padding:12px; margin-bottom:16px;">
-          <div style="font-size:0.85rem; color:#94a3b8;">Base Price (Non OGR):</div>
-          <div style="font-size:1.8rem; font-weight:800; color:#f3e5ab;">₹ 290 <span style="font-size:0.9rem; font-weight:400; color:#94a3b8;">/ kg</span></div>
-          <div style="font-size:0.8rem; color:#d4af37; margin-top:4px;">Minimum Order Quantity: 30 KG</div>
-        </div>
-      `;
-      actionButtons = `
-        <button class="btn btn-primary" onclick="app.openOrderBuilder('${prod.id}')" style="flex:1;">
-          <i class="fas fa-cart-plus"></i> Configure Order
-        </button>
-        <button class="btn btn-whatsapp" onclick="app.quickWhatsAppProduct('${prod.name}')">
-          <i class="fab fa-whatsapp"></i>
-        </button>
-      `;
-    }
-    else if (prod.pricingType === 'cups_custom') {
-      pricingSnippet = `
-        <div style="font-size:0.8rem; color:#94a3b8; margin-bottom:8px;">MOQ: 3,000 pcs | Single Color Dye ₹600 / Multi ₹2,500</div>
-        <table class="tier-pricing-table">
-          <thead>
-            <tr><th>Cup Size</th><th>Rate / Pc</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>200 ML</td><td style="color:#f5d77f; font-weight:700;">₹ 3.40</td></tr>
-            <tr><td>250 ML</td><td style="color:#f5d77f; font-weight:700;">₹ 4.15</td></tr>
-            <tr><td>350 ML</td><td style="color:#f5d77f; font-weight:700;">₹ 5.40</td></tr>
-            <tr><td>480 ML</td><td style="color:#f5d77f; font-weight:700;">₹ 6.15</td></tr>
-          </tbody>
-        </table>
-      `;
-      actionButtons = `
-        <button class="btn btn-primary" onclick="app.openOrderBuilder('${prod.id}')" style="flex:1;">
-          <i class="fas fa-coffee"></i> Custom Cup Order
-        </button>
-        <button class="btn btn-whatsapp" onclick="app.quickWhatsAppProduct('${prod.name}')">
-          <i class="fab fa-whatsapp"></i>
-        </button>
-      `;
-    }
-    else if (prod.pricingType === 'fixed_stands') {
-      pricingSnippet = `
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:14px; font-size:0.85rem;">
-          <div style="background:rgba(255,255,255,0.03); padding:8px; border-radius:6px;">
-            <div style="color:#94a3b8; font-size:0.75rem;">Acrylic T-Stand</div>
-            <div style="color:#f3e5ab; font-weight:700; font-size:1.1rem;">₹ 349</div>
+      return `
+        <div class="pdf-product-showcase-card" data-category="${prod.category}">
+          <div class="pdf-card-header">
+            <div class="pdf-card-title-group">
+              <h3>${prod.name}</h3>
+              <p>${prod.tagline}</p>
+            </div>
+            <span class="pdf-card-badge">${prod.badge}</span>
           </div>
-          <div style="background:rgba(255,255,255,0.03); padding:8px; border-radius:6px;">
-            <div style="color:#94a3b8; font-size:0.75rem;">Gold Frame Stand</div>
-            <div style="color:#f3e5ab; font-weight:700; font-size:1.1rem;">₹ 449</div>
+
+          <div style="display:flex; gap:24px; align-items:center; flex-wrap:wrap;">
+            <div style="flex:1; min-width:280px;">
+              <div class="pdf-rate-table-wrapper">
+                <div class="pdf-table-header-banner" style="background:#854d0e;">
+                  <i class="fas fa-utensils"></i> CHOPSTICK WITH INDIVIDUAL SLEEVE
+                </div>
+                <table class="pdf-rate-table">
+                  <thead>
+                    <tr style="background:#f1f5f9;">
+                      <th>QTY. RANGE</th>
+                      <th>RATE / PAIR</th>
+                    </tr>
+                  </thead>
+                  <tbody>${rows}</tbody>
+                </table>
+              </div>
+            </div>
+
+            <div style="background:#faf8f5; border:1.5px solid #c5a059; border-radius:12px; padding:20px; text-align:center; min-width:220px;">
+              <i class="fas fa-box-open" style="font-size:2rem; color:#b8860b; margin-bottom:8px;"></i>
+              <div style="font-size:0.8rem; font-weight:700; color:#64748b;">MINIMUM ORDER QUANTITY</div>
+              <div style="font-size:1.6rem; font-weight:900; color:#0b3b82;">2,000 Pairs</div>
+              <button class="btn btn-primary" onclick="app.openOrderBuilder('${prod.id}')" style="margin-top:12px; width:100%;">
+                Order Chopsticks
+              </button>
+            </div>
+          </div>
+
+          <div class="pdf-storage-note-box">
+            <i class="fas fa-shield-alt"></i>
+            <span><strong>Note:</strong> ${prod.storageNote}</span>
           </div>
         </div>
-        <div style="font-size:0.8rem; color:#10b981; font-weight:600;">✨ Standard Plan ₹2,999 (8 Stands Free)</div>
-      `;
-      actionButtons = `
-        <button class="btn btn-primary" onclick="app.openOrderBuilder('${prod.id}')" style="flex:1;">
-          <i class="fas fa-qrcode"></i> Choose QR Stand / Plan
-        </button>
-        <button class="btn btn-whatsapp" onclick="app.quickWhatsAppProduct('QR Stands & Digital Menu Setup')">
-          <i class="fab fa-whatsapp"></i>
-        </button>
-      `;
-    }
-    else {
-      // General or tissue
-      pricingSnippet = `
-        <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06); border-radius:8px; padding:12px; margin-bottom:14px; font-size:0.85rem; color:#94a3b8;">
-          ${prod.tagline}
-        </div>
-      `;
-      actionButtons = `
-        <button class="btn btn-primary" onclick="app.openOrderBuilder('${prod.id}')" style="flex:1;">
-          <i class="fas fa-calculator"></i> Calculate Price
-        </button>
-        <button class="btn btn-whatsapp" onclick="app.quickWhatsAppProduct('${prod.name}')">
-          <i class="fab fa-whatsapp"></i>
-        </button>
       `;
     }
 
-    return `
-      <div class="product-card" data-category="${prod.category}">
-        <span class="product-badge">${prod.badge || 'Premium'}</span>
-        <div class="product-icon-wrap">
-          <i class="${this.getProductIcon(prod.category)}"></i>
+    // 8. QR Menu & Customer Engagement (Page 15)
+    if (prod.id === 'qr-menu-stands') {
+      const standsHTML = prod.stands.map(s => `
+        <div style="background:#ffffff; border:1.5px solid #e2e8f0; border-radius:12px; padding:16px; text-align:center; flex:1; min-width:180px; box-shadow:0 2px 8px rgba(0,0,0,0.03);">
+          <div style="font-size:0.82rem; font-weight:800; color:#64748b;">${s.name}</div>
+          <div style="font-size:1.8rem; font-weight:900; color:#0b3b82; margin:6px 0;">₹${s.price}</div>
+          <div style="font-size:0.75rem; color:#475569;">${s.subtitle}</div>
         </div>
-        <h3 class="product-title">${prod.name}</h3>
-        <p class="product-tagline">${prod.tagline}</p>
-        ${pricingSnippet}
-        <div class="product-actions">
-          ${actionButtons}
-        </div>
-      </div>
-    `;
-  }
+      `).join('');
 
-  getProductIcon(category) {
-    switch (category) {
-      case 'smart-sachets': return 'fas fa-gem';
-      case 'sachets': return 'fas fa-cube';
-      case 'paper-packaging': return 'fas fa-scroll';
-      case 'hospitality': return 'fas fa-utensils';
-      case 'qr-systems': return 'fas fa-qrcode';
-      case 'paper-cups': return 'fas fa-coffee';
-      default: return 'fas fa-box-open';
+      return `
+        <div class="pdf-product-showcase-card" data-category="${prod.category}">
+          <div class="pdf-card-header">
+            <div class="pdf-card-title-group">
+              <h3>${prod.name}</h3>
+              <p>${prod.tagline}</p>
+            </div>
+            <span class="pdf-card-badge">${prod.badge}</span>
+          </div>
+
+          <!-- Stands Row -->
+          <div style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom:24px;">
+            ${standsHTML}
+          </div>
+
+          <!-- Plans Row (Standard vs Premium Menu Plan) -->
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:20px;">
+            <!-- Standard Plan -->
+            <div style="background:#faf8f5; border:2px solid #b8860b; border-radius:14px; padding:22px;">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <h4 style="font-size:1.25rem; font-weight:900; color:#0b3b82;">STANDARD PLAN</h4>
+                <span style="background:#16a34a; color:#fff; font-size:0.72rem; font-weight:800; padding:3px 10px; border-radius:12px;">8 Acrylic Stands FREE</span>
+              </div>
+              <div style="font-size:0.82rem; color:#854d0e; font-weight:700; margin-bottom:12px;">GOOGLE + INSTAGRAM</div>
+              <div style="font-size:2.2rem; font-weight:900; color:#0b3b82; line-height:1;">
+                ₹2,999 <span style="font-size:0.85rem; font-weight:600; color:#64748b;">/ one time charge</span>
+              </div>
+              <ul style="list-style:none; margin:16px 0; font-size:0.86rem; color:#334155; line-height:1.7;">
+                <li><i class="fab fa-google text-gold"></i> Google Reviews Booster Setup</li>
+                <li><i class="fab fa-instagram text-gold"></i> Instagram Follow Integration</li>
+                <li><i class="fas fa-paint-brush text-gold"></i> Custom Design (Logo + Theme)</li>
+                <li><i class="fas fa-check-circle text-gold"></i> Complete Setup Included</li>
+              </ul>
+              <button class="btn btn-primary" onclick="app.openOrderBuilder('${prod.id}', 'standard-plan')" style="width:100%;">
+                Get Standard Plan
+              </button>
+            </div>
+
+            <!-- Premium Menu Plan -->
+            <div style="background:#f0fdf4; border:2px solid #16a34a; border-radius:14px; padding:22px;">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <h4 style="font-size:1.25rem; font-weight:900; color:#14532d;">PREMIUM MENU PLAN</h4>
+                <span style="background:#0b3b82; color:#fff; font-size:0.72rem; font-weight:800; padding:3px 10px; border-radius:12px;">12 Stands FREE (Yearly)</span>
+              </div>
+              <div style="font-size:0.82rem; color:#166534; font-weight:700; margin-bottom:12px;">DIGITAL MENU + WHATSAPP</div>
+              <div style="font-size:2.2rem; font-weight:900; color:#14532d; line-height:1;">
+                ₹649 <span style="font-size:0.85rem; font-weight:600; color:#64748b;">/ month</span>
+                <span style="font-size:1.1rem; color:#0b3b82; margin-left:8px;">(₹5,999 / yr)</span>
+              </div>
+              <ul style="list-style:none; margin:16px 0; font-size:0.86rem; color:#334155; line-height:1.7;">
+                <li><i class="fas fa-book-open" style="color:#16a34a;"></i> Complete Digital Dynamic Menu</li>
+                <li><i class="fab fa-whatsapp" style="color:#16a34a;"></i> WhatsApp Direct Connect &amp; Order</li>
+                <li><i class="fas fa-th-list" style="color:#16a34a;"></i> Category Wise Menu (Food, Drinks, etc.)</li>
+                <li><i class="fas fa-mobile-alt" style="color:#16a34a;"></i> 100% Mobile Friendly Setup</li>
+              </ul>
+              <button class="btn btn-whatsapp" onclick="app.openOrderBuilder('${prod.id}', 'premium-plan')" style="width:100%;">
+                Get Premium Digital Menu
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
     }
+
+    // 9. Printed Paper Cups (Page 16)
+    if (prod.id === 'printed-paper-cups') {
+      const sizeRows = prod.rates.map(r => `
+        <tr>
+          <td style="font-weight:700;">${r.size}</td>
+          <td class="rate-highlight">₹ ${r.rate.toFixed(2)}</td>
+        </tr>
+      `).join('');
+
+      return `
+        <div class="pdf-product-showcase-card" data-category="${prod.category}">
+          <div class="pdf-card-header">
+            <div class="pdf-card-title-group">
+              <h3>${prod.name}</h3>
+              <p>${prod.tagline}</p>
+            </div>
+            <span class="pdf-card-badge">MINIMUM ORDER 3,000 PCS</span>
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:20px;">
+            <!-- Cup Rates Table -->
+            <div class="pdf-rate-table-wrapper">
+              <div class="pdf-table-header-banner" style="background:#14532d;">
+                <i class="fas fa-coffee"></i> CUP SIZES &amp; RATES / PC
+              </div>
+              <table class="pdf-rate-table">
+                <thead>
+                  <tr style="background:#f1f5f9;"><th>SIZE</th><th>RATE / PC</th></tr>
+                </thead>
+                <tbody>${sizeRows}</tbody>
+              </table>
+            </div>
+
+            <!-- Lids & Dyes Table -->
+            <div>
+              <div class="pdf-rate-table-wrapper" style="margin-bottom:12px;">
+                <div class="pdf-table-header-banner" style="background:#854d0e;">
+                  PAPER CUP LIDS (SEPARATE)
+                </div>
+                <table class="pdf-rate-table">
+                  <tbody>
+                    <tr><td>80 MM Dome Lid</td><td class="rate-highlight">₹ 1.00</td></tr>
+                    <tr><td>90 MM Dome Lid</td><td class="rate-highlight">₹ 1.30</td></tr>
+                    <tr><td>80 MM Sipper Lid</td><td class="rate-highlight">₹ 1.30</td></tr>
+                    <tr><td>90 MM Sipper Lid</td><td class="rate-highlight">₹ 1.90</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Dye Box -->
+              <div style="background:#faf8f5; border:1px solid #c5a059; border-radius:10px; padding:10px 14px; font-size:0.85rem;">
+                <div style="font-weight:800; color:#0b3b82; margin-bottom:4px;"><i class="fas fa-palette"></i> DESIGN &amp; DYE CHARGES (ONE TIME)</div>
+                <div style="display:flex; justify-content:space-between;">
+                  <span>Single Colour: <strong>₹ 600</strong></span>
+                  <span>Multicolor: <strong>₹ 2,500</strong></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:12px; margin-top:16px;">
+            <button class="btn btn-primary" onclick="app.openOrderBuilder('${prod.id}')" style="flex:1;">
+              <i class="fas fa-calculator"></i> Calculate Printed Cup Order
+            </button>
+            <button class="btn btn-whatsapp" onclick="app.quickWhatsAppProduct('Custom Printed Paper Cups')">
+              <i class="fab fa-whatsapp"></i> Inquire on WhatsApp
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    // 10. Paper Cups Non Customised (Page 17)
+    if (prod.id === 'plain-paper-cups') {
+      const sizeRows = prod.rates.map(r => `
+        <tr>
+          <td style="font-weight:700;">${r.size}</td>
+          <td class="rate-highlight">₹ ${r.rate.toFixed(2)}</td>
+        </tr>
+      `).join('');
+
+      return `
+        <div class="pdf-product-showcase-card" data-category="${prod.category}">
+          <div class="pdf-card-header">
+            <div class="pdf-card-title-group">
+              <h3>${prod.name}</h3>
+              <p>${prod.tagline}</p>
+            </div>
+            <span class="pdf-card-badge">MINIMUM ORDER 20 CARTONS</span>
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:20px;">
+            <div class="pdf-rate-table-wrapper">
+              <div class="pdf-table-header-banner" style="background:#0b3b82;">
+                PLAIN WHITE CUPS (READY STOCK)
+              </div>
+              <table class="pdf-rate-table">
+                <thead>
+                  <tr style="background:#f1f5f9;"><th>SIZE</th><th>RATE / PC</th></tr>
+                </thead>
+                <tbody>${sizeRows}</tbody>
+              </table>
+            </div>
+
+            <div class="pdf-rate-table-wrapper">
+              <div class="pdf-table-header-banner" style="background:#475569;">
+                LIDS (SEPARATE PRICE)
+              </div>
+              <table class="pdf-rate-table">
+                <tbody>
+                  <tr><td>80 MM Dome</td><td class="rate-highlight">₹ 1.00</td></tr>
+                  <tr><td>90 MM Dome</td><td class="rate-highlight">₹ 1.30</td></tr>
+                  <tr><td>80 MM Sipper</td><td class="rate-highlight">₹ 1.30</td></tr>
+                  <tr><td>90 MM Sipper</td><td class="rate-highlight">₹ 1.90</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:12px; margin-top:16px;">
+            <button class="btn btn-primary" onclick="app.openOrderBuilder('${prod.id}')" style="flex:1;">
+              <i class="fas fa-cart-plus"></i> Order Plain Cups
+            </button>
+            <button class="btn btn-whatsapp" onclick="app.quickWhatsAppProduct('Plain White Paper Cups 20 Cartons')">
+              <i class="fab fa-whatsapp"></i> Inquire on WhatsApp
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    return '';
   }
 
   /* -------------------------------------------------------------
-     3. ORDER BUILDER & DYNAMIC CART CALCULATION
+     3. ORDER BUILDER & CONFIGURATOR
   ------------------------------------------------------------- */
   openOrderBuilder(productId, variantId = null) {
     const prod = PRODUCTS_DATA.find(p => p.id === productId);
@@ -339,23 +770,15 @@ class P2SApp {
           <label class="form-label">Quantity (${prod.unit}s) - Min MOQ ${prod.moq.toLocaleString('en-IN')}:</label>
           <input type="number" id="builderQtyInput" class="form-control" value="${prod.moq}" min="${prod.moq}" step="1000" oninput="app.recalcBuilder('${prod.id}')">
         </div>
-        <div class="form-group">
-          <label class="form-label">Packaging Paper Type:</label>
-          <select id="builderPaperType" class="form-control">
-            <option value="Poster Paper">Custom Printed Poster Paper</option>
-            <option value="Metallized Paper">Premium Metallized Barrier Paper</option>
-          </select>
-        </div>
       `;
     } 
-    else if (prod.pricingType === 'tiered_paper') {
-      // Salt, Pepper
+    else if (prod.paperOptions) {
       optionsHTML = `
         <div class="form-group">
           <label class="form-label">Select Paper Material:</label>
           <select id="builderPaperSelect" class="form-control" onchange="app.recalcBuilder('${prod.id}')">
-            <option value="poster">In Poster Paper (More Economical)</option>
-            <option value="metallized">In Metallized Paper (Luxury Metallic Finish)</option>
+            <option value="poster" ${variantId === 'poster' ? 'selected' : ''}>In Poster Paper</option>
+            <option value="metallized" ${variantId === 'metallized' ? 'selected' : ''}>In Metallized Paper</option>
           </select>
         </div>
         <div class="form-group">
@@ -364,12 +787,11 @@ class P2SApp {
         </div>
       `;
     }
-    else if (prod.pricingType === 'weight') {
-      // Butter paper
+    else if (prod.pricingType === 'weight_sheet') {
       optionsHTML = `
         <div class="form-group">
           <label class="form-label">Paper Specification:</label>
-          <input type="text" class="form-control" value="Non OGR 1-Colour Printed Sheet" disabled>
+          <input type="text" class="form-control" value="NON OGR 1-Colour Printed Sheet" disabled>
         </div>
         <div class="form-group">
           <label class="form-label">Order Weight in KG (Min MOQ ${prod.moq} KG):</label>
@@ -377,7 +799,7 @@ class P2SApp {
         </div>
       `;
     }
-    else if (prod.pricingType === 'cups_custom') {
+    else if (prod.pricingType === 'cups_custom_table') {
       optionsHTML = `
         <div class="form-group">
           <label class="form-label">Cup Size:</label>
@@ -400,19 +822,9 @@ class P2SApp {
             <option value="0">Repeat Order (No Dye Charge - ₹0)</option>
           </select>
         </div>
-        <div class="form-group">
-          <label class="form-label">Matching Lids (Optional):</label>
-          <select id="builderLidSelect" class="form-control" onchange="app.recalcBuilder('${prod.id}')">
-            <option value="none">No Lids Needed</option>
-            <option value="dome_80" data-rate="1.00">80 MM Dome Lid (+₹1.00/pc)</option>
-            <option value="sipper_80" data-rate="1.30">80 MM Sipper Lid (+₹1.30/pc)</option>
-            <option value="dome_90" data-rate="1.30">90 MM Dome Lid (+₹1.30/pc)</option>
-            <option value="sipper_90" data-rate="1.90">90 MM Sipper Lid (+₹1.90/pc)</option>
-          </select>
-        </div>
       `;
     }
-    else if (prod.pricingType === 'fixed_stands') {
+    else if (prod.pricingType === 'qr_hardware_plans') {
       optionsHTML = `
         <div class="form-group">
           <label class="form-label">Select QR Hardware / Plan:</label>
@@ -420,8 +832,8 @@ class P2SApp {
             <option value="acrylic_t" data-price="349">Acrylic T-Stand - ₹349 each</option>
             <option value="gold_frame" data-price="449">Gold Frame Luxury Stand - ₹449 each</option>
             <option value="qr_display" data-price="149">QR Display Stand - ₹149 each</option>
-            <option value="plan_std" data-price="2999">Standard Plan (Google + Insta + 8 FREE Stands) - ₹2,999</option>
-            <option value="plan_prem" data-price="5999">Premium Menu Plan (Yearly + 12 FREE Stands) - ₹5,999</option>
+            <option value="plan_std" data-price="2999" ${variantId === 'standard-plan' ? 'selected' : ''}>Standard Plan (Google + Insta + 8 FREE Stands) - ₹2,999</option>
+            <option value="plan_prem" data-price="5999" ${variantId === 'premium-plan' ? 'selected' : ''}>Premium Menu Plan (Yearly + 12 FREE Stands) - ₹5,999</option>
           </select>
         </div>
         <div class="form-group">
@@ -431,7 +843,6 @@ class P2SApp {
       `;
     }
     else {
-      // Default
       optionsHTML = `
         <div class="form-group">
           <label class="form-label">Quantity (${prod.unit || 'pcs'}):</label>
@@ -445,8 +856,7 @@ class P2SApp {
         ${optionsHTML}
       </div>
 
-      <!-- Live Calculation Box -->
-      <div id="builderCalcResult" style="background:rgba(212,175,55,0.06); border:1px solid var(--border-gold); border-radius:12px; padding:18px; margin-bottom:20px;">
+      <div id="builderCalcResult" style="background:#faf8f5; border:1.5px solid var(--border-gold-solid); border-radius:12px; padding:18px; margin-bottom:20px;">
         <!-- Filled by recalcBuilder -->
       </div>
 
@@ -455,7 +865,7 @@ class P2SApp {
           <i class="fas fa-cart-plus"></i> Add to Order List
         </button>
         <button class="btn btn-whatsapp" onclick="app.orderItemDirectWhatsApp('${prod.id}')" style="flex:1;">
-          <i class="fab fa-whatsapp"></i> Order Directly on WhatsApp
+          <i class="fab fa-whatsapp"></i> Order on WhatsApp
         </button>
       </div>
     `;
@@ -464,7 +874,6 @@ class P2SApp {
     this.recalcBuilder(prod.id);
   }
 
-  // Calculate live price in modal
   recalcBuilder(productId) {
     const prod = PRODUCTS_DATA.find(p => p.id === productId);
     if (!prod) return;
@@ -488,22 +897,22 @@ class P2SApp {
       calculatedRate = tier ? tier.rate : 1.0;
       total = qty * calculatedRate;
     }
-    else if (prod.pricingType === 'tiered_paper') {
+    else if (prod.paperOptions) {
       const paperSelect = document.getElementById('builderPaperSelect');
       const paperVal = paperSelect ? paperSelect.value : 'poster';
       const paperOpt = prod.paperOptions.find(p => p.id === paperVal) || prod.paperOptions[0];
-      description = `${prod.name} (${paperOpt.name})`;
+      description = `${prod.name} (${paperOpt.title})`;
 
       const tier = paperOpt.tiers.find(t => qty >= t.min && qty <= t.max) || paperOpt.tiers[paperOpt.tiers.length - 1];
       calculatedRate = tier ? tier.rate : 0.55;
       total = qty * calculatedRate;
     }
-    else if (prod.pricingType === 'weight') {
+    else if (prod.pricingType === 'weight_sheet') {
       calculatedRate = prod.pricePerUnit; // 290
       description = `Butter Paper (customized)`;
       total = qty * calculatedRate;
     }
-    else if (prod.pricingType === 'cups_custom') {
+    else if (prod.pricingType === 'cups_custom_table') {
       const cupSelect = document.getElementById('builderCupSize');
       const selectedOption = cupSelect.options[cupSelect.selectedIndex];
       calculatedRate = parseFloat(selectedOption.getAttribute('data-rate') || 4.15);
@@ -512,20 +921,10 @@ class P2SApp {
       const dyeSelect = document.getElementById('builderDyeChoice');
       dye = Number(dyeSelect ? dyeSelect.value : 600);
 
-      const lidSelect = document.getElementById('builderLidSelect');
-      let lidRate = 0;
-      let lidText = "";
-      if (lidSelect && lidSelect.value !== 'none') {
-        const lidOpt = lidSelect.options[lidSelect.selectedIndex];
-        lidRate = parseFloat(lidOpt.getAttribute('data-rate') || 0);
-        lidText = ` + ${lidOpt.text}`;
-      }
-
-      description = `Printed Paper Cups ${cupSize}${lidText} (customized)`;
-      calculatedRate = calculatedRate + lidRate;
+      description = `Printed Paper Cups ${cupSize} (customized)`;
       total = (qty * calculatedRate) + dye;
     }
-    else if (prod.pricingType === 'fixed_stands') {
+    else if (prod.pricingType === 'qr_hardware_plans') {
       const standSelect = document.getElementById('builderStandSelect');
       const selOpt = standSelect.options[standSelect.selectedIndex];
       calculatedRate = parseFloat(selOpt.getAttribute('data-price') || 349);
@@ -539,25 +938,24 @@ class P2SApp {
 
     resultBox.innerHTML = `
       <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:0.95rem;">
-        <span style="color:#94a3b8;">Item:</span>
-        <strong style="color:#fff;">${description}</strong>
+        <span style="color:#64748b;">Selected Item:</span>
+        <strong style="color:#0f172a;">${description}</strong>
       </div>
       <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:0.92rem;">
-        <span style="color:#94a3b8;">Rate Applied:</span>
-        <strong style="color:#f5d77f;">₹ ${calculatedRate.toFixed(2)} / ${prod.unit || 'unit'}</strong>
+        <span style="color:#64748b;">Applied Tier Rate:</span>
+        <strong style="color:#991b1b; font-size:1.05rem;">₹ ${calculatedRate.toFixed(2)} / ${prod.unit || 'unit'}</strong>
       </div>
       ${dye > 0 ? `
       <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:0.92rem;">
-        <span style="color:#94a3b8;">Dye Printing Charge:</span>
-        <strong style="color:#93c5fd;">₹ ${dye.toFixed(2)}</strong>
+        <span style="color:#64748b;">Dye Printing Charge:</span>
+        <strong style="color:#0b3b82;">₹ ${dye.toFixed(2)}</strong>
       </div>` : ''}
-      <div style="display:flex; justify-content:space-between; border-top:1px dashed var(--border-gold); padding-top:10px; margin-top:8px;">
-        <span style="color:#f3e5ab; font-weight:700; font-size:1.1rem;">Estimated Amount:</span>
-        <strong style="color:#f3e5ab; font-weight:800; font-size:1.25rem;">₹ ${Math.round(total).toLocaleString('en-IN')}</strong>
+      <div style="display:flex; justify-content:space-between; border-top:1.5px dashed #cbd5e1; padding-top:10px; margin-top:8px;">
+        <span style="color:#0b3b82; font-weight:800; font-size:1.05rem;">Estimated Total:</span>
+        <strong style="color:#0b3b82; font-weight:900; font-size:1.3rem;">₹ ${Math.round(total).toLocaleString('en-IN')}</strong>
       </div>
     `;
 
-    // Store current calculated payload on modal for easy retrieval
     this.currentBuilderPayload = {
       productId: prod.id,
       name: description,
@@ -584,7 +982,7 @@ class P2SApp {
     const refInfo = this.trackingData.ref ? `\n🎯 *Source:* ${this.trackingData.source} (${this.trackingData.ref})` : '';
 
     const text = 
-`👋 *HELLO PREMIUM PACKAGING SOLUTIONS (P2S)*
+`👋 *HELLO PREMIUM PACKAGING SOLUTIONS (P6S)*
 I want to order this product:
 
 📦 *Product:* ${it.name}
@@ -603,7 +1001,7 @@ Please share the design preview & confirmation!`;
   }
 
   quickWhatsAppProduct(productName) {
-    const text = `Hello P2S Packaging! I am interested in inquiring about *${productName}*. Please share catalog, minimum order and design mockups.`;
+    const text = `Hello P6S Packaging! I want to inquire regarding *${productName}*. Please share delivery timelines and sample designs.`;
     window.open(`https://wa.me/918462063330?text=${encodeURIComponent(text)}`, '_blank');
   }
 
@@ -616,15 +1014,14 @@ Please share the design preview & confirmation!`;
     const subtotalEl = document.getElementById('cartDrawerSubtotal');
 
     if (countBadge) countBadge.innerText = this.cart.length;
-
     if (!cartItemsEl) return;
 
     if (this.cart.length === 0) {
       cartItemsEl.innerHTML = `
         <div style="text-align:center; padding:40px 10px; color:#64748b;">
-          <i class="fas fa-shopping-bag" style="font-size:2.5rem; margin-bottom:12px; color:rgba(212,175,55,0.3);"></i>
-          <p>Your order list is empty.</p>
-          <p style="font-size:0.8rem; margin-top:4px;">Select items from the catalog to build an instant bill or WhatsApp order.</p>
+          <i class="fas fa-shopping-bag" style="font-size:2.5rem; margin-bottom:12px; color:#cbd5e1;"></i>
+          <p style="font-weight:700; color:#1e293b;">Your order list is empty.</p>
+          <p style="font-size:0.85rem; margin-top:4px;">Select products above to generate an instant official bill or WhatsApp order.</p>
         </div>
       `;
       if (subtotalEl) subtotalEl.innerText = "₹ 0";
@@ -637,12 +1034,12 @@ Please share the design preview & confirmation!`;
       return `
         <div class="cart-item">
           <div>
-            <div style="font-weight:700; color:#fff; font-size:0.92rem;">${item.name}</div>
-            <div style="font-size:0.8rem; color:#94a3b8;">
+            <div style="font-weight:700; color:#0b3b82; font-size:0.92rem;">${item.name}</div>
+            <div style="font-size:0.8rem; color:#64748b;">
               ${item.qty.toLocaleString('en-IN')} ${item.unit} @ ₹${item.rate.toFixed(2)}
               ${item.dye > 0 ? ` + Dye ₹${item.dye}` : ''}
             </div>
-            <div style="font-weight:700; color:#f5d77f; font-size:0.92rem; margin-top:4px;">
+            <div style="font-weight:800; color:#991b1b; font-size:0.95rem; margin-top:4px;">
               ₹ ${Math.round(item.amount).toLocaleString('en-IN')}
             </div>
           </div>
@@ -675,7 +1072,7 @@ Please share the design preview & confirmation!`;
   }
 
   /* -------------------------------------------------------------
-     5. AUTOMATIC BILL / INVOICE GENERATOR (MATCHING PDF 2 FORMAT)
+     5. AUTOMATIC BILL GENERATION (PDF 2 FORMAT)
   ------------------------------------------------------------- */
   generateInvoiceFromCart() {
     let itemsToBill = [];
@@ -694,7 +1091,7 @@ Please share the design preview & confirmation!`;
         };
       });
     } else {
-      // Default to the exact sample products from the invoice PDF!
+      // Default to sample products from the invoice PDF!
       itemsToBill = [
         { name: "Butter Paper (customized)", qty: 15.4, unit: "kg", rate: 280, dye: 600, amount: 4912 },
         { name: "White Acrylic Stand", qty: 42, unit: "pcs", rate: 150, dye: 0, amount: 6300 },
@@ -716,7 +1113,7 @@ Please share the design preview & confirmation!`;
       clientName: clientName,
       clientPhone: this.currentUser ? this.currentUser.phone : (this.trackingData.phone || "+91 8462063330"),
       items: itemsToBill,
-      dyeCharges: dyeTotal > 0 ? dyeTotal : 0,
+      dyeCharges: dyeTotal > 0 ? dyeTotal : 600,
       deliveryCharges: 300,
       discount: 300,
       sourceTag: sourceTag
@@ -740,7 +1137,7 @@ Please share the design preview & confirmation!`;
   ------------------------------------------------------------- */
   loadUserFromStorage() {
     try {
-      const u = localStorage.getItem('p2s_current_user');
+      const u = localStorage.getItem('p6s_current_user');
       if (u) {
         this.currentUser = JSON.parse(u);
         this.updateUserUI();
@@ -769,11 +1166,10 @@ Please share the design preview & confirmation!`;
       joinedAt: new Date().toISOString()
     };
 
-    localStorage.setItem('p2s_current_user', JSON.stringify(this.currentUser));
+    localStorage.setItem('p6s_current_user', JSON.stringify(this.currentUser));
     this.updateUserUI();
     this.closeModal('loginModal');
 
-    // Auto-update invoice client name if input exists
     const clientInput = document.getElementById('invoiceClientName');
     if (clientInput) clientInput.value = this.currentUser.restaurantName;
 
@@ -793,7 +1189,7 @@ Please share the design preview & confirmation!`;
 
   logoutUser() {
     this.currentUser = null;
-    localStorage.removeItem('p2s_current_user');
+    localStorage.removeItem('p6s_current_user');
     this.updateUserUI();
     this.closeModal('profileModal');
   }
@@ -809,19 +1205,18 @@ Please share the design preview & confirmation!`;
       this.renderVisitorLogsTable();
       modal.classList.add('active');
     } else if (pin !== null) {
-      alert("Incorrect Security PIN. Please contact Ansh or Naman.");
+      alert("Incorrect Security PIN. Please contact Naman or Ansh.");
     }
   }
 
   updateOwnerStats() {
     try {
-      const leads = JSON.parse(localStorage.getItem('p2s_visitor_leads') || '[]');
-      const invoices = JSON.parse(localStorage.getItem('p2s_invoices_history') || '[]');
+      const leads = JSON.parse(localStorage.getItem('p6s_visitor_leads') || '[]');
+      const invoices = JSON.parse(localStorage.getItem('p6s_invoices_history') || '[]');
 
       const totalTaps = leads.length;
       const instaLeads = leads.filter(l => l.source && l.source.includes('insta')).length;
       const whatsLeads = leads.filter(l => l.source && l.source.includes('whats')).length;
-      const qrLeads = leads.filter(l => l.source && l.source.includes('qr')).length;
 
       const statTaps = document.getElementById('statTotalTaps');
       const statInsta = document.getElementById('statInstaLeads');
@@ -839,9 +1234,9 @@ Please share the design preview & confirmation!`;
     const tbody = document.getElementById('ownerVisitorLogsBody');
     if (!tbody) return;
 
-    const leads = JSON.parse(localStorage.getItem('p2s_visitor_leads') || '[]');
+    const leads = JSON.parse(localStorage.getItem('p6s_visitor_leads') || '[]');
     if (leads.length === 0) {
-      tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding:20px; color:#94a3b8;">No link taps recorded yet. Generate a tracked link below to test!</td></tr>`;
+      tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding:20px; color:#64748b;">No link taps recorded yet. Generate a tracked link below to test!</td></tr>`;
       return;
     }
 
@@ -852,10 +1247,10 @@ Please share the design preview & confirmation!`;
 
       return `
         <tr>
-          <td><span style="font-weight:700; color:#fff;">${l.source.toUpperCase()}</span></td>
-          <td style="color:#f5d77f; font-weight:700;">${l.ref || l.phone || l.name || 'Direct Link'}</td>
+          <td><span style="font-weight:700; color:#0b3b82;">${l.source.toUpperCase()}</span></td>
+          <td style="color:#b8860b; font-weight:700;">${l.ref || l.phone || l.name || 'Direct Link'}</td>
           <td>${l.device || 'Mobile'}</td>
-          <td style="color:#94a3b8; font-size:0.8rem;">${dateStr}</td>
+          <td style="color:#64748b; font-size:0.8rem;">${dateStr}</td>
           <td>
             <a href="https://wa.me/91${(l.phone || '8462063330').replace(/\D/g,'')}" target="_blank" class="btn btn-whatsapp" style="padding:4px 8px; font-size:0.75rem;">
               <i class="fab fa-whatsapp"></i> Chat
@@ -866,7 +1261,6 @@ Please share the design preview & confirmation!`;
     }).join('');
   }
 
-  // Generate trackable URL for Instagram Bio, DM or WhatsApp
   generateTrackedLink() {
     const platform = document.getElementById('genPlatform').value;
     const clientRef = document.getElementById('genClientRef').value.trim();
@@ -889,12 +1283,12 @@ Please share the design preview & confirmation!`;
     const outInput = document.getElementById('generatedLinkOutput');
     if (!outInput || !outInput.value) return;
     navigator.clipboard.writeText(outInput.value).then(() => {
-      alert("✅ Tracked Link copied to clipboard! You can paste it into Instagram Bio or WhatsApp messages.");
+      alert("✅ Tracked Link copied to clipboard!");
     });
   }
 
   /* -------------------------------------------------------------
-     8. INTERACTIVE SMART SACHET 3D FLIP DEMO
+     8. 3D FLIP SACHET DEMO
   ------------------------------------------------------------- */
   initInteractiveShowcase() {
     const flipBtn = document.getElementById('flipSachetBtn');
@@ -907,7 +1301,7 @@ Please share the design preview & confirmation!`;
   }
 
   /* -------------------------------------------------------------
-     9. INSTANT LIVE CALCULATOR TAB
+     9. LIVE CALCULATOR TAB
   ------------------------------------------------------------- */
   initCalculator() {
     this.calcProductSelect = document.getElementById('calcProductSelect');
@@ -923,24 +1317,22 @@ Please share the design preview & confirmation!`;
 
   updateCalculator() {
     const prodId = this.calcProductSelect ? this.calcProductSelect.value : 'mouth-freshener';
-    const qty = Math.max(1, Number(this.calcQty ? this.calcQty.value : 5000));
+    const qty = Math.max(1, Number(this.calcQty ? this.calcQty.value : 6000));
     const prod = PRODUCTS_DATA.find(p => p.id === prodId) || PRODUCTS_DATA[1];
 
-    let rate = 0.90;
-    let name = prod.name;
+    let rate = 0.85;
     let dye = 600;
 
-    if (prod.pricingType === 'tiered' && prod.variants) {
+    if (prod.pricingType === 'tiered_multi' && prod.variants) {
       const v = prod.variants[0];
-      name = v.name;
       const tier = v.tiers.find(t => qty >= t.min && qty <= t.max) || v.tiers[v.tiers.length - 1];
       rate = tier.rate;
-    } else if (prod.pricingType === 'tiered_paper') {
+    } else if (prod.pricingType === 'side_by_side_paper') {
       rate = qty >= 10000 ? 0.40 : (qty >= 8000 ? 0.45 : (qty >= 6000 ? 0.50 : 0.55));
-    } else if (prod.pricingType === 'weight') {
+    } else if (prod.pricingType === 'weight_sheet') {
       rate = 290;
       dye = 600;
-    } else if (prod.pricingType === 'cups_custom') {
+    } else if (prod.pricingType === 'cups_custom_table') {
       rate = 4.15;
     }
 
@@ -962,12 +1354,12 @@ Please share the design preview & confirmation!`;
     const prod = PRODUCTS_DATA.find(p => p.id === prodId);
     if (!prod) return;
 
-    let rate = 0.90;
-    if (prod.pricingType === 'tiered' && prod.variants) {
+    let rate = 0.85;
+    if (prod.pricingType === 'tiered_multi' && prod.variants) {
       const v = prod.variants[0];
       const tier = v.tiers.find(t => qty >= t.min && qty <= t.max) || v.tiers[v.tiers.length - 1];
       rate = tier.rate;
-    } else if (prod.pricingType === 'weight') {
+    } else if (prod.pricingType === 'weight_sheet') {
       rate = 290;
     }
 
@@ -987,10 +1379,9 @@ Please share the design preview & confirmation!`;
   }
 
   /* -------------------------------------------------------------
-     10. EVENT LISTENERS & MODAL CONTROLS
+     10. EVENT LISTENERS
   ------------------------------------------------------------- */
   setupEventListeners() {
-    // Filter buttons
     const filterBtns = document.querySelectorAll('.filter-btn');
     filterBtns.forEach(btn => {
       btn.addEventListener('click', (e) => {
@@ -1001,7 +1392,6 @@ Please share the design preview & confirmation!`;
       });
     });
 
-    // Close modal triggers
     document.querySelectorAll('.modal-overlay').forEach(modal => {
       modal.addEventListener('click', (e) => {
         if (e.target === modal) {
@@ -1013,7 +1403,6 @@ Please share the design preview & confirmation!`;
 
   openLoginModal() {
     if (this.currentUser) {
-      // Show Profile Modal
       const modal = document.getElementById('profileModal');
       document.getElementById('profRestName').innerText = this.currentUser.restaurantName;
       document.getElementById('profOwnerName').innerText = this.currentUser.ownerName;
@@ -1032,7 +1421,6 @@ Please share the design preview & confirmation!`;
   }
 }
 
-// Instantiate Global App
 window.addEventListener('DOMContentLoaded', () => {
-  window.app = new P2SApp();
+  window.app = new P6SApp();
 });
