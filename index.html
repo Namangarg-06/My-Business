@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium Packaging Solutions (P2S) | Luxury Smart Sachets & Hospitality Packaging</title>
+  <meta name="description" content="Supplier of Smart Sachets & Hospitality Packaging Solutions in Indore. Custom printed mouth freshener sachets, butter paper, paper cups, QR menu stands.">
+  
+  <!-- Google Fonts: Cinzel, Outfit & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- html2pdf for direct PDF export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- =====================================================================
+       1. DYNAMIC SOURCE TRACKING & REFERRAL WELCOME BAR
+       Detects Instagram ID, WhatsApp Number, QR Stands & Partner Links
+       ===================================================================== -->
+  <div id="sourceTrackingBanner" class="source-banner" style="display: none;">
+    <div class="source-banner-content">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span id="sourceBannerPill" class="source-tag-pill">
+          <i class="fas fa-sparkles"></i> EXCLUSIVE PARTNER
+        </span>
+        <span id="sourceBannerText">Welcome! Special hospitality supply pricing is activated.</span>
+      </div>
+      <div class="source-phone-links">
+        <span><i class="fas fa-phone-alt"></i> Direct:</span>
+        <a href="tel:+918462063330">8462063330</a>
+        <span>|</span>
+        <a href="tel:+919111789220">9111789220</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       2. MAIN LUXURY HEADER & NAVIGATION
+       ===================================================================== -->
+  <header class="main-header">
+    <div class="container nav-container">
+      
+      <!-- Logo & Brand -->
+      <a href="#home" class="brand-wrapper">
+        <div class="brand-logo-icon">P2S</div>
+        <div class="brand-info">
+          <div class="brand-name">PREMIUM <span>PACKAGING</span></div>
+          <div class="brand-sub">SOLUTIONS (P2S) • INDORE</div>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <ul class="nav-links">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#smart-sachets">Smart Sachets™</a></li>
+        <li><a href="#catalog">Product Catalog</a></li>
+        <li><a href="#calculator">Price Calculator</a></li>
+        <li><a href="#invoice-section">Instant Bill / Invoice</a></li>
+        <li><a href="#about">About P2S</a></li>
+      </ul>
+
+      <!-- Action Buttons -->
+      <div class="nav-actions">
+        <!-- Client Auth Button -->
+        <button id="navUserBtn" class="btn btn-outline-gold" onclick="app.openLoginModal()" style="padding: 8px 14px; font-size: 0.84rem;">
+          <i class="fas fa-sign-in-alt"></i> Client Login
+        </button>
+
+        <!-- Cart Trigger Button -->
+        <button class="btn btn-cart" onclick="app.toggleCart(true)" title="View Order List">
+          <i class="fas fa-shopping-bag"></i>
+          <span id="navCartCount" class="cart-count">0</span>
+        </button>
+
+        <!-- Owner Admin Button -->
+        <button class="btn" onclick="app.openOwnerPortal()" style="background: rgba(11, 59, 130, 0.4); border: 1px solid rgba(59, 130, 246, 0.5); color: #93c5fd; padding: 8px 12px; font-size: 0.8rem;" title="Ansh & Naman Owner Dashboard">
+          <i class="fas fa-crown"></i> Owners
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- =====================================================================
+       3. HERO SECTION
+       ===================================================================== -->
+  <section id="home" class="hero-section">
+    <div class="container">
+      <div class="hero-pill">
+        <i class="fas fa-crown text-gold"></i> SUPPLIER OF SMART SACHETS & HOSPITALITY SOLUTIONS
+      </div>
+
+      <h1 class="hero-title">
+        TURNING EVERY PACKET INTO A <span class="text-gold-gradient">LUXURY BRAND EXPERIENCE</span>
+      </h1>
+
+      <p class="hero-desc">
+        India's elite manufacturer & supplier of custom branded mouth freshener sachets, sugar & salt packets, food grade butter papers, custom printed paper cups, and interactive QR smart stands for premium cafes, restaurants, and hotels.
+      </p>
+
+      <div class="hero-ctas">
+        <a href="#catalog" class="btn btn-primary" style="padding: 13px 28px; font-size: 1rem;">
+          <i class="fas fa-th-large"></i> Explore Product Catalog
+        </a>
+        <button class="btn btn-invoice" onclick="app.generateInvoiceFromCart()" style="padding: 13px 24px; font-size: 1rem;">
+          <i class="fas fa-file-invoice-dollar"></i> Generate Instant Bill
+        </button>
+        <a href="https://wa.me/918462063330?text=Hello%20P2S%20Packaging%2C%20I%20want%20to%20discuss%20custom%20hospitality%20packaging." target="_blank" class="btn btn-whatsapp" style="padding: 13px 24px; font-size: 1rem;">
+          <i class="fab fa-whatsapp"></i> WhatsApp Order (8462063330)
+        </a>
+      </div>
+
+      <!-- Trust Badges -->
+      <div class="hero-trust-bar">
+        <div class="trust-item">
+          <span class="icon"><i class="fas fa-shield-alt"></i></span>
+          <span>100% Food Grade & FSSAI Compliant</span>
+        </div>
+        <div class="trust-item">
+          <span class="icon"><i class="fas fa-bolt"></i></span>
+          <span>Direct Dispatch from Indore</span>
+        </div>
+        <div class="trust-item">
+          <span class="icon"><i class="fas fa-palette"></i></span>
+          <span>Custom Logo & QR Integration</span>
+        </div>
+        <div class="trust-item">
+          <span class="icon"><i class="fas fa-phone"></i></span>
+          <span>Owners: Ansh & Naman (+91 9111789220)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       4. SMART SACHETS™ SPOTLIGHT SECTION (From PDF Page 1 to 6)
+       ===================================================================== -->
+  <section id="smart-sachets" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-kicker">Signature Innovation</span>
+        <h2 class="section-title">Smart Sachets™</h2>
+        <p class="section-subtitle">
+          "Not just a sachet, it's an experience. Sachet chota, impact bada!" Transform post-meal mouth fresheners into your restaurant's most powerful marketing channel.
+        </p>
+      </div>
+
+      <!-- 5 Types of Smart Sachets Grid -->
+      <div class="sachets-grid">
+        <!-- 01 Basic Custom Sachet -->
+        <div class="sachet-card">
+          <div class="sachet-badge-num">01</div>
+          <h3 class="sachet-card-title">BASIC CUSTOM SACHET</h3>
+          <p class="sachet-card-desc">
+            <strong>Your logo. Your identity.</strong> Clean, premium sachets with your logo and branding. Leaves an unmistakable impression of luxury.
+          </p>
+          <div class="sachet-interactive-preview">
+            <i class="fas fa-tag"></i> Pure Brand Elegance
+          </div>
+        </div>
+
+        <!-- 02 QR Rating Sachet -->
+        <div class="sachet-card">
+          <div class="sachet-badge-num">02</div>
+          <h3 class="sachet-card-title">QR RATING SACHET</h3>
+          <p class="sachet-card-desc">
+            <strong>One scan, direct to love.</strong> Customers scan, rate & review you directly on Google, Website, or Menu. Skyrocket your restaurant's ratings effortlessly.
+          </p>
+          <div class="sachet-interactive-preview">
+            <i class="fab fa-google"></i> Google 5-Star Reviews Booster
+          </div>
+        </div>
+
+        <!-- 03 Experience Sachet -->
+        <div class="sachet-card">
+          <div class="sachet-badge-num">03</div>
+          <h3 class="sachet-card-title">EXPERIENCE SACHET</h3>
+          <p class="sachet-card-desc">
+            <strong>Scan & experience your brand.</strong> Connect patrons directly to chef thank-you videos, founder stories, brand heritage, and special digital experiences.
+          </p>
+          <div class="sachet-interactive-preview">
+            <i class="fas fa-play-circle"></i> Video & Founder Story Connect
+          </div>
+        </div>
+
+        <!-- 04 Reward Sachet -->
+        <div class="sachet-card">
+          <div class="sachet-badge-num">04</div>
+          <h3 class="sachet-card-title">REWARD SACHET</h3>
+          <p class="sachet-card-desc">
+            <strong>Scan. Unlock. Get rewarded.</strong> Exclusive comeback discounts, surprise vouchers, and loyalty points that turn first-time diners into regular patrons.
+          </p>
+          <div class="sachet-interactive-preview">
+            <i class="fas fa-gift"></i> Loyalty & Repeat Customer Engine
+          </div>
+        </div>
+
+        <!-- 05 Campaign Sachet -->
+        <div class="sachet-card">
+          <div class="sachet-badge-num">05</div>
+          <h3 class="sachet-card-title">CAMPAIGN SACHET</h3>
+          <p class="sachet-card-desc">
+            <strong>For offers, festivals & launches.</strong> Seasonal festive greetings (Diwali, New Year), chef special menus, and event marketing on every table.
+          </p>
+          <div class="sachet-interactive-preview">
+            <i class="fas fa-bullhorn"></i> Seasonal Festive Promotions
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Interactive Sachet Showcase (Front & Back Realistic Mockup) -->
+      <div class="sachet-visual-showcase">
+        <div>
+          <span class="hero-pill" style="margin-bottom: 12px;">Real Client Sample</span>
+          <h3 style="font-size: 1.8rem; font-weight: 800; color: #fff; margin-bottom: 14px;">
+            Dual-Sided Custom Packaging Perfection
+          </h3>
+          <p style="color: #94a3b8; font-size: 0.95rem; margin-bottom: 20px; line-height: 1.6;">
+            Every Smart Sachet is engineered with precision: Front displays your luxury restaurant logo, veg mark, and tagline. Back features dynamic QR code, FSSAI manufacturing license, packaging dates, and social connect links.
+          </p>
+          
+          <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 16px; margin-bottom: 20px;">
+            <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 8px;">
+              <i class="fas fa-check-circle text-gold"></i>
+              <span style="font-size: 0.9rem; color: #e2e8f0;">Featured in <strong>Mudoven Cafe</strong>, <strong>Chef Bhupi's Kitchen</strong>, & <strong>La Indri</strong></span>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <i class="fas fa-check-circle text-gold"></i>
+              <span style="font-size: 0.9rem; color: #e2e8f0;">FSSAI Lic No: <strong>22826135000451</strong> &amp; <strong>12723001000884</strong></span>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 12px;">
+            <button id="flipSachetBtn" class="btn btn-outline-gold">
+              <i class="fas fa-sync-alt"></i> Flip Sachet (Front / Back)
+            </button>
+            <button class="btn btn-primary" onclick="app.openOrderBuilder('mouth-freshener')">
+              <i class="fas fa-pencil-ruler"></i> Customize Your Sachet
+            </button>
+          </div>
+        </div>
+
+        <!-- 3D Sachet Card Container -->
+        <div class="sachet-demo-mockup">
+          <div id="demoSachetBox" class="sachet-flipper">
+            <!-- Front View -->
+            <div class="sachet-face front">
+              <div class="mockup-brand-crest">
+                <span style="font-size: 0.75rem; font-weight: 800; color: #16a34a; border: 1.5px solid #16a34a; padding: 1px 4px; border-radius: 3px;">●</span>
+                <span style="font-size: 0.72rem; color: #64748b; letter-spacing: 0.05em; text-transform: uppercase;">FRESH MOUTH • BETTER MOOD</span>
+              </div>
+              <div style="text-align: center; padding: 20px 0;">
+                <div style="font-size: 0.78rem; text-transform: uppercase; color: #64748b; letter-spacing: 0.1em; margin-bottom: 6px;">Thank You For Visiting</div>
+                <div style="font-family: 'Cinzel', serif; font-size: 1.5rem; font-weight: 800; color: #0b3b82; margin-bottom: 4px;">
+                  YOUR RESTAURANT
+                </div>
+                <div style="font-size: 0.88rem; color: #475569; font-style: italic; margin-bottom: 14px;">
+                  — Logo &amp; Identity Here —
+                </div>
+                <div style="display: inline-block; background: #e0f2fe; color: #0369a1; border-radius: 20px; padding: 4px 14px; font-size: 0.78rem; font-weight: 700;">
+                  Premium Saunf Mixture
+                </div>
+              </div>
+              <div style="border-top: 1px solid #f1f5f9; padding-top: 10px; display: flex; justify-content: space-between; font-size: 0.72rem; color: #64748b;">
+                <span>GOOD FOOD • GREAT VIBES</span>
+                <span>STORE IN DRY PLACE</span>
+              </div>
+            </div>
+
+            <!-- Back View (QR Code, FSSAI & Socials) -->
+            <div class="sachet-face back">
+              <div class="mockup-brand-crest">
+                <span style="font-size: 0.72rem; font-weight: 700; color: #0b3b82;">
+                  <i class="fab fa-google" style="color: #ea4335;"></i> SCAN &amp; RATE US
+                </span>
+                <span style="font-size: 0.72rem; color: #64748b;">PKD: NOV 2026</span>
+              </div>
+              
+              <div style="text-align: center; padding: 10px 0;">
+                <!-- Simulated QR -->
+                <div style="width: 100px; height: 100px; background: #f8fafc; border: 2px solid #0b3b82; border-radius: 8px; margin: 0 auto 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.06);">
+                  <i class="fas fa-qrcode" style="font-size: 3.2rem; color: #0b3b82;"></i>
+                  <span style="font-size: 0.62rem; font-weight: 800; color: #0b3b82; margin-top: 2px;">SCAN TO CONNECT</span>
+                </div>
+                <div style="font-size: 0.78rem; font-weight: 700; color: #0f172a;">Loved the Food? Tell Google ⭐⭐⭐⭐⭐</div>
+                <div style="font-size: 0.72rem; color: #64748b;">Follow our vibe on Instagram @yourcafe</div>
+              </div>
+
+              <div style="border-top: 1px solid #f1f5f9; padding-top: 8px; font-size: 0.68rem; color: #475569; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <strong>fssai</strong> Lic: 12723001000884<br>
+                  Best Before 6 Months
+                </div>
+                <div style="text-align: right;">
+                  Packaging by <strong>P2S</strong><br>
+                  +91 8462063330
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       5. COMPLETE PRODUCT CATALOG & TIER PRICING
+       ===================================================================== -->
+  <section id="catalog" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-kicker">Transparent Factory Rates</span>
+        <h2 class="section-title">Hospitality Product Catalog</h2>
+        <p class="section-subtitle">
+          Factory-direct volume pricing with zero middleman markups. Select any category to view tier rates and custom printing options.
+        </p>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div class="catalog-filters">
+        <button class="filter-btn active" data-filter="all">All Products</button>
+        <button class="filter-btn" data-filter="smart-sachets">Smart Sachets &amp; Saunf</button>
+        <button class="filter-btn" data-filter="sachets">Salt, Sugar &amp; Spices</button>
+        <button class="filter-btn" data-filter="paper-cups">Printed &amp; Plain Cups</button>
+        <button class="filter-btn" data-filter="paper-packaging">Butter &amp; Tissue Paper</button>
+        <button class="filter-btn" data-filter="qr-systems">QR Stands &amp; Digital Menu</button>
+        <button class="filter-btn" data-filter="hospitality">Chopsticks &amp; Essentials</button>
+      </div>
+
+      <!-- Dynamic Product Cards Grid -->
+      <div id="catalogGrid" class="products-grid">
+        <!-- Rendered by app.renderCatalog() -->
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       6. LIVE PRICE CALCULATOR & INSTANT ESTIMATOR
+       ===================================================================== -->
+  <section id="calculator" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-kicker">Instant Estimates</span>
+        <h2 class="section-title">Live Packaging Price Calculator</h2>
+        <p class="section-subtitle">
+          Test your quantity and see instant bulk discounts and printing fees applied in real-time.
+        </p>
+      </div>
+
+      <div class="calculator-wrap">
+        <!-- Left: Form inputs -->
+        <div>
+          <h3 style="color: #fff; font-size: 1.25rem; font-weight: 700; margin-bottom: 20px;">
+            Configure Product &amp; Volume
+          </h3>
+          
+          <div class="form-group">
+            <label class="form-label">Select Product Category:</label>
+            <select id="calcProductSelect" class="form-control">
+              <option value="mouth-freshener">Mouth Freshener Sachet (Saunf / Mukhwas)</option>
+              <option value="sugar-sachets">Custom Sugar Sachets (White / Brown)</option>
+              <option value="salt-sachets">Iodised Salt Sachets (Poster / Metallized)</option>
+              <option value="pizza-seasoning-chilli">Pizza Seasoning &amp; Chilli Flakes</option>
+              <option value="black-pepper-sachets">Black Pepper Sachets</option>
+              <option value="butter-paper">Butter Paper Sheets (Non OGR / 30kg MOQ)</option>
+              <option value="printed-paper-cups">Printed Paper Cups (Customized)</option>
+              <option value="plain-paper-cups">Paper Cups (Plain White Stock)</option>
+              <option value="chopstick">Custom Chopsticks with Paper Sleeve</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Quantity Required (Units / Sachets / KG):</label>
+            <input type="number" id="calcQtyInput" class="form-control" value="6000" min="1000" step="500">
+            <div style="font-size: 0.8rem; color: #94a3b8; margin-top: 6px;">
+              💡 <em>Bulk tier discounts automatically trigger at 6k, 8k, and 10k+ quantities!</em>
+            </div>
+          </div>
+
+          <div style="margin-top: 24px;">
+            <button class="btn btn-primary" onclick="app.addCalculatedToCart()" style="width: 100%;">
+              <i class="fas fa-cart-plus"></i> Add Calculation to Order List
+            </button>
+          </div>
+        </div>
+
+        <!-- Right: Summary Card -->
+        <div class="calc-summary-card">
+          <div class="calc-summary-title">Calculation Summary</div>
+          
+          <div class="calc-row">
+            <span>Volume Tier Applied:</span>
+            <span id="calcDisplayTier" style="color: #f3e5ab; font-weight: 600;">Bulk Discount Active</span>
+          </div>
+          <div class="calc-row">
+            <span>Rate Per Unit:</span>
+            <span id="calcDisplayRate" style="color: #fff; font-weight: 700;">₹ 0.85</span>
+          </div>
+          <div class="calc-row">
+            <span>Estimated Dye / Setup:</span>
+            <span id="calcDisplayDye" style="color: #93c5fd;">₹ 600.00</span>
+          </div>
+          <div class="calc-row">
+            <span>Estimated Dispatch:</span>
+            <span style="color: #10b981;">FREE Delivery on 1st Order</span>
+          </div>
+
+          <div class="calc-row total-row">
+            <span>Grand Total:</span>
+            <span id="calcDisplayTotal">₹ 5,700</span>
+          </div>
+
+          <div style="margin-top: 20px; display: flex; gap: 10px;">
+            <button class="btn btn-invoice" onclick="app.generateInvoiceFromCart()" style="flex: 1;">
+              <i class="fas fa-file-invoice"></i> View as Official Bill
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       7. OFFICIAL BILL / INVOICE GENERATOR (MATCHING PDF 2 FORMAT)
+       ===================================================================== -->
+  <section id="invoice-section" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-kicker">Instant Automated Billing</span>
+        <h2 class="section-title">Official Hospitality Invoice Generator</h2>
+        <p class="section-subtitle">
+          Generates an authentic PDF invoice matching our official company format with your restaurant's name, item breakdown, and terms.
+        </p>
+      </div>
+
+      <div style="background: var(--bg-card); border: 1px solid var(--border-gold); border-radius: var(--radius-xl); padding: 34px; max-width: 820px; margin: 0 auto; text-align: center;">
+        <div style="font-size: 2.5rem; color: var(--gold-primary); margin-bottom: 12px;">
+          <i class="fas fa-receipt"></i>
+        </div>
+        <h3 style="font-size: 1.5rem; font-weight: 800; color: #fff; margin-bottom: 10px;">
+          Create &amp; Download Your Official P2S Bill
+        </h3>
+        <p style="color: #94a3b8; font-size: 0.95rem; margin-bottom: 24px; max-width: 600px; margin-left: auto; margin-right: auto;">
+          Enter your restaurant or cafe name below to generate an exact copy of the official <strong>Premium Packaging Solutions</strong> invoice (as seen in our attached rate card).
+        </p>
+
+        <div style="max-width: 500px; margin: 0 auto 24px;">
+          <div class="form-group" style="text-align: left;">
+            <label class="form-label">Client / Restaurant Name:</label>
+            <input type="text" id="invoiceClientName" class="form-control" placeholder="e.g. Shree Kripa Midway Restaurant / The Midnight Cafe" value="Shree Kripa Midway Restaurant">
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
+          <button class="btn btn-primary" onclick="app.generateInvoiceFromCart()" style="padding: 12px 26px;">
+            <i class="fas fa-magic"></i> Generate Official Bill Now
+          </button>
+          <button class="btn btn-whatsapp" onclick="invoiceEngine.shareToWhatsApp('918462063330')" style="padding: 12px 24px;">
+            <i class="fab fa-whatsapp"></i> Share Bill to WhatsApp (+91 8462063330)
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       8. ABOUT US & COMPANY LEADERSHIP
+       ===================================================================== -->
+  <section id="about" class="section">
+    <div class="container">
+      <div style="background: linear-gradient(135deg, rgba(14,21,37,0.9), rgba(8,12,20,0.95)); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: 44px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center;">
+        <div>
+          <span class="section-kicker">About Premium Packaging Solutions</span>
+          <h2 style="font-size: 2.2rem; font-weight: 800; color: #fff; margin-bottom: 16px;">
+            Excellence in Food Packaging &amp; Brand Storytelling
+          </h2>
+          <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px;">
+            Headquartered in <strong>Indore (Madhya Pradesh)</strong>, <strong>Premium Packaging Solutions (P2S)</strong> is a specialized manufacturer and supplier dedicated to elevating Indian dining and cafe experiences. Led by founders <strong>Ansh &amp; Naman</strong>, we partner with independent cafes, fine dining establishments, bakeries, and cloud kitchens across India.
+          </p>
+          <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7; margin-bottom: 24px;">
+            From zero-leakage printed paper cups to customized smart sachets with Google review boosters, our solutions combine hygienic food-grade materials with high-converting marketing technology.
+          </p>
+
+          <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+            <div>
+              <div style="font-size: 1.4rem; font-weight: 800; color: #f3e5ab;">Indore, M.P.</div>
+              <div style="font-size: 0.8rem; color: #94a3b8;">Manufacturing &amp; Dispatch</div>
+            </div>
+            <div>
+              <div style="font-size: 1.4rem; font-weight: 800; color: #f3e5ab;">Ansh &amp; Naman</div>
+              <div style="font-size: 0.8rem; color: #94a3b8;">Business Owners</div>
+            </div>
+            <div>
+              <div style="font-size: 1.4rem; font-weight: 800; color: #f3e5ab;">Pan-India</div>
+              <div style="font-size: 0.8rem; color: #94a3b8;">Direct Delivery Network</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-gold); border-radius: var(--radius-lg); padding: 28px; text-align: center;">
+          <div style="width: 70px; height: 70px; background: var(--gold-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 2rem; color: #080c14;">
+            <i class="fas fa-handshake"></i>
+          </div>
+          <h3 style="color: #fff; font-size: 1.3rem; font-weight: 700; margin-bottom: 8px;">Direct Founders Hotline</h3>
+          <p style="color: #94a3b8; font-size: 0.88rem; margin-bottom: 20px;">
+            Speak directly with Ansh or Naman for bulk contracts, franchise orders, or sample kit delivery.
+          </p>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <a href="tel:+918462063330" class="btn btn-outline-gold" style="justify-content: center;">
+              <i class="fas fa-phone-alt"></i> Call: +91 8462063330
+            </a>
+            <a href="tel:+919111789220" class="btn btn-outline-gold" style="justify-content: center;">
+              <i class="fas fa-phone-alt"></i> Call: +91 9111789220
+            </a>
+            <a href="https://wa.me/918462063330" target="_blank" class="btn btn-whatsapp" style="justify-content: center;">
+              <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       9. FOOTER
+       ===================================================================== -->
+  <footer style="background: #05080e; border-top: 1px solid var(--border-subtle); padding: 50px 0 30px; margin-top: 40px;">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; margin-bottom: 40px;">
+        <div>
+          <div class="brand-wrapper" style="margin-bottom: 14px;">
+            <div class="brand-logo-icon">P2S</div>
+            <div class="brand-info">
+              <div class="brand-name">PREMIUM <span>PACKAGING</span></div>
+              <div class="brand-sub">SOLUTIONS (P2S)</div>
+            </div>
+          </div>
+          <p style="color: #94a3b8; font-size: 0.85rem; line-height: 1.6;">
+            Supplier of Smart Sachets &amp; Hospitality Packaging Solutions. Elevating dining brands with customized sachets, paper cups, butter papers &amp; QR engagement stands.
+          </p>
+        </div>
+
+        <div>
+          <h4 style="color: #fff; font-size: 1rem; margin-bottom: 14px; border-bottom: 1px solid var(--border-gold); padding-bottom: 6px; display: inline-block;">
+            Contact Leadership
+          </h4>
+          <p style="color: #94a3b8; font-size: 0.88rem; margin-bottom: 8px;">
+            <strong style="color: #fff;">Business Owners:</strong> Ansh &amp; Naman
+          </p>
+          <p style="color: #94a3b8; font-size: 0.88rem; margin-bottom: 8px;">
+            <i class="fas fa-phone-alt text-gold" style="margin-right: 6px;"></i> +91 8462063330
+          </p>
+          <p style="color: #94a3b8; font-size: 0.88rem; margin-bottom: 8px;">
+            <i class="fas fa-phone-alt text-gold" style="margin-right: 6px;"></i> +91 9111789220
+          </p>
+          <p style="color: #94a3b8; font-size: 0.88rem;">
+            <i class="fas fa-map-marker-alt text-gold" style="margin-right: 6px;"></i> Indore, Madhya Pradesh, India
+          </p>
+        </div>
+
+        <div>
+          <h4 style="color: #fff; font-size: 1rem; margin-bottom: 14px; border-bottom: 1px solid var(--border-gold); padding-bottom: 6px; display: inline-block;">
+            Important Terms
+          </h4>
+          <ul style="list-style: none; color: #94a3b8; font-size: 0.82rem; line-height: 1.6;">
+            <li>• Goods once sold will not be taken back.</li>
+            <li>• 50% Advance &amp; 50% Before Delivery.</li>
+            <li>• First order delivery is completely free!</li>
+            <li>• Store sachets in dry &amp; clean place.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; font-size: 0.82rem; color: #64748b;">
+        <div>
+          © 2026 Premium Packaging Solutions (P2S). All rights reserved.
+        </div>
+        <div style="display: flex; gap: 14px;">
+          <a href="#home" style="color: #94a3b8; text-decoration: none;">Back to top</a>
+          <span>•</span>
+          <a href="#" onclick="app.openOwnerPortal(); return false;" style="color: #93c5fd; text-decoration: none;">Owner Portal</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       10. FLOATING ACTION CENTER (WHATSAPP & CALL HOTLINE)
+       ===================================================================== -->
+  <div class="floating-actions">
+    <!-- WhatsApp Floating Button (Ansh & Naman) -->
+    <a href="https://wa.me/918462063330?text=Hello%20P2S%2C%20I%20want%20to%20order%20hospitality%20packaging." target="_blank" class="float-btn float-whatsapp" title="Chat on WhatsApp (+91 8462063330)">
+      <i class="fab fa-whatsapp" style="font-size: 1.8rem;"></i>
+    </a>
+
+    <!-- Phone Call Floating Button -->
+    <a href="tel:+918462063330" class="float-btn float-call" title="Call Ansh & Naman">
+      <i class="fas fa-phone-alt" style="font-size: 1.3rem;"></i>
+    </a>
+  </div>
+
+  <!-- =====================================================================
+       11. CART DRAWER
+       ===================================================================== -->
+  <div id="cartDrawer" class="cart-drawer">
+    <div class="cart-header">
+      <div style="font-weight: 800; color: #fff; font-size: 1.15rem; display: flex; align-items: center; gap: 8px;">
+        <i class="fas fa-shopping-bag text-gold"></i> Your Order List
+      </div>
+      <button onclick="app.toggleCart(false)" style="background: none; border: none; color: #94a3b8; font-size: 1.3rem; cursor: pointer;">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <div id="cartDrawerItems" class="cart-body">
+      <!-- Items dynamically injected -->
+    </div>
+
+    <div class="cart-footer">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 16px; font-size: 1.1rem; font-weight: 700;">
+        <span style="color: #94a3b8;">Subtotal:</span>
+        <span id="cartDrawerSubtotal" style="color: #f3e5ab;">₹ 0</span>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <button class="btn btn-invoice" onclick="app.generateInvoiceFromCart()" style="width: 100%;">
+          <i class="fas fa-file-invoice"></i> Generate Official Bill / Invoice
+        </button>
+        <button class="btn btn-whatsapp" onclick="invoiceEngine.shareToWhatsApp('918462063330')" style="width: 100%;">
+          <i class="fab fa-whatsapp"></i> Order Full Cart via WhatsApp
+        </button>
+        <button class="btn" onclick="app.clearCart()" style="background: rgba(239, 68, 68, 0.1); color: #f87171; border: 1px solid rgba(239,68,68,0.2); font-size: 0.85rem; padding: 6px;">
+          Clear Order List
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       12. MODAL: ORDER BUILDER & CONFIGURATOR
+       ===================================================================== -->
+  <div id="orderBuilderModal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="modal-close-btn" onclick="app.closeModal('orderBuilderModal')">
+        <i class="fas fa-times"></i>
+      </button>
+      <h3 id="builderModalTitle" style="color: #fff; font-size: 1.35rem; font-weight: 800; margin-bottom: 20px;">
+        Configure Product Order
+      </h3>
+      <div id="builderModalBody">
+        <!-- Rendered by openOrderBuilder() -->
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       13. MODAL: OFFICIAL INVOICE / BILL PREVIEW (MATCHING PDF 2 FORMAT)
+       ===================================================================== -->
+  <div id="invoicePreviewModal" class="modal-overlay">
+    <div class="modal-content modal-lg" style="background: #1e293b; padding: 24px;">
+      <button class="modal-close-btn" onclick="app.closeModal('invoicePreviewModal')">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <!-- Action buttons above invoice -->
+      <div class="no-print" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+        <div style="font-weight: 700; color: #fff; font-size: 1.1rem;">
+          <i class="fas fa-file-invoice text-gold"></i> Official Company Invoice
+        </div>
+        <div style="display: flex; gap: 10px;">
+          <button class="btn btn-primary" onclick="invoiceEngine.print()">
+            <i class="fas fa-print"></i> Print / Save PDF
+          </button>
+          <button class="btn btn-invoice" onclick="invoiceEngine.downloadPDF()">
+            <i class="fas fa-download"></i> Download PDF
+          </button>
+          <button class="btn btn-whatsapp" onclick="invoiceEngine.shareToWhatsApp('918462063330')">
+            <i class="fab fa-whatsapp"></i> Send to WhatsApp
+          </button>
+        </div>
+      </div>
+
+      <!-- The A4 Bill Container -->
+      <div id="invoiceRenderContainer">
+        <!-- Injected by InvoiceEngine -->
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       14. MODAL: CLIENT AUTHENTICATION / RESTAURANT PROFILE
+       ===================================================================== -->
+  <div id="loginModal" class="modal-overlay">
+    <div class="modal-content" style="max-width: 480px;">
+      <button class="modal-close-btn" onclick="app.closeModal('loginModal')">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <div style="text-align: center; margin-bottom: 22px;">
+        <div class="brand-logo-icon" style="margin: 0 auto 12px;">P2S</div>
+        <h3 style="color: #fff; font-size: 1.35rem; font-weight: 800;">Hospitality Partner Login</h3>
+        <p style="color: #94a3b8; font-size: 0.85rem;">Login to auto-fill invoices, access sample kits &amp; track orders.</p>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Restaurant / Cafe Name *</label>
+        <input type="text" id="authRestName" class="form-control" placeholder="e.g. Shree Kripa Midway Restaurant">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Contact Person Name</label>
+        <input type="text" id="authOwnerName" class="form-control" placeholder="e.g. Ramesh Kumar">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">WhatsApp Contact Number *</label>
+        <input type="tel" id="authPhone" class="form-control" placeholder="e.g. 9876543210">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">City / Delivery Address</label>
+        <input type="text" id="authCity" class="form-control" placeholder="e.g. Indore, Madhya Pradesh">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">GST / FSSAI Number (Optional)</label>
+        <input type="text" id="authGST" class="form-control" placeholder="Optional">
+      </div>
+
+      <button class="btn btn-primary" onclick="app.saveUserProfile()" style="width: 100%; padding: 12px; margin-top: 10px;">
+        <i class="fas fa-check-circle"></i> Save &amp; Continue
+      </button>
+    </div>
+  </div>
+
+  <!-- Profile Modal -->
+  <div id="profileModal" class="modal-overlay">
+    <div class="modal-content" style="max-width: 450px;">
+      <button class="modal-close-btn" onclick="app.closeModal('profileModal')">
+        <i class="fas fa-times"></i>
+      </button>
+      <h3 style="color: #fff; font-size: 1.3rem; font-weight: 800; margin-bottom: 16px;">Restaurant Profile</h3>
+      <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 18px; margin-bottom: 18px;">
+        <div style="margin-bottom: 8px;"><span style="color:#94a3b8;">Restaurant:</span> <strong id="profRestName" style="color:#fff;"></strong></div>
+        <div style="margin-bottom: 8px;"><span style="color:#94a3b8;">Contact:</span> <strong id="profOwnerName" style="color:#fff;"></strong></div>
+        <div style="margin-bottom: 8px;"><span style="color:#94a3b8;">Phone:</span> <strong id="profPhone" style="color:#f5d77f;"></strong></div>
+        <div><span style="color:#94a3b8;">City:</span> <strong id="profCity" style="color:#fff;"></strong></div>
+      </div>
+      <button class="btn" onclick="app.logoutUser()" style="width: 100%; background: rgba(239,68,68,0.1); color: #f87171; border: 1px solid rgba(239,68,68,0.2);">
+        Logout / Switch Account
+      </button>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       15. MODAL: OWNER / ADMIN PORTAL (FOR ANSH & NAMAN)
+       - Link Generator for Instagram / WhatsApp
+       - Visitor Tap Logs (records who tapped with Instagram ID / WhatsApp number)
+       ===================================================================== -->
+  <div id="ownerPortalModal" class="modal-overlay">
+    <div class="modal-content modal-lg">
+      <button class="modal-close-btn" onclick="app.closeModal('ownerPortalModal')">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-gold); padding-bottom: 14px; margin-bottom: 20px;">
+        <div>
+          <span class="admin-badge">FOUNDERS ONLY</span>
+          <h2 style="color: #fff; font-size: 1.6rem; font-weight: 800; margin-top: 6px;">
+            Ansh &amp; Naman • Operations &amp; Lead Tracker
+          </h2>
+        </div>
+        <div style="text-align: right; font-size: 0.85rem; color: #94a3b8;">
+          Headquarters: <strong>Indore</strong><br>
+          Phones: <strong>8462063330 / 9111789220</strong>
+        </div>
+      </div>
+
+      <!-- Quick Metrics -->
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div id="statTotalTaps" class="stat-val">0</div>
+          <div class="stat-label">Total Link Taps</div>
+        </div>
+        <div class="stat-box">
+          <div id="statInstaLeads" class="stat-val" style="color: #ec4899;">0</div>
+          <div class="stat-label">Instagram Link Visitors</div>
+        </div>
+        <div class="stat-box">
+          <div id="statWhatsLeads" class="stat-val" style="color: #25d366;">0</div>
+          <div class="stat-label">WhatsApp Referral Leads</div>
+        </div>
+        <div class="stat-box">
+          <div id="statTotalInvoices" class="stat-val" style="color: #60a5fa;">0</div>
+          <div class="stat-label">Invoices Created</div>
+        </div>
+      </div>
+
+      <!-- Section: Tracked Link Generator -->
+      <div class="link-gen-box">
+        <h4 style="color: #fff; font-size: 1.05rem; margin-bottom: 8px;">
+          <i class="fas fa-link text-gold"></i> Create Trackable Referral Link
+        </h4>
+        <p style="color: #94a3b8; font-size: 0.84rem; margin-bottom: 14px;">
+          Send this custom link to any restaurant on Instagram or WhatsApp. When they tap it, their handle or phone number will be captured automatically!
+        </p>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1.5fr 1fr; gap: 10px;">
+          <div>
+            <label class="form-label" style="font-size: 0.78rem;">Platform:</label>
+            <select id="genPlatform" class="form-control" style="padding: 8px;">
+              <option value="instagram">Instagram</option>
+              <option value="whatsapp">WhatsApp</option>
+              <option value="qr_stand">QR Sachet Scan</option>
+              <option value="google">Google</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size: 0.78rem;">Insta Handle / Phone / Name:</label>
+            <input type="text" id="genClientRef" class="form-control" placeholder="e.g. @the_midnight_cafe or 9876543210" style="padding: 8px;">
+          </div>
+          <div style="align-self: flex-end;">
+            <button class="btn btn-primary" onclick="app.generateTrackedLink()" style="width: 100%; padding: 8px 12px; font-size: 0.88rem;">
+              Generate
+            </button>
+          </div>
+        </div>
+
+        <div class="generated-link-display">
+          <input type="text" id="generatedLinkOutput" class="form-control" placeholder="Your trackable link will appear here..." readonly style="font-size: 0.85rem; background: rgba(0,0,0,0.5);">
+          <button class="btn btn-outline-gold" onclick="app.copyGeneratedLink()" style="padding: 8px 16px;">
+            <i class="fas fa-copy"></i> Copy
+          </button>
+        </div>
+      </div>
+
+      <!-- Visitor Tap Log Table -->
+      <div style="margin-top: 24px;">
+        <h4 style="color: #fff; font-size: 1.05rem; margin-bottom: 12px;">
+          <i class="fas fa-user-clock text-gold"></i> Live Visitor Tap Logs (Who Clicked Your Links)
+        </h4>
+        <div style="max-height: 220px; overflow-y: auto; border: 1px solid var(--border-subtle); border-radius: 8px;">
+          <table class="tier-pricing-table" style="margin-bottom: 0;">
+            <thead>
+              <tr>
+                <th>Platform</th>
+                <th>Insta Handle / Number / Partner</th>
+                <th>Device</th>
+                <th>Time (IST)</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="ownerVisitorLogsBody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/invoice.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
