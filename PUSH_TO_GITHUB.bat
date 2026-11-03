@@ -26,8 +26,8 @@ git remote add origin https://github.com/Namangarg-06/My-Business.git
 echo [1/3] Adding updated files...
 git add -A
 
-echo [2/3] Committing changes (One-time Initial Link Welcome, 5 Realistic Sachet Sample Packaging Mockups with Interactive Flip)...
-git commit -m "One-time initial link welcome splash only, add realistic 3D packaging sample mockups for all 5 sachets & flavors" --allow-empty
+echo [2/3] Committing changes (Add PWA Progressive Web App support, mobile download button, app icons & service worker)...
+git commit -m "Add PWA mobile app download support, home screen icons and service worker" --allow-empty
 
 echo [3/3] Pushing to GitHub (Namangarg-06/My-Business)...
 git push -u origin main --force
@@ -39,9 +39,15 @@ if %ERRORLEVEL% equ 0 (
     echo       SUCCESS! UPDATED WEBSITE PUSHED TO GITHUB!
     echo ==============================================================================
     echo.
-    echo Client Website Link (Live URL):
-    echo   https://namangarg-06.github.io/My-Business/
+    echo 1. PRIMARY LIVE LINK (Naman-Garg-06):
+    echo    https://naman-garg-06.github.io/My-Business/
+    echo.
+    echo 2. SECONDARY LINK:
+    echo    https://namangarg-06.github.io/My-Business/
     echo ==============================================================================
+    echo.
+    echo Opening live website in your default browser...
+    start https://naman-garg-06.github.io/My-Business/
 ) else (
     color 0E
     echo.
@@ -55,10 +61,11 @@ if %ERRORLEVEL% equ 0 (
         echo       SUCCESS! PUSHED TO Naman-Garg-06/My-Business!
         echo ==============================================================================
         echo Live Link: https://naman-garg-06.github.io/My-Business/
+        start https://naman-garg-06.github.io/My-Business/
     ) else (
         color 0C
         echo.
-        echo Push failed.
+        echo Push failed. Please check your GitHub login in Windows.
     )
 )
 

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="pwaGoldGrad512" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF5D6" />
+      <stop offset="25%" stop-color="#E5C07B" />
+      <stop offset="55%" stop-color="#C5A059" />
+      <stop offset="85%" stop-color="#8C6D23" />
+      <stop offset="100%" stop-color="#5A4310" />
+    </linearGradient>
+    <linearGradient id="pwaNavyBg512" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f2b5c" />
+      <stop offset="60%" stop-color="#071630" />
+      <stop offset="100%" stop-color="#030b18" />
+    </linearGradient>
+    <filter id="pwaGlow512" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="14" flood-color="#C5A059" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- App Squircle Background -->
+  <rect width="512" height="512" rx="110" fill="url(#pwaNavyBg512)" />
+  <rect x="14" y="14" width="484" height="484" rx="100" fill="none" stroke="url(#pwaGoldGrad512)" stroke-width="4" opacity="0.85" />
+
+  <!-- Outer Star Mandala -->
+  <g filter="url(#pwaGlow512)">
+    <path d="M256 50 C269 140 348 220 440 234 C348 248 269 328 256 418 C243 328 164 248 72 234 C164 220 243 140 256 50 Z" stroke="url(#pwaGoldGrad512)" stroke-width="6" fill="#faf8f5" fill-opacity="0.04" />
+    <path d="M256 90 C266 160 330 224 400 234 C330 244 266 308 256 378 C246 308 182 244 112 234 C182 224 246 160 256 90 Z" stroke="url(#pwaGoldGrad512)" stroke-width="3" stroke-dasharray="8 5" fill="none" opacity="0.85" />
+    <rect x="171" y="171" width="170" height="170" rx="26" transform="rotate(45 256 256)" fill="url(#pwaNavyBg512)" stroke="url(#pwaGoldGrad512)" stroke-width="6" />
+    <circle cx="256" cy="100" r="7" fill="url(#pwaGoldGrad512)" />
+    <circle cx="256" cy="412" r="7" fill="url(#pwaGoldGrad512)" />
+    <circle cx="100" cy="256" r="7" fill="url(#pwaGoldGrad512)" />
+    <circle cx="412" cy="256" r="7" fill="url(#pwaGoldGrad512)" />
+    
+    <!-- P6S Monogram -->
+    <text x="256" y="275" font-family="'Cinzel', Georgia, serif" font-size="76" font-weight="900" fill="url(#pwaGoldGrad512)" text-anchor="middle" letter-spacing="4">P6S</text>
+    <text x="256" y="306" font-family="Arial, sans-serif" font-size="20" font-weight="800" fill="#E5C07B" text-anchor="middle" letter-spacing="8">ATELIER</text>
+  </g>
+</svg>

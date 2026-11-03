@@ -28,6 +28,7 @@ class P6SApp {
     this.initInteractiveShowcase();
     this.initCalculator();
     this.updateOwnerStats();
+    this.initPWA();
   }
 
   /* -------------------------------------------------------------
@@ -1707,6 +1708,202 @@ Please share the design preview & confirmation!`;
   closeModal(modalId) {
     const modal = document.getElementById(modalId);
     if (modal) modal.classList.remove('active');
+  }
+
+  /* -------------------------------------------------------------
+     10. PROGRESSIVE WEB APP (PWA) & MOBILE 1-CLICK INSTALL
+  ------------------------------------------------------------- */
+  initPWA() {
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js')
+          .then((reg) => console.log('P6S Atelier ServiceWorker active', reg.scope))
+          .catch((err) => console.log('ServiceWorker registration error:', err));
+      });
+    }
+
+    // Capture install prompt event for Android Chrome
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      this.deferredPwaPrompt = e;
+      this.showPwaInstallButton();
+    });
+
+    window.addEventListener('appinstalled', () => {
+      this.deferredPwaPrompt = null;
+      this.dismissPwaFloatingBar();
+      this.showCelebrationToast('✨ P6S Atelier App Installed on Home Screen!');
+    });
+
+    // Create floating install bar for mobile after 1.5 seconds if not standalone
+    setTimeout(() => {
+      this.createPwaFloatingBar();
+    }, 1500);
+  }
+
+  showPwaInstallButton() {
+    const btns = document.querySelectorAll('.pwa-install-btn');
+    btns.forEach(b => {
+      b.style.display = 'inline-flex';
+    });
+  }
+
+  hidePwaInstallButton() {
+    const btns = document.querySelectorAll('.pwa-install-btn');
+    btns.forEach(b => {
+      b.style.display = 'none';
+    });
+  }
+
+  createPwaFloatingBar() {
+    if (sessionStorage.getItem('p6s_pwa_floating_dismissed') || window.matchMedia('(display-mode: standalone)').matches) {
+      return;
+    }
+    if (window.innerWidth > 860) return;
+    if (document.getElementById('pwaFloatingBar')) return;
+
+    const bar = document.createElement('div');
+    bar.id = 'pwaFloatingBar';
+    bar.className = 'pwa-floating-bar';
+    bar.innerHTML = `
+      <div class="pwa-floating-bar-info">
+        <img src="icons/icon-192.svg" alt="P6S" class="pwa-floating-bar-icon">
+        <div class="pwa-floating-bar-text">
+          <h4>P6S Atelier App</h4>
+          <p>Install on phone for 1-click orders</p>
+        </div>
+      </div>
+      <div class="pwa-floating-bar-actions">
+        <button type="button" class="pwa-floating-install-btn" onclick="app.promptPwaInstall()">
+          <i class="fas fa-download"></i> Install
+        </button>
+        <button type="button" class="pwa-floating-close-btn" onclick="app.dismissPwaFloatingBar()" title="Close">
+          ✕
+        </button>
+      </div>
+    `;
+    document.body.appendChild(bar);
+  }
+
+  dismissPwaFloatingBar() {
+    const bar = document.getElementById('pwaFloatingBar');
+    if (bar) bar.remove();
+    sessionStorage.setItem('p6s_pwa_floating_dismissed', 'true');
+  }
+
+  createPwaModal() {
+    if (document.getElementById('pwaInstallModal')) return;
+    const isIos = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    const modal = document.createElement('div');
+    modal.id = 'pwaInstallModal';
+    modal.className = 'modal-backdrop';
+    modal.innerHTML = `
+      <div class="modal-box pwa-install-modal-content" style="max-width: 480px; text-align: left; padding: 26px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; border-bottom: 1px solid #e2e8f0; padding-bottom: 14px;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <img src="icons/icon-192.svg" alt="P6S Icon" style="width: 44px; height: 44px; border-radius: 10px; border: 1px solid #c5a059;">
+            <div>
+              <h3 style="font-family: 'Cinzel', serif; font-size: 1.1rem; color: #071630; margin: 0;">P6S Atelier Mobile App</h3>
+              <div style="font-size: 0.75rem; color: #64748b; font-weight: 600;">1-Click Install • Full Screen App Experience</div>
+            </div>
+          </div>
+          <button class="modal-close-btn" onclick="app.closeModal('pwaInstallModal')" style="background: none; border: none; font-size: 1.2rem; cursor: pointer; color: #64748b;">✕</button>
+        </div>
+
+        <div style="display: flex; gap: 8px; margin-bottom: 16px;">
+          <button type="button" id="pwaTabAndroid" class="btn ${!isIos ? 'btn-primary' : 'btn-outline-gold'}" onclick="app.switchPwaTab('android')" style="flex: 1; padding: 8px; font-size: 0.85rem;">
+            <i class="fab fa-android"></i> Android Phone
+          </button>
+          <button type="button" id="pwaTabIos" class="btn ${isIos ? 'btn-primary' : 'btn-outline-gold'}" onclick="app.switchPwaTab('ios')" style="flex: 1; padding: 8px; font-size: 0.85rem;">
+            <i class="fab fa-apple"></i> iPhone / iPad
+          </button>
+        </div>
+
+        <div id="pwaGuideAndroid" style="display: ${!isIos ? 'block' : 'none'};">
+          <div class="pwa-modal-guide-step">
+            <div class="pwa-step-badge">1</div>
+            <div style="font-size: 0.88rem; color: #1e293b;">
+              Chrome browser me upar right corner me <strong>3 Dots (⋮)</strong> par click karein.
+            </div>
+          </div>
+          <div class="pwa-modal-guide-step">
+            <div class="pwa-step-badge">2</div>
+            <div style="font-size: 0.88rem; color: #1e293b;">
+              Menu me <strong>"Install app"</strong> ya <strong>"Add to Home screen"</strong> par tap karein.
+            </div>
+          </div>
+          <div class="pwa-modal-guide-step">
+            <div class="pwa-step-badge">3</div>
+            <div style="font-size: 0.88rem; color: #1e293b;">
+              <strong>"Install"</strong> par click karein. P6S App aapki mobile screen par icon bankar save ho jayega!
+            </div>
+          </div>
+        </div>
+
+        <div id="pwaGuideIos" style="display: ${isIos ? 'block' : 'none'};">
+          <div class="pwa-modal-guide-step">
+            <div class="pwa-step-badge">1</div>
+            <div style="font-size: 0.88rem; color: #1e293b;">
+              Safari browser me neeche <strong>Share icon ( <i class="fas fa-arrow-up-from-bracket"></i> )</strong> par tap karein.
+            </div>
+          </div>
+          <div class="pwa-modal-guide-step">
+            <div class="pwa-step-badge">2</div>
+            <div style="font-size: 0.88rem; color: #1e293b;">
+              Thoda neeche scroll karke <strong>"Add to Home Screen" <i class="fas fa-plus-square text-gold"></i></strong> select karein.
+            </div>
+          </div>
+          <div class="pwa-modal-guide-step">
+            <div class="pwa-step-badge">3</div>
+            <div style="font-size: 0.88rem; color: #1e293b;">
+              Top-right corner me <strong>"Add"</strong> dabayein. P6S App bina browser bar ke fullscreen app ban jayega!
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 18px; text-align: center;">
+          <button type="button" class="btn btn-primary" onclick="app.closeModal('pwaInstallModal')" style="width: 100%; padding: 10px; font-weight: 700;">
+            Theek Hai, Samajh Gaya (Got It)
+          </button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+  }
+
+  switchPwaTab(type) {
+    const tabAndroid = document.getElementById('pwaTabAndroid');
+    const tabIos = document.getElementById('pwaTabIos');
+    const guideAndroid = document.getElementById('pwaGuideAndroid');
+    const guideIos = document.getElementById('pwaGuideIos');
+    if (type === 'android') {
+      if (tabAndroid) { tabAndroid.className = 'btn btn-primary'; }
+      if (tabIos) { tabIos.className = 'btn btn-outline-gold'; }
+      if (guideAndroid) guideAndroid.style.display = 'block';
+      if (guideIos) guideIos.style.display = 'none';
+    } else {
+      if (tabAndroid) { tabAndroid.className = 'btn btn-outline-gold'; }
+      if (tabIos) { tabIos.className = 'btn btn-primary'; }
+      if (guideAndroid) guideAndroid.style.display = 'none';
+      if (guideIos) guideIos.style.display = 'block';
+    }
+  }
+
+  promptPwaInstall() {
+    if (this.deferredPwaPrompt) {
+      this.deferredPwaPrompt.prompt();
+      this.deferredPwaPrompt.userChoice.then((choice) => {
+        if (choice.outcome === 'accepted') {
+          console.log('User installed P6S App');
+          this.dismissPwaFloatingBar();
+        }
+        this.deferredPwaPrompt = null;
+      });
+    } else {
+      this.createPwaModal();
+      const modal = document.getElementById('pwaInstallModal');
+      if (modal) modal.classList.add('active');
+    }
   }
 }
 

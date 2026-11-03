@@ -12,6 +12,16 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <link rel="stylesheet" href="css/styles.css">
+
+  <!-- PWA Manifest & Mobile App Configuration -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0b3b82">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="P6S Atelier">
+  <link rel="icon" type="image/svg+xml" href="icons/icon-192.svg">
+  <link rel="apple-touch-icon" href="icons/icon-192.svg">
   <style>
     .contact-grid {
       display: grid;
@@ -232,6 +242,9 @@
       </ul>
 
       <div class="nav-actions">
+        <button type="button" class="btn pwa-install-btn" onclick="app.promptPwaInstall()" title="Install P6S App on Phone" style="padding: 8px 14px; font-size: 0.84rem;">
+          <i class="fas fa-arrow-circle-down text-gold"></i> <span>Download App</span>
+        </button>
         <button id="navUserBtn" class="btn btn-outline-gold" onclick="app.openLoginModal()" style="padding: 8px 14px; font-size: 0.84rem;">
           <i class="fas fa-sign-in-alt"></i> Client Login
         </button>

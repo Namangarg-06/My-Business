@@ -40,8 +40,10 @@ if %ERRORLEVEL% equ 0 (
     echo ==============================================================================
     echo       SUCCESS! WEBSITE PUSHED SUCCESSFULLY TO GITHUB!
     echo ==============================================================================
-    echo Live Website Link: https://namangarg-06.github.io/My-Business/
+    echo 1. Primary Live Link:   https://naman-garg-06.github.io/My-Business/
+    echo 2. Secondary Live Link: https://namangarg-06.github.io/My-Business/
     echo ==============================================================================
+    start https://naman-garg-06.github.io/My-Business/
 ) else (
     color 0E
     echo Push to Naman-Garg-06 failed. Trying Namangarg-06...
